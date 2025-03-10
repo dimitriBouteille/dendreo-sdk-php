@@ -1,0 +1,52 @@
+name: Tests
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  unit-test:
+    name: "Unit tests"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout repo"
+        uses: actions/checkout@v4
+
+      - name: "Install PHP"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          tools: composer:v2
+          coverage: xdebug
+
+      - name: "Install composer dependencies"
+        run: composer install --prefer-dist --no-progress
+
+      - name: "Run unit tests with coverage"
+        run: composer run test:unit:coverage
+
+      - name: "Send coverage to Coveralls"
+        env:
+          COVERALLS_REPO_TOKEN: ${{ github.token }}
+        if: ${{ env.COVERALLS_REPO_TOKEN }}
+        uses: coverallsapp/github-action@v2
+        with:
+          github-token: ${{ env.COVERALLS_REPO_TOKEN }}
+          flag-name: "unit"
+          allow-empty: false
+          parallel: true
+
+  finish:
+    needs:
+      - unit-test
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Close parallel build
+        uses: coverallsapp/github-action@v1
+        with:
+          parallel-finished: true
+          carryforward: "unit"
