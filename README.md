@@ -1,14 +1,6 @@
-<div xmlns="http://www.w3.org/1999/xhtml">
-    <style>
-        .logo {background: #fff; text-align: center;}
-        .logo-img { max-width: 80%;  margin-left: auto; margin-right: auto;}
-    </style>
-<div class="logo">
-    <p class="logo-img">
-        <img src="./dendreo-logo.svg" height="180" alt="Logo Dendreo">
-    </p>
-</div>
-</div>
+<p align="center" style="background: #fff">
+    <img src="./dendreo-logo.svg" width="350" style="padding: 20px 0;" alt="Logo Dendreo">
+</p>
 
 <h1 align="center">Dendreo SDK for PHP</h1>
 
