@@ -29,7 +29,7 @@ class ClientTest extends TestCase
         $this->expectException(DendreoException::class);
         $this->expectExceptionMessage('Username not set');
 
-        $client->getHttpClient();
+        $client->getBaseEndpoint();
     }
 
     /**
