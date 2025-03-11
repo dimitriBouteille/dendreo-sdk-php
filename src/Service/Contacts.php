@@ -11,8 +11,9 @@ namespace Dbout\DendreoSdk\Service;
 use Dbout\DendreoSdk\Enum\Method;
 use Dbout\DendreoSdk\Helper\Formatter;
 use Dbout\DendreoSdk\Model\Contact;
-use Dbout\DendreoSdk\Model\ContactFindRequest;
+use Dbout\DendreoSdk\Model\ContactsCreateOrUpdateRequest;
 use Dbout\DendreoSdk\Model\ContactsDeleteRequest;
+use Dbout\DendreoSdk\Model\ContactsFindRequest;
 
 /**
  * @see https://developers.dendreo.com/#contacts
@@ -22,12 +23,12 @@ class Contacts extends Service
     final public const ENDPOINT = 'contacts.php';
 
     /**
-     * @param ContactFindRequest|null $request
+     * @param ContactsFindRequest|null $request
      * @throws \Exception
      * @return array<Contact>|null
      * @see https://developers.dendreo.com/#lister-tous-les-contacts
      */
-    public function find(?ContactFindRequest $request = null): ?array
+    public function find(?ContactsFindRequest $request = null): ?array
     {
         $result = $this->requestHttp(
             endpoint: self::ENDPOINT,
@@ -40,14 +41,14 @@ class Contacts extends Service
 
     /**
      * @param int $id
-     * @param ContactFindRequest|null $request
+     * @param ContactsFindRequest|null $request
      * @throws \Exception
      * @return Contact|null
      * @see https://developers.dendreo.com/#afficher-un-contact
      */
-    public function findById(int $id, ?ContactFindRequest $request = null): ?Contact
+    public function findById(int $id, ?ContactsFindRequest $request = null): ?Contact
     {
-        $request ??= new ContactFindRequest();
+        $request ??= new ContactsFindRequest();
         $request->set('id', $id);
 
         $result = $this->requestHttp(
@@ -77,5 +78,22 @@ class Contacts extends Service
         );
 
         return $result->isSuccess();
+    }
+
+    /**
+     * @param ContactsCreateOrUpdateRequest $request
+     * @throws \Exception
+     * @return Contact|null
+     * @see https://developers.dendreo.com/#ajouter-editer-un-contact
+     */
+    public function createOrUpdate(ContactsCreateOrUpdateRequest $request): ?Contact
+    {
+        $result = $this->requestHttp(
+            endpoint: self::ENDPOINT,
+            method: Method::POST,
+            queryParams: $request->toArray(),
+        );
+
+        return $this->deserialize($result, Contact::class);
     }
 }

@@ -8,12 +8,12 @@
 
 namespace Dbout\DendreoSdk\Model;
 
-class ContactFindRequest extends AbstractModel
+class ContactsFindRequest extends AbstractModel
 {
     protected array $casts = [
         'id_entreprise' => 'int',
         'nom' => 'string',
         'email' => 'string',
-        'include' => 'string',
+        'include' => 'string[]',
     ];
 }
