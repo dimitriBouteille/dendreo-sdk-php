@@ -10,6 +10,10 @@ namespace Dbout\DendreoSdk;
 
 class Response
 {
+    /**
+     * @param int $statusCode
+     * @param array<mixed> $result
+     */
     public function __construct(
         protected int $statusCode,
         protected array $result,
@@ -25,10 +29,18 @@ class Response
     }
 
     /**
-     * @return array
+     * @return array<mixed>
      */
     public function getResult(): array
     {
         return $this->result;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSuccess(): bool
+    {
+        return in_array($this->statusCode, Client::SUCCESS_HTTP_CODES, true);
     }
 }

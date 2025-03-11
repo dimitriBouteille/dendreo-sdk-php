@@ -16,6 +16,13 @@ class Client
 {
     private const API_ENDPOINT = 'https://pro.dendreo.com/%s/api/';
 
+    final public const SUCCESS_HTTP_CODES = [
+        200,
+        201,
+        202,
+        204,
+    ];
+
     protected ?HttpClientInterface $httpClient = null;
 
     /**

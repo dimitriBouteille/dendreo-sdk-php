@@ -18,8 +18,8 @@ interface HttpClientInterface
      * @param Config $config
      * @param string $requestUrl
      * @param Method $method
-     * @param $params
-     * @param array|null $requestOptions
+     * @param mixed $params
+     * @param array<string, mixed>|null $requestOptions
      * @throws \Exception
      * @return Response
      */
@@ -27,7 +27,7 @@ interface HttpClientInterface
         Config $config,
         string $requestUrl,
         Method $method,
-        $params,
+        mixed $params,
         array $requestOptions = null
     ): Response;
 }

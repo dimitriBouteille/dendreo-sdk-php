@@ -8,6 +8,7 @@
 
 namespace Dbout\DendreoSdk\HttpClient;
 
+use Dbout\DendreoSdk\Client;
 use Dbout\DendreoSdk\Config;
 use Dbout\DendreoSdk\Enum\Method;
 use Dbout\DendreoSdk\Exception\ConnectionException;
@@ -17,13 +18,6 @@ use Dbout\DendreoSdk\Response;
 
 class CurlClient implements HttpClientInterface
 {
-    final public const SUCCESS_HTTP_CODES = [
-        200,
-        201,
-        202,
-        204,
-    ];
-
     /**
      * @inheritDoc
      */
@@ -86,10 +80,11 @@ class CurlClient implements HttpClientInterface
             $result = json_decode($result, true);
         }
 
+        if (!is_array($result)) {
+            $result = [];
+        }
 
-        dd($httpStatus, $result, $error);
-
-        if (in_array($httpStatus, self::SUCCESS_HTTP_CODES, true)) {
+        if (in_array($httpStatus, Client::SUCCESS_HTTP_CODES, true)) {
             return new Response($httpStatus, $result);
         }
 

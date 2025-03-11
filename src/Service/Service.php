@@ -12,6 +12,7 @@ use Dbout\DendreoSdk\Client;
 use Dbout\DendreoSdk\Enum\Method;
 use Dbout\DendreoSdk\Exception\DendreoException;
 use Dbout\DendreoSdk\ObjectSerializer;
+use Dbout\DendreoSdk\Response;
 
 class Service
 {
@@ -37,14 +38,14 @@ class Service
      * @param array|null $bodyParams
      * @param array|null $queryParams
      * @throws \Exception
-     * @return array
+     * @return Response
      */
     protected function requestHttp(
         string $endpoint,
         Method $method,
         array $bodyParams = null,
         ?array $queryParams = null,
-    ): array {
+    ): Response {
         if ($endpoint === '') {
             throw new DendreoException('The endpoint is empty');
         }
@@ -60,14 +61,12 @@ class Service
 
         $client = $this->getClient();
         $curlClient = $client->getHttpClient();
-        $response = $curlClient->requestHttp(
+        return $curlClient->requestHttp(
             config: $client->getConfig(),
             requestUrl: $this->createUrl($endpoint),
             method: $method,
             params: $bodyParams,
         );
-
-        return $response->getResult();
     }
 
     /**
@@ -82,15 +81,13 @@ class Service
     }
 
     /**
-     * @template T
-     *
-     * @param array $response
-     * @param class-string<T> $className
+     * @param Response $response
+     * @param string $className
      * @throws \Exception
-     * @return T|null
+     * @return mixed
      */
-    public function deserialize(array $response, string $className)
+    public function deserialize(Response $response, string $className): mixed
     {
-        return (new ObjectSerializer())->deserialize($response, $className);
+        return (new ObjectSerializer())->deserialize($response->getResult(), $className);
     }
 }

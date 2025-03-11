@@ -23,7 +23,7 @@ class ActionsDeFormation extends Service
     /**
      * @param ActionDeFormationFindRequest|null $request
      * @throws \Exception
-     * @return array|null
+     * @return array<ActionDeFormation>|null
      * @see https://developers.dendreo.com/#lister-toutes-les-actions-de-formation
      */
     public function find(ActionDeFormationFindRequest $request = null): ?array

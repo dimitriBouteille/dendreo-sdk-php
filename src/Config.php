@@ -11,7 +11,7 @@ namespace Dbout\DendreoSdk;
 class Config
 {
     /**
-     * @param array $params
+     * @param array<string, mixed> $params
      */
     public function __construct(
         protected array $params = []
@@ -78,7 +78,7 @@ class Config
     /**
      * Get the http proxy configuration
      *
-     * @return mixed|null
+     * @return string|null
      */
     public function getHttpProxy(): ?string
     {
@@ -89,10 +89,10 @@ class Config
      * Set a key value pair
      *
      * @param string $key
-     * @param $value
+     * @param mixed $value
      * @return $this
      */
-    public function set(string $key, $value): self
+    public function set(string $key, mixed $value): self
     {
         $this->params[$key] = $value;
         return $this;
@@ -102,10 +102,10 @@ class Config
      * Get a specific key value.
      *
      * @param string $key
-     * @param $default
+     * @param mixed $default
      * @return mixed
      */
-    public function get(string $key, $default = null): mixed
+    public function get(string $key, mixed $default = null): mixed
     {
         return $this->params[$key] ?? $default;
     }
