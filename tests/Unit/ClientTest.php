@@ -1,4 +1,10 @@
 <?php
+/**
+ * Copyright © Dimitri BOUTEILLE (https://github.com/dimitriBouteille)
+ * See LICENSE.txt for license details.
+ *
+ * Author: Dimitri BOUTEILLE <bonjour@dimitri-bouteille.fr>
+ */
 
 namespace Dbout\DendreoSdk\Tests\Unit;
 
@@ -14,8 +20,8 @@ use PHPUnit\Framework\TestCase;
 class ClientTest extends TestCase
 {
     /**
-     * @return void
      * @throws \PHPUnit\Framework\MockObject\Exception
+     * @return void
      */
     public function testGetBaseEndpointThrowExceptionBecauseUsernameIsEmpty(): void
     {
@@ -33,9 +39,9 @@ class ClientTest extends TestCase
     }
 
     /**
-     * @return void
      * @throws DendreoException
      * @throws \PHPUnit\Framework\MockObject\Exception
+     * @return void
      */
     public function testGetBaseEndpoint(): void
     {
@@ -49,8 +55,8 @@ class ClientTest extends TestCase
     }
 
     /**
-     * @return void
      * @throws \PHPUnit\Framework\MockObject\Exception
+     * @return void
      */
     public function testSetUsername(): void
     {
@@ -63,8 +69,8 @@ class ClientTest extends TestCase
     }
 
     /**
-     * @return void
      * @throws \PHPUnit\Framework\MockObject\Exception
+     * @return void
      */
     public function testSetApiKey(): void
     {

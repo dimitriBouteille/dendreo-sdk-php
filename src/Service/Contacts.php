@@ -12,6 +12,7 @@ use Dbout\DendreoSdk\Enum\Method;
 use Dbout\DendreoSdk\Helper\Formatter;
 use Dbout\DendreoSdk\Model\Contact;
 use Dbout\DendreoSdk\Model\ContactFindRequest;
+use Dbout\DendreoSdk\Model\ContactsDeleteRequest;
 
 /**
  * @see https://developers.dendreo.com/#contacts
@@ -23,7 +24,7 @@ class Contacts extends Service
     /**
      * @param ContactFindRequest|null $request
      * @throws \Exception
-     * @return array|null
+     * @return array<Contact>|null
      * @see https://developers.dendreo.com/#lister-tous-les-contacts
      */
     public function find(?ContactFindRequest $request = null): ?array
@@ -56,5 +57,25 @@ class Contacts extends Service
         );
 
         return $this->deserialize($result, Contact::class);
+    }
+
+    /**
+     * @param array<int>|int $id
+     * @throws \Exception
+     * @return bool
+     * @see https://developers.dendreo.com/#supprimer-un-contact
+     */
+    public function delete(array|int $id): bool
+    {
+        $request = new ContactsDeleteRequest();
+        $request->setId((array)$id);
+
+        $result = $this->requestHttp(
+            endpoint: self::ENDPOINT,
+            method: Method::DELETE,
+            queryParams: $request->toArray(),
+        );
+
+        return $result->isSuccess();
     }
 }
