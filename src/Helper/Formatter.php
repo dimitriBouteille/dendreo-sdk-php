@@ -35,4 +35,19 @@ class Formatter
 
         return implode($studlyWords);
     }
+
+    /**
+     * Shorter timestamp microseconds to 6 digits length.
+     *
+     * @param string|null $timestamp Original timestamp
+     * @return string|null the shorten timestamp
+     */
+    public static function sanitizeTimestamp(?string $timestamp): ?string
+    {
+        if ($timestamp === null) {
+            return null;
+        }
+
+        return preg_replace('/(:\d{2}.\d{6})\d*/', '$1', $timestamp);
+    }
 }

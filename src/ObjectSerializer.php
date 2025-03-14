@@ -13,6 +13,17 @@ use Dbout\DendreoSdk\Helper\Formatter;
 class ObjectSerializer
 {
     /**
+     * Serialize data
+     *
+     * @param mixed $data
+     * @return scalar|object|array|null serialized form of $data
+     */
+    public function serialize(mixed $data): mixed
+    {
+        return [];
+    }
+
+    /**
      * Deserialize a JSON string into an object
      *
      * @template T
@@ -21,7 +32,7 @@ class ObjectSerializer
      * @param class-string<T> $class Class name is passed as a string
      *
      * @throws \Exception
-     * @return T|array<T>|null a single or an array of $class instances
+     * @return array|null|object a single or an array of $class instances
      */
     public function deserialize(mixed $data, string $class)
     {
@@ -53,7 +64,7 @@ class ObjectSerializer
                 $subClass_array = explode(',', $inner, 2);
                 $subClass = $subClass_array[1];
                 foreach ($data as $key => $value) {
-                    $deserialized[$key] = self::deserialize($value, $subClass, null);
+                    $deserialized[$key] = $this->deserialize($value, $subClass);
                 }
             }
             return $deserialized;
@@ -77,11 +88,12 @@ class ObjectSerializer
             if (!empty($data)) {
                 try {
                     return new \DateTime($data);
-                } catch (\Exception $exception) {
+                } catch (\Exception) {
                     // Some APIs return a date-time with too high nanosecond
                     // precision for php's DateTime to handle.
                     // With provided regexp 6 digits of microseconds saved
-                    return new \DateTime(self::sanitizeTimestamp($data));
+                    $date = Formatter::sanitizeTimestamp($data);
+                    return is_string($date) ? new \DateTime($date) : null;
                 }
             } else {
                 return null;

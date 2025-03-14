@@ -8,7 +8,12 @@
 
 namespace Dbout\DendreoSdk\Model;
 
-abstract class AbstractModel implements \JsonSerializable, \ArrayAccess
+use Dbout\DendreoSdk\ObjectSerializer;
+
+/**
+ * @implements \IteratorAggregate<string, mixed>
+ */
+abstract class AbstractModel implements \JsonSerializable, \ArrayAccess, \Stringable
 {
     /**
      * The properties that should be cast.
@@ -18,20 +23,31 @@ abstract class AbstractModel implements \JsonSerializable, \ArrayAccess
     protected array $casts = [];
 
     /**
+     * Array of property to format mappings. Used for (de)serialization
+     *
+     * @var array<string, mixed>
+     */
+    protected array $apiFormats = [];
+
+    /**
      * Associative array for storing property values
      *
      * @var array<string, mixed>
      */
-    protected array $_data = [];
+    protected array $data = [];
 
     public function __construct(array $data = [])
     {
 
     }
 
+    /**
+     * @inheritDoc
+     */
+    #[\ReturnTypeWillChange]
     public function jsonSerialize()
     {
-
+        return (new ObjectSerializer())->serialize($this);
     }
 
     /**
@@ -39,7 +55,7 @@ abstract class AbstractModel implements \JsonSerializable, \ArrayAccess
      */
     public function toArray(): array
     {
-        return $this->_data;
+        return $this->data;
     }
 
     /**
@@ -51,7 +67,7 @@ abstract class AbstractModel implements \JsonSerializable, \ArrayAccess
      */
     public function set(string $key, mixed $value): self
     {
-        $this->_data[$key] = $value;
+        $this->data[$key] = $value;
         return $this;
     }
 
@@ -63,7 +79,7 @@ abstract class AbstractModel implements \JsonSerializable, \ArrayAccess
      */
     public function get(string $key): mixed
     {
-        return $this->_data[$key] ?? null;
+        return $this->data[$key] ?? null;
     }
 
     /**
@@ -71,7 +87,7 @@ abstract class AbstractModel implements \JsonSerializable, \ArrayAccess
      */
     public function offsetExists($offset): bool
     {
-        return isset($this->_data[$offset]);
+        return isset($this->data[$offset]);
     }
 
     /**
@@ -85,11 +101,12 @@ abstract class AbstractModel implements \JsonSerializable, \ArrayAccess
 
     /**
      * @inheritDoc
+     * @throws \Exception
      */
     public function offsetSet($offset, $value): void
     {
         if (is_null($offset)) {
-            $this->_data[] = $value;
+            throw new \Exception('Offset must not be null');
         } else {
             $this->set($offset, $value);
         }
@@ -100,7 +117,7 @@ abstract class AbstractModel implements \JsonSerializable, \ArrayAccess
      */
     public function offsetUnset($offset): void
     {
-        unset($this->_data[$offset]);
+        unset($this->data[$offset]);
     }
 
     /**
@@ -109,5 +126,14 @@ abstract class AbstractModel implements \JsonSerializable, \ArrayAccess
     public function getCasts(): array
     {
         return $this->casts;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function __toString()
+    {
+        // @phpstan-ignore-next-line
+        return json_encode($this->jsonSerialize(), JSON_PRETTY_PRINT);
     }
 }

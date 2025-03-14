@@ -26,6 +26,9 @@ class Participant extends AbstractModel
         'id_externe' => 'string',
         'commentaires' => 'string',
         'id_contact' => 'int',
+        'extranet_autologin_url' => 'string',
+        'extranet_code' => 'string',
+        'extranet_url' => 'string',
     ];
 
     /**
@@ -146,5 +149,29 @@ class Participant extends AbstractModel
     public function getIdContact(): ?int
     {
         return $this->get('id_contact');
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getExtranetAutologinUrl(): ?string
+    {
+        return $this->get('extranet_autologin_url');
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getExtranetCode(): ?string
+    {
+        return $this->get('extranet_code');
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getExtranetUrl(): ?string
+    {
+        return $this->get('extranet_url');
     }
 }

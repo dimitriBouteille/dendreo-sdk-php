@@ -24,6 +24,11 @@ class ContactsCreateOrUpdateRequest extends AbstractModel
         'entreprise_raison_sociale' => 'string',
         'entreprise_id_externe' => 'string',
         'particulier' => 'boolean',
+        'date_de_naissance' => 'DateTime',
+    ];
+
+    protected array $apiFormats = [
+        'date_de_naissance' => 'date',
     ];
 
     /**
@@ -132,5 +137,14 @@ class ContactsCreateOrUpdateRequest extends AbstractModel
     public function setParticulier(?bool $particulier): self
     {
         return $this->set('particulier', $particulier);
+    }
+
+    /**
+     * @param \DateTime|null $dateTime
+     * @return self
+     */
+    public function setDateDeNaissance(?\DateTime $dateTime): self
+    {
+        return $this->set('date_de_naissance', $dateTime);
     }
 }

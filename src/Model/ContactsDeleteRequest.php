@@ -14,6 +14,10 @@ class ContactsDeleteRequest extends AbstractModel
         'id' => 'int[]',
     ];
 
+    protected array $apiFormats = [
+        'id' => 'collection',
+    ];
+
     /**
      * @param array<int> $id
      * @return self

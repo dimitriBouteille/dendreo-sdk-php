@@ -12,7 +12,7 @@ class Response
 {
     /**
      * @param int $statusCode
-     * @param array<mixed> $result
+     * @param array<string, string|object|null|int>|array $result
      */
     public function __construct(
         protected int $statusCode,
@@ -29,7 +29,7 @@ class Response
     }
 
     /**
-     * @return array<mixed>
+     * @return array
      */
     public function getResult(): array
     {

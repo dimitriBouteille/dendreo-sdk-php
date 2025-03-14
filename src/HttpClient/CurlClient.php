@@ -96,12 +96,12 @@ class CurlClient implements HttpClientInterface
     }
 
     /**
-     * @param array|null $result
+     * @param array<string, mixed>|null $result
      * @param mixed $httpStatus
      * @throws DendreoException
-     * @return void
+     * @return never
      */
-    protected function handleErrorFromResult(?array $result, mixed $httpStatus): void
+    protected function handleErrorFromResult(?array $result, mixed $httpStatus): never
     {
         $error = $result['errors'][0] ?? null;
         if (!is_string($error) || $error === '') {
@@ -152,38 +152,35 @@ class CurlClient implements HttpClientInterface
         }
 
         $proxy = "";
-        if (isset($urlParts["scheme"])) {
-            $proxy = $urlParts["scheme"] . "://";
+        if (isset($urlParts['scheme'])) {
+            $proxy = $urlParts['scheme'] . "://";
         }
-        $proxy .= $urlParts["host"];
-        if (isset($urlParts["port"])) {
-            $proxy .= ":" . $urlParts["port"];
+        $proxy .= $urlParts['host'];
+        if (isset($urlParts['port'])) {
+            $proxy .= ":" . $urlParts['port'];
         }
         curl_setopt($curl, CURLOPT_PROXY, $proxy);
 
-        if (isset($urlParts["user"])) {
-            curl_setopt($curl, CURLOPT_PROXYUSERPWD, $urlParts["user"] . ":" . $urlParts["pass"]);
+        if (isset($urlParts['user'], $urlParts['pass'])) {
+            curl_setopt($curl, CURLOPT_PROXYUSERPWD, $urlParts['user'] . ":" . $urlParts['pass']);
         }
     }
 
     /**
      * @param \CurlHandle $curl
-     * @return array
+     * @return array{0: int, 1: mixed}
      */
     protected function executeCurl(\CurlHandle $curl): array
     {
         $result = curl_exec($curl);
         $httpStatus = curl_getinfo($curl, CURLINFO_HTTP_CODE);
 
-        return [
-            $httpStatus,
-            $result,
-        ];
+        return [$httpStatus, $result];
     }
 
     /**
      * @param \CurlHandle $curl
-     * @return array
+     * @return array{0: int, 1: string}
      */
     protected function getCurlError(\CurlHandle $curl): array
     {
