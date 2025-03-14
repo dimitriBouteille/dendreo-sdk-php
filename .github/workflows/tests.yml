@@ -56,3 +56,7 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+          # Consult https://docs.sonarsource.com/sonarqube-server/latest/analyzing-source-code/scanners/sonarscanner/ for more information and options
+          args: >
+            --define sonar.php.coverage.reportPaths="coverage-report.xml" sonar.php.tests.reportPath=tests-report.xml
