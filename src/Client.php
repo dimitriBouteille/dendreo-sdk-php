@@ -90,7 +90,7 @@ class Client
      */
     public function getHttpClient(): HttpClientInterface
     {
-        if ($this->httpClient === null) {
+        if (!$this->httpClient instanceof HttpClientInterface) {
             $this->httpClient = $this->getDefaultHttpClient();
         }
 

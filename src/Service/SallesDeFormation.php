@@ -32,7 +32,7 @@ class SallesDeFormation extends Service
         $result = $this->requestHttp(
             endpoint: self::ENDPOINT,
             method: Method::GET,
-            queryParams: $request?->toArray(),
+            queryParams: (array) $request?->jsonSerialize(),
         );
 
         return $this->deserialize($result, Formatter::toArrayClass(SalleDeFormation::class));
@@ -66,7 +66,7 @@ class SallesDeFormation extends Service
         $result = $this->requestHttp(
             endpoint: self::ENDPOINT,
             method: Method::POST,
-            bodyParams: $request->toArray()
+            bodyParams: (array) $request->jsonSerialize()
         );
 
         return $this->deserialize($result, SalleDeFormation::class);

@@ -26,4 +26,12 @@ class ContactsDeleteRequest extends AbstractModel
     {
         return $this->set('id', $id);
     }
+
+    /**
+     * @return array<int>
+     */
+    public function getId(): array
+    {
+        return (array) $this->get('id');
+    }
 }

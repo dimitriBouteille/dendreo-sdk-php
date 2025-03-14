@@ -35,8 +35,8 @@ class Service
     /**
      * @param string $endpoint
      * @param Method $method
-     * @param array|null $bodyParams
-     * @param array|null $queryParams
+     * @param array<string, mixed>|null $bodyParams
+     * @param array<string, mixed>|null $queryParams
      * @throws \Exception
      * @return Response
      */

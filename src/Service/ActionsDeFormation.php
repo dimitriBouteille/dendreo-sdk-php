@@ -31,7 +31,7 @@ class ActionsDeFormation extends Service
         $result = $this->requestHttp(
             endpoint: self::ENDPOINT,
             method: Method::GET,
-            queryParams: $request?->toArray(),
+            queryParams:(array) $request?->jsonSerialize(),
         );
 
         return $this->deserialize($result, Formatter::toArrayClass(ActionDeFormation::class));
@@ -52,7 +52,7 @@ class ActionsDeFormation extends Service
         $result = $this->requestHttp(
             endpoint: self::ENDPOINT,
             method: Method::GET,
-            queryParams: $request->toArray(),
+            queryParams: (array) $request->jsonSerialize(),
         );
 
         return $this->deserialize($result, ActionDeFormation::class);

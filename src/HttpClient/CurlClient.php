@@ -16,8 +16,16 @@ use Dbout\DendreoSdk\Exception\DendreoException;
 use Dbout\DendreoSdk\Exception\InvalidApiKeyException;
 use Dbout\DendreoSdk\Response;
 
-class CurlClient implements HttpClientInterface
+readonly class CurlClient implements HttpClientInterface
 {
+    /**
+     * @param CurlFactory $curlFactory
+     */
+    public function __construct(
+        private CurlFactory $curlFactory = new CurlFactory(),
+    ) {
+    }
+
     /**
      * @inheritDoc
      */
@@ -28,23 +36,23 @@ class CurlClient implements HttpClientInterface
         $params,
         array $requestOptions = null
     ): Response {
-        $curl = curl_init($requestUrl);
+        $curl = $this->curlFactory->create($requestUrl);
         $jsonRequest = json_encode($params);
 
         switch ($method) {
             case Method::GET:
-                curl_setopt($curl, CURLOPT_HTTPGET, 1);
+                $curl->setOption(CURLOPT_HTTPGET, 1);
                 break;
             case Method::POST:
-                curl_setopt($curl, CURLOPT_POSTFIELDS, $jsonRequest);
-                curl_setopt($curl, CURLOPT_POST, 1);
+                $curl->setOption(CURLOPT_POSTFIELDS, $jsonRequest);
+                $curl->setOption(CURLOPT_POST, 1);
                 break;
             case Method::PATCH:
-                curl_setopt($curl, CURLOPT_POSTFIELDS, $jsonRequest);
-                curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'PATCH');
+                $curl->setOption(CURLOPT_POSTFIELDS, $jsonRequest);
+                $curl->setOption(CURLOPT_CUSTOMREQUEST, 'PATCH');
                 break;
             case Method::DELETE:
-                curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'DELETE');
+                $curl->setOption(CURLOPT_CUSTOMREQUEST, 'DELETE');
                 break;
         }
 
@@ -57,24 +65,24 @@ class CurlClient implements HttpClientInterface
         }
 
         $apiKey = $config->getApiKey();
-        if (empty($apiKey)) {
+        if ($apiKey === null || $apiKey === '') {
             throw new InvalidApiKeyException();
         }
 
         $headers[] = sprintf('Authorization: Token token="%s"', $apiKey);
         $this->setupProxy($curl, $config->getHttpProxy());
 
-        if ($config->getTimeout()) {
-            curl_setopt($curl, CURLOPT_TIMEOUT, $config->getTimeout());
+        if ($config->getTimeout() > 0) {
+            $curl->setOption(CURLOPT_TIMEOUT, $config->getTimeout());
         }
 
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        $curl->setOption(CURLOPT_HTTPHEADER, $headers);
+        $curl->setOption(CURLOPT_RETURNTRANSFER, 1);
 
         [$httpStatus, $result] = $this->executeCurl($curl);
         [$error] = $this->getCurlError($curl);
 
-        curl_close($curl);
+        $curl->close();
 
         if (!is_array($result)) {
             $result = json_decode($result, true);
@@ -134,14 +142,14 @@ class CurlClient implements HttpClientInterface
     }
 
     /**
-     * @param \CurlHandle $curl
+     * @param CurlRequest $curl
      * @param string|null $proxyUrl
      * @throws DendreoException
      * @return void
      */
-    protected function setupProxy(\CurlHandle $curl, ?string $proxyUrl): void
+    protected function setupProxy(CurlRequest $curl, ?string $proxyUrl): void
     {
-        if (empty($proxyUrl)) {
+        if ($proxyUrl === null || $proxyUrl === '') {
             return;
         }
 
@@ -159,33 +167,33 @@ class CurlClient implements HttpClientInterface
         if (isset($urlParts['port'])) {
             $proxy .= ":" . $urlParts['port'];
         }
-        curl_setopt($curl, CURLOPT_PROXY, $proxy);
 
+        $curl->setOption(CURLOPT_PROXY, $proxy);
         if (isset($urlParts['user'], $urlParts['pass'])) {
-            curl_setopt($curl, CURLOPT_PROXYUSERPWD, $urlParts['user'] . ":" . $urlParts['pass']);
+            $curl->setOption(CURLOPT_PROXYUSERPWD, $urlParts['user'] . ":" . $urlParts['pass']);
         }
     }
 
     /**
-     * @param \CurlHandle $curl
+     * @param CurlRequest $curl
      * @return array{0: int, 1: mixed}
      */
-    protected function executeCurl(\CurlHandle $curl): array
+    protected function executeCurl(CurlRequest $curl): array
     {
-        $result = curl_exec($curl);
-        $httpStatus = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        $result =  $curl->execute();
+        $httpStatus = $curl->getInfo(CURLINFO_HTTP_CODE);
 
         return [$httpStatus, $result];
     }
 
     /**
-     * @param \CurlHandle $curl
+     * @param CurlRequest $curl
      * @return array{0: int, 1: string}
      */
-    protected function getCurlError(\CurlHandle $curl): array
+    protected function getCurlError(CurlRequest $curl): array
     {
-        $errno = curl_errno($curl);
-        $message = curl_error($curl);
+        $errno = $curl->getErrNo();
+        $message = $curl->getError();
         return [$errno, $message];
     }
 }

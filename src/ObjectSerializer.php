@@ -8,7 +8,10 @@
 
 namespace Dbout\DendreoSdk;
 
+use Dbout\DendreoSdk\Exception\DendreoException;
+use Dbout\DendreoSdk\Helper\ApiFormatter;
 use Dbout\DendreoSdk\Helper\Formatter;
+use Dbout\DendreoSdk\Model\ModelInterface;
 
 class ObjectSerializer
 {
@@ -16,11 +19,53 @@ class ObjectSerializer
      * Serialize data
      *
      * @param mixed $data
-     * @return scalar|object|array|null serialized form of $data
+     * @param string|null $format
+     * @throws DendreoException
+     * @return mixed serialized form of $data
      */
-    public function serialize(mixed $data): mixed
+    public function serialize(mixed $data, ?string $format = null): mixed
     {
-        return [];
+        if (is_scalar($data) || $data === null) {
+            return $data;
+        }
+
+        if ($format !== null && $format !== '') {
+            return ApiFormatter::format($data, $format);
+        }
+
+
+        if (is_array($data)) {
+            foreach ($data as $property => $value) {
+                $data[$property] = $this->serialize($value);
+            }
+
+            return $data;
+        }
+
+        if (!is_object($data)) {
+            return (string) $data;
+        }
+
+        if (!$data instanceof ModelInterface) {
+            throw new DendreoException('Invalid data type');
+        }
+
+        $apiTypes = $data->getApiCasts();
+        $values = [];
+        foreach ($data->getData() as $property => $value) {
+            $cast = $apiTypes[$property] ?? null;
+            if ($this->hasGetMutator($data, $property)) {
+                $getter = sprintf('get%s', Formatter::studly($property));
+                $value = $data->$getter();
+            }
+
+            if ($value !== null) {
+                $values[$property] = $this->serialize($value, $cast);
+            }
+
+        }
+
+        return (object) $values;
     }
 
     /**
@@ -32,7 +77,7 @@ class ObjectSerializer
      * @param class-string<T> $class Class name is passed as a string
      *
      * @throws \Exception
-     * @return array|null|object a single or an array of $class instances
+     * @return array|null|object|T|array<T> a single or an array of $class instances
      */
     public function deserialize(mixed $data, string $class)
     {
@@ -57,7 +102,7 @@ class ObjectSerializer
 
         if (preg_match('/^(array<|map\[)/', $class)) { // for associative array e.g. array<string,int>
             $data = is_string($data) ? json_decode($data) : $data;
-            settype($data, 'array');
+            $data = (array) $data;
             $inner = substr($class, 4, -1);
             $deserialized = [];
             if (strrpos($inner, ",") !== false) {
@@ -71,8 +116,7 @@ class ObjectSerializer
         }
 
         if ($class === 'object') {
-            settype($data, 'array');
-            return $data;
+            return (array) $data;
         } elseif ($class === 'mixed') {
             settype($data, gettype($data));
             return $data;
@@ -123,7 +167,7 @@ class ObjectSerializer
         }
 
         $casts = [];
-        if (method_exists($instance, 'getCasts')) {
+        if ($instance instanceof ModelInterface) {
             $casts = $instance->getCasts();
         }
 
@@ -153,5 +197,15 @@ class ObjectSerializer
     protected function hasSetMutator(object $object, string $key): bool
     {
         return method_exists($object, 'set'.Formatter::studly($key));
+    }
+
+    /**
+     * @param object $object
+     * @param string $key
+     * @return bool
+     */
+    protected function hasGetMutator(object $object, string $key): bool
+    {
+        return method_exists($object, 'get'.Formatter::studly($key));
     }
 }

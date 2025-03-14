@@ -13,7 +13,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
 /**
  * @implements \IteratorAggregate<string, mixed>
  */
-abstract class AbstractModel implements \JsonSerializable, \ArrayAccess, \Stringable
+abstract class AbstractModel implements \JsonSerializable, \ArrayAccess, \Stringable, ModelInterface
 {
     /**
      * The properties that should be cast.
@@ -121,11 +121,27 @@ abstract class AbstractModel implements \JsonSerializable, \ArrayAccess, \String
     }
 
     /**
-     * @return string[]
+     * @inheritDoc
      */
     public function getCasts(): array
     {
         return $this->casts;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getApiCasts(): array
+    {
+        return $this->apiFormats;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function getData(): array
+    {
+        return $this->data;
     }
 
     /**

@@ -72,7 +72,7 @@ class Config
     public function getTimeout(): int
     {
         $value = $this->get('timeout');
-        return is_numeric($value) ? (int)$value : 0;
+        return is_numeric($value) ? (int) $value : 0;
     }
 
     /**

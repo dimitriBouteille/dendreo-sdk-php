@@ -33,7 +33,7 @@ class Contacts extends Service
         $result = $this->requestHttp(
             endpoint: self::ENDPOINT,
             method: Method::GET,
-            queryParams: $request?->toArray(),
+            queryParams: (array) $request?->jsonSerialize(),
         );
 
         return $this->deserialize($result, Formatter::toArrayClass(Contact::class));
@@ -54,7 +54,7 @@ class Contacts extends Service
         $result = $this->requestHttp(
             endpoint: self::ENDPOINT,
             method: Method::GET,
-            queryParams: $request->toArray(),
+            queryParams: (array) $request->jsonSerialize(),
         );
 
         return $this->deserialize($result, Contact::class);
@@ -69,12 +69,12 @@ class Contacts extends Service
     public function delete(array|int $id): bool
     {
         $request = new ContactsDeleteRequest();
-        $request->setId((array)$id);
+        $request->setId((array) $id);
 
         $result = $this->requestHttp(
             endpoint: self::ENDPOINT,
             method: Method::DELETE,
-            queryParams: $request->toArray(),
+            queryParams: (array) $request->jsonSerialize(),
         );
 
         return $result->isSuccess();
@@ -91,7 +91,7 @@ class Contacts extends Service
         $result = $this->requestHttp(
             endpoint: self::ENDPOINT,
             method: Method::POST,
-            queryParams: $request->toArray(),
+            bodyParams: (array) $request->jsonSerialize(),
         );
 
         return $this->deserialize($result, Contact::class);
