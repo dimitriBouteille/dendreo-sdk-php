@@ -45,13 +45,8 @@ jobs:
     if: ${{ always() }}
     runs-on: ubuntu-latest
     steps:
-      - name: Close parallel build
-        uses: coverallsapp/github-action@v1
-        with:
-          parallel-finished: true
-          carryforward: "unit"
-
       - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@master
+        uses: sonarsource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
