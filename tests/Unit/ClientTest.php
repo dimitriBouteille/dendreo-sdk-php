@@ -12,11 +12,13 @@ use Dbout\DendreoSdk\Client;
 use Dbout\DendreoSdk\Config;
 use Dbout\DendreoSdk\Exception\DendreoException;
 use PHPUnit\Framework\Attributes\CoversMethod;
+use PHPUnit\Framework\Attributes\UsesClass;
 use PHPUnit\Framework\TestCase;
 
 #[CoversMethod(Client::class, 'getBaseEndpoint')]
 #[CoversMethod(Client::class, 'setUsername')]
 #[CoversMethod(Client::class, 'setApiKey')]
+#[UsesClass(DendreoException::class)]
 class ClientTest extends TestCase
 {
     /**

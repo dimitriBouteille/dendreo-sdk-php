@@ -96,4 +96,14 @@ class ApiFormatterTest extends TestCase
         yield [\DateTime::createFromFormat('Y-m-d H:i:s', '2010-03-10 10:30:10'), '2010-03-10', 'date'];
         yield [\DateTime::createFromFormat('Y-m-d H:i:s', '2010-03-10 10:30:10'), '2010-03-10 10:30:10', 'datetime'];
     }
+
+    /**
+     * @return void
+     */
+    public function testInvalidFormat(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Invalid format: enum:string');
+        ApiFormatter::format('hello', 'enum:string');
+    }
 }
