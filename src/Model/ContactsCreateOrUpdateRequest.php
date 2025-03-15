@@ -25,10 +25,16 @@ class ContactsCreateOrUpdateRequest extends AbstractModel
         'entreprise_id_externe' => 'string',
         'particulier' => 'boolean',
         'date_de_naissance' => 'DateTime',
+        'adresse' => 'string',
+        'code_postal' => 'string',
+        'ville' => 'string',
+        'langue_principale' => 'string',
+        'nom_naissance' => 'string',
     ];
 
     protected array $apiFormats = [
         'date_de_naissance' => 'date',
+        'particulier' => 'int',
     ];
 
     /**
@@ -59,12 +65,28 @@ class ContactsCreateOrUpdateRequest extends AbstractModel
     }
 
     /**
+     * @return string|null
+     */
+    public function getNom(): ?string
+    {
+        return $this->get('nom');
+    }
+
+    /**
      * @param string|null $prenom
      * @return self
      */
     public function setPrenom(?string $prenom): self
     {
         return $this->set('prenom', $prenom);
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPrenom(): ?string
+    {
+        return $this->get('prenom');
     }
 
     /**
@@ -104,6 +126,14 @@ class ContactsCreateOrUpdateRequest extends AbstractModel
     }
 
     /**
+     * @return string|null
+     */
+    public function getEmail(): ?string
+    {
+        return $this->get('email');
+    }
+
+    /**
      * @param string|null $idExterne
      * @return self
      */
@@ -140,11 +170,112 @@ class ContactsCreateOrUpdateRequest extends AbstractModel
     }
 
     /**
+     * @return bool|null
+     */
+    public function getParticulier(): ?bool
+    {
+        return $this->get('particulier');
+    }
+
+    /**
      * @param \DateTime|null $dateTime
      * @return self
      */
     public function setDateDeNaissance(?\DateTime $dateTime): self
     {
         return $this->set('date_de_naissance', $dateTime);
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getDateDeNaissance(): ?\DateTime
+    {
+        return $this->get('date_de_naissance');
+    }
+
+    /**
+     * @param string|null $adresse
+     * @return self
+     */
+    public function setAdresse(?string $adresse): self
+    {
+        return $this->set('adresse', $adresse);
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getAdresse(): ?string
+    {
+        return $this->get('adresse');
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCodePostal(): ?string
+    {
+        return $this->get('code_postal');
+    }
+
+    /**
+     * @param string|null $codePostal
+     * @return self
+     */
+    public function setCodePostal(?string $codePostal): self
+    {
+        return $this->set('code_postal', $codePostal);
+    }
+
+    /**
+     * @param string|null $ville
+     * @return self
+     */
+    public function setVille(?string $ville): self
+    {
+        return $this->set('ville', $ville);
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getVille(): ?string
+    {
+        return $this->get('ville');
+    }
+
+    /**
+     * @param string|null $langue
+     * @return self
+     */
+    public function setLanguePrincipale(?string $langue): self
+    {
+        return $this->set('langue_principale', $langue);
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLanguePrincipale(): ?string
+    {
+        return $this->get('langue_principale');
+    }
+
+    /**
+     * @param string|null $nomNaissance
+     * @return self
+     */
+    public function seNomNaissance(?string $nomNaissance): self
+    {
+        return $this->set('nom_naissance', $nomNaissance);
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getNomNaissance(): ?string
+    {
+        return $this->get('nom_naissance');
     }
 }

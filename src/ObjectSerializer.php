@@ -25,7 +25,7 @@ class ObjectSerializer
      */
     public function serialize(mixed $data, ?string $format = null): mixed
     {
-        if (is_scalar($data) || $data === null) {
+        if ($data === null || $data === '') {
             return $data;
         }
 

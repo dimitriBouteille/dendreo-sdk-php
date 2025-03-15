@@ -88,10 +88,18 @@ class Contacts extends Service
      */
     public function createOrUpdate(ContactsCreateOrUpdateRequest $request): ?Contact
     {
+        /**
+         * @see https://developers.dendreo.com/#ajouter-un-particulier
+         */
+        $isParticulier = $request->getParticulier();
+        $queryArgs = new ContactsCreateOrUpdateRequest();
+        $queryArgs->setParticulier($isParticulier);
+
         $result = $this->requestHttp(
             endpoint: self::ENDPOINT,
             method: Method::POST,
             bodyParams: (array) $request->jsonSerialize(),
+            queryParams: (array) $queryArgs->jsonSerialize(),
         );
 
         return $this->deserialize($result, Contact::class);

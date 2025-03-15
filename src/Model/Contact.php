@@ -27,6 +27,15 @@ class Contact extends AbstractModel
         'photo' => 'string',
         'date_add' => 'DateTime',
         'date_edit' => 'DateTime',
+        'participant_lie_ids' => 'int[]',
+        'id_centre_de_formation' => 'int',
+        'adresse' => 'string',
+        'code_postal' => 'string',
+        'ville' => 'string',
+        'pays' => 'string',
+        'pays_alpha2' => 'string',
+        'id_participant' => 'int',
+        'newsletter_optin' => 'boolean',
     ];
 
     /**
@@ -155,5 +164,53 @@ class Contact extends AbstractModel
     public function getDateEdit(): ?\DateTime
     {
         return $this->get('date_edit');
+    }
+
+    /**
+     * @return string|null
+     */
+    public function geAdresse(): ?string
+    {
+        return $this->get('adresse');
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCodePostal(): ?string
+    {
+        return $this->get('code_postal');
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getVille(): ?string
+    {
+        return $this->get('ville');
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPays(): ?string
+    {
+        return $this->get('pays');
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPaysAlpha2(): ?string
+    {
+        return $this->get('pays_alpha2');
+    }
+
+    /**
+     * @return bool
+     */
+    public function getNewsletterOptin(): bool
+    {
+        return $this->get('newsletter_optin');
     }
 }

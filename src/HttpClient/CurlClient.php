@@ -37,18 +37,17 @@ readonly class CurlClient implements HttpClientInterface
         array $requestOptions = null
     ): Response {
         $curl = $this->curlFactory->create($requestUrl);
-        $jsonRequest = json_encode($params);
 
         switch ($method) {
             case Method::GET:
                 $curl->setOption(CURLOPT_HTTPGET, 1);
                 break;
             case Method::POST:
-                $curl->setOption(CURLOPT_POSTFIELDS, $jsonRequest);
+                $curl->setOption(CURLOPT_POSTFIELDS, http_build_query($params));
                 $curl->setOption(CURLOPT_POST, 1);
                 break;
             case Method::PATCH:
-                $curl->setOption(CURLOPT_POSTFIELDS, $jsonRequest);
+                $curl->setOption(CURLOPT_POSTFIELDS, http_build_query($params));
                 $curl->setOption(CURLOPT_CUSTOMREQUEST, 'PATCH');
                 break;
             case Method::DELETE:

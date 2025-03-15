@@ -8,8 +8,6 @@
 
 namespace Dbout\DendreoSdk\Helper;
 
-use Dbout\DendreoSdk\Exception\DendreoException;
-
 class ApiFormatter
 {
     final public const DATE_FORMAT = 'Y-m-d';
@@ -18,7 +16,7 @@ class ApiFormatter
     /**
      * @param mixed $value
      * @param string $format
-     * @throws DendreoException
+     * @throws \InvalidArgumentException
      * @return mixed
      */
     public static function format(mixed $value, string $format): mixed
@@ -29,7 +27,7 @@ class ApiFormatter
 
         if (in_array($format, ['date', 'datetime'], true)) {
             if (!$value instanceof \DateTime) {
-                throw new DendreoException('The value must be an \DateTime object.');
+                throw new \InvalidArgumentException('The value must be an \DateTime object.');
             }
 
             if ($format === 'date') {
@@ -39,18 +37,26 @@ class ApiFormatter
             return $value->format(self::DATE_TIME_FORMAT);
         }
 
+        if ($format === 'int') {
+            return (int) $value;
+        }
+
+        if ($format === 'float') {
+            return (float) $value;
+        }
+
         if ($format === 'boolean') {
             return (bool) $value ? '1' : '0';
         }
 
         if ($format === 'collection') {
             if (!is_array($value)) {
-                throw new DendreoException('The value must be an array.');
+                throw new \InvalidArgumentException('The value must be an array.');
             }
 
             return implode(',', $value);
         }
 
-        throw new DendreoException(sprintf('Invalid format: %s', $format));
+        throw new \InvalidArgumentException(sprintf('Invalid format: %s', $format));
     }
 }

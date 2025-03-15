@@ -15,6 +15,7 @@ class ContactsFindRequest extends AbstractModel
         'nom' => 'string',
         'email' => 'string',
         'include' => 'string[]',
+        'search' => 'string',
     ];
 
     protected array $apiFormats = [
@@ -87,5 +88,22 @@ class ContactsFindRequest extends AbstractModel
     public function getInclude(): ?array
     {
         return $this->get('include');
+    }
+
+    /**
+     * @param string|null $search
+     * @return self
+     */
+    public function setSearch(?string $search): self
+    {
+        return $this->set('search', $search);
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getSearch(): ?string
+    {
+        return $this->get('search');
     }
 }

@@ -29,20 +29,23 @@ class Participant extends AbstractModel
         'extranet_autologin_url' => 'string',
         'extranet_code' => 'string',
         'extranet_url' => 'string',
+        'langue_principale' => 'string',
+        'civilite' => 'string',
+        'particulier' => 'boolean',
     ];
 
     /**
-     * @return int|null
+     * @return int
      */
-    public function getIdParticipant(): ?int
+    public function getIdParticipant(): int
     {
         return $this->get('id_participant');
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTime
      */
-    public function getDateAdd(): ?\DateTime
+    public function getDateAdd(): \DateTime
     {
         return $this->get('date_add');
     }
@@ -56,17 +59,17 @@ class Participant extends AbstractModel
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getNom(): ?string
+    public function getNom(): string
     {
         return $this->get('nom');
     }
 
     /**
-     * @return string|null
+     * @return string
      */
-    public function getPrenom(): ?string
+    public function getPrenom(): string
     {
         return $this->get('prenom');
     }
@@ -173,5 +176,29 @@ class Participant extends AbstractModel
     public function getExtranetUrl(): ?string
     {
         return $this->get('extranet_url');
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getLanguePrincipale(): ?string
+    {
+        return $this->get('langue_principale');
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCivilite(): ?string
+    {
+        return $this->get('civilite');
+    }
+
+    /**
+     * @return bool
+     */
+    public function getParticulier(): bool
+    {
+        return $this->get('particulier');
     }
 }
