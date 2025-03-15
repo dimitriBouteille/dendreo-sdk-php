@@ -38,7 +38,7 @@ class ApiFormatterTest extends TestCase
     #[TestWith([null, 'date',null])]
     #[TestWith(['15', 'int', 15])]
     #[TestWith(['10.85', 'float', 10.85])]
-    #[TestWith([['photo', 'url'], 'collection', 'photo, url'])]
+    #[TestWith([['photo', 'url'], 'collection', 'photo,url'])]
     public function testFormat(mixed $value, string $format, mixed $expectedResult): void
     {
         $this->assertEquals($expectedResult, ApiFormatter::format($value, $format));
@@ -49,12 +49,12 @@ class ApiFormatterTest extends TestCase
      * @param mixed $expectedResult
      * @return void
      */
-    #[TestWith(['1', 'boolean', 1])]
-    #[TestWith(['true', 'boolean', 1])]
-    #[TestWith([true, 'boolean', 1])]
-    #[TestWith(['0', 'boolean', 0])]
-    #[TestWith(['false', 'boolean', 0])]
-    #[TestWith([false, 'boolean', 0])]
+    #[TestWith(['1', 1])]
+    #[TestWith(['true', 1])]
+    #[TestWith([true, 1])]
+    #[TestWith(['0', 0])]
+    #[TestWith(['false', 0])]
+    #[TestWith([false, 0])]
     public function testFormatBoolean(mixed $value, mixed $expectedResult): void
     {
         $this->assertEquals($expectedResult, ApiFormatter::format($value, 'boolean'));
@@ -93,7 +93,7 @@ class ApiFormatterTest extends TestCase
     public static function providerFormatDate(): \Generator
     {
         yield [\DateTime::createFromFormat('d-m-Y', '15-02-2012'), '2012-02-15', 'date'];
-        yield [\DateTime::createFromFormat('Y-m-d H:m:s', '2010-03-10 10:30:10'), '2010-03-10', 'date'];
-        yield [\DateTime::createFromFormat('Y-m-d H:m:s', '2010-03-10 10:30:10'), '2010-03-10 10:30:10', 'datetime'];
+        yield [\DateTime::createFromFormat('Y-m-d H:i:s', '2010-03-10 10:30:10'), '2010-03-10', 'date'];
+        yield [\DateTime::createFromFormat('Y-m-d H:i:s', '2010-03-10 10:30:10'), '2010-03-10 10:30:10', 'datetime'];
     }
 }
