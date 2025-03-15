@@ -55,6 +55,3 @@ jobs:
         uses: SonarSource/sonarqube-scan-action@v4
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        with:
-          args: >
-            --define sonar.php.coverage.reportPaths=build/logs/clover.xml sonar.organization=dimitribouteille sonar.projectKey=dimitriBouteille_dendreo-sdk-php
