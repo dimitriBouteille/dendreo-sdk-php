@@ -92,7 +92,7 @@ class Config
      * @param mixed $value
      * @return $this
      */
-    public function set(string $key, mixed $value): self
+    protected function set(string $key, mixed $value): self
     {
         $this->params[$key] = $value;
         return $this;
@@ -105,7 +105,7 @@ class Config
      * @param mixed $default
      * @return mixed
      */
-    public function get(string $key, mixed $default = null): mixed
+    protected function get(string $key, mixed $default = null): mixed
     {
         return $this->params[$key] ?? $default;
     }
