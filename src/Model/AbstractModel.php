@@ -8,11 +8,9 @@
 
 namespace Dbout\DendreoSdk\Model;
 
+use Dbout\DendreoSdk\Exception\DendreoException;
 use Dbout\DendreoSdk\ObjectSerializer;
 
-/**
- * @implements \IteratorAggregate<string, mixed>
- */
 abstract class AbstractModel implements \JsonSerializable, \ArrayAccess, \Stringable, ModelInterface
 {
     /**
@@ -36,13 +34,18 @@ abstract class AbstractModel implements \JsonSerializable, \ArrayAccess, \String
      */
     protected array $data = [];
 
-    public function __construct(array $data = [])
-    {
-
+    /**
+     * @param array<string, mixed> $data
+     */
+    public function __construct(
+        array $data = []
+    ) {
+        $this->data = $data;
     }
 
     /**
      * @inheritDoc
+     * @throws DendreoException
      */
     #[\ReturnTypeWillChange]
     public function jsonSerialize()
@@ -146,10 +149,10 @@ abstract class AbstractModel implements \JsonSerializable, \ArrayAccess, \String
 
     /**
      * @inheritDoc
+     * @throws DendreoException
      */
     public function __toString()
     {
-        // @phpstan-ignore-next-line
         return json_encode($this->jsonSerialize(), JSON_PRETTY_PRINT);
     }
 }

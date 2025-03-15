@@ -71,15 +71,13 @@ class ObjectSerializer
     /**
      * Deserialize a JSON string into an object
      *
-     * @template T
-     *
      * @param mixed $data Object or primitive to be deserialized
-     * @param class-string<T> $class Class name is passed as a string
+     * @param class-string|string $class Class name is passed as a string
      *
      * @throws \Exception
-     * @return array|null|object|T|array<T> a single or an array of $class instances
+     * @return mixed a single or an array of $class instances
      */
-    public function deserialize(mixed $data, string $class)
+    public function deserialize(mixed $data, string $class): mixed
     {
         if (null === $data) {
             return null;
@@ -160,7 +158,6 @@ class ObjectSerializer
 
         $data = is_string($data) ? json_decode($data) : $data;
 
-        /** @var T $instance */
         $instance = new $class();
         if (!is_array($data)) {
             return $instance;

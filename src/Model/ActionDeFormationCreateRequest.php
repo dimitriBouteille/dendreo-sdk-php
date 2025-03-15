@@ -30,12 +30,12 @@ class ActionDeFormationCreateRequest extends AbstractModel
     }
 
     /**
-     * @param string|array $include
+     * @param string|array<string> $include
      * @return self
      */
     public function setInclude(string|array $include): self
     {
-        return $this->set('include', $include);
+        return $this->set('include', (array) $include);
     }
 
     /**

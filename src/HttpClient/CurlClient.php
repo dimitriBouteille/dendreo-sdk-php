@@ -133,7 +133,6 @@ readonly class CurlClient implements HttpClientInterface
     {
         $msg = match ($errorNo) {
             CURLE_COULDNT_RESOLVE_HOST, CURLE_OPERATION_TIMEOUTED => 'Could not connect to Dendreo. Please check your internet connection and try again.',
-            CURLE_SSL_CACERT, CURLE_SSL_PEER_CERTIFICATE => 'Could not verify Dendreo SSL certificate.',
             default => 'Unexpected error communicating with Dendreo.',
         };
 

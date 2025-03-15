@@ -21,7 +21,11 @@
   "prefer-stable": true,
   "require": {
     "php": ">=8.2",
-    "ext-curl": "*"
+    "ext-ctype": "*",
+    "ext-curl": "*",
+    "ext-json": "*",
+    "ext-mbstring": "*",
+    "ext-openssl": "*"
   },
   "autoload": {
     "psr-4": {
