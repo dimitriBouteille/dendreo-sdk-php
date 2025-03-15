@@ -14,6 +14,7 @@ use PHPUnit\Framework\Attributes\TestWith;
 use PHPUnit\Framework\TestCase;
 
 #[CoversMethod(Response::class, 'isSuccess')]
+#[CoversMethod(Response::class, 'getStatusCode')]
 class ResponseTest extends TestCase
 {
     /**
@@ -32,6 +33,7 @@ class ResponseTest extends TestCase
         );
 
         $this->assertTrue($response->isSuccess());
+        $this->assertEquals($httpStatus, $response->getStatusCode());
     }
 
     /**

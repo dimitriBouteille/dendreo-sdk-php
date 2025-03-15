@@ -18,6 +18,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversMethod(Config::class, 'getApiKey')]
 #[CoversMethod(Config::class, 'getTimeout')]
 #[CoversMethod(Config::class, 'getHttpProxy')]
+#[CoversMethod(Config::class, 'set')]
+#[CoversMethod(Config::class, 'get')]
 class ConfigTest extends TestCase
 {
     /**
