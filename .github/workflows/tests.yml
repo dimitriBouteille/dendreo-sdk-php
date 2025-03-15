@@ -28,25 +28,9 @@ jobs:
       - name: "Run unit tests with coverage"
         run: composer run test:unit:coverage
 
-      - name: "Send coverage to Coveralls"
-        env:
-          COVERALLS_REPO_TOKEN: ${{ github.token }}
-        if: ${{ env.COVERALLS_REPO_TOKEN }}
-        uses: coverallsapp/github-action@v2
-        with:
-          github-token: ${{ env.COVERALLS_REPO_TOKEN }}
-          flag-name: "unit"
-          allow-empty: false
-          parallel: true
-
-  finish:
-    needs:
-      - unit-test
-    if: ${{ always() }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: SonarQube Scan
+      - name: SonarCloud Scan
+        if: ${{ env.SONAR_TOKEN }}
         uses: SonarSource/sonarqube-scan-action@master
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
