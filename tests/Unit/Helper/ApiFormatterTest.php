@@ -53,7 +53,7 @@ class ApiFormatterTest extends TestCase
     #[TestWith(['true', 1])]
     #[TestWith([true, 1])]
     #[TestWith(['0', 0])]
-    #[TestWith(['false', 0])]
+    #[TestWith(['false', 1])]
     #[TestWith([false, 0])]
     public function testFormatBoolean(mixed $value, mixed $expectedResult): void
     {
