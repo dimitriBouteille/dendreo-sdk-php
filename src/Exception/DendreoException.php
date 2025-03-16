@@ -15,6 +15,7 @@ class DendreoException extends \Exception
         int $code = 0,
         ?\Throwable $previous = null,
         protected ?int $httpStatus = null,
+        protected ?string $status = null,
     ) {
         parent::__construct($message, $code, $previous);
     }
@@ -25,5 +26,13 @@ class DendreoException extends \Exception
     public function getHttpStatus(): ?int
     {
         return $this->httpStatus;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getStatus(): ?string
+    {
+        return $this->status;
     }
 }

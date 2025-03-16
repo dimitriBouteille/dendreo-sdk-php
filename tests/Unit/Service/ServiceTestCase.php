@@ -12,12 +12,15 @@ use Dbout\DendreoSdk\Client;
 use Dbout\DendreoSdk\Exception\ConnectionException;
 use Dbout\DendreoSdk\HttpClient\CurlClient;
 use Dbout\DendreoSdk\Response;
+use Dbout\DendreoSdk\Tests\Unit\JsonLoader;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 abstract class ServiceTestCase extends TestCase
 {
+    use JsonLoader;
+
     /**
      * @param string|null $jsonFile
      * @param int $httpStatus
@@ -27,10 +30,7 @@ abstract class ServiceTestCase extends TestCase
      */
     protected function createMockCurlClient(?string $jsonFile, int $httpStatus, ?int $errno = null): CurlClient&MockObject
     {
-        $json = null;
-        if ($jsonFile !== null && $jsonFile !== '') {
-            $json = file_get_contents($jsonFile, true);
-        }
+        $json = $this->loadJsonAsString($jsonFile);
 
         $curlClient = $this->createPartialMock(CurlClient::class, ['requestHttp']);
         $curlClient->expects($this->once())

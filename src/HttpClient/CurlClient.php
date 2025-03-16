@@ -36,7 +36,25 @@ readonly class CurlClient implements HttpClientInterface
         $params,
         array $requestOptions = null
     ): Response {
+        $apiKey = $config->getApiKey();
+        if ($apiKey === null || $apiKey === '') {
+            throw new InvalidApiKeyException();
+        }
+
         $curl = $this->curlFactory->create($requestUrl);
+
+        $this->setupProxy($curl, $config->getHttpProxy());
+
+        $headers = [];
+        $customHeaders = $requestOptions['headers'] ?? null;
+        if (is_array($customHeaders)) {
+            foreach ($customHeaders as $headerKey => $headerValue) {
+                $headers[] = $headerKey . ': ' . $headerValue;
+            }
+        }
+
+        $headers[] = sprintf('Authorization: Token token="%s"', $apiKey);
+        $curl->setOption(CURLOPT_HTTPHEADER, $headers);
 
         switch ($method) {
             case Method::GET:
@@ -55,27 +73,10 @@ readonly class CurlClient implements HttpClientInterface
                 break;
         }
 
-        $headers = [];
-        $customHeaders = $requestOptions['headers'] ?? null;
-        if (is_array($customHeaders)) {
-            foreach ($customHeaders as $headerKey => $headerValue) {
-                $headers[] = $headerKey . ': ' . $headerValue;
-            }
-        }
-
-        $apiKey = $config->getApiKey();
-        if ($apiKey === null || $apiKey === '') {
-            throw new InvalidApiKeyException();
-        }
-
-        $headers[] = sprintf('Authorization: Token token="%s"', $apiKey);
-        $this->setupProxy($curl, $config->getHttpProxy());
-
         if ($config->getTimeout() > 0) {
             $curl->setOption(CURLOPT_TIMEOUT, $config->getTimeout());
         }
 
-        $curl->setOption(CURLOPT_HTTPHEADER, $headers);
         $curl->setOption(CURLOPT_RETURNTRANSFER, 1);
 
         [$httpStatus, $result] = $this->executeCurl($curl);
@@ -111,16 +112,19 @@ readonly class CurlClient implements HttpClientInterface
     protected function handleErrorFromResult(?array $result, mixed $httpStatus): never
     {
         $error = $result['errors'][0] ?? $result['message'] ?? null;
+        $status = $result['status'] ?? null;
         if (!is_string($error) || $error === '') {
             throw new DendreoException(
-                message: 'Something went wrong.',
-                httpStatus: $httpStatus
+                message: 'Something went wrong',
+                httpStatus: $httpStatus,
+                status: $status,
             );
         }
 
         throw new DendreoException(
             message: $error,
-            httpStatus: $httpStatus
+            httpStatus: $httpStatus,
+            status: $status,
         );
     }
 
