@@ -50,13 +50,24 @@ The library supports all APIs under the following services.
 
 Several APIs are not developed at the moment. If you want to use an API that is not available, you can [open an issue](https://github.com/dimitriBouteille/dendreo-sdk-php/issues/new/choose).
 
-| Service                                                                    | Endpoint            |
-|----------------------------------------------------------------------------|---------------------|
-| [Actions de Formation](https://developers.dendreo.com/#actions-de-formation)                       | `/api/actions_de_formation.php` |
-| [Contacts](https://developers.dendreo.com/#contacts)                       | `/api/contacts.php` |
-| [Modules/Produits](https://developers.dendreo.com/#particuliers)                    | `/api/modules.php` |
-| [Participants](https://developers.dendreo.com/#participants)               | `/api/participants.php` |
-| [Salles de formation](https://developers.dendreo.com/#salles-de-formation) | `/api/salles_de_formation.php`                 |
+| Service                                                                      | Endpoint                         | Supported |
+|------------------------------------------------------------------------------|----------------------------------|-----------|
+| [Catégories de Module](https://developers.dendreo.com/#categories-de-module) | `/api/categories_module.php`     | ❌         |
+| [Types de produit](https://developers.dendreo.com/#types-de-produit)         | `/api/categories_produit.php`    | ❌         | 
+| [Modules / Produits](https://developers.dendreo.com/#particuliers)           | `/api/modules.php`               | ✅         |
+| [Sessions Permanentes](https://developers.dendreo.com/#sessions-permanentes) | `/api/sessions_permanentes.php`  | ❌         | 
+| [Formateurs](https://developers.dendreo.com/#formateurs)                     | `/api/formateurs.php`            | ❌         | 
+| [Entreprises](https://developers.dendreo.com/#entreprises)                   | `/api/entreprises.php`           | ❌         | 
+| [Contacts](https://developers.dendreo.com/#contacts)                         | `/api/contacts.php`              | ✅         |
+| [Particuliers](https://developers.dendreo.com/#particuliers)                 | `/api/contacts.php`              | ❌         | 
+| [Participants](https://developers.dendreo.com/#participants)                 | `/api/participants.php`          | ✅         |
+| [Tâches](https://developers.dendreo.com/#taches)                             | `/api/taches.php`                | ❌         | 
+| [Etapes](https://developers.dendreo.com/#etapes)                             | `/api/etapes.php`                | ❌         | 
+| [Centres de formation](https://developers.dendreo.com/#centres-de-formation) | `/api/centres_de_formation.php` |  ❌        |
+| [Salles de formation](https://developers.dendreo.com/#salles-de-formation)   | `/api/salles_de_formation.php`   | ✅         |
+| [Actions de Formation](https://developers.dendreo.com/#actions-de-formation) | `/api/actions_de_formation.php`  | ✅         |
+| [Créneaux](https://developers.dendreo.com/#creneaux)                                                                     | `/api/creneaux.php` |  ❌        |
+| [Inscription d'un participant](https://developers.dendreo.com/#inscription-d-39-un-participant) | `/api/laps.php` |  ❌        |
 
 ## Installation
 
@@ -81,6 +92,43 @@ In your PHP script, make sure you include the autoloader:
 ~~~php
 require __DIR__ . '/vendor/autoload.php';
 ~~~
+
+## Using the library
+
+Before using a service, you must create a singleton instance of the `Client`. This instance will then be used by the various services to make requests to Dendreo :
+
+```php
+$client = new \Dbout\DendreoSdk\Client();
+
+$client->setUsername('my-username');
+$client->setApiKey('the-api-key');
+
+$contactService = new \Dbout\DendreoSdk\Service\Contacts($client);
+
+$newContact = new \Dbout\DendreoSdk\Model\ContactsCreateOrUpdateRequest();
+$newContact->setEmail('test@gmail.com');
+$newContact->setNom('Norman');
+$newContact->setPrenom('Foster');
+$newContact->setFonction('Architect');
+
+$result = $contactService->createOrUpdate($newContact);
+```
+
+All services work the same way, there is nothing more to know:)
+
+### Add proxy
+
+If you want to use a proxy, you can use the `Config` class in this way :
+
+```php
+$config = new \Dbout\DendreoSdk\Config();
+$config->setProxy('https://my-proxy.com');
+
+$client = new \Dbout\DendreoSdk\Client($config);
+
+$client->setUsername('my-username');
+$client->setApiKey('the-api-key');
+```
 
 ## Getting help/support
 

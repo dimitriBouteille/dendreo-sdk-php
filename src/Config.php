@@ -86,6 +86,17 @@ class Config
     }
 
     /**
+     * Set the http proxy configuration
+     *
+     * @param string|null $proxy
+     * @return $this
+     */
+    public function setProxy(?string $proxy): self
+    {
+        return $this->set('http-proxy', $proxy);
+    }
+
+    /**
      * Set a key value pair
      *
      * @param string $key
