@@ -110,7 +110,7 @@ readonly class CurlClient implements HttpClientInterface
      */
     protected function handleErrorFromResult(?array $result, mixed $httpStatus): never
     {
-        $error = $result['errors'][0] ?? null;
+        $error = $result['errors'][0] ?? $result['message'] ?? null;
         if (!is_string($error) || $error === '') {
             throw new DendreoException(
                 message: 'Something went wrong.',
