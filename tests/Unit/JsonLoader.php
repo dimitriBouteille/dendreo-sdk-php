@@ -8,8 +8,6 @@
 
 namespace Dbout\DendreoSdk\Tests\Unit;
 
-use function PHPUnit\Framework\isString;
-
 trait JsonLoader
 {
     /**
@@ -24,7 +22,7 @@ trait JsonLoader
 
         try {
             $json = file_get_contents($path, true);
-            return isString($json) ? $json : null;
+            return $json !== false ? $json : null;
         } catch (\Exception) {
             return null;
         }

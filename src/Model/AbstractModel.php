@@ -11,6 +11,7 @@ namespace Dbout\DendreoSdk\Model;
 use Dbout\DendreoSdk\Exception\DendreoException;
 use Dbout\DendreoSdk\ObjectSerializer;
 
+// @phpstan-ignore missingType.generics
 abstract class AbstractModel implements \JsonSerializable, \ArrayAccess, \Stringable, ModelInterface
 {
     /**
@@ -153,6 +154,11 @@ abstract class AbstractModel implements \JsonSerializable, \ArrayAccess, \String
      */
     public function __toString()
     {
-        return json_encode($this->jsonSerialize(), JSON_PRETTY_PRINT);
+        $result = json_encode($this->jsonSerialize(), JSON_PRETTY_PRINT);
+        if (!is_string($result)) {
+            throw new \ParseError(json_last_error_msg());
+        }
+
+        return $result;
     }
 }

@@ -180,6 +180,7 @@ class ObjectSerializer
                 continue;
             }
 
+            // @phpstan-ignore-next-line
             $instance[$key] = $value;
         }
 
