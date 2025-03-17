@@ -8,6 +8,9 @@
 
 namespace Dbout\DendreoSdk\Model;
 
+/**
+ * @codeCoverageIgnore
+ */
 class Particulier extends AbstractModel
 {
     protected array $casts = [
