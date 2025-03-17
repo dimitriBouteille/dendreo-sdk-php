@@ -8,6 +8,9 @@
 
 namespace Dbout\DendreoSdk\Model;
 
+/**
+ * @codeCoverageIgnore
+ */
 class ParticuliersCreateRequest extends AbstractModel
 {
     protected array $apiFormats = [

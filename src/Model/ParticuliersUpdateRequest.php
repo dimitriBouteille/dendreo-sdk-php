@@ -8,6 +8,9 @@
 
 namespace Dbout\DendreoSdk\Model;
 
+/**
+ * @codeCoverageIgnore
+ */
 class ParticuliersUpdateRequest extends ParticuliersCreateRequest
 {
     protected array $casts = [
