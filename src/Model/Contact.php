@@ -103,9 +103,9 @@ class Contact extends AbstractModel
     }
 
     /**
-     * @return bool|null
+     * @return string|null
      */
-    public function getLanguePrincipale(): ?bool
+    public function getLanguePrincipale(): ?string
     {
         return $this->get('langue_principale');
     }
