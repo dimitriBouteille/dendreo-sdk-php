@@ -8,15 +8,13 @@
 
 namespace Dbout\DendreoSdk\Model;
 
-/**
- * @codeCoverageIgnore
- */
 class Lmp extends AbstractModel
 {
     protected array $casts = [
-        'id_lmp' => 'number',
+        'id_lmp' => 'int',
         'date_add' => 'DateTime',
         'date_edit' => 'DateTime',
+        'id_lam' => 'int',
         'prix' => 'float',
     ];
 
@@ -88,5 +86,22 @@ class Lmp extends AbstractModel
     public function setDateEdit(?\DateTime $dateEdit): self
     {
         return $this->set('date_edit', $dateEdit);
+    }
+
+    /**
+     * @param int|null $idLam
+     * @return self
+     */
+    public function setIdLam(?int $idLam): self
+    {
+        return $this->set('id_lam', $idLam);
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getIdLam(): ?int
+    {
+        return $this->get('id_lam');
     }
 }

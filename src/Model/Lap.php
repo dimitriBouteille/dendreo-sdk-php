@@ -8,22 +8,31 @@
 
 namespace Dbout\DendreoSdk\Model;
 
+use Dbout\DendreoSdk\Helper\Formatter;
+
 /**
  * @codeCoverageIgnore
  */
 class Lap extends AbstractModel
 {
-    protected array $casts = [
-        'id_lap' => 'int',
-        'id_action_de_formation' => 'int',
-        'id_entreprise' => 'int',
-        'id_participant' => 'int',
-        'source' => 'string',
-        'id_groupe' => 'int',
-        'participant' => Participant::class,
-        'date_add' => 'DateTime',
-        'date_edit' => 'DateTime',
-    ];
+    /**
+     * @inheritDoc
+     */
+    protected function casts(): array
+    {
+        return [
+            'id_lap' => 'int',
+            'id_action_de_formation' => 'int',
+            'id_entreprise' => 'int',
+            'id_participant' => 'int',
+            'source' => 'string',
+            'id_groupe' => 'int',
+            'participant' => Participant::class,
+            'date_add' => 'DateTime',
+            'date_edit' => 'DateTime',
+            'lmps' => Formatter::toArrayClass(Lmp::class),
+        ];
+    }
 
     /**
      * @param int|null $idGroupe
@@ -184,5 +193,14 @@ class Lap extends AbstractModel
     public function getLmps(): ?array
     {
         return $this->get('lmps');
+    }
+
+    /**
+     * @param array<Lmp>|null $lmps
+     * @return self
+     */
+    public function setLmps(?array $lmps): self
+    {
+        return $this->set('lmps', $lmps);
     }
 }
