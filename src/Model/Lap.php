@@ -21,6 +21,8 @@ class Lap extends AbstractModel
         'source' => 'string',
         'id_groupe' => 'int',
         'participant' => Participant::class,
+        'date_add' => 'DateTime',
+        'date_edit' => 'DateTime',
     ];
 
     /**
@@ -140,5 +142,47 @@ class Lap extends AbstractModel
     public function setParticipant(?Participant $participant): self
     {
         return $this->set('participant', $participant);
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getDateAdd(): ?\DateTime
+    {
+        return $this->get('date_add');
+    }
+
+    /**
+     * @param \DateTime|null $dateAdd
+     * @return self
+     */
+    public function setDateAdd(?\DateTime $dateAdd): self
+    {
+        return $this->set('date_add', $dateAdd);
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getDateEdit(): ?\DateTime
+    {
+        return $this->get('date_edit');
+    }
+
+    /**
+     * @param \DateTime|null $dateEdit
+     * @return self
+     */
+    public function setDateEdit(?\DateTime $dateEdit): self
+    {
+        return $this->set('date_edit', $dateEdit);
+    }
+
+    /**
+     * @return array<Lmp>|null
+     */
+    public function getLmps(): ?array
+    {
+        return $this->get('lmps');
     }
 }
