@@ -28,7 +28,7 @@ class LapsTest extends ServiceTestCase
 {
     /**
      * @param int|array<int> $id
-     * @param string $expectedRequestUrl
+     * @param non-empty-string $expectedRequestUrl
      * @throws \Throwable
      * @return void
      */
