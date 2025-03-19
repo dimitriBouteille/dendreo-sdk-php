@@ -59,6 +59,7 @@ abstract class ServiceTestCase extends TestCase
         return $curlClient;
     }
 
+
     /**
      * @param CurlClient $curlClient
      * @return Client
@@ -70,5 +71,28 @@ abstract class ServiceTestCase extends TestCase
         $client->setApiKey('api-key');
         $client->setHttpClient($curlClient);
         return $client;
+    }
+
+    /**
+     * @param string $jsonFile
+     * @param int $httpStatus
+     * @return callable
+     */
+    protected function getJsonResponseCurlRequestCallback(string $jsonFile, int $httpStatus = 200): callable
+    {
+        $json = $this->loadJsonAsString($jsonFile);
+        return function () use ($json, $httpStatus) {
+            if (is_string($json) && $json !== '') {
+                $result = json_decode($json, true);
+            } else {
+                $result = null;
+            }
+
+            if (!is_array($result)) {
+                $result = [];
+            }
+
+            return new Response($httpStatus, $result);
+        };
     }
 }
