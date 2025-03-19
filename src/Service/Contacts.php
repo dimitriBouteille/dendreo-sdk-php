@@ -9,10 +9,10 @@
 namespace Dbout\DendreoSdk\Service;
 
 use Dbout\DendreoSdk\Enum\Method;
+use Dbout\DendreoSdk\Helper\ApiFormatter;
 use Dbout\DendreoSdk\Helper\Formatter;
 use Dbout\DendreoSdk\Model\Contact;
 use Dbout\DendreoSdk\Model\ContactsCreateOrUpdateRequest;
-use Dbout\DendreoSdk\Model\ContactsDeleteRequest;
 use Dbout\DendreoSdk\Model\ContactsFindRequest;
 
 /**
@@ -68,13 +68,12 @@ class Contacts extends Service
      */
     public function delete(array|int $id): bool
     {
-        $request = new ContactsDeleteRequest();
-        $request->setId((array) $id);
-
         $result = $this->requestHttp(
             endpoint: self::ENDPOINT,
             method: Method::DELETE,
-            queryParams: (array) $request->jsonSerialize(),
+            queryParams: [
+                'id' => ApiFormatter::format((array) $id, 'collection'),
+            ],
         );
 
         return $result->isSuccess();
