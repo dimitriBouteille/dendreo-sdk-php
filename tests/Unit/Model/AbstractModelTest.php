@@ -13,6 +13,8 @@ use PHPUnit\Framework\Attributes\CoversMethod;
 use PHPUnit\Framework\TestCase;
 
 #[CoversMethod(AbstractModel::class, 'getCasts')]
+#[CoversMethod(AbstractModel::class, 'set')]
+#[CoversMethod(AbstractModel::class, 'get')]
 class AbstractModelTest extends TestCase
 {
     /**
@@ -50,6 +52,33 @@ class AbstractModelTest extends TestCase
             'id_customer' => 'int',
             'created_at' => 'DateTime',
         ], $object->getCasts());
+    }
+
+    /**
+     * @return void
+     */
+    public function testSetGet(): void
+    {
+        $date = new \DateTime();
+
+        $object = new RootModel();
+        $object->set('id', 15);
+        $object->set('date', $date);
+
+        $this->assertEquals($date, $object->get('date'));
+        $this->assertEquals(15, $object->get('id'));
+    }
+
+    /**
+     * @return void
+     */
+    public function testGetWithConstructorFillArgs()
+    {
+        $object = new RootModel([
+            'email' => 'test@gmail.com',
+        ]);
+
+        $this->assertEquals('test@gmail.com', $object->get('email'));
     }
 }
 
