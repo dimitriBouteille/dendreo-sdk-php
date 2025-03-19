@@ -16,6 +16,8 @@ class Client
 {
     private const API_ENDPOINT = 'https://pro.dendreo.com/%s/api/';
 
+    final public const USER_AGENT = "dendreo-php-sdk";
+
     final public const SUCCESS_HTTP_CODES = [
         200,
         201,

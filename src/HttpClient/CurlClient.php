@@ -42,18 +42,23 @@ readonly class CurlClient implements HttpClientInterface
         }
 
         $curl = $this->curlFactory->create($requestUrl);
-
         $this->setupProxy($curl, $config->getHttpProxy());
 
-        $headers = [];
+        $rawHeaders = [
+            'User-Agent' => Client::USER_AGENT,
+            'Authorization' => sprintf('Token token="%s"', $apiKey),
+        ];
+
         $customHeaders = $requestOptions['headers'] ?? null;
         if (is_array($customHeaders)) {
-            foreach ($customHeaders as $headerKey => $headerValue) {
-                $headers[] = $headerKey . ': ' . $headerValue;
-            }
+            $rawHeaders = array_merge($rawHeaders, $customHeaders);
         }
 
-        $headers[] = sprintf('Authorization: Token token="%s"', $apiKey);
+        $headers = [];
+        foreach ($rawHeaders as $headerKey => $headerValue) {
+            $headers[] = $headerKey . ': ' . $headerValue;
+        }
+
         $curl->setOption(CURLOPT_HTTPHEADER, $headers);
 
         switch ($method) {

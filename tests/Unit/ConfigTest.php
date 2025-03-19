@@ -25,6 +25,25 @@ class ConfigTest extends TestCase
     /**
      * @return void
      */
+    public function testSetGet(): void
+    {
+        $config = new Config();
+        $config->set('my-account', 'yes');
+        $this->assertEquals('yes', $config->get('my-account'));
+    }
+
+    /**
+     * @return void
+     */
+    public function testGetWithDefaultValue(): void
+    {
+        $config = new Config();
+        $this->assertEquals(123456, $config->get('my-account', 123456));
+    }
+
+    /**
+     * @return void
+     */
     public function testSetUsername(): void
     {
         $config = new Config();
