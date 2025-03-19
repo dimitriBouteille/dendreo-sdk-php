@@ -38,8 +38,8 @@ class ContactsTest extends ServiceTestCase
      * @throws \Throwable
      * @return void
      */
-    #[TestWith([15, 'id=15'])]
-    #[TestWith([[50, 10], 'id=50%2C10'])]
+    #[TestWith([15, 'contacts.php?id=15'])]
+    #[TestWith([[50, 10], 'contacts.php?id=50%2C10'])]
     public function testSuccessDelete(int|array $ids, string $expectedRequestUrl): void
     {
         $curlClient = $this->createPartialMock(CurlClient::class, ['requestHttp']);
@@ -71,7 +71,7 @@ class ContactsTest extends ServiceTestCase
             ->willReturnCallback($this->getJsonResponseCurlRequestCallback('tests/fixtures/contacts/find-contact.json'))
             ->with(
                 $this->anything(),
-                $this->stringEndsWith('id=150'),
+                $this->stringEndsWith('contacts.php?id=150'),
                 Method::GET,
                 null
             );
@@ -96,7 +96,7 @@ class ContactsTest extends ServiceTestCase
             ->willReturnCallback($this->getJsonResponseCurlRequestCallback('tests/fixtures/contacts/find-contact.json'))
             ->with(
                 $this->anything(),
-                $this->stringEndsWith('?id=858&include=photo'),
+                $this->stringEndsWith('contacts.php?id=858&include=photo'),
                 Method::GET,
                 null
             );

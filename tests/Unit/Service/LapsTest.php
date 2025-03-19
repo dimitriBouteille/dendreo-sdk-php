@@ -66,7 +66,7 @@ class LapsTest extends ServiceTestCase
             ->willReturnCallback($this->getJsonResponseCurlRequestCallback('tests/fixtures/laps/find-by-id.json'))
             ->with(
                 $this->anything(),
-                $this->stringEndsWith('id=150'),
+                $this->stringEndsWith('laps.php?id=150'),
                 Method::GET,
                 null
             );
@@ -94,7 +94,7 @@ class LapsTest extends ServiceTestCase
             ->willReturnCallback($this->getJsonResponseCurlRequestCallback('tests/fixtures/laps/find.json'))
             ->with(
                 $this->anything(),
-                $this->stringEndsWith('id_action_de_formation=15'),
+                $this->stringEndsWith('laps.php?id_action_de_formation=15'),
                 Method::GET,
                 null
             );
