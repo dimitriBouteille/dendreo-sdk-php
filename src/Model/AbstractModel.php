@@ -41,6 +41,7 @@ abstract class AbstractModel implements \JsonSerializable, \ArrayAccess, \String
     public function __construct(
         array $data = []
     ) {
+        $this->casts = array_merge($this->casts, $this->casts());
         $this->data = $data;
     }
 
@@ -130,6 +131,16 @@ abstract class AbstractModel implements \JsonSerializable, \ArrayAccess, \String
     public function getCasts(): array
     {
         return $this->casts;
+    }
+
+    /**
+     * Get the properties that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [];
     }
 
     /**

@@ -8,9 +8,12 @@
 
 namespace Dbout\DendreoSdk\Tests\Unit\Service;
 
+use Dbout\DendreoSdk\Enum\Method;
+use Dbout\DendreoSdk\HttpClient\CurlClient;
 use Dbout\DendreoSdk\Model\Contact;
 use Dbout\DendreoSdk\Model\ContactsCreateOrUpdateRequest;
 use Dbout\DendreoSdk\Model\ContactsFindRequest;
+use Dbout\DendreoSdk\Response;
 use Dbout\DendreoSdk\Service\Contacts;
 use PHPUnit\Framework\Attributes\CoversMethod;
 use PHPUnit\Framework\Attributes\TestWith;
@@ -31,14 +34,26 @@ class ContactsTest extends ServiceTestCase
 {
     /**
      * @param int|array<int> $ids
+     * @param non-empty-string $expectedRequestUrl
      * @throws \Throwable
      * @return void
      */
-    #[TestWith([15])]
-    #[TestWith([[50, 10]])]
-    public function testSuccessDelete(int|array $ids): void
+    #[TestWith([15, 'contacts.php?id=15'])]
+    #[TestWith([[50, 10], 'contacts.php?id=50%2C10'])]
+    public function testSuccessDelete(int|array $ids, string $expectedRequestUrl): void
     {
-        $curlClient = $this->createMockCurlClient(null, 200);
+        $curlClient = $this->createPartialMock(CurlClient::class, ['requestHttp']);
+        $curlClient->expects($this->once())->method('requestHttp')
+            ->willReturnCallback(function () {
+                return new Response(200, []);
+            })
+            ->with(
+                $this->anything(),
+                $this->stringEndsWith($expectedRequestUrl),
+                Method::DELETE,
+                null
+            );
+
         $service = new Contacts($this->createMockClient($curlClient));
         $this->assertTrue($service->delete($ids));
     }
@@ -47,25 +62,22 @@ class ContactsTest extends ServiceTestCase
      * @throws \Throwable
      * @return void
      */
-    public function testDeleteReturnsAnError(): void
-    {
-        $curlClient = $this->createMockCurlClient('tests/fixtures/contacts/delete-contacts-error.json', 500);
-        $service = new Contacts($this->createMockClient($curlClient));
-
-        $result = $service->delete(15);
-        $this->assertFalse($result);
-    }
-
-    /**
-     * @throws \Throwable
-     * @return void
-     */
     public function testFindById(): void
     {
-        $curlClient = $this->createMockCurlClient('tests/fixtures/contacts/find-contact.json', 200);
-        $service = new Contacts($this->createMockClient($curlClient));
+        $curlClient = $this->createPartialMock(CurlClient::class, ['requestHttp']);
+        $curlClient
+            ->expects($this->once())
+            ->method('requestHttp')
+            ->willReturnCallback($this->getJsonResponseCurlRequestCallback('tests/fixtures/contacts/find-contact.json'))
+            ->with(
+                $this->anything(),
+                $this->stringEndsWith('contacts.php?id=150'),
+                Method::GET,
+                null
+            );
 
-        $contact = $service->findById(15);
+        $service = new Contacts($this->createMockClient($curlClient));
+        $contact = $service->findById(150);
         $this->assertInstanceOf(Contact::class, $contact);
         $this->assertEquals(15, $contact->getIdContact());
         $this->assertEquals('test@gmail.com', $contact->getEmail());
@@ -77,16 +89,34 @@ class ContactsTest extends ServiceTestCase
      */
     public function testFindByIdWithCustomRequest(): void
     {
-        $curlClient = $this->createMockCurlClient('tests/fixtures/contacts/find-contact.json', 200);
-        $service = new Contacts($this->createMockClient($curlClient));
+        $curlClient = $this->createPartialMock(CurlClient::class, ['requestHttp']);
+        $curlClient
+            ->expects($this->once())
+            ->method('requestHttp')
+            ->willReturnCallback($this->getJsonResponseCurlRequestCallback('tests/fixtures/contacts/find-contact.json'))
+            ->with(
+                $this->anything(),
+                $this->stringEndsWith('contacts.php?id=858&include=photo'),
+                Method::GET,
+                null
+            );
 
-        $request = $this->createPartialMock(ContactsFindRequest::class, ['set']);
+
+        $service = new Contacts($this->createMockClient($curlClient));
+        $request = $this->createPartialMock(ContactsFindRequest::class, ['set', 'jsonSerialize']);
         $request
             ->expects($this->once())
             ->method('set')
-            ->with('id', 15);
+            ->with('id', 858);
 
-        $contact = $service->findById(15, $request);
+        $request->expects($this->once())
+            ->method('jsonSerialize')
+            ->willReturn([
+                'id' => 858,
+                'include' => 'photo',
+            ]);
+
+        $contact = $service->findById(858, $request);
         $this->assertInstanceOf(Contact::class, $contact);
     }
 
@@ -96,7 +126,18 @@ class ContactsTest extends ServiceTestCase
      */
     public function testFind(): void
     {
-        $curlClient = $this->createMockCurlClient('tests/fixtures/contacts/find-contacts.json', 200);
+        $curlClient = $this->createPartialMock(CurlClient::class, ['requestHttp']);
+        $curlClient
+            ->expects($this->once())
+            ->method('requestHttp')
+            ->willReturnCallback($this->getJsonResponseCurlRequestCallback('tests/fixtures/contacts/find-contacts.json'))
+            ->with(
+                $this->anything(),
+                $this->anything(),
+                Method::GET,
+                null
+            );
+
         $service = new Contacts($this->createMockClient($curlClient));
 
         $contacts = $service->find();

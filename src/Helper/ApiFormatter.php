@@ -45,7 +45,7 @@ class ApiFormatter
             return (float) $value;
         }
 
-        if ($format === 'boolean') {
+        if (in_array($format, ['boolean', 'bool'], true)) {
             return (bool) $value ? '1' : '0';
         }
 
