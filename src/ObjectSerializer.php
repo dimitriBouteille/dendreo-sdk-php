@@ -33,7 +33,6 @@ class ObjectSerializer
             return ApiFormatter::format($data, $format);
         }
 
-
         if (is_array($data)) {
             foreach ($data as $property => $value) {
                 $data[$property] = $this->serialize($value);
@@ -62,7 +61,6 @@ class ObjectSerializer
             if ($value !== null) {
                 $values[$property] = $this->serialize($value, $cast);
             }
-
         }
 
         return (object) $values;
