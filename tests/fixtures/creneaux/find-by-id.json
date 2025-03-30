@@ -1,0 +1,41 @@
+{
+  "id_creneau": "150",
+  "id_add": "5",
+  "id_edit": "0",
+  "id_action_de_formation": "617",
+  "id_lam": "619",
+  "date_debut": "2017-01-11 10:00:00",
+  "date_fin": "2017-01-11 12:00:00",
+  "name": "Théorie",
+  "icon": "star",
+  "id_salle_de_formation": "4",
+  "formation_presente": "1",
+  "url_connexion": "https://extranet-demo.dendreo.com/participants/liverooms/5",
+  "url_connexion_invite": "https://extranet-demo.dendreo.com/liverooms/xxxx",
+  "lcps": [
+    {
+      "id_lcp": "93",
+      "id_add": "0",
+      "id_edit": "0",
+      "id_creneau": "950",
+      "id_lmp": "28",
+      "id_lap": "25",
+      "presence": "1",
+      "justified": "0",
+      "justification": "",
+      "lap": {
+        "id_lap": "25",
+        "id_participant": "2",
+        "id_entreprise": "1",
+        "participant": {
+          "id_participant": "2",
+          "nom": "Duru",
+          "prenom": "Françoise",
+          "email": "",
+          "id_entreprise": "2",
+          "particulier": "0"
+        }
+      }
+    }
+  ]
+}

@@ -11,7 +11,7 @@ namespace Dbout\DendreoSdk\Service;
 use Dbout\DendreoSdk\Enum\Method;
 use Dbout\DendreoSdk\Helper\Formatter;
 use Dbout\DendreoSdk\Model\ActionDeFormation;
-use Dbout\DendreoSdk\Model\ActionDeFormationFindRequest;
+use Dbout\DendreoSdk\Model\ActionsDeFormationFindRequest;
 
 /**
  * @see https://developers.dendreo.com/#actions-de-formation
@@ -21,12 +21,12 @@ class ActionsDeFormation extends Service
     final public const ENDPOINT = 'actions_de_formation.php';
 
     /**
-     * @param ActionDeFormationFindRequest|null $request
+     * @param ActionsDeFormationFindRequest|null $request
      * @throws \Exception
      * @return array<ActionDeFormation>|null
      * @see https://developers.dendreo.com/#lister-toutes-les-actions-de-formation
      */
-    public function find(ActionDeFormationFindRequest $request = null): ?array
+    public function find(ActionsDeFormationFindRequest $request = null): ?array
     {
         $result = $this->requestHttp(
             endpoint: self::ENDPOINT,
@@ -39,14 +39,14 @@ class ActionsDeFormation extends Service
 
     /**
      * @param int $apiId
-     * @param ActionDeFormationFindRequest|null $request
+     * @param ActionsDeFormationFindRequest|null $request
      * @throws \Exception
      * @return ActionDeFormation|null
      * @see https://developers.dendreo.com/#afficher-une-action-de-formation
      */
-    public function findById(int $apiId, ?ActionDeFormationFindRequest $request = null): ?ActionDeFormation
+    public function findById(int $apiId, ?ActionsDeFormationFindRequest $request = null): ?ActionDeFormation
     {
-        $request ??= new ActionDeFormationFindRequest();
+        $request ??= new ActionsDeFormationFindRequest();
         $request->set('id', $apiId);
 
         $result = $this->requestHttp(
