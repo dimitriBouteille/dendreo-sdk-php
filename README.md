@@ -56,7 +56,7 @@ Several APIs are not developed at the moment. If you want to use an API that is 
 | [Centres de formation](https://developers.dendreo.com/#centres-de-formation)                    | `/api/centres_de_formation.php`               | ❌         |
 | [Salles de formation](https://developers.dendreo.com/#salles-de-formation)                      | `/api/salles_de_formation.php`                | ✅         |
 | [Actions de Formation](https://developers.dendreo.com/#actions-de-formation)                    | `/api/actions_de_formation.php`               | ✅         |
-| [Créneaux](https://developers.dendreo.com/#creneaux)                                            | `/api/creneaux.php`                           | ❌         |
+| [Créneaux](https://developers.dendreo.com/#creneaux)                                            | `/api/creneaux.php`                           | ✅         |
 | [Inscription d'un participant](https://developers.dendreo.com/#inscription-d-39-un-participant) | `/api/laps.php`                               | ✅         |
 
 ## Installation

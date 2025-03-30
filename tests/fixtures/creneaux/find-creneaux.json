@@ -1,0 +1,30 @@
+[
+  {
+    "id_creneau": "864",
+    "id_add": "5",
+    "id_edit": "0",
+    "id_action_de_formation": "617",
+    "id_lam": "619",
+    "date_debut": "2017-01-10 10:00:00",
+    "date_fin": "2017-01-10 11:00:00",
+    "name": "",
+    "icon": "",
+    "id_salle_de_formation": "4",
+    "formation_presente": "1"
+  },
+  {
+    "id_creneau": "1544",
+    "id_add": "5",
+    "id_edit": "0",
+    "id_action_de_formation": "1297",
+    "id_lam": "1299",
+    "date_debut": "2017-01-11 10:00:00",
+    "date_fin": "2017-01-11 12:00:00",
+    "name": "",
+    "icon": "",
+    "id_salle_de_formation": "4",
+    "formation_presente": "0",
+    "url_connexion": "https://extranet-demo.dendreo.com/participants/liverooms/5",
+    "url_connexion_invite": "https://extranet-demo.dendreo.com/liverooms/xxxx"
+  }
+]
