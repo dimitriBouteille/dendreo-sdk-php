@@ -15,8 +15,8 @@ class Lmp extends AbstractModel
 {
     protected array $casts = [
         'id_lmp' => 'int',
-        'date_add' => 'DateTime',
-        'date_edit' => 'DateTime',
+        'date_add' => '\DateTime',
+        'date_edit' => '\DateTime',
         'id_lam' => 'int',
         'prix' => 'float',
     ];

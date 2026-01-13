@@ -12,8 +12,8 @@ class Participant extends AbstractModel
 {
     protected array $casts = [
         'id_participant' => 'int',
-        'date_add' => 'DateTime',
-        'date_edit' => 'DateTime',
+        'date_add' => '\DateTime',
+        'date_edit' => '\DateTime',
         'nom' => 'string',
         'prenom' => 'string',
         'email' => 'string',
