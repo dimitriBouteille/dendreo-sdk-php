@@ -24,7 +24,7 @@ class ContactsCreateOrUpdateRequest extends AbstractModel
         'entreprise_raison_sociale' => 'string',
         'entreprise_id_externe' => 'string',
         'particulier' => 'boolean',
-        'date_de_naissance' => 'DateTime',
+        'date_de_naissance' => '\DateTime',
         'adresse' => 'string',
         'code_postal' => 'string',
         'ville' => 'string',

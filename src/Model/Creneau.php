@@ -15,12 +15,12 @@ class Creneau extends AbstractModel
 {
     protected array $casts = [
         'id_creneau' => 'int',
-        'date_add' => 'DateTime',
-        'date_edit' => 'DateTime',
+        'date_add' => '\DateTime',
+        'date_edit' => '\DateTime',
         'id_action_de_formation' => 'int',
         'id_lam' => 'int',
-        'date_debut' => 'DateTime',
-        'date_fin' => 'DateTime',
+        'date_debut' => '\DateTime',
+        'date_fin' => '\DateTime',
         'id_salle_de_formation' => 'int',
         'name' => 'string',
         'icon' => 'string',
