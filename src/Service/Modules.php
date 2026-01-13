@@ -47,7 +47,7 @@ class Modules extends Service
     public function findById(int $id, ?ModuleFindRequest $request = null): ?Module
     {
         $request ??= new ModuleFindRequest();
-        $request->set('module_id', $id);
+        $request->set('id', $id);
 
         $result = $this->requestHttp(
             endpoint: self::ENDPOINT,

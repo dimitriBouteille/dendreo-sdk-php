@@ -45,4 +45,44 @@ class Module extends AbstractModel
         'id_categorie_module' => 'int',
         'eligible_cpf' => 'boolean',
     ];
+
+    /**
+     * @return int
+     */
+    public function getIdModule(): int
+    {
+        return $this->get('id_module');
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getIdExterne(): ?string
+    {
+        return $this->get('id_externe');
+    }
+
+    /**
+     * @return string
+     */
+    public function getIntitule(): string
+    {
+        return $this->get('intitule');
+    }
+
+    /**
+     * @return string
+     */
+    public function getNumeroComplet(): string
+    {
+        return $this->get('numero_complet');
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription(): string
+    {
+        return $this->get('description');
+    }
 }
