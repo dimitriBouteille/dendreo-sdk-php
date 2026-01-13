@@ -57,6 +57,14 @@ class ApiFormatter
             return implode(',', $value);
         }
 
+        if ($format === 'string') {
+            if (!is_string($value)) {
+                throw new \InvalidArgumentException('The value must be a string.');
+            }
+
+            return $value;
+        }
+
         throw new \InvalidArgumentException(sprintf('Invalid format: %s', $format));
     }
 }
