@@ -28,8 +28,8 @@ class Lap extends AbstractModel
             'source' => 'string',
             'id_groupe' => 'int',
             'participant' => Participant::class,
-            'date_add' => 'DateTime',
-            'date_edit' => 'DateTime',
+            'date_add' => '\DateTime',
+            'date_edit' => '\DateTime',
             'lmps' => Formatter::toArrayClass(Lmp::class),
         ];
     }

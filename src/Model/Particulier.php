@@ -15,8 +15,8 @@ class Particulier extends AbstractModel
 {
     protected array $casts = [
         'id_participant' => 'int',
-        'date_add' => 'DateTime',
-        'date_edit' => 'DateTime',
+        'date_add' => '\DateTime',
+        'date_edit' => '\DateTime',
         'particulier' => 'boolean',
         'id_contact' => 'int',
         'responsable_id' => 'int',

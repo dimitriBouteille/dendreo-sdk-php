@@ -57,7 +57,7 @@ class ActionsDeFormationFindRequest extends AbstractModel
      */
     public function getType(): ?string
     {
-        return $this->set('type', null);
+        return $this->get('type');
     }
 
     /**
@@ -129,18 +129,18 @@ class ActionsDeFormationFindRequest extends AbstractModel
     }
 
     /**
-     * @param int|null $numeroComplet
+     * @param string|null $numeroComplet
      * @return self
      */
-    public function setNumeroComplet(?int $numeroComplet): self
+    public function setNumeroComplet(?string $numeroComplet): self
     {
         return $this->set('numero_complet', $numeroComplet);
     }
 
     /**
-     * @return int|null
+     * @return string|null
      */
-    public function getNumeroComplet(): ?int
+    public function getNumeroComplet(): ?string
     {
         return $this->get('numero_complet');
     }
