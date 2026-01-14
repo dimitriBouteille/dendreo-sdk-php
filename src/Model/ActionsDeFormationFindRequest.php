@@ -57,7 +57,7 @@ class ActionsDeFormationFindRequest extends AbstractModel
      */
     public function getType(): ?string
     {
-        return $this->set('type', null);
+        return $this->get('type');
     }
 
     /**
