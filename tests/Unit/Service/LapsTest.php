@@ -21,7 +21,7 @@ use PHPUnit\Framework\Attributes\TestWith;
 #[CoversMethod(Laps::class, 'delete')]
 #[CoversMethod(Laps::class, 'findById')]
 #[CoversMethod(Laps::class, 'find')]
-#[CoversMethod(Lap::class, 'getSources')]
+#[CoversMethod(Lap::class, 'getSource')]
 #[CoversMethod(Lap::class, 'getIdParticipant')]
 #[CoversMethod(Lap::class, 'getParticipant')]
 class LapsTest extends ServiceTestCase
@@ -77,7 +77,7 @@ class LapsTest extends ServiceTestCase
 
         $this->assertInstanceOf(Lap::class, $result);
         $this->assertInstanceOf(Participant::class, $result->getParticipant());
-        $this->assertEquals('dendreo', $result->getSources());
+        $this->assertEquals('dendreo', $result->getSource());
         $this->assertEquals(15, $result->getIdParticipant());
     }
 

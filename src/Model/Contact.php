@@ -169,7 +169,7 @@ class Contact extends AbstractModel
     /**
      * @return string|null
      */
-    public function geAdresse(): ?string
+    public function getAdresse(): ?string
     {
         return $this->get('adresse');
     }
@@ -207,9 +207,9 @@ class Contact extends AbstractModel
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function getNewsletterOptin(): bool
+    public function getNewsletterOptin(): ?bool
     {
         return $this->get('newsletter_optin');
     }

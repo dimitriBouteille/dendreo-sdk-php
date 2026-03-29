@@ -12,12 +12,12 @@ class ActionDeFormationCreateRequest extends AbstractModel
 {
     protected array $casts = [
         'include' => 'collection',
-        'id' => 'number',
-        'id_entreprise' => 'number',
-        'id_module' => 'number',
-        'id_salle_de_formation' => 'number',
-        'id_externe' => 'number',
-        'nb_jours' => 'number',
+        'id' => 'int',
+        'id_entreprise' => 'int',
+        'id_module' => 'int',
+        'id_salle_de_formation' => 'int',
+        'id_externe' => 'int',
+        'nb_jours' => 'int',
     ];
 
     /**
