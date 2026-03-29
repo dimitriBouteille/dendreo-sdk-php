@@ -266,7 +266,7 @@ class ContactsCreateOrUpdateRequest extends AbstractModel
      * @param string|null $nomNaissance
      * @return self
      */
-    public function seNomNaissance(?string $nomNaissance): self
+    public function setNomNaissance(?string $nomNaissance): self
     {
         return $this->set('nom_naissance', $nomNaissance);
     }

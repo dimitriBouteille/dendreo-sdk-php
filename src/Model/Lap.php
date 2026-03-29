@@ -63,7 +63,7 @@ class Lap extends AbstractModel
     /**
      * @return string|null
      */
-    public function getSources(): ?string
+    public function getSource(): ?string
     {
         return $this->get('source');
     }
