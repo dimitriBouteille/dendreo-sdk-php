@@ -77,7 +77,7 @@ class LapsTest extends ServiceTestCase
 
         $this->assertInstanceOf(Lap::class, $result);
         $this->assertInstanceOf(Participant::class, $result->getParticipant());
-        $this->assertEquals('dendreo', $result->getSources());
+        $this->assertEquals('dendreo', $result->getSource());
         $this->assertEquals(15, $result->getIdParticipant());
     }
 
