@@ -11,15 +11,15 @@ namespace Dbout\DendreoSdk\Model;
 class LapsCreateRequest extends AbstractModel
 {
     protected array $apiFormats = [
-        'id_action_de_formation' => 'number',
-        'id_participant' => 'number',
-        'id_entreprise' => 'number',
-        'id_groupe' => 'number',
+        'id_action_de_formation' => 'int',
+        'id_participant' => 'int',
+        'id_entreprise' => 'int',
+        'id_groupe' => 'int',
         'prix' => 'float',
         'marquer_present' => 'boolean',
         'disable_inscription_auto' => 'boolean',
         'force_sync_lms' => 'boolean',
-        'nb_participants_anonymes' => 'number',
+        'nb_participants_anonymes' => 'int',
     ];
 
     /**
