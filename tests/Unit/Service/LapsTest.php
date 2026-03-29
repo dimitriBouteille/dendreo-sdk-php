@@ -21,7 +21,7 @@ use PHPUnit\Framework\Attributes\TestWith;
 #[CoversMethod(Laps::class, 'delete')]
 #[CoversMethod(Laps::class, 'findById')]
 #[CoversMethod(Laps::class, 'find')]
-#[CoversMethod(Lap::class, 'getSources')]
+#[CoversMethod(Lap::class, 'getSource')]
 #[CoversMethod(Lap::class, 'getIdParticipant')]
 #[CoversMethod(Lap::class, 'getParticipant')]
 class LapsTest extends ServiceTestCase
