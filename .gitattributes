@@ -10,4 +10,3 @@
 /phpunit.xml export-ignore
 /rector.php export-ignore
 /renovate.json export-ignore
-/sonar-project.properties export-ignore

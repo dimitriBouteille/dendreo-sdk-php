@@ -5,7 +5,6 @@
 <div align="center">
     <p>
         <a href="https://github.com/dimitriBouteille/dendreo-sdk-php"><img alt="Latest Version" src="https://img.shields.io/github/v/release/dimitriBouteille/dendreo-sdk-php"></a>
-        <a href="https://sonarcloud.io/summary/new_code?id=dimitriBouteille_dendreo-sdk-php"><img alt="Coverage Status" src="https://sonarcloud.io/api/project_badges/measure?project=dimitriBouteille_dendreo-sdk-php&metric=coverage"></a>
         <a href="https://packagist.org/packages/dbout/dendreo-sdk-php"><img alt="Total Downloads" src="https://img.shields.io/packagist/dt/dbout/dendreo-sdk-php"></a>
         <a href="https://github.com/dimitriBouteille/dendreo-sdk-php/actions/workflows/tests.yml"><img alt="Tests status" src="https://img.shields.io/github/actions/workflow/status/dimitriBouteille/dendreo-sdk-php/tests.yml?label=tests"></a>
     </p>
