@@ -21,11 +21,9 @@
   "prefer-stable": true,
   "require": {
     "php": ">=8.2",
-    "ext-ctype": "*",
-    "ext-curl": "*",
     "ext-json": "*",
-    "ext-mbstring": "*",
-    "ext-openssl": "*"
+    "guzzlehttp/guzzle": "^7.4.5",
+    "guzzlehttp/psr7": "^2.0"
   },
   "autoload": {
     "psr-4": {
