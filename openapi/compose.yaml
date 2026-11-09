@@ -1,0 +1,17 @@
+# OpenAPI Generator, used by `composer generate` (see CONTRIBUTING.md).
+# Input: var/openapi/openapi.yaml (spec pre-processed by preprocess.php)
+# Output: var/openapi/out (installed into src/ by postprocess.php)
+services:
+  openapi-generator:
+    image: openapitools/openapi-generator-cli:v7.14.0
+    volumes:
+      - ./config.yaml:/config.yaml:ro
+      - ./templates:/templates:ro
+      - ../var/openapi:/work
+    command: >
+      generate
+      -i /work/openapi.yaml
+      -g php-nextgen
+      -c /config.yaml
+      -t /templates
+      -o /work/out
