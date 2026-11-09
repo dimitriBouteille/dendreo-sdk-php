@@ -1,7 +1,7 @@
 {
   "name": "dbout/dendreo-sdk-php",
-  "description": "Dendreo SDK for interacting with the REST APIs.",
-  "type": "package",
+  "description": "PHP SDK for the Dendreo API v2 (training management software), generated from the official OpenAPI specification.",
+  "type": "library",
   "license": "MIT",
   "authors": [
     {
@@ -11,16 +11,26 @@
       "role": "Developer"
     }
   ],
-  "keywords": ["api", "dendreo", "sdk", "rest"],
+  "keywords": [
+    "dendreo",
+    "sdk",
+    "api",
+    "api-client",
+    "rest",
+    "openapi",
+    "training",
+    "training-management",
+    "formation",
+    "organisme-de-formation"
+  ],
   "homepage": "https://github.com/dimitriBouteille/dendreo-sdk-php",
   "support": {
     "issues": "https://github.com/dimitriBouteille/dendreo-sdk-php/issues",
-    "source": "https://github.com/dimitriBouteille/dendreo-sdk-php"
+    "source": "https://github.com/dimitriBouteille/dendreo-sdk-php",
+    "docs": "https://github.com/dimitriBouteille/dendreo-sdk-php#readme"
   },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
   "require": {
-    "php": ">=8.2",
+    "php": "^8.2",
     "ext-json": "*",
     "guzzlehttp/guzzle": "^7.4.5",
     "guzzlehttp/psr7": "^2.0"
@@ -41,13 +51,6 @@
     "phpstan/phpstan": "^2.0",
     "phpunit/phpunit": "^11.0",
     "symfony/yaml": "^7.0"
-  },
-  "extra": {
-    "phpstan": {
-      "includes": [
-        "extension.neon"
-      ]
-    }
   },
   "scripts": {
     "rector": "vendor/bin/rector process --dry-run",
