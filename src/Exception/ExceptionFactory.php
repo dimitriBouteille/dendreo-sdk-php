@@ -79,7 +79,7 @@ final class ExceptionFactory
         $message = match (true) {
             is_string($data['message'] ?? null) => $data['message'],
             is_string($data['error'] ?? null) => $data['error'],
-            is_array($data['errors'] ?? null) && array_is_list($data['errors']) => implode(' ', array_filter($data['errors'], 'is_string')),
+            is_array($data['errors'] ?? null) && array_is_list($data['errors']) => implode(' ', array_filter($data['errors'], is_string(...))),
             default => null,
         };
 

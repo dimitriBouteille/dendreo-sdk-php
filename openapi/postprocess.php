@@ -26,13 +26,13 @@ declare(strict_types=1);
  */
 
 const HEADER = <<<'TXT'
-/**
- * Copyright © Dimitri BOUTEILLE (https://github.com/dimitriBouteille)
- * See LICENSE.txt for license details.
- *
- * Author: Dimitri BOUTEILLE <bonjour@dimitri-bouteille.fr>
- */
-TXT;
+    /**
+     * Copyright © Dimitri BOUTEILLE (https://github.com/dimitriBouteille)
+     * See LICENSE.txt for license details.
+     *
+     * Author: Dimitri BOUTEILLE <bonjour@dimitri-bouteille.fr>
+     */
+    TXT;
 
 const GENERATED_NOTICE = 'Generated from the Dendreo OpenAPI specification, do not edit manually.';
 

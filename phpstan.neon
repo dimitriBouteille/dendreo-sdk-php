@@ -1,3 +1,7 @@
+includes:
+    # Excludes the generated code from the analysis (see openapi/generated-files.php).
+    - openapi/phpstan.php
+
 parameters:
     level: 8
     paths:

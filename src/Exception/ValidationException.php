@@ -31,7 +31,7 @@ class ValidationException extends ApiException
 
         $result = [];
         foreach ($errors as $field => $messages) {
-            $result[(string) $field] = array_values(array_map('strval', (array) $messages));
+            $result[(string) $field] = array_values(array_map(strval(...), (array) $messages));
         }
 
         return $result;

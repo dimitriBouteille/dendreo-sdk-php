@@ -11,7 +11,10 @@ $finder = \PhpCsFixer\Finder::create()
     ->in([
         __DIR__ . '/src',
         __DIR__ . '/tests',
+        __DIR__ . '/openapi',
     ])
+    // Generated code (see openapi/postprocess.php): never reformatted.
+    ->notContains('/^ \* Generated from the Dendreo OpenAPI specification, do not edit manually\.$/m')
 ;
 
 $header = <<<EOF
