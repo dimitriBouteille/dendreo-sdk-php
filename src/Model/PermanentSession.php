@@ -19,6 +19,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
+ * @description Les champs additionnels du compte sont ajoutés à la ressource, sous leur nom de champ.
  * @package  Dbout\DendreoSdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -46,7 +47,7 @@ class PermanentSession implements ModelInterface, ArrayAccess, JsonSerializable
         'salle_de_formation_id' => 'int',
         'responsable_id' => 'int',
         'mode_pricing' => 'string',
-        'rythmes' => 'mixed[]',
+        'rythmes' => 'int[]',
         'prix' => 'string',
         'duree_heures' => 'int',
         'garantie' => 'bool',
@@ -57,10 +58,12 @@ class PermanentSession implements ModelInterface, ArrayAccess, JsonSerializable
         'visible_cp' => 'bool',
         'numero_complet' => 'string',
         'intitule' => 'string',
-        'rythmes_readable' => 'mixed[]',
+        'rythmes_readable' => 'string[]',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
-        'deleted_at' => '\DateTime'
+        'deleted_at' => '\DateTime',
+        'responsable' => '\Dbout\DendreoSdk\Model\Administrateur',
+        'centre' => '\Dbout\DendreoSdk\Model\CentresDeFormation'
     ];
 
     /**
@@ -88,7 +91,9 @@ class PermanentSession implements ModelInterface, ArrayAccess, JsonSerializable
         'rythmes_readable' => null,
         'created_at' => 'date-time',
         'updated_at' => 'date-time',
-        'deleted_at' => 'date-time'
+        'deleted_at' => 'date-time',
+        'responsable' => null,
+        'centre' => null
     ];
 
     /**
@@ -116,7 +121,9 @@ class PermanentSession implements ModelInterface, ArrayAccess, JsonSerializable
         'rythmes_readable' => false,
         'created_at' => true,
         'updated_at' => true,
-        'deleted_at' => true
+        'deleted_at' => true,
+        'responsable' => true,
+        'centre' => true
     ];
 
     /**
@@ -224,7 +231,9 @@ class PermanentSession implements ModelInterface, ArrayAccess, JsonSerializable
         'rythmes_readable' => 'rythmes_readable',
         'created_at' => 'created_at',
         'updated_at' => 'updated_at',
-        'deleted_at' => 'deleted_at'
+        'deleted_at' => 'deleted_at',
+        'responsable' => 'responsable',
+        'centre' => 'centre'
     ];
 
     /**
@@ -252,7 +261,9 @@ class PermanentSession implements ModelInterface, ArrayAccess, JsonSerializable
         'rythmes_readable' => 'setRythmesReadable',
         'created_at' => 'setCreatedAt',
         'updated_at' => 'setUpdatedAt',
-        'deleted_at' => 'setDeletedAt'
+        'deleted_at' => 'setDeletedAt',
+        'responsable' => 'setResponsable',
+        'centre' => 'setCentre'
     ];
 
     /**
@@ -280,7 +291,9 @@ class PermanentSession implements ModelInterface, ArrayAccess, JsonSerializable
         'rythmes_readable' => 'getRythmesReadable',
         'created_at' => 'getCreatedAt',
         'updated_at' => 'getUpdatedAt',
-        'deleted_at' => 'getDeletedAt'
+        'deleted_at' => 'getDeletedAt',
+        'responsable' => 'getResponsable',
+        'centre' => 'getCentre'
     ];
 
     /**
@@ -359,6 +372,8 @@ class PermanentSession implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
         $this->setIfExists('deleted_at', $data ?? [], null);
+        $this->setIfExists('responsable', $data ?? [], null);
+        $this->setIfExists('centre', $data ?? [], null);
     }
 
     /**
@@ -388,6 +403,18 @@ class PermanentSession implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
+        }
+        if ($this->container['deleted_at'] === null) {
+            $invalidProperties[] = "'deleted_at' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -406,9 +433,9 @@ class PermanentSession implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets id
      *
-     * @return int|null
+     * @return int
      */
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->container['id'];
     }
@@ -416,11 +443,11 @@ class PermanentSession implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets id
      *
-     * @param int|null $id id
+     * @param int $id id
      *
      * @return $this
      */
-    public function setId(?int $id): static
+    public function setId(int $id): static
     {
         if (is_null($id)) {
             throw new InvalidArgumentException('non-nullable id cannot be null');
@@ -548,7 +575,7 @@ class PermanentSession implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets rythmes
      *
-     * @return mixed[]|null
+     * @return int[]|null
      */
     public function getRythmes(): ?array
     {
@@ -558,7 +585,7 @@ class PermanentSession implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets rythmes
      *
-     * @param mixed[]|null $rythmes rythmes
+     * @param int[]|null $rythmes rythmes
      *
      * @return $this
      */
@@ -866,7 +893,7 @@ class PermanentSession implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets rythmes_readable
      *
-     * @return mixed[]|null
+     * @return string[]|null
      */
     public function getRythmesReadable(): ?array
     {
@@ -876,7 +903,7 @@ class PermanentSession implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets rythmes_readable
      *
-     * @param mixed[]|null $rythmes_readable rythmes_readable
+     * @param string[]|null $rythmes_readable rythmes_readable
      *
      * @return $this
      */
@@ -893,7 +920,7 @@ class PermanentSession implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets created_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -903,7 +930,7 @@ class PermanentSession implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets created_at
      *
-     * @param \DateTime|null $created_at created_at
+     * @param \DateTime $created_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -927,7 +954,7 @@ class PermanentSession implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets updated_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -937,7 +964,7 @@ class PermanentSession implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets updated_at
      *
-     * @param \DateTime|null $updated_at updated_at
+     * @param \DateTime $updated_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -961,7 +988,7 @@ class PermanentSession implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets deleted_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDeletedAt(): ?\DateTime
     {
@@ -971,7 +998,7 @@ class PermanentSession implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets deleted_at
      *
-     * @param \DateTime|null $deleted_at deleted_at
+     * @param \DateTime $deleted_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -988,6 +1015,74 @@ class PermanentSession implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['deleted_at'] = $deleted_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets responsable
+     *
+     * @return \Dbout\DendreoSdk\Model\Administrateur|null
+     */
+    public function getResponsable(): ?\Dbout\DendreoSdk\Model\Administrateur
+    {
+        return $this->container['responsable'];
+    }
+
+    /**
+     * Sets responsable
+     *
+     * @param \Dbout\DendreoSdk\Model\Administrateur|null $responsable Présent uniquement avec `include=responsable`.
+     *
+     * @return $this
+     */
+    public function setResponsable(?\Dbout\DendreoSdk\Model\Administrateur $responsable): static
+    {
+        if (is_null($responsable)) {
+            array_push($this->openAPINullablesSetToNull, 'responsable');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('responsable', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['responsable'] = $responsable;
+
+        return $this;
+    }
+
+    /**
+     * Gets centre
+     *
+     * @return \Dbout\DendreoSdk\Model\CentresDeFormation|null
+     */
+    public function getCentre(): ?\Dbout\DendreoSdk\Model\CentresDeFormation
+    {
+        return $this->container['centre'];
+    }
+
+    /**
+     * Sets centre
+     *
+     * @param \Dbout\DendreoSdk\Model\CentresDeFormation|null $centre Présent uniquement avec `include=centre`. Vaut `null` pour une session rattachée au centre « Global ».
+     *
+     * @return $this
+     */
+    public function setCentre(?\Dbout\DendreoSdk\Model\CentresDeFormation $centre): static
+    {
+        if (is_null($centre)) {
+            array_push($this->openAPINullablesSetToNull, 'centre');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('centre', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['centre'] = $centre;
 
         return $this;
     }

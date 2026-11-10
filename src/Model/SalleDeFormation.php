@@ -19,6 +19,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
+ * @description Les champs additionnels du compte sont ajoutés à la ressource, sous leur nom de champ.
  * @package  Dbout\DendreoSdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -80,7 +81,9 @@ class SalleDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => '\DateTime',
         'id_edit' => 'int',
         'deleted_at' => '\DateTime',
-        'id_delete' => 'int'
+        'id_delete' => 'int',
+        'emplacement' => '\Dbout\DendreoSdk\Model\SalleDeFormationEmplacement',
+        'centres' => '\Dbout\DendreoSdk\Model\CentresDeFormation[]'
     ];
 
     /**
@@ -128,7 +131,9 @@ class SalleDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => 'date-time',
         'id_edit' => null,
         'deleted_at' => 'date-time',
-        'id_delete' => null
+        'id_delete' => null,
+        'emplacement' => null,
+        'centres' => null
     ];
 
     /**
@@ -176,7 +181,9 @@ class SalleDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => true,
         'id_edit' => true,
         'deleted_at' => true,
-        'id_delete' => true
+        'id_delete' => true,
+        'emplacement' => true,
+        'centres' => false
     ];
 
     /**
@@ -304,7 +311,9 @@ class SalleDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => 'updated_at',
         'id_edit' => 'id_edit',
         'deleted_at' => 'deleted_at',
-        'id_delete' => 'id_delete'
+        'id_delete' => 'id_delete',
+        'emplacement' => 'emplacement',
+        'centres' => 'centres'
     ];
 
     /**
@@ -352,7 +361,9 @@ class SalleDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => 'setUpdatedAt',
         'id_edit' => 'setIdEdit',
         'deleted_at' => 'setDeletedAt',
-        'id_delete' => 'setIdDelete'
+        'id_delete' => 'setIdDelete',
+        'emplacement' => 'setEmplacement',
+        'centres' => 'setCentres'
     ];
 
     /**
@@ -400,7 +411,9 @@ class SalleDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => 'getUpdatedAt',
         'id_edit' => 'getIdEdit',
         'deleted_at' => 'getDeletedAt',
-        'id_delete' => 'getIdDelete'
+        'id_delete' => 'getIdDelete',
+        'emplacement' => 'getEmplacement',
+        'centres' => 'getCentres'
     ];
 
     /**
@@ -499,6 +512,8 @@ class SalleDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('id_edit', $data ?? [], null);
         $this->setIfExists('deleted_at', $data ?? [], null);
         $this->setIfExists('id_delete', $data ?? [], null);
+        $this->setIfExists('emplacement', $data ?? [], null);
+        $this->setIfExists('centres', $data ?? [], null);
     }
 
     /**
@@ -528,6 +543,18 @@ class SalleDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
+        }
+        if ($this->container['deleted_at'] === null) {
+            $invalidProperties[] = "'deleted_at' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -546,9 +573,9 @@ class SalleDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets id
      *
-     * @return int|null
+     * @return int
      */
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->container['id'];
     }
@@ -556,11 +583,11 @@ class SalleDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets id
      *
-     * @param int|null $id id
+     * @param int $id id
      *
      * @return $this
      */
-    public function setId(?int $id): static
+    public function setId(int $id): static
     {
         if (is_null($id)) {
             throw new InvalidArgumentException('non-nullable id cannot be null');
@@ -1370,7 +1397,7 @@ class SalleDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets id_centre_de_formation
      *
-     * @param string|null $id_centre_de_formation id_centre_de_formation
+     * @param string|null $id_centre_de_formation Identifiants des centres de formation de la salle, séparés par des virgules (`1,3`), ou `0` quand elle est visible de tous les centres. Le détail des centres est renvoyé par `include=centres`.
      *
      * @return $this
      */
@@ -1597,7 +1624,7 @@ class SalleDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets created_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -1607,7 +1634,7 @@ class SalleDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets created_at
      *
-     * @param \DateTime|null $created_at created_at
+     * @param \DateTime $created_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -1665,7 +1692,7 @@ class SalleDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets updated_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -1675,7 +1702,7 @@ class SalleDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets updated_at
      *
-     * @param \DateTime|null $updated_at updated_at
+     * @param \DateTime $updated_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -1733,7 +1760,7 @@ class SalleDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets deleted_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDeletedAt(): ?\DateTime
     {
@@ -1743,7 +1770,7 @@ class SalleDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets deleted_at
      *
-     * @param \DateTime|null $deleted_at deleted_at
+     * @param \DateTime $deleted_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -1794,6 +1821,67 @@ class SalleDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['id_delete'] = $id_delete;
+
+        return $this;
+    }
+
+    /**
+     * Gets emplacement
+     *
+     * @return \Dbout\DendreoSdk\Model\SalleDeFormationEmplacement|null
+     */
+    public function getEmplacement(): ?\Dbout\DendreoSdk\Model\SalleDeFormationEmplacement
+    {
+        return $this->container['emplacement'];
+    }
+
+    /**
+     * Sets emplacement
+     *
+     * @param \Dbout\DendreoSdk\Model\SalleDeFormationEmplacement|null $emplacement emplacement
+     *
+     * @return $this
+     */
+    public function setEmplacement(?\Dbout\DendreoSdk\Model\SalleDeFormationEmplacement $emplacement): static
+    {
+        if (is_null($emplacement)) {
+            array_push($this->openAPINullablesSetToNull, 'emplacement');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('emplacement', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['emplacement'] = $emplacement;
+
+        return $this;
+    }
+
+    /**
+     * Gets centres
+     *
+     * @return \Dbout\DendreoSdk\Model\CentresDeFormation[]|null
+     */
+    public function getCentres(): ?array
+    {
+        return $this->container['centres'];
+    }
+
+    /**
+     * Sets centres
+     *
+     * @param \Dbout\DendreoSdk\Model\CentresDeFormation[]|null $centres Présent uniquement avec `include=centres`.
+     *
+     * @return $this
+     */
+    public function setCentres(?array $centres): static
+    {
+        if (is_null($centres)) {
+            throw new InvalidArgumentException('non-nullable centres cannot be null');
+        }
+        $this->container['centres'] = $centres;
 
         return $this;
     }

@@ -209,7 +209,7 @@ class ActionsDeFormationApi
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Dbout\DendreoSdk\Model\ActionsDeFormationDestroy409Response',
+                        '\Dbout\DendreoSdk\Model\ErrorMessage',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1492,7 +1492,7 @@ class ActionsDeFormationApi
      *
      * Créer une action de formation
      *
-     * @param  \Dbout\DendreoSdk\Model\ActionsDeFormationStoreRequest $actions_de_formation_store_request actions_de_formation_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\ActionDeFormationStoreRequest $action_de_formation_store_request action_de_formation_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1500,11 +1500,11 @@ class ActionsDeFormationApi
      * @return \Dbout\DendreoSdk\Model\ActionDeFormationResponse
      */
     public function store(
-        \Dbout\DendreoSdk\Model\ActionsDeFormationStoreRequest $actions_de_formation_store_request,
+        \Dbout\DendreoSdk\Model\ActionDeFormationStoreRequest $action_de_formation_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): \Dbout\DendreoSdk\Model\ActionDeFormationResponse
     {
-        list($response) = $this->storeWithHttpInfo($actions_de_formation_store_request, $contentType);
+        list($response) = $this->storeWithHttpInfo($action_de_formation_store_request, $contentType);
         return $response;
     }
 
@@ -1513,7 +1513,7 @@ class ActionsDeFormationApi
      *
      * Créer une action de formation
      *
-     * @param  \Dbout\DendreoSdk\Model\ActionsDeFormationStoreRequest $actions_de_formation_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\ActionDeFormationStoreRequest $action_de_formation_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1521,11 +1521,11 @@ class ActionsDeFormationApi
      * @return array of \Dbout\DendreoSdk\Model\ActionDeFormationResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function storeWithHttpInfo(
-        \Dbout\DendreoSdk\Model\ActionsDeFormationStoreRequest $actions_de_formation_store_request,
+        \Dbout\DendreoSdk\Model\ActionDeFormationStoreRequest $action_de_formation_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): array
     {
-        $request = $this->storeRequest($actions_de_formation_store_request, $contentType);
+        $request = $this->storeRequest($action_de_formation_store_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1640,18 +1640,18 @@ class ActionsDeFormationApi
      *
      * Créer une action de formation
      *
-     * @param  \Dbout\DendreoSdk\Model\ActionsDeFormationStoreRequest $actions_de_formation_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\ActionDeFormationStoreRequest $action_de_formation_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
     public function storeAsync(
-        \Dbout\DendreoSdk\Model\ActionsDeFormationStoreRequest $actions_de_formation_store_request,
+        \Dbout\DendreoSdk\Model\ActionDeFormationStoreRequest $action_de_formation_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): PromiseInterface
     {
-        return $this->storeAsyncWithHttpInfo($actions_de_formation_store_request, $contentType)
+        return $this->storeAsyncWithHttpInfo($action_de_formation_store_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1664,19 +1664,19 @@ class ActionsDeFormationApi
      *
      * Créer une action de formation
      *
-     * @param  \Dbout\DendreoSdk\Model\ActionsDeFormationStoreRequest $actions_de_formation_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\ActionDeFormationStoreRequest $action_de_formation_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
     public function storeAsyncWithHttpInfo(
-        \Dbout\DendreoSdk\Model\ActionsDeFormationStoreRequest $actions_de_formation_store_request,
+        \Dbout\DendreoSdk\Model\ActionDeFormationStoreRequest $action_de_formation_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): PromiseInterface
     {
         $returnType = '\Dbout\DendreoSdk\Model\ActionDeFormationResponse';
-        $request = $this->storeRequest($actions_de_formation_store_request, $contentType);
+        $request = $this->storeRequest($action_de_formation_store_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1717,28 +1717,28 @@ class ActionsDeFormationApi
     /**
      * Create request for operation 'store'
      *
-     * @param  \Dbout\DendreoSdk\Model\ActionsDeFormationStoreRequest $actions_de_formation_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\ActionDeFormationStoreRequest $action_de_formation_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     public function storeRequest(
-        \Dbout\DendreoSdk\Model\ActionsDeFormationStoreRequest $actions_de_formation_store_request,
+        \Dbout\DendreoSdk\Model\ActionDeFormationStoreRequest $action_de_formation_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): Request
     {
 
-        // verify the required parameter 'actions_de_formation_store_request' is set
-        if ($actions_de_formation_store_request === null || (is_array($actions_de_formation_store_request) && count($actions_de_formation_store_request) === 0)) {
+        // verify the required parameter 'action_de_formation_store_request' is set
+        if ($action_de_formation_store_request === null || (is_array($action_de_formation_store_request) && count($action_de_formation_store_request) === 0)) {
             throw new InvalidArgumentException(
-                'Missing the required parameter $actions_de_formation_store_request when calling store'
+                'Missing the required parameter $action_de_formation_store_request when calling store'
             );
         }
-        if ($actions_de_formation_store_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$actions_de_formation_store_request->valid()) {
+        if ($action_de_formation_store_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$action_de_formation_store_request->valid()) {
             throw new InvalidArgumentException(sprintf(
-                'Invalid parameter $actions_de_formation_store_request when calling store: %s',
-                implode(' ', $actions_de_formation_store_request->listInvalidProperties())
+                'Invalid parameter $action_de_formation_store_request when calling store: %s',
+                implode(' ', $action_de_formation_store_request->listInvalidProperties())
             ));
         }
 
@@ -1761,12 +1761,12 @@ class ActionsDeFormationApi
         );
 
         // for model (json/xml)
-        if (isset($actions_de_formation_store_request)) {
+        if (isset($action_de_formation_store_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($actions_de_formation_store_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($action_de_formation_store_request));
             } else {
-                $httpBody = $actions_de_formation_store_request;
+                $httpBody = $action_de_formation_store_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1829,7 +1829,7 @@ class ActionsDeFormationApi
      * Mettre à jour une action de formation
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\ActionsDeFormationUpdateRequest|null $actions_de_formation_update_request actions_de_formation_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\ActionDeFormationUpdateRequest|null $action_de_formation_update_request action_de_formation_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1838,11 +1838,11 @@ class ActionsDeFormationApi
      */
     public function update(
         int $id,
-        ?\Dbout\DendreoSdk\Model\ActionsDeFormationUpdateRequest $actions_de_formation_update_request = null,
+        ?\Dbout\DendreoSdk\Model\ActionDeFormationUpdateRequest $action_de_formation_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): \Dbout\DendreoSdk\Model\ActionDeFormationResponse
     {
-        list($response) = $this->updateWithHttpInfo($id, $actions_de_formation_update_request, $contentType);
+        list($response) = $this->updateWithHttpInfo($id, $action_de_formation_update_request, $contentType);
         return $response;
     }
 
@@ -1852,7 +1852,7 @@ class ActionsDeFormationApi
      * Mettre à jour une action de formation
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\ActionsDeFormationUpdateRequest|null $actions_de_formation_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\ActionDeFormationUpdateRequest|null $action_de_formation_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1861,11 +1861,11 @@ class ActionsDeFormationApi
      */
     public function updateWithHttpInfo(
         int $id,
-        ?\Dbout\DendreoSdk\Model\ActionsDeFormationUpdateRequest $actions_de_formation_update_request = null,
+        ?\Dbout\DendreoSdk\Model\ActionDeFormationUpdateRequest $action_de_formation_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): array
     {
-        $request = $this->updateRequest($id, $actions_de_formation_update_request, $contentType);
+        $request = $this->updateRequest($id, $action_de_formation_update_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1995,7 +1995,7 @@ class ActionsDeFormationApi
      * Mettre à jour une action de formation
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\ActionsDeFormationUpdateRequest|null $actions_de_formation_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\ActionDeFormationUpdateRequest|null $action_de_formation_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -2003,11 +2003,11 @@ class ActionsDeFormationApi
      */
     public function updateAsync(
         int $id,
-        ?\Dbout\DendreoSdk\Model\ActionsDeFormationUpdateRequest $actions_de_formation_update_request = null,
+        ?\Dbout\DendreoSdk\Model\ActionDeFormationUpdateRequest $action_de_formation_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): PromiseInterface
     {
-        return $this->updateAsyncWithHttpInfo($id, $actions_de_formation_update_request, $contentType)
+        return $this->updateAsyncWithHttpInfo($id, $action_de_formation_update_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2021,7 +2021,7 @@ class ActionsDeFormationApi
      * Mettre à jour une action de formation
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\ActionsDeFormationUpdateRequest|null $actions_de_formation_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\ActionDeFormationUpdateRequest|null $action_de_formation_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -2029,12 +2029,12 @@ class ActionsDeFormationApi
      */
     public function updateAsyncWithHttpInfo(
         int $id,
-        ?\Dbout\DendreoSdk\Model\ActionsDeFormationUpdateRequest $actions_de_formation_update_request = null,
+        ?\Dbout\DendreoSdk\Model\ActionDeFormationUpdateRequest $action_de_formation_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): PromiseInterface
     {
         $returnType = '\Dbout\DendreoSdk\Model\ActionDeFormationResponse';
-        $request = $this->updateRequest($id, $actions_de_formation_update_request, $contentType);
+        $request = $this->updateRequest($id, $action_de_formation_update_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2076,7 +2076,7 @@ class ActionsDeFormationApi
      * Create request for operation 'update'
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\ActionsDeFormationUpdateRequest|null $actions_de_formation_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\ActionDeFormationUpdateRequest|null $action_de_formation_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -2084,7 +2084,7 @@ class ActionsDeFormationApi
      */
     public function updateRequest(
         int $id,
-        ?\Dbout\DendreoSdk\Model\ActionsDeFormationUpdateRequest $actions_de_formation_update_request = null,
+        ?\Dbout\DendreoSdk\Model\ActionDeFormationUpdateRequest $action_de_formation_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): Request
     {
@@ -2096,10 +2096,10 @@ class ActionsDeFormationApi
             );
         }
 
-        if ($actions_de_formation_update_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$actions_de_formation_update_request->valid()) {
+        if ($action_de_formation_update_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$action_de_formation_update_request->valid()) {
             throw new InvalidArgumentException(sprintf(
-                'Invalid parameter $actions_de_formation_update_request when calling update: %s',
-                implode(' ', $actions_de_formation_update_request->listInvalidProperties())
+                'Invalid parameter $action_de_formation_update_request when calling update: %s',
+                implode(' ', $action_de_formation_update_request->listInvalidProperties())
             ));
         }
 
@@ -2130,12 +2130,12 @@ class ActionsDeFormationApi
         );
 
         // for model (json/xml)
-        if (isset($actions_de_formation_update_request)) {
+        if (isset($action_de_formation_update_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($actions_de_formation_update_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($action_de_formation_update_request));
             } else {
-                $httpBody = $actions_de_formation_update_request;
+                $httpBody = $action_de_formation_update_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

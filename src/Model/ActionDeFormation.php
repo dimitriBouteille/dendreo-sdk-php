@@ -19,6 +19,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
+ * @description Les champs additionnels du compte sont ajoutés à la ressource, sous leur nom de champ.
  * @package  Dbout\DendreoSdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -71,7 +72,7 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
         'nature' => 'string',
         'inscription_online' => 'bool',
         'include_in_bpf' => 'bool',
-        'total_heures_participants' => 'string',
+        'total_heures_participants' => 'float',
         'total_participants' => 'string',
         'satisfaction_disabled' => 'bool',
         'id_responsable' => 'int',
@@ -80,9 +81,9 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
         'mode_organisation' => 'string',
         'commentaires' => 'string',
         'commentaires_agenda' => 'string',
-        'tva_formation' => 'string',
-        'tva_hors_formation' => 'string',
-        'tva_frais' => 'string',
+        'tva_formation' => 'float',
+        'tva_hors_formation' => 'float',
+        'tva_frais' => 'float',
         'id_externe' => 'string',
         'esignature' => 'bool',
         'remuneration_par_lmf' => 'bool',
@@ -106,7 +107,25 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => '\DateTime',
         'id_edit' => 'int',
         'deleted_at' => '\DateTime',
-        'id_delete' => 'int'
+        'id_delete' => 'int',
+        'etape_process' => '\Dbout\DendreoSdk\Model\EtapeProcess',
+        'visuel' => 'string',
+        'dokeos_learning_path_id' => 'int',
+        'dokeos_group_id' => 'int',
+        'tslearning_group_id' => 'string',
+        'riseup_group_id' => 'int',
+        'riseup_learning_path_id' => 'int',
+        'num_session_dpc' => 'string',
+        'ogdpc_orientation' => 'string',
+        'ogdpc_orientation_ide' => 'int',
+        'ogdpc_orientation_as' => 'int',
+        'emargements_url' => 'string',
+        'pourcentage_planification' => 'float',
+        'duree_planification_restante_heures' => 'float',
+        'nb_participants_inscrits' => 'int',
+        'nb_participants_non_inscrits' => 'int',
+        'nb_participants_en_attente' => 'int',
+        'moyenne_satisfaction' => 'int'
     ];
 
     /**
@@ -180,7 +199,25 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => 'date-time',
         'id_edit' => null,
         'deleted_at' => 'date-time',
-        'id_delete' => null
+        'id_delete' => null,
+        'etape_process' => null,
+        'visuel' => null,
+        'dokeos_learning_path_id' => null,
+        'dokeos_group_id' => null,
+        'tslearning_group_id' => null,
+        'riseup_group_id' => null,
+        'riseup_learning_path_id' => null,
+        'num_session_dpc' => null,
+        'ogdpc_orientation' => null,
+        'ogdpc_orientation_ide' => null,
+        'ogdpc_orientation_as' => null,
+        'emargements_url' => null,
+        'pourcentage_planification' => null,
+        'duree_planification_restante_heures' => null,
+        'nb_participants_inscrits' => null,
+        'nb_participants_non_inscrits' => null,
+        'nb_participants_en_attente' => null,
+        'moyenne_satisfaction' => null
     ];
 
     /**
@@ -254,7 +291,25 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => true,
         'id_edit' => true,
         'deleted_at' => true,
-        'id_delete' => true
+        'id_delete' => true,
+        'etape_process' => true,
+        'visuel' => true,
+        'dokeos_learning_path_id' => true,
+        'dokeos_group_id' => true,
+        'tslearning_group_id' => true,
+        'riseup_group_id' => true,
+        'riseup_learning_path_id' => true,
+        'num_session_dpc' => true,
+        'ogdpc_orientation' => true,
+        'ogdpc_orientation_ide' => true,
+        'ogdpc_orientation_as' => true,
+        'emargements_url' => true,
+        'pourcentage_planification' => true,
+        'duree_planification_restante_heures' => true,
+        'nb_participants_inscrits' => true,
+        'nb_participants_non_inscrits' => true,
+        'nb_participants_en_attente' => true,
+        'moyenne_satisfaction' => true
     ];
 
     /**
@@ -408,7 +463,25 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => 'updated_at',
         'id_edit' => 'id_edit',
         'deleted_at' => 'deleted_at',
-        'id_delete' => 'id_delete'
+        'id_delete' => 'id_delete',
+        'etape_process' => 'etape_process',
+        'visuel' => 'visuel',
+        'dokeos_learning_path_id' => 'dokeos_learning_path_id',
+        'dokeos_group_id' => 'dokeos_group_id',
+        'tslearning_group_id' => 'tslearning_group_id',
+        'riseup_group_id' => 'riseup_group_id',
+        'riseup_learning_path_id' => 'riseup_learning_path_id',
+        'num_session_dpc' => 'num_session_dpc',
+        'ogdpc_orientation' => 'ogdpc_orientation',
+        'ogdpc_orientation_ide' => 'ogdpc_orientation_ide',
+        'ogdpc_orientation_as' => 'ogdpc_orientation_as',
+        'emargements_url' => 'emargements_url',
+        'pourcentage_planification' => 'pourcentage_planification',
+        'duree_planification_restante_heures' => 'duree_planification_restante_heures',
+        'nb_participants_inscrits' => 'nb_participants_inscrits',
+        'nb_participants_non_inscrits' => 'nb_participants_non_inscrits',
+        'nb_participants_en_attente' => 'nb_participants_en_attente',
+        'moyenne_satisfaction' => 'moyenne_satisfaction'
     ];
 
     /**
@@ -482,7 +555,25 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => 'setUpdatedAt',
         'id_edit' => 'setIdEdit',
         'deleted_at' => 'setDeletedAt',
-        'id_delete' => 'setIdDelete'
+        'id_delete' => 'setIdDelete',
+        'etape_process' => 'setEtapeProcess',
+        'visuel' => 'setVisuel',
+        'dokeos_learning_path_id' => 'setDokeosLearningPathId',
+        'dokeos_group_id' => 'setDokeosGroupId',
+        'tslearning_group_id' => 'setTslearningGroupId',
+        'riseup_group_id' => 'setRiseupGroupId',
+        'riseup_learning_path_id' => 'setRiseupLearningPathId',
+        'num_session_dpc' => 'setNumSessionDpc',
+        'ogdpc_orientation' => 'setOgdpcOrientation',
+        'ogdpc_orientation_ide' => 'setOgdpcOrientationIde',
+        'ogdpc_orientation_as' => 'setOgdpcOrientationAs',
+        'emargements_url' => 'setEmargementsUrl',
+        'pourcentage_planification' => 'setPourcentagePlanification',
+        'duree_planification_restante_heures' => 'setDureePlanificationRestanteHeures',
+        'nb_participants_inscrits' => 'setNbParticipantsInscrits',
+        'nb_participants_non_inscrits' => 'setNbParticipantsNonInscrits',
+        'nb_participants_en_attente' => 'setNbParticipantsEnAttente',
+        'moyenne_satisfaction' => 'setMoyenneSatisfaction'
     ];
 
     /**
@@ -556,7 +647,25 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => 'getUpdatedAt',
         'id_edit' => 'getIdEdit',
         'deleted_at' => 'getDeletedAt',
-        'id_delete' => 'getIdDelete'
+        'id_delete' => 'getIdDelete',
+        'etape_process' => 'getEtapeProcess',
+        'visuel' => 'getVisuel',
+        'dokeos_learning_path_id' => 'getDokeosLearningPathId',
+        'dokeos_group_id' => 'getDokeosGroupId',
+        'tslearning_group_id' => 'getTslearningGroupId',
+        'riseup_group_id' => 'getRiseupGroupId',
+        'riseup_learning_path_id' => 'getRiseupLearningPathId',
+        'num_session_dpc' => 'getNumSessionDpc',
+        'ogdpc_orientation' => 'getOgdpcOrientation',
+        'ogdpc_orientation_ide' => 'getOgdpcOrientationIde',
+        'ogdpc_orientation_as' => 'getOgdpcOrientationAs',
+        'emargements_url' => 'getEmargementsUrl',
+        'pourcentage_planification' => 'getPourcentagePlanification',
+        'duree_planification_restante_heures' => 'getDureePlanificationRestanteHeures',
+        'nb_participants_inscrits' => 'getNbParticipantsInscrits',
+        'nb_participants_non_inscrits' => 'getNbParticipantsNonInscrits',
+        'nb_participants_en_attente' => 'getNbParticipantsEnAttente',
+        'moyenne_satisfaction' => 'getMoyenneSatisfaction'
     ];
 
     /**
@@ -681,6 +790,24 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('id_edit', $data ?? [], null);
         $this->setIfExists('deleted_at', $data ?? [], null);
         $this->setIfExists('id_delete', $data ?? [], null);
+        $this->setIfExists('etape_process', $data ?? [], null);
+        $this->setIfExists('visuel', $data ?? [], null);
+        $this->setIfExists('dokeos_learning_path_id', $data ?? [], null);
+        $this->setIfExists('dokeos_group_id', $data ?? [], null);
+        $this->setIfExists('tslearning_group_id', $data ?? [], null);
+        $this->setIfExists('riseup_group_id', $data ?? [], null);
+        $this->setIfExists('riseup_learning_path_id', $data ?? [], null);
+        $this->setIfExists('num_session_dpc', $data ?? [], null);
+        $this->setIfExists('ogdpc_orientation', $data ?? [], null);
+        $this->setIfExists('ogdpc_orientation_ide', $data ?? [], null);
+        $this->setIfExists('ogdpc_orientation_as', $data ?? [], null);
+        $this->setIfExists('emargements_url', $data ?? [], null);
+        $this->setIfExists('pourcentage_planification', $data ?? [], null);
+        $this->setIfExists('duree_planification_restante_heures', $data ?? [], null);
+        $this->setIfExists('nb_participants_inscrits', $data ?? [], null);
+        $this->setIfExists('nb_participants_non_inscrits', $data ?? [], null);
+        $this->setIfExists('nb_participants_en_attente', $data ?? [], null);
+        $this->setIfExists('moyenne_satisfaction', $data ?? [], null);
     }
 
     /**
@@ -710,6 +837,18 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
+        }
+        if ($this->container['deleted_at'] === null) {
+            $invalidProperties[] = "'deleted_at' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -728,9 +867,9 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets id
      *
-     * @return int|null
+     * @return int
      */
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->container['id'];
     }
@@ -738,11 +877,11 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets id
      *
-     * @param int|null $id id
+     * @param int $id id
      *
      * @return $this
      */
-    public function setId(?int $id): static
+    public function setId(int $id): static
     {
         if (is_null($id)) {
             throw new InvalidArgumentException('non-nullable id cannot be null');
@@ -1678,9 +1817,9 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets total_heures_participants
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getTotalHeuresParticipants(): ?string
+    public function getTotalHeuresParticipants(): ?float
     {
         return $this->container['total_heures_participants'];
     }
@@ -1688,11 +1827,11 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets total_heures_participants
      *
-     * @param string|null $total_heures_participants total_heures_participants
+     * @param float|null $total_heures_participants total_heures_participants
      *
      * @return $this
      */
-    public function setTotalHeuresParticipants(?string $total_heures_participants): static
+    public function setTotalHeuresParticipants(?float $total_heures_participants): static
     {
         if (is_null($total_heures_participants)) {
             array_push($this->openAPINullablesSetToNull, 'total_heures_participants');
@@ -1970,9 +2109,9 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets tva_formation
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getTvaFormation(): ?string
+    public function getTvaFormation(): ?float
     {
         return $this->container['tva_formation'];
     }
@@ -1980,11 +2119,11 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets tva_formation
      *
-     * @param string|null $tva_formation tva_formation
+     * @param float|null $tva_formation tva_formation
      *
      * @return $this
      */
-    public function setTvaFormation(?string $tva_formation): static
+    public function setTvaFormation(?float $tva_formation): static
     {
         if (is_null($tva_formation)) {
             array_push($this->openAPINullablesSetToNull, 'tva_formation');
@@ -2004,9 +2143,9 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets tva_hors_formation
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getTvaHorsFormation(): ?string
+    public function getTvaHorsFormation(): ?float
     {
         return $this->container['tva_hors_formation'];
     }
@@ -2014,11 +2153,11 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets tva_hors_formation
      *
-     * @param string|null $tva_hors_formation tva_hors_formation
+     * @param float|null $tva_hors_formation tva_hors_formation
      *
      * @return $this
      */
-    public function setTvaHorsFormation(?string $tva_hors_formation): static
+    public function setTvaHorsFormation(?float $tva_hors_formation): static
     {
         if (is_null($tva_hors_formation)) {
             array_push($this->openAPINullablesSetToNull, 'tva_hors_formation');
@@ -2038,9 +2177,9 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets tva_frais
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getTvaFrais(): ?string
+    public function getTvaFrais(): ?float
     {
         return $this->container['tva_frais'];
     }
@@ -2048,11 +2187,11 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets tva_frais
      *
-     * @param string|null $tva_frais tva_frais
+     * @param float|null $tva_frais tva_frais
      *
      * @return $this
      */
-    public function setTvaFrais(?string $tva_frais): static
+    public function setTvaFrais(?float $tva_frais): static
     {
         if (is_null($tva_frais)) {
             array_push($this->openAPINullablesSetToNull, 'tva_frais');
@@ -2663,7 +2802,7 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets created_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -2673,7 +2812,7 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets created_at
      *
-     * @param \DateTime|null $created_at created_at
+     * @param \DateTime $created_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -2731,7 +2870,7 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets updated_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -2741,7 +2880,7 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets updated_at
      *
-     * @param \DateTime|null $updated_at updated_at
+     * @param \DateTime $updated_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -2799,7 +2938,7 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets deleted_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDeletedAt(): ?\DateTime
     {
@@ -2809,7 +2948,7 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets deleted_at
      *
-     * @param \DateTime|null $deleted_at deleted_at
+     * @param \DateTime $deleted_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -2860,6 +2999,618 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['id_delete'] = $id_delete;
+
+        return $this;
+    }
+
+    /**
+     * Gets etape_process
+     *
+     * @return \Dbout\DendreoSdk\Model\EtapeProcess|null
+     */
+    public function getEtapeProcess(): ?\Dbout\DendreoSdk\Model\EtapeProcess
+    {
+        return $this->container['etape_process'];
+    }
+
+    /**
+     * Sets etape_process
+     *
+     * @param \Dbout\DendreoSdk\Model\EtapeProcess|null $etape_process Présent uniquement avec `include=etapeProcess`.
+     *
+     * @return $this
+     */
+    public function setEtapeProcess(?\Dbout\DendreoSdk\Model\EtapeProcess $etape_process): static
+    {
+        if (is_null($etape_process)) {
+            array_push($this->openAPINullablesSetToNull, 'etape_process');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('etape_process', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['etape_process'] = $etape_process;
+
+        return $this;
+    }
+
+    /**
+     * Gets visuel
+     *
+     * @return string|null
+     */
+    public function getVisuel(): ?string
+    {
+        return $this->container['visuel'];
+    }
+
+    /**
+     * Sets visuel
+     *
+     * @param string|null $visuel Présent uniquement avec `include=visuel`. URL du visuel de l'action de formation.
+     *
+     * @return $this
+     */
+    public function setVisuel(?string $visuel): static
+    {
+        if (is_null($visuel)) {
+            array_push($this->openAPINullablesSetToNull, 'visuel');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('visuel', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['visuel'] = $visuel;
+
+        return $this;
+    }
+
+    /**
+     * Gets dokeos_learning_path_id
+     *
+     * @return int|null
+     */
+    public function getDokeosLearningPathId(): ?int
+    {
+        return $this->container['dokeos_learning_path_id'];
+    }
+
+    /**
+     * Sets dokeos_learning_path_id
+     *
+     * @param int|null $dokeos_learning_path_id Présent uniquement si l'intégration Dokeos est activée sur le compte.
+     *
+     * @return $this
+     */
+    public function setDokeosLearningPathId(?int $dokeos_learning_path_id): static
+    {
+        if (is_null($dokeos_learning_path_id)) {
+            array_push($this->openAPINullablesSetToNull, 'dokeos_learning_path_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dokeos_learning_path_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['dokeos_learning_path_id'] = $dokeos_learning_path_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets dokeos_group_id
+     *
+     * @return int|null
+     */
+    public function getDokeosGroupId(): ?int
+    {
+        return $this->container['dokeos_group_id'];
+    }
+
+    /**
+     * Sets dokeos_group_id
+     *
+     * @param int|null $dokeos_group_id Présent uniquement si l'intégration Dokeos est activée sur le compte.
+     *
+     * @return $this
+     */
+    public function setDokeosGroupId(?int $dokeos_group_id): static
+    {
+        if (is_null($dokeos_group_id)) {
+            array_push($this->openAPINullablesSetToNull, 'dokeos_group_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dokeos_group_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['dokeos_group_id'] = $dokeos_group_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets tslearning_group_id
+     *
+     * @return string|null
+     */
+    public function getTslearningGroupId(): ?string
+    {
+        return $this->container['tslearning_group_id'];
+    }
+
+    /**
+     * Sets tslearning_group_id
+     *
+     * @param string|null $tslearning_group_id Présent uniquement si l'intégration TSLearning est activée sur le compte.
+     *
+     * @return $this
+     */
+    public function setTslearningGroupId(?string $tslearning_group_id): static
+    {
+        if (is_null($tslearning_group_id)) {
+            array_push($this->openAPINullablesSetToNull, 'tslearning_group_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tslearning_group_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['tslearning_group_id'] = $tslearning_group_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets riseup_group_id
+     *
+     * @return int|null
+     */
+    public function getRiseupGroupId(): ?int
+    {
+        return $this->container['riseup_group_id'];
+    }
+
+    /**
+     * Sets riseup_group_id
+     *
+     * @param int|null $riseup_group_id Présent uniquement si l'intégration Rise Up est activée sur le compte.
+     *
+     * @return $this
+     */
+    public function setRiseupGroupId(?int $riseup_group_id): static
+    {
+        if (is_null($riseup_group_id)) {
+            array_push($this->openAPINullablesSetToNull, 'riseup_group_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('riseup_group_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['riseup_group_id'] = $riseup_group_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets riseup_learning_path_id
+     *
+     * @return int|null
+     */
+    public function getRiseupLearningPathId(): ?int
+    {
+        return $this->container['riseup_learning_path_id'];
+    }
+
+    /**
+     * Sets riseup_learning_path_id
+     *
+     * @param int|null $riseup_learning_path_id Présent uniquement si l'intégration Rise Up est activée sur le compte.
+     *
+     * @return $this
+     */
+    public function setRiseupLearningPathId(?int $riseup_learning_path_id): static
+    {
+        if (is_null($riseup_learning_path_id)) {
+            array_push($this->openAPINullablesSetToNull, 'riseup_learning_path_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('riseup_learning_path_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['riseup_learning_path_id'] = $riseup_learning_path_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets num_session_dpc
+     *
+     * @return string|null
+     */
+    public function getNumSessionDpc(): ?string
+    {
+        return $this->container['num_session_dpc'];
+    }
+
+    /**
+     * Sets num_session_dpc
+     *
+     * @param string|null $num_session_dpc Présent uniquement si l'option OGDPC est activée pour le centre de formation de l'action.
+     *
+     * @return $this
+     */
+    public function setNumSessionDpc(?string $num_session_dpc): static
+    {
+        if (is_null($num_session_dpc)) {
+            array_push($this->openAPINullablesSetToNull, 'num_session_dpc');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('num_session_dpc', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['num_session_dpc'] = $num_session_dpc;
+
+        return $this;
+    }
+
+    /**
+     * Gets ogdpc_orientation
+     *
+     * @return string|null
+     */
+    public function getOgdpcOrientation(): ?string
+    {
+        return $this->container['ogdpc_orientation'];
+    }
+
+    /**
+     * Sets ogdpc_orientation
+     *
+     * @param string|null $ogdpc_orientation Présent uniquement si l'option OGDPC est activée pour le centre de formation de l'action.
+     *
+     * @return $this
+     */
+    public function setOgdpcOrientation(?string $ogdpc_orientation): static
+    {
+        if (is_null($ogdpc_orientation)) {
+            array_push($this->openAPINullablesSetToNull, 'ogdpc_orientation');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ogdpc_orientation', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['ogdpc_orientation'] = $ogdpc_orientation;
+
+        return $this;
+    }
+
+    /**
+     * Gets ogdpc_orientation_ide
+     *
+     * @return int|null
+     */
+    public function getOgdpcOrientationIde(): ?int
+    {
+        return $this->container['ogdpc_orientation_ide'];
+    }
+
+    /**
+     * Sets ogdpc_orientation_ide
+     *
+     * @param int|null $ogdpc_orientation_ide Présent uniquement si l'option OGDPC est activée pour le centre de formation de l'action.
+     *
+     * @return $this
+     */
+    public function setOgdpcOrientationIde(?int $ogdpc_orientation_ide): static
+    {
+        if (is_null($ogdpc_orientation_ide)) {
+            array_push($this->openAPINullablesSetToNull, 'ogdpc_orientation_ide');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ogdpc_orientation_ide', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['ogdpc_orientation_ide'] = $ogdpc_orientation_ide;
+
+        return $this;
+    }
+
+    /**
+     * Gets ogdpc_orientation_as
+     *
+     * @return int|null
+     */
+    public function getOgdpcOrientationAs(): ?int
+    {
+        return $this->container['ogdpc_orientation_as'];
+    }
+
+    /**
+     * Sets ogdpc_orientation_as
+     *
+     * @param int|null $ogdpc_orientation_as Présent uniquement si l'option OGDPC est activée pour le centre de formation de l'action.
+     *
+     * @return $this
+     */
+    public function setOgdpcOrientationAs(?int $ogdpc_orientation_as): static
+    {
+        if (is_null($ogdpc_orientation_as)) {
+            array_push($this->openAPINullablesSetToNull, 'ogdpc_orientation_as');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ogdpc_orientation_as', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['ogdpc_orientation_as'] = $ogdpc_orientation_as;
+
+        return $this;
+    }
+
+    /**
+     * Gets emargements_url
+     *
+     * @return string|null
+     */
+    public function getEmargementsUrl(): ?string
+    {
+        return $this->container['emargements_url'];
+    }
+
+    /**
+     * Sets emargements_url
+     *
+     * @param string|null $emargements_url URL publique des émargements de l'action de formation.
+     *
+     * @return $this
+     */
+    public function setEmargementsUrl(?string $emargements_url): static
+    {
+        if (is_null($emargements_url)) {
+            array_push($this->openAPINullablesSetToNull, 'emargements_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('emargements_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['emargements_url'] = $emargements_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets pourcentage_planification
+     *
+     * @return float|null
+     */
+    public function getPourcentagePlanification(): ?float
+    {
+        return $this->container['pourcentage_planification'];
+    }
+
+    /**
+     * Sets pourcentage_planification
+     *
+     * @param float|null $pourcentage_planification Part de la durée de l'action déjà planifiée, en pourcentage.
+     *
+     * @return $this
+     */
+    public function setPourcentagePlanification(?float $pourcentage_planification): static
+    {
+        if (is_null($pourcentage_planification)) {
+            array_push($this->openAPINullablesSetToNull, 'pourcentage_planification');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('pourcentage_planification', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['pourcentage_planification'] = $pourcentage_planification;
+
+        return $this;
+    }
+
+    /**
+     * Gets duree_planification_restante_heures
+     *
+     * @return float|null
+     */
+    public function getDureePlanificationRestanteHeures(): ?float
+    {
+        return $this->container['duree_planification_restante_heures'];
+    }
+
+    /**
+     * Sets duree_planification_restante_heures
+     *
+     * @param float|null $duree_planification_restante_heures Durée restant à planifier, en heures.
+     *
+     * @return $this
+     */
+    public function setDureePlanificationRestanteHeures(?float $duree_planification_restante_heures): static
+    {
+        if (is_null($duree_planification_restante_heures)) {
+            array_push($this->openAPINullablesSetToNull, 'duree_planification_restante_heures');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('duree_planification_restante_heures', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['duree_planification_restante_heures'] = $duree_planification_restante_heures;
+
+        return $this;
+    }
+
+    /**
+     * Gets nb_participants_inscrits
+     *
+     * @return int|null
+     */
+    public function getNbParticipantsInscrits(): ?int
+    {
+        return $this->container['nb_participants_inscrits'];
+    }
+
+    /**
+     * Sets nb_participants_inscrits
+     *
+     * @param int|null $nb_participants_inscrits nb_participants_inscrits
+     *
+     * @return $this
+     */
+    public function setNbParticipantsInscrits(?int $nb_participants_inscrits): static
+    {
+        if (is_null($nb_participants_inscrits)) {
+            array_push($this->openAPINullablesSetToNull, 'nb_participants_inscrits');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('nb_participants_inscrits', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['nb_participants_inscrits'] = $nb_participants_inscrits;
+
+        return $this;
+    }
+
+    /**
+     * Gets nb_participants_non_inscrits
+     *
+     * @return int|null
+     */
+    public function getNbParticipantsNonInscrits(): ?int
+    {
+        return $this->container['nb_participants_non_inscrits'];
+    }
+
+    /**
+     * Sets nb_participants_non_inscrits
+     *
+     * @param int|null $nb_participants_non_inscrits nb_participants_non_inscrits
+     *
+     * @return $this
+     */
+    public function setNbParticipantsNonInscrits(?int $nb_participants_non_inscrits): static
+    {
+        if (is_null($nb_participants_non_inscrits)) {
+            array_push($this->openAPINullablesSetToNull, 'nb_participants_non_inscrits');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('nb_participants_non_inscrits', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['nb_participants_non_inscrits'] = $nb_participants_non_inscrits;
+
+        return $this;
+    }
+
+    /**
+     * Gets nb_participants_en_attente
+     *
+     * @return int|null
+     */
+    public function getNbParticipantsEnAttente(): ?int
+    {
+        return $this->container['nb_participants_en_attente'];
+    }
+
+    /**
+     * Sets nb_participants_en_attente
+     *
+     * @param int|null $nb_participants_en_attente nb_participants_en_attente
+     *
+     * @return $this
+     */
+    public function setNbParticipantsEnAttente(?int $nb_participants_en_attente): static
+    {
+        if (is_null($nb_participants_en_attente)) {
+            array_push($this->openAPINullablesSetToNull, 'nb_participants_en_attente');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('nb_participants_en_attente', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['nb_participants_en_attente'] = $nb_participants_en_attente;
+
+        return $this;
+    }
+
+    /**
+     * Gets moyenne_satisfaction
+     *
+     * @return int|null
+     */
+    public function getMoyenneSatisfaction(): ?int
+    {
+        return $this->container['moyenne_satisfaction'];
+    }
+
+    /**
+     * Sets moyenne_satisfaction
+     *
+     * @param int|null $moyenne_satisfaction Note moyenne des questionnaires de satisfaction, ramenée sur 100. `null` sans réponse.
+     *
+     * @return $this
+     */
+    public function setMoyenneSatisfaction(?int $moyenne_satisfaction): static
+    {
+        if (is_null($moyenne_satisfaction)) {
+            array_push($this->openAPINullablesSetToNull, 'moyenne_satisfaction');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('moyenne_satisfaction', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['moyenne_satisfaction'] = $moyenne_satisfaction;
 
         return $this;
     }

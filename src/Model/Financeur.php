@@ -19,6 +19,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
+ * @description Les champs additionnels du compte sont ajoutés à la ressource, sous leur nom de champ.
  * @package  Dbout\DendreoSdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -49,7 +50,7 @@ class Financeur implements ModelInterface, ArrayAccess, JsonSerializable
         'peppol_scheme' => 'string',
         'peppol_identifier' => 'string',
         'num_tva_intra' => 'string',
-        'tva' => 'string',
+        'tva' => 'float',
         'description' => 'string',
         'cible' => 'string',
         'site_internet' => 'string',
@@ -62,7 +63,7 @@ class Financeur implements ModelInterface, ArrayAccess, JsonSerializable
         'compte_client' => 'string',
         'compte_client_auxiliaire' => 'string',
         'numero_comptable_adf' => 'string',
-        'contacts' => '\Dbout\DendreoSdk\Model\FinanceurContactsInner[]',
+        'contacts' => '\Dbout\DendreoSdk\Model\Contact[]',
         'created_at' => '\DateTime',
         'updated_at' => '\DateTime',
         'deleted_at' => '\DateTime'
@@ -423,6 +424,18 @@ class Financeur implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
+        }
+        if ($this->container['deleted_at'] === null) {
+            $invalidProperties[] = "'deleted_at' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -441,9 +454,9 @@ class Financeur implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets id
      *
-     * @return int|null
+     * @return int
      */
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->container['id'];
     }
@@ -451,11 +464,11 @@ class Financeur implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets id
      *
-     * @param int|null $id id
+     * @param int $id id
      *
      * @return $this
      */
-    public function setId(?int $id): static
+    public function setId(int $id): static
     {
         if (is_null($id)) {
             throw new InvalidArgumentException('non-nullable id cannot be null');
@@ -664,9 +677,9 @@ class Financeur implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets tva
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getTva(): ?string
+    public function getTva(): ?float
     {
         return $this->container['tva'];
     }
@@ -674,11 +687,11 @@ class Financeur implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets tva
      *
-     * @param string|null $tva tva
+     * @param float|null $tva tva
      *
      * @return $this
      */
-    public function setTva(?string $tva): static
+    public function setTva(?float $tva): static
     {
         if (is_null($tva)) {
             array_push($this->openAPINullablesSetToNull, 'tva');
@@ -1092,7 +1105,7 @@ class Financeur implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets contacts
      *
-     * @return \Dbout\DendreoSdk\Model\FinanceurContactsInner[]|null
+     * @return \Dbout\DendreoSdk\Model\Contact[]|null
      */
     public function getContacts(): ?array
     {
@@ -1102,7 +1115,7 @@ class Financeur implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets contacts
      *
-     * @param \Dbout\DendreoSdk\Model\FinanceurContactsInner[]|null $contacts contacts
+     * @param \Dbout\DendreoSdk\Model\Contact[]|null $contacts Présent uniquement avec `include=contacts`.
      *
      * @return $this
      */
@@ -1119,7 +1132,7 @@ class Financeur implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets created_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -1129,7 +1142,7 @@ class Financeur implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets created_at
      *
-     * @param \DateTime|null $created_at created_at
+     * @param \DateTime $created_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -1153,7 +1166,7 @@ class Financeur implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets updated_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -1163,7 +1176,7 @@ class Financeur implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets updated_at
      *
-     * @param \DateTime|null $updated_at updated_at
+     * @param \DateTime $updated_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -1187,7 +1200,7 @@ class Financeur implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets deleted_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDeletedAt(): ?\DateTime
     {
@@ -1197,7 +1210,7 @@ class Financeur implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets deleted_at
      *
-     * @param \DateTime|null $deleted_at deleted_at
+     * @param \DateTime $deleted_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */

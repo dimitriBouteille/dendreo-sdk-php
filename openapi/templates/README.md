@@ -23,6 +23,8 @@ Every template that is not in this directory comes from the generator itself.
 |---|---|
 | `toQueryValue()`: a model is converted with `sanitizeForSerialization()` instead of `(array)` | Fixes the `deepObject` serialization of models (`filter[ * container][id]...`) and only sends the fields that are set |
 | `toQueryValue()`: in `deepObject` style, a list is sent comma-separated | Dendreo format: `filter[id]=12,15` instead of `filter[id][0]=12&filter[id][1]=15` |
+| `setTimezone()` and `formatDateTime()` added: received date-times are created in this timezone, sent ones are converted to it | Dendreo returns date-times without offset, in Paris time (`Client` sets `Europe/Paris`) |
+| `deserialize()`: the fields absent from the model are stored in the model container | The schemas have `additionalProperties: true` (additional fields of the account), the generator ignores them; they are readable with `$model['field']` |
 
 ## Upgrading OpenAPI Generator
 

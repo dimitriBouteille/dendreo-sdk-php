@@ -14,7 +14,7 @@ declare(strict_types=1);
  * 1. Filters: groups every `filter[xxx]` query parameter of an operation into a single `filter`
  *    parameter (object, `style: deepObject`) backed by a schema such as `ParticipantFilter`.
  * 2. Inline schemas: extracts inline request bodies and responses into `components/schemas`
- *    with stable names (`ParticipantsStoreRequest`, `AuthenticationError`...).
+ *    with stable names (`AuthenticationError`, `BudgetsDestroy422Response`...).
  *    Must run before step 4: the generator names inline schemas after the operationId.
  * 3. Dates: date-time strings (`Y-m-d H:i:s`, described by a pattern) get `format: date-time`.
  * 4. Services: one service per resource, derived from the operationId prefix

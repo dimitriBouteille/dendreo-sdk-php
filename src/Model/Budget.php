@@ -19,6 +19,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
+ * @description Les champs additionnels du compte sont ajoutés à la ressource, sous leur nom de champ.
  * @package  Dbout\DendreoSdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -66,7 +67,10 @@ class Budget implements ModelInterface, ArrayAccess, JsonSerializable
         'created_at' => '\DateTime',
         'id_add' => 'int',
         'updated_at' => '\DateTime',
-        'id_edit' => 'int'
+        'id_edit' => 'int',
+        'administrateur_add' => '\Dbout\DendreoSdk\Model\Administrateur',
+        'administrateur_edit' => '\Dbout\DendreoSdk\Model\Administrateur',
+        'parent' => '\Dbout\DendreoSdk\Model\Budget'
     ];
 
     /**
@@ -100,7 +104,10 @@ class Budget implements ModelInterface, ArrayAccess, JsonSerializable
         'created_at' => 'date-time',
         'id_add' => null,
         'updated_at' => 'date-time',
-        'id_edit' => null
+        'id_edit' => null,
+        'administrateur_add' => null,
+        'administrateur_edit' => null,
+        'parent' => null
     ];
 
     /**
@@ -134,7 +141,10 @@ class Budget implements ModelInterface, ArrayAccess, JsonSerializable
         'created_at' => true,
         'id_add' => true,
         'updated_at' => true,
-        'id_edit' => true
+        'id_edit' => true,
+        'administrateur_add' => true,
+        'administrateur_edit' => true,
+        'parent' => true
     ];
 
     /**
@@ -248,7 +258,10 @@ class Budget implements ModelInterface, ArrayAccess, JsonSerializable
         'created_at' => 'created_at',
         'id_add' => 'id_add',
         'updated_at' => 'updated_at',
-        'id_edit' => 'id_edit'
+        'id_edit' => 'id_edit',
+        'administrateur_add' => 'administrateur_add',
+        'administrateur_edit' => 'administrateur_edit',
+        'parent' => 'parent'
     ];
 
     /**
@@ -282,7 +295,10 @@ class Budget implements ModelInterface, ArrayAccess, JsonSerializable
         'created_at' => 'setCreatedAt',
         'id_add' => 'setIdAdd',
         'updated_at' => 'setUpdatedAt',
-        'id_edit' => 'setIdEdit'
+        'id_edit' => 'setIdEdit',
+        'administrateur_add' => 'setAdministrateurAdd',
+        'administrateur_edit' => 'setAdministrateurEdit',
+        'parent' => 'setParent'
     ];
 
     /**
@@ -316,7 +332,10 @@ class Budget implements ModelInterface, ArrayAccess, JsonSerializable
         'created_at' => 'getCreatedAt',
         'id_add' => 'getIdAdd',
         'updated_at' => 'getUpdatedAt',
-        'id_edit' => 'getIdEdit'
+        'id_edit' => 'getIdEdit',
+        'administrateur_add' => 'getAdministrateurAdd',
+        'administrateur_edit' => 'getAdministrateurEdit',
+        'parent' => 'getParent'
     ];
 
     /**
@@ -401,6 +420,9 @@ class Budget implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('id_add', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
         $this->setIfExists('id_edit', $data ?? [], null);
+        $this->setIfExists('administrateur_add', $data ?? [], null);
+        $this->setIfExists('administrateur_edit', $data ?? [], null);
+        $this->setIfExists('parent', $data ?? [], null);
     }
 
     /**
@@ -430,6 +452,15 @@ class Budget implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -448,9 +479,9 @@ class Budget implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets id
      *
-     * @return int|null
+     * @return int
      */
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->container['id'];
     }
@@ -458,11 +489,11 @@ class Budget implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets id
      *
-     * @param int|null $id id
+     * @param int $id id
      *
      * @return $this
      */
-    public function setId(?int $id): static
+    public function setId(int $id): static
     {
         if (is_null($id)) {
             throw new InvalidArgumentException('non-nullable id cannot be null');
@@ -1109,7 +1140,7 @@ class Budget implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets invoiced_at
      *
-     * @param \DateTime|null $invoiced_at invoiced_at
+     * @param \DateTime|null $invoiced_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -1133,7 +1164,7 @@ class Budget implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets created_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -1143,7 +1174,7 @@ class Budget implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets created_at
      *
-     * @param \DateTime|null $created_at created_at
+     * @param \DateTime $created_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -1201,7 +1232,7 @@ class Budget implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets updated_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -1211,7 +1242,7 @@ class Budget implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets updated_at
      *
-     * @param \DateTime|null $updated_at updated_at
+     * @param \DateTime $updated_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -1262,6 +1293,108 @@ class Budget implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['id_edit'] = $id_edit;
+
+        return $this;
+    }
+
+    /**
+     * Gets administrateur_add
+     *
+     * @return \Dbout\DendreoSdk\Model\Administrateur|null
+     */
+    public function getAdministrateurAdd(): ?\Dbout\DendreoSdk\Model\Administrateur
+    {
+        return $this->container['administrateur_add'];
+    }
+
+    /**
+     * Sets administrateur_add
+     *
+     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_add Présent uniquement avec `include=administrateurAdd`.
+     *
+     * @return $this
+     */
+    public function setAdministrateurAdd(?\Dbout\DendreoSdk\Model\Administrateur $administrateur_add): static
+    {
+        if (is_null($administrateur_add)) {
+            array_push($this->openAPINullablesSetToNull, 'administrateur_add');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('administrateur_add', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['administrateur_add'] = $administrateur_add;
+
+        return $this;
+    }
+
+    /**
+     * Gets administrateur_edit
+     *
+     * @return \Dbout\DendreoSdk\Model\Administrateur|null
+     */
+    public function getAdministrateurEdit(): ?\Dbout\DendreoSdk\Model\Administrateur
+    {
+        return $this->container['administrateur_edit'];
+    }
+
+    /**
+     * Sets administrateur_edit
+     *
+     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_edit Présent uniquement avec `include=administrateurEdit`.
+     *
+     * @return $this
+     */
+    public function setAdministrateurEdit(?\Dbout\DendreoSdk\Model\Administrateur $administrateur_edit): static
+    {
+        if (is_null($administrateur_edit)) {
+            array_push($this->openAPINullablesSetToNull, 'administrateur_edit');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('administrateur_edit', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['administrateur_edit'] = $administrateur_edit;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent
+     *
+     * @return \Dbout\DendreoSdk\Model\Budget|null
+     */
+    public function getParent(): ?\Dbout\DendreoSdk\Model\Budget
+    {
+        return $this->container['parent'];
+    }
+
+    /**
+     * Sets parent
+     *
+     * @param \Dbout\DendreoSdk\Model\Budget|null $parent Présent uniquement avec `include=parent`. Absent quand la ligne de budget n'a pas de parent.
+     *
+     * @return $this
+     */
+    public function setParent(?\Dbout\DendreoSdk\Model\Budget $parent): static
+    {
+        if (is_null($parent)) {
+            array_push($this->openAPINullablesSetToNull, 'parent');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('parent', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['parent'] = $parent;
 
         return $this;
     }

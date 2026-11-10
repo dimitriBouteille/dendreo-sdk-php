@@ -1158,7 +1158,7 @@ class SourcesApi
      *
      * Créer une source
      *
-     * @param  \Dbout\DendreoSdk\Model\SourcesStoreRequest $sources_store_request sources_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\SourceStoreRequest $source_store_request source_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1166,11 +1166,11 @@ class SourcesApi
      * @return \Dbout\DendreoSdk\Model\SourceResponse
      */
     public function store(
-        \Dbout\DendreoSdk\Model\SourcesStoreRequest $sources_store_request,
+        \Dbout\DendreoSdk\Model\SourceStoreRequest $source_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): \Dbout\DendreoSdk\Model\SourceResponse
     {
-        list($response) = $this->storeWithHttpInfo($sources_store_request, $contentType);
+        list($response) = $this->storeWithHttpInfo($source_store_request, $contentType);
         return $response;
     }
 
@@ -1179,7 +1179,7 @@ class SourcesApi
      *
      * Créer une source
      *
-     * @param  \Dbout\DendreoSdk\Model\SourcesStoreRequest $sources_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\SourceStoreRequest $source_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1187,11 +1187,11 @@ class SourcesApi
      * @return array of \Dbout\DendreoSdk\Model\SourceResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function storeWithHttpInfo(
-        \Dbout\DendreoSdk\Model\SourcesStoreRequest $sources_store_request,
+        \Dbout\DendreoSdk\Model\SourceStoreRequest $source_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): array
     {
-        $request = $this->storeRequest($sources_store_request, $contentType);
+        $request = $this->storeRequest($source_store_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1306,18 +1306,18 @@ class SourcesApi
      *
      * Créer une source
      *
-     * @param  \Dbout\DendreoSdk\Model\SourcesStoreRequest $sources_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\SourceStoreRequest $source_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
     public function storeAsync(
-        \Dbout\DendreoSdk\Model\SourcesStoreRequest $sources_store_request,
+        \Dbout\DendreoSdk\Model\SourceStoreRequest $source_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): PromiseInterface
     {
-        return $this->storeAsyncWithHttpInfo($sources_store_request, $contentType)
+        return $this->storeAsyncWithHttpInfo($source_store_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1330,19 +1330,19 @@ class SourcesApi
      *
      * Créer une source
      *
-     * @param  \Dbout\DendreoSdk\Model\SourcesStoreRequest $sources_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\SourceStoreRequest $source_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
     public function storeAsyncWithHttpInfo(
-        \Dbout\DendreoSdk\Model\SourcesStoreRequest $sources_store_request,
+        \Dbout\DendreoSdk\Model\SourceStoreRequest $source_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): PromiseInterface
     {
         $returnType = '\Dbout\DendreoSdk\Model\SourceResponse';
-        $request = $this->storeRequest($sources_store_request, $contentType);
+        $request = $this->storeRequest($source_store_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1383,28 +1383,28 @@ class SourcesApi
     /**
      * Create request for operation 'store'
      *
-     * @param  \Dbout\DendreoSdk\Model\SourcesStoreRequest $sources_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\SourceStoreRequest $source_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     public function storeRequest(
-        \Dbout\DendreoSdk\Model\SourcesStoreRequest $sources_store_request,
+        \Dbout\DendreoSdk\Model\SourceStoreRequest $source_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): Request
     {
 
-        // verify the required parameter 'sources_store_request' is set
-        if ($sources_store_request === null || (is_array($sources_store_request) && count($sources_store_request) === 0)) {
+        // verify the required parameter 'source_store_request' is set
+        if ($source_store_request === null || (is_array($source_store_request) && count($source_store_request) === 0)) {
             throw new InvalidArgumentException(
-                'Missing the required parameter $sources_store_request when calling store'
+                'Missing the required parameter $source_store_request when calling store'
             );
         }
-        if ($sources_store_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$sources_store_request->valid()) {
+        if ($source_store_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$source_store_request->valid()) {
             throw new InvalidArgumentException(sprintf(
-                'Invalid parameter $sources_store_request when calling store: %s',
-                implode(' ', $sources_store_request->listInvalidProperties())
+                'Invalid parameter $source_store_request when calling store: %s',
+                implode(' ', $source_store_request->listInvalidProperties())
             ));
         }
 
@@ -1427,12 +1427,12 @@ class SourcesApi
         );
 
         // for model (json/xml)
-        if (isset($sources_store_request)) {
+        if (isset($source_store_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($sources_store_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($source_store_request));
             } else {
-                $httpBody = $sources_store_request;
+                $httpBody = $source_store_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1495,7 +1495,7 @@ class SourcesApi
      * Mettre à jour une source
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\SourcesUpdateRequest|null $sources_update_request sources_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\SourceUpdateRequest|null $source_update_request source_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1504,11 +1504,11 @@ class SourcesApi
      */
     public function update(
         int $id,
-        ?\Dbout\DendreoSdk\Model\SourcesUpdateRequest $sources_update_request = null,
+        ?\Dbout\DendreoSdk\Model\SourceUpdateRequest $source_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): \Dbout\DendreoSdk\Model\SourceResponse
     {
-        list($response) = $this->updateWithHttpInfo($id, $sources_update_request, $contentType);
+        list($response) = $this->updateWithHttpInfo($id, $source_update_request, $contentType);
         return $response;
     }
 
@@ -1518,7 +1518,7 @@ class SourcesApi
      * Mettre à jour une source
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\SourcesUpdateRequest|null $sources_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\SourceUpdateRequest|null $source_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1527,11 +1527,11 @@ class SourcesApi
      */
     public function updateWithHttpInfo(
         int $id,
-        ?\Dbout\DendreoSdk\Model\SourcesUpdateRequest $sources_update_request = null,
+        ?\Dbout\DendreoSdk\Model\SourceUpdateRequest $source_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): array
     {
-        $request = $this->updateRequest($id, $sources_update_request, $contentType);
+        $request = $this->updateRequest($id, $source_update_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1661,7 +1661,7 @@ class SourcesApi
      * Mettre à jour une source
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\SourcesUpdateRequest|null $sources_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\SourceUpdateRequest|null $source_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -1669,11 +1669,11 @@ class SourcesApi
      */
     public function updateAsync(
         int $id,
-        ?\Dbout\DendreoSdk\Model\SourcesUpdateRequest $sources_update_request = null,
+        ?\Dbout\DendreoSdk\Model\SourceUpdateRequest $source_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): PromiseInterface
     {
-        return $this->updateAsyncWithHttpInfo($id, $sources_update_request, $contentType)
+        return $this->updateAsyncWithHttpInfo($id, $source_update_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1687,7 +1687,7 @@ class SourcesApi
      * Mettre à jour une source
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\SourcesUpdateRequest|null $sources_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\SourceUpdateRequest|null $source_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -1695,12 +1695,12 @@ class SourcesApi
      */
     public function updateAsyncWithHttpInfo(
         int $id,
-        ?\Dbout\DendreoSdk\Model\SourcesUpdateRequest $sources_update_request = null,
+        ?\Dbout\DendreoSdk\Model\SourceUpdateRequest $source_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): PromiseInterface
     {
         $returnType = '\Dbout\DendreoSdk\Model\SourceResponse';
-        $request = $this->updateRequest($id, $sources_update_request, $contentType);
+        $request = $this->updateRequest($id, $source_update_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1742,7 +1742,7 @@ class SourcesApi
      * Create request for operation 'update'
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\SourcesUpdateRequest|null $sources_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\SourceUpdateRequest|null $source_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -1750,7 +1750,7 @@ class SourcesApi
      */
     public function updateRequest(
         int $id,
-        ?\Dbout\DendreoSdk\Model\SourcesUpdateRequest $sources_update_request = null,
+        ?\Dbout\DendreoSdk\Model\SourceUpdateRequest $source_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): Request
     {
@@ -1762,10 +1762,10 @@ class SourcesApi
             );
         }
 
-        if ($sources_update_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$sources_update_request->valid()) {
+        if ($source_update_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$source_update_request->valid()) {
             throw new InvalidArgumentException(sprintf(
-                'Invalid parameter $sources_update_request when calling update: %s',
-                implode(' ', $sources_update_request->listInvalidProperties())
+                'Invalid parameter $source_update_request when calling update: %s',
+                implode(' ', $source_update_request->listInvalidProperties())
             ));
         }
 
@@ -1796,12 +1796,12 @@ class SourcesApi
         );
 
         // for model (json/xml)
-        if (isset($sources_update_request)) {
+        if (isset($source_update_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($sources_update_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($source_update_request));
             } else {
-                $httpBody = $sources_update_request;
+                $httpBody = $source_update_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

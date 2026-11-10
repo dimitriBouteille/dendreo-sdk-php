@@ -1158,7 +1158,7 @@ class AdfEtapesApi
      *
      * Créer une étape ADF
      *
-     * @param  \Dbout\DendreoSdk\Model\AdfEtapesStoreRequest $adf_etapes_store_request adf_etapes_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\EtapeProcessStoreRequest $etape_process_store_request etape_process_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1166,11 +1166,11 @@ class AdfEtapesApi
      * @return \Dbout\DendreoSdk\Model\EtapeProcessResponse
      */
     public function store(
-        \Dbout\DendreoSdk\Model\AdfEtapesStoreRequest $adf_etapes_store_request,
+        \Dbout\DendreoSdk\Model\EtapeProcessStoreRequest $etape_process_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): \Dbout\DendreoSdk\Model\EtapeProcessResponse
     {
-        list($response) = $this->storeWithHttpInfo($adf_etapes_store_request, $contentType);
+        list($response) = $this->storeWithHttpInfo($etape_process_store_request, $contentType);
         return $response;
     }
 
@@ -1179,7 +1179,7 @@ class AdfEtapesApi
      *
      * Créer une étape ADF
      *
-     * @param  \Dbout\DendreoSdk\Model\AdfEtapesStoreRequest $adf_etapes_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\EtapeProcessStoreRequest $etape_process_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1187,11 +1187,11 @@ class AdfEtapesApi
      * @return array of \Dbout\DendreoSdk\Model\EtapeProcessResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function storeWithHttpInfo(
-        \Dbout\DendreoSdk\Model\AdfEtapesStoreRequest $adf_etapes_store_request,
+        \Dbout\DendreoSdk\Model\EtapeProcessStoreRequest $etape_process_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): array
     {
-        $request = $this->storeRequest($adf_etapes_store_request, $contentType);
+        $request = $this->storeRequest($etape_process_store_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1306,18 +1306,18 @@ class AdfEtapesApi
      *
      * Créer une étape ADF
      *
-     * @param  \Dbout\DendreoSdk\Model\AdfEtapesStoreRequest $adf_etapes_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\EtapeProcessStoreRequest $etape_process_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
     public function storeAsync(
-        \Dbout\DendreoSdk\Model\AdfEtapesStoreRequest $adf_etapes_store_request,
+        \Dbout\DendreoSdk\Model\EtapeProcessStoreRequest $etape_process_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): PromiseInterface
     {
-        return $this->storeAsyncWithHttpInfo($adf_etapes_store_request, $contentType)
+        return $this->storeAsyncWithHttpInfo($etape_process_store_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1330,19 +1330,19 @@ class AdfEtapesApi
      *
      * Créer une étape ADF
      *
-     * @param  \Dbout\DendreoSdk\Model\AdfEtapesStoreRequest $adf_etapes_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\EtapeProcessStoreRequest $etape_process_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
     public function storeAsyncWithHttpInfo(
-        \Dbout\DendreoSdk\Model\AdfEtapesStoreRequest $adf_etapes_store_request,
+        \Dbout\DendreoSdk\Model\EtapeProcessStoreRequest $etape_process_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): PromiseInterface
     {
         $returnType = '\Dbout\DendreoSdk\Model\EtapeProcessResponse';
-        $request = $this->storeRequest($adf_etapes_store_request, $contentType);
+        $request = $this->storeRequest($etape_process_store_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1383,28 +1383,28 @@ class AdfEtapesApi
     /**
      * Create request for operation 'store'
      *
-     * @param  \Dbout\DendreoSdk\Model\AdfEtapesStoreRequest $adf_etapes_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\EtapeProcessStoreRequest $etape_process_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     public function storeRequest(
-        \Dbout\DendreoSdk\Model\AdfEtapesStoreRequest $adf_etapes_store_request,
+        \Dbout\DendreoSdk\Model\EtapeProcessStoreRequest $etape_process_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): Request
     {
 
-        // verify the required parameter 'adf_etapes_store_request' is set
-        if ($adf_etapes_store_request === null || (is_array($adf_etapes_store_request) && count($adf_etapes_store_request) === 0)) {
+        // verify the required parameter 'etape_process_store_request' is set
+        if ($etape_process_store_request === null || (is_array($etape_process_store_request) && count($etape_process_store_request) === 0)) {
             throw new InvalidArgumentException(
-                'Missing the required parameter $adf_etapes_store_request when calling store'
+                'Missing the required parameter $etape_process_store_request when calling store'
             );
         }
-        if ($adf_etapes_store_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$adf_etapes_store_request->valid()) {
+        if ($etape_process_store_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$etape_process_store_request->valid()) {
             throw new InvalidArgumentException(sprintf(
-                'Invalid parameter $adf_etapes_store_request when calling store: %s',
-                implode(' ', $adf_etapes_store_request->listInvalidProperties())
+                'Invalid parameter $etape_process_store_request when calling store: %s',
+                implode(' ', $etape_process_store_request->listInvalidProperties())
             ));
         }
 
@@ -1427,12 +1427,12 @@ class AdfEtapesApi
         );
 
         // for model (json/xml)
-        if (isset($adf_etapes_store_request)) {
+        if (isset($etape_process_store_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($adf_etapes_store_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($etape_process_store_request));
             } else {
-                $httpBody = $adf_etapes_store_request;
+                $httpBody = $etape_process_store_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1495,7 +1495,7 @@ class AdfEtapesApi
      * Mettre à jour une étape ADF
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\AdfEtapesUpdateRequest|null $adf_etapes_update_request adf_etapes_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\EtapeProcessUpdateRequest|null $etape_process_update_request etape_process_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1504,11 +1504,11 @@ class AdfEtapesApi
      */
     public function update(
         int $id,
-        ?\Dbout\DendreoSdk\Model\AdfEtapesUpdateRequest $adf_etapes_update_request = null,
+        ?\Dbout\DendreoSdk\Model\EtapeProcessUpdateRequest $etape_process_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): \Dbout\DendreoSdk\Model\EtapeProcessResponse
     {
-        list($response) = $this->updateWithHttpInfo($id, $adf_etapes_update_request, $contentType);
+        list($response) = $this->updateWithHttpInfo($id, $etape_process_update_request, $contentType);
         return $response;
     }
 
@@ -1518,7 +1518,7 @@ class AdfEtapesApi
      * Mettre à jour une étape ADF
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\AdfEtapesUpdateRequest|null $adf_etapes_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\EtapeProcessUpdateRequest|null $etape_process_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1527,11 +1527,11 @@ class AdfEtapesApi
      */
     public function updateWithHttpInfo(
         int $id,
-        ?\Dbout\DendreoSdk\Model\AdfEtapesUpdateRequest $adf_etapes_update_request = null,
+        ?\Dbout\DendreoSdk\Model\EtapeProcessUpdateRequest $etape_process_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): array
     {
-        $request = $this->updateRequest($id, $adf_etapes_update_request, $contentType);
+        $request = $this->updateRequest($id, $etape_process_update_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1661,7 +1661,7 @@ class AdfEtapesApi
      * Mettre à jour une étape ADF
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\AdfEtapesUpdateRequest|null $adf_etapes_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\EtapeProcessUpdateRequest|null $etape_process_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -1669,11 +1669,11 @@ class AdfEtapesApi
      */
     public function updateAsync(
         int $id,
-        ?\Dbout\DendreoSdk\Model\AdfEtapesUpdateRequest $adf_etapes_update_request = null,
+        ?\Dbout\DendreoSdk\Model\EtapeProcessUpdateRequest $etape_process_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): PromiseInterface
     {
-        return $this->updateAsyncWithHttpInfo($id, $adf_etapes_update_request, $contentType)
+        return $this->updateAsyncWithHttpInfo($id, $etape_process_update_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1687,7 +1687,7 @@ class AdfEtapesApi
      * Mettre à jour une étape ADF
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\AdfEtapesUpdateRequest|null $adf_etapes_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\EtapeProcessUpdateRequest|null $etape_process_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -1695,12 +1695,12 @@ class AdfEtapesApi
      */
     public function updateAsyncWithHttpInfo(
         int $id,
-        ?\Dbout\DendreoSdk\Model\AdfEtapesUpdateRequest $adf_etapes_update_request = null,
+        ?\Dbout\DendreoSdk\Model\EtapeProcessUpdateRequest $etape_process_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): PromiseInterface
     {
         $returnType = '\Dbout\DendreoSdk\Model\EtapeProcessResponse';
-        $request = $this->updateRequest($id, $adf_etapes_update_request, $contentType);
+        $request = $this->updateRequest($id, $etape_process_update_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1742,7 +1742,7 @@ class AdfEtapesApi
      * Create request for operation 'update'
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\AdfEtapesUpdateRequest|null $adf_etapes_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\EtapeProcessUpdateRequest|null $etape_process_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -1750,7 +1750,7 @@ class AdfEtapesApi
      */
     public function updateRequest(
         int $id,
-        ?\Dbout\DendreoSdk\Model\AdfEtapesUpdateRequest $adf_etapes_update_request = null,
+        ?\Dbout\DendreoSdk\Model\EtapeProcessUpdateRequest $etape_process_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): Request
     {
@@ -1762,10 +1762,10 @@ class AdfEtapesApi
             );
         }
 
-        if ($adf_etapes_update_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$adf_etapes_update_request->valid()) {
+        if ($etape_process_update_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$etape_process_update_request->valid()) {
             throw new InvalidArgumentException(sprintf(
-                'Invalid parameter $adf_etapes_update_request when calling update: %s',
-                implode(' ', $adf_etapes_update_request->listInvalidProperties())
+                'Invalid parameter $etape_process_update_request when calling update: %s',
+                implode(' ', $etape_process_update_request->listInvalidProperties())
             ));
         }
 
@@ -1796,12 +1796,12 @@ class AdfEtapesApi
         );
 
         // for model (json/xml)
-        if (isset($adf_etapes_update_request)) {
+        if (isset($etape_process_update_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($adf_etapes_update_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($etape_process_update_request));
             } else {
-                $httpBody = $adf_etapes_update_request;
+                $httpBody = $etape_process_update_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

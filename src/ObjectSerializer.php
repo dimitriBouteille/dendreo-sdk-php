@@ -39,6 +39,34 @@ class ObjectSerializer
         self::$dateTimeFormat = $format;
     }
 
+    /** @var \DateTimeZone|null Dendreo: timezone of the date-time values sent and received by the API */
+    private static ?\DateTimeZone $timezone = null;
+
+    /**
+     * Dendreo: change the timezone of the date-time values. The API returns them without offset,
+     * received values are created in this timezone and sent values are converted to it.
+     *
+     * @param \DateTimeZone|null $timezone null to use the default PHP timezone
+     *
+     * @return void
+     */
+    public static function setTimezone(?\DateTimeZone $timezone): void
+    {
+        self::$timezone = $timezone;
+    }
+
+    /**
+     * Dendreo: format a date-time value, converted to the API timezone.
+     */
+    private static function formatDateTime(DateTime $value): string
+    {
+        if (self::$timezone !== null) {
+            $value = (clone $value)->setTimezone(self::$timezone);
+        }
+
+        return $value->format(self::$dateTimeFormat);
+    }
+
     /**
      * Serialize data
      *
@@ -55,7 +83,7 @@ class ObjectSerializer
         }
 
         if ($data instanceof DateTime) {
-            return ($format === 'date') ? $data->format('Y-m-d') : $data->format(self::$dateTimeFormat);
+            return ($format === 'date') ? $data->format('Y-m-d') : self::formatDateTime($data);
         }
 
         if ($data instanceof \BackedEnum) {
@@ -224,7 +252,7 @@ class ObjectSerializer
 
         # Handle DateTime objects in query
         if($openApiType === "\DateTime" && $value instanceof DateTime) {
-            return ["{$paramName}" => $value->format(self::$dateTimeFormat)];
+            return ["{$paramName}" => self::formatDateTime($value)];
         }
 
         $query = [];
@@ -328,7 +356,7 @@ class ObjectSerializer
     public static function toString(string|bool|DateTime $value): string
     {
         if ($value instanceof DateTime) { // datetime in ISO8601 format
-            return $value->format(self::$dateTimeFormat);
+            return self::formatDateTime($value);
         } elseif (is_bool($value)) {
             return $value ? 'true' : 'false';
         } else {
@@ -420,12 +448,12 @@ class ObjectSerializer
             // this graceful.
             if (!empty($data)) {
                 try {
-                    return new DateTime($data);
+                    return new DateTime($data, self::$timezone);
                 } catch (\Exception $exception) {
                     // Some APIs return a date-time with too high nanosecond
                     // precision for php's DateTime to handle.
                     // With provided regexp 6 digits of microseconds saved
-                    return new DateTime(self::sanitizeTimestamp($data));
+                    return new DateTime(self::sanitizeTimestamp($data), self::$timezone);
                 }
             } else {
                 return null;
@@ -518,6 +546,14 @@ class ObjectSerializer
                     $instance->$propertySetter(self::deserialize($propertyValue, $type, null));
                 }
             }
+
+            // Dendreo: keep the fields that are not described by the model (additional fields of
+            // the account...), they are readable with the array syntax: $participant['field'].
+            $extra = array_diff_key((array) $data, array_flip($instance::attributeMap()));
+            foreach ($extra as $name => $value) {
+                $instance[$name] = json_decode((string) json_encode($value), true);
+            }
+
             return $instance;
         }
     }

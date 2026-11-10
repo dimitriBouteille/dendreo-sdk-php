@@ -1452,7 +1452,7 @@ class OpportuniteEtapesApi
      *
      * Créer une étape d&#39;opportunité
      *
-     * @param  \Dbout\DendreoSdk\Model\OpportuniteEtapesStoreRequest $opportunite_etapes_store_request opportunite_etapes_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\OpportuniteEtapeStoreRequest $opportunite_etape_store_request opportunite_etape_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1460,11 +1460,11 @@ class OpportuniteEtapesApi
      * @return \Dbout\DendreoSdk\Model\OpportuniteEtapeResponse
      */
     public function store(
-        \Dbout\DendreoSdk\Model\OpportuniteEtapesStoreRequest $opportunite_etapes_store_request,
+        \Dbout\DendreoSdk\Model\OpportuniteEtapeStoreRequest $opportunite_etape_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): \Dbout\DendreoSdk\Model\OpportuniteEtapeResponse
     {
-        list($response) = $this->storeWithHttpInfo($opportunite_etapes_store_request, $contentType);
+        list($response) = $this->storeWithHttpInfo($opportunite_etape_store_request, $contentType);
         return $response;
     }
 
@@ -1473,7 +1473,7 @@ class OpportuniteEtapesApi
      *
      * Créer une étape d&#39;opportunité
      *
-     * @param  \Dbout\DendreoSdk\Model\OpportuniteEtapesStoreRequest $opportunite_etapes_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\OpportuniteEtapeStoreRequest $opportunite_etape_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1481,11 +1481,11 @@ class OpportuniteEtapesApi
      * @return array of \Dbout\DendreoSdk\Model\OpportuniteEtapeResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function storeWithHttpInfo(
-        \Dbout\DendreoSdk\Model\OpportuniteEtapesStoreRequest $opportunite_etapes_store_request,
+        \Dbout\DendreoSdk\Model\OpportuniteEtapeStoreRequest $opportunite_etape_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): array
     {
-        $request = $this->storeRequest($opportunite_etapes_store_request, $contentType);
+        $request = $this->storeRequest($opportunite_etape_store_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1600,18 +1600,18 @@ class OpportuniteEtapesApi
      *
      * Créer une étape d&#39;opportunité
      *
-     * @param  \Dbout\DendreoSdk\Model\OpportuniteEtapesStoreRequest $opportunite_etapes_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\OpportuniteEtapeStoreRequest $opportunite_etape_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
     public function storeAsync(
-        \Dbout\DendreoSdk\Model\OpportuniteEtapesStoreRequest $opportunite_etapes_store_request,
+        \Dbout\DendreoSdk\Model\OpportuniteEtapeStoreRequest $opportunite_etape_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): PromiseInterface
     {
-        return $this->storeAsyncWithHttpInfo($opportunite_etapes_store_request, $contentType)
+        return $this->storeAsyncWithHttpInfo($opportunite_etape_store_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1624,19 +1624,19 @@ class OpportuniteEtapesApi
      *
      * Créer une étape d&#39;opportunité
      *
-     * @param  \Dbout\DendreoSdk\Model\OpportuniteEtapesStoreRequest $opportunite_etapes_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\OpportuniteEtapeStoreRequest $opportunite_etape_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
     public function storeAsyncWithHttpInfo(
-        \Dbout\DendreoSdk\Model\OpportuniteEtapesStoreRequest $opportunite_etapes_store_request,
+        \Dbout\DendreoSdk\Model\OpportuniteEtapeStoreRequest $opportunite_etape_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): PromiseInterface
     {
         $returnType = '\Dbout\DendreoSdk\Model\OpportuniteEtapeResponse';
-        $request = $this->storeRequest($opportunite_etapes_store_request, $contentType);
+        $request = $this->storeRequest($opportunite_etape_store_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1677,28 +1677,28 @@ class OpportuniteEtapesApi
     /**
      * Create request for operation 'store'
      *
-     * @param  \Dbout\DendreoSdk\Model\OpportuniteEtapesStoreRequest $opportunite_etapes_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\OpportuniteEtapeStoreRequest $opportunite_etape_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     public function storeRequest(
-        \Dbout\DendreoSdk\Model\OpportuniteEtapesStoreRequest $opportunite_etapes_store_request,
+        \Dbout\DendreoSdk\Model\OpportuniteEtapeStoreRequest $opportunite_etape_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): Request
     {
 
-        // verify the required parameter 'opportunite_etapes_store_request' is set
-        if ($opportunite_etapes_store_request === null || (is_array($opportunite_etapes_store_request) && count($opportunite_etapes_store_request) === 0)) {
+        // verify the required parameter 'opportunite_etape_store_request' is set
+        if ($opportunite_etape_store_request === null || (is_array($opportunite_etape_store_request) && count($opportunite_etape_store_request) === 0)) {
             throw new InvalidArgumentException(
-                'Missing the required parameter $opportunite_etapes_store_request when calling store'
+                'Missing the required parameter $opportunite_etape_store_request when calling store'
             );
         }
-        if ($opportunite_etapes_store_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$opportunite_etapes_store_request->valid()) {
+        if ($opportunite_etape_store_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$opportunite_etape_store_request->valid()) {
             throw new InvalidArgumentException(sprintf(
-                'Invalid parameter $opportunite_etapes_store_request when calling store: %s',
-                implode(' ', $opportunite_etapes_store_request->listInvalidProperties())
+                'Invalid parameter $opportunite_etape_store_request when calling store: %s',
+                implode(' ', $opportunite_etape_store_request->listInvalidProperties())
             ));
         }
 
@@ -1721,12 +1721,12 @@ class OpportuniteEtapesApi
         );
 
         // for model (json/xml)
-        if (isset($opportunite_etapes_store_request)) {
+        if (isset($opportunite_etape_store_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($opportunite_etapes_store_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($opportunite_etape_store_request));
             } else {
-                $httpBody = $opportunite_etapes_store_request;
+                $httpBody = $opportunite_etape_store_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1789,7 +1789,7 @@ class OpportuniteEtapesApi
      * Mettre à jour une étape d&#39;opportunité
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\OpportuniteEtapesUpdateRequest|null $opportunite_etapes_update_request opportunite_etapes_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\OpportuniteEtapeUpdateRequest|null $opportunite_etape_update_request opportunite_etape_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1798,11 +1798,11 @@ class OpportuniteEtapesApi
      */
     public function update(
         int $id,
-        ?\Dbout\DendreoSdk\Model\OpportuniteEtapesUpdateRequest $opportunite_etapes_update_request = null,
+        ?\Dbout\DendreoSdk\Model\OpportuniteEtapeUpdateRequest $opportunite_etape_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): \Dbout\DendreoSdk\Model\OpportuniteEtapeResponse
     {
-        list($response) = $this->updateWithHttpInfo($id, $opportunite_etapes_update_request, $contentType);
+        list($response) = $this->updateWithHttpInfo($id, $opportunite_etape_update_request, $contentType);
         return $response;
     }
 
@@ -1812,7 +1812,7 @@ class OpportuniteEtapesApi
      * Mettre à jour une étape d&#39;opportunité
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\OpportuniteEtapesUpdateRequest|null $opportunite_etapes_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\OpportuniteEtapeUpdateRequest|null $opportunite_etape_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1821,11 +1821,11 @@ class OpportuniteEtapesApi
      */
     public function updateWithHttpInfo(
         int $id,
-        ?\Dbout\DendreoSdk\Model\OpportuniteEtapesUpdateRequest $opportunite_etapes_update_request = null,
+        ?\Dbout\DendreoSdk\Model\OpportuniteEtapeUpdateRequest $opportunite_etape_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): array
     {
-        $request = $this->updateRequest($id, $opportunite_etapes_update_request, $contentType);
+        $request = $this->updateRequest($id, $opportunite_etape_update_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1955,7 +1955,7 @@ class OpportuniteEtapesApi
      * Mettre à jour une étape d&#39;opportunité
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\OpportuniteEtapesUpdateRequest|null $opportunite_etapes_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\OpportuniteEtapeUpdateRequest|null $opportunite_etape_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -1963,11 +1963,11 @@ class OpportuniteEtapesApi
      */
     public function updateAsync(
         int $id,
-        ?\Dbout\DendreoSdk\Model\OpportuniteEtapesUpdateRequest $opportunite_etapes_update_request = null,
+        ?\Dbout\DendreoSdk\Model\OpportuniteEtapeUpdateRequest $opportunite_etape_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): PromiseInterface
     {
-        return $this->updateAsyncWithHttpInfo($id, $opportunite_etapes_update_request, $contentType)
+        return $this->updateAsyncWithHttpInfo($id, $opportunite_etape_update_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1981,7 +1981,7 @@ class OpportuniteEtapesApi
      * Mettre à jour une étape d&#39;opportunité
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\OpportuniteEtapesUpdateRequest|null $opportunite_etapes_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\OpportuniteEtapeUpdateRequest|null $opportunite_etape_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -1989,12 +1989,12 @@ class OpportuniteEtapesApi
      */
     public function updateAsyncWithHttpInfo(
         int $id,
-        ?\Dbout\DendreoSdk\Model\OpportuniteEtapesUpdateRequest $opportunite_etapes_update_request = null,
+        ?\Dbout\DendreoSdk\Model\OpportuniteEtapeUpdateRequest $opportunite_etape_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): PromiseInterface
     {
         $returnType = '\Dbout\DendreoSdk\Model\OpportuniteEtapeResponse';
-        $request = $this->updateRequest($id, $opportunite_etapes_update_request, $contentType);
+        $request = $this->updateRequest($id, $opportunite_etape_update_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2036,7 +2036,7 @@ class OpportuniteEtapesApi
      * Create request for operation 'update'
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\OpportuniteEtapesUpdateRequest|null $opportunite_etapes_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\OpportuniteEtapeUpdateRequest|null $opportunite_etape_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -2044,7 +2044,7 @@ class OpportuniteEtapesApi
      */
     public function updateRequest(
         int $id,
-        ?\Dbout\DendreoSdk\Model\OpportuniteEtapesUpdateRequest $opportunite_etapes_update_request = null,
+        ?\Dbout\DendreoSdk\Model\OpportuniteEtapeUpdateRequest $opportunite_etape_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): Request
     {
@@ -2056,10 +2056,10 @@ class OpportuniteEtapesApi
             );
         }
 
-        if ($opportunite_etapes_update_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$opportunite_etapes_update_request->valid()) {
+        if ($opportunite_etape_update_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$opportunite_etape_update_request->valid()) {
             throw new InvalidArgumentException(sprintf(
-                'Invalid parameter $opportunite_etapes_update_request when calling update: %s',
-                implode(' ', $opportunite_etapes_update_request->listInvalidProperties())
+                'Invalid parameter $opportunite_etape_update_request when calling update: %s',
+                implode(' ', $opportunite_etape_update_request->listInvalidProperties())
             ));
         }
 
@@ -2090,12 +2090,12 @@ class OpportuniteEtapesApi
         );
 
         // for model (json/xml)
-        if (isset($opportunite_etapes_update_request)) {
+        if (isset($opportunite_etape_update_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($opportunite_etapes_update_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($opportunite_etape_update_request));
             } else {
-                $httpBody = $opportunite_etapes_update_request;
+                $httpBody = $opportunite_etape_update_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

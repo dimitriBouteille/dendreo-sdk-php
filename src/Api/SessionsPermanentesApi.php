@@ -1484,7 +1484,7 @@ class SessionsPermanentesApi
      *
      * Créer une session permanente
      *
-     * @param  \Dbout\DendreoSdk\Model\SessionsPermanentesStoreRequest|null $sessions_permanentes_store_request sessions_permanentes_store_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\PermanentSessionStoreRequest|null $permanent_session_store_request permanent_session_store_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1492,11 +1492,11 @@ class SessionsPermanentesApi
      * @return \Dbout\DendreoSdk\Model\PermanentSessionResponse
      */
     public function store(
-        ?\Dbout\DendreoSdk\Model\SessionsPermanentesStoreRequest $sessions_permanentes_store_request = null,
+        ?\Dbout\DendreoSdk\Model\PermanentSessionStoreRequest $permanent_session_store_request = null,
         string $contentType = self::contentTypes['store'][0]
     ): \Dbout\DendreoSdk\Model\PermanentSessionResponse
     {
-        list($response) = $this->storeWithHttpInfo($sessions_permanentes_store_request, $contentType);
+        list($response) = $this->storeWithHttpInfo($permanent_session_store_request, $contentType);
         return $response;
     }
 
@@ -1505,7 +1505,7 @@ class SessionsPermanentesApi
      *
      * Créer une session permanente
      *
-     * @param  \Dbout\DendreoSdk\Model\SessionsPermanentesStoreRequest|null $sessions_permanentes_store_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\PermanentSessionStoreRequest|null $permanent_session_store_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1513,11 +1513,11 @@ class SessionsPermanentesApi
      * @return array of \Dbout\DendreoSdk\Model\PermanentSessionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function storeWithHttpInfo(
-        ?\Dbout\DendreoSdk\Model\SessionsPermanentesStoreRequest $sessions_permanentes_store_request = null,
+        ?\Dbout\DendreoSdk\Model\PermanentSessionStoreRequest $permanent_session_store_request = null,
         string $contentType = self::contentTypes['store'][0]
     ): array
     {
-        $request = $this->storeRequest($sessions_permanentes_store_request, $contentType);
+        $request = $this->storeRequest($permanent_session_store_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1632,18 +1632,18 @@ class SessionsPermanentesApi
      *
      * Créer une session permanente
      *
-     * @param  \Dbout\DendreoSdk\Model\SessionsPermanentesStoreRequest|null $sessions_permanentes_store_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\PermanentSessionStoreRequest|null $permanent_session_store_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
     public function storeAsync(
-        ?\Dbout\DendreoSdk\Model\SessionsPermanentesStoreRequest $sessions_permanentes_store_request = null,
+        ?\Dbout\DendreoSdk\Model\PermanentSessionStoreRequest $permanent_session_store_request = null,
         string $contentType = self::contentTypes['store'][0]
     ): PromiseInterface
     {
-        return $this->storeAsyncWithHttpInfo($sessions_permanentes_store_request, $contentType)
+        return $this->storeAsyncWithHttpInfo($permanent_session_store_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1656,19 +1656,19 @@ class SessionsPermanentesApi
      *
      * Créer une session permanente
      *
-     * @param  \Dbout\DendreoSdk\Model\SessionsPermanentesStoreRequest|null $sessions_permanentes_store_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\PermanentSessionStoreRequest|null $permanent_session_store_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
     public function storeAsyncWithHttpInfo(
-        ?\Dbout\DendreoSdk\Model\SessionsPermanentesStoreRequest $sessions_permanentes_store_request = null,
+        ?\Dbout\DendreoSdk\Model\PermanentSessionStoreRequest $permanent_session_store_request = null,
         string $contentType = self::contentTypes['store'][0]
     ): PromiseInterface
     {
         $returnType = '\Dbout\DendreoSdk\Model\PermanentSessionResponse';
-        $request = $this->storeRequest($sessions_permanentes_store_request, $contentType);
+        $request = $this->storeRequest($permanent_session_store_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1709,22 +1709,22 @@ class SessionsPermanentesApi
     /**
      * Create request for operation 'store'
      *
-     * @param  \Dbout\DendreoSdk\Model\SessionsPermanentesStoreRequest|null $sessions_permanentes_store_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\PermanentSessionStoreRequest|null $permanent_session_store_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     public function storeRequest(
-        ?\Dbout\DendreoSdk\Model\SessionsPermanentesStoreRequest $sessions_permanentes_store_request = null,
+        ?\Dbout\DendreoSdk\Model\PermanentSessionStoreRequest $permanent_session_store_request = null,
         string $contentType = self::contentTypes['store'][0]
     ): Request
     {
 
-        if ($sessions_permanentes_store_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$sessions_permanentes_store_request->valid()) {
+        if ($permanent_session_store_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$permanent_session_store_request->valid()) {
             throw new InvalidArgumentException(sprintf(
-                'Invalid parameter $sessions_permanentes_store_request when calling store: %s',
-                implode(' ', $sessions_permanentes_store_request->listInvalidProperties())
+                'Invalid parameter $permanent_session_store_request when calling store: %s',
+                implode(' ', $permanent_session_store_request->listInvalidProperties())
             ));
         }
 
@@ -1747,12 +1747,12 @@ class SessionsPermanentesApi
         );
 
         // for model (json/xml)
-        if (isset($sessions_permanentes_store_request)) {
+        if (isset($permanent_session_store_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($sessions_permanentes_store_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($permanent_session_store_request));
             } else {
-                $httpBody = $sessions_permanentes_store_request;
+                $httpBody = $permanent_session_store_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1815,7 +1815,7 @@ class SessionsPermanentesApi
      * Mettre à jour une session permanente
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\SessionsPermanentesUpdateRequest|null $sessions_permanentes_update_request sessions_permanentes_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\PermanentSessionUpdateRequest|null $permanent_session_update_request permanent_session_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1824,11 +1824,11 @@ class SessionsPermanentesApi
      */
     public function update(
         int $id,
-        ?\Dbout\DendreoSdk\Model\SessionsPermanentesUpdateRequest $sessions_permanentes_update_request = null,
+        ?\Dbout\DendreoSdk\Model\PermanentSessionUpdateRequest $permanent_session_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): \Dbout\DendreoSdk\Model\PermanentSessionResponse
     {
-        list($response) = $this->updateWithHttpInfo($id, $sessions_permanentes_update_request, $contentType);
+        list($response) = $this->updateWithHttpInfo($id, $permanent_session_update_request, $contentType);
         return $response;
     }
 
@@ -1838,7 +1838,7 @@ class SessionsPermanentesApi
      * Mettre à jour une session permanente
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\SessionsPermanentesUpdateRequest|null $sessions_permanentes_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\PermanentSessionUpdateRequest|null $permanent_session_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1847,11 +1847,11 @@ class SessionsPermanentesApi
      */
     public function updateWithHttpInfo(
         int $id,
-        ?\Dbout\DendreoSdk\Model\SessionsPermanentesUpdateRequest $sessions_permanentes_update_request = null,
+        ?\Dbout\DendreoSdk\Model\PermanentSessionUpdateRequest $permanent_session_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): array
     {
-        $request = $this->updateRequest($id, $sessions_permanentes_update_request, $contentType);
+        $request = $this->updateRequest($id, $permanent_session_update_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1981,7 +1981,7 @@ class SessionsPermanentesApi
      * Mettre à jour une session permanente
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\SessionsPermanentesUpdateRequest|null $sessions_permanentes_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\PermanentSessionUpdateRequest|null $permanent_session_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -1989,11 +1989,11 @@ class SessionsPermanentesApi
      */
     public function updateAsync(
         int $id,
-        ?\Dbout\DendreoSdk\Model\SessionsPermanentesUpdateRequest $sessions_permanentes_update_request = null,
+        ?\Dbout\DendreoSdk\Model\PermanentSessionUpdateRequest $permanent_session_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): PromiseInterface
     {
-        return $this->updateAsyncWithHttpInfo($id, $sessions_permanentes_update_request, $contentType)
+        return $this->updateAsyncWithHttpInfo($id, $permanent_session_update_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2007,7 +2007,7 @@ class SessionsPermanentesApi
      * Mettre à jour une session permanente
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\SessionsPermanentesUpdateRequest|null $sessions_permanentes_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\PermanentSessionUpdateRequest|null $permanent_session_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -2015,12 +2015,12 @@ class SessionsPermanentesApi
      */
     public function updateAsyncWithHttpInfo(
         int $id,
-        ?\Dbout\DendreoSdk\Model\SessionsPermanentesUpdateRequest $sessions_permanentes_update_request = null,
+        ?\Dbout\DendreoSdk\Model\PermanentSessionUpdateRequest $permanent_session_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): PromiseInterface
     {
         $returnType = '\Dbout\DendreoSdk\Model\PermanentSessionResponse';
-        $request = $this->updateRequest($id, $sessions_permanentes_update_request, $contentType);
+        $request = $this->updateRequest($id, $permanent_session_update_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2062,7 +2062,7 @@ class SessionsPermanentesApi
      * Create request for operation 'update'
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\SessionsPermanentesUpdateRequest|null $sessions_permanentes_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\PermanentSessionUpdateRequest|null $permanent_session_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -2070,7 +2070,7 @@ class SessionsPermanentesApi
      */
     public function updateRequest(
         int $id,
-        ?\Dbout\DendreoSdk\Model\SessionsPermanentesUpdateRequest $sessions_permanentes_update_request = null,
+        ?\Dbout\DendreoSdk\Model\PermanentSessionUpdateRequest $permanent_session_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): Request
     {
@@ -2082,10 +2082,10 @@ class SessionsPermanentesApi
             );
         }
 
-        if ($sessions_permanentes_update_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$sessions_permanentes_update_request->valid()) {
+        if ($permanent_session_update_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$permanent_session_update_request->valid()) {
             throw new InvalidArgumentException(sprintf(
-                'Invalid parameter $sessions_permanentes_update_request when calling update: %s',
-                implode(' ', $sessions_permanentes_update_request->listInvalidProperties())
+                'Invalid parameter $permanent_session_update_request when calling update: %s',
+                implode(' ', $permanent_session_update_request->listInvalidProperties())
             ));
         }
 
@@ -2116,12 +2116,12 @@ class SessionsPermanentesApi
         );
 
         // for model (json/xml)
-        if (isset($sessions_permanentes_update_request)) {
+        if (isset($permanent_session_update_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($sessions_permanentes_update_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($permanent_session_update_request));
             } else {
-                $httpBody = $sessions_permanentes_update_request;
+                $httpBody = $permanent_session_update_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

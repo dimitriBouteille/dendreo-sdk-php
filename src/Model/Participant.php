@@ -19,6 +19,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
+ * @description Les champs additionnels du compte sont ajoutés à la ressource, sous leur nom de champ.
  * @package  Dbout\DendreoSdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -73,7 +74,7 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
         'num_forprev' => 'string',
         'numero_secu' => 'string',
         'langue_principale' => 'string',
-        'langues_secondaires' => 'mixed[]',
+        'langues_secondaires' => 'string[]',
         'post_it_commercial' => 'string',
         'ical_url' => 'string',
         'id_centre_de_formation' => 'string',
@@ -86,7 +87,26 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => '\DateTime',
         'id_edit' => 'int',
         'deleted_at' => '\DateTime',
-        'id_delete' => 'int'
+        'id_delete' => 'int',
+        'photo_url' => 'string',
+        'entreprise' => '\Dbout\DendreoSdk\Model\Entreprise',
+        'contact' => '\Dbout\DendreoSdk\Model\Contact',
+        'formateur_lie' => '\Dbout\DendreoSdk\Model\Formateur',
+        'centres' => '\Dbout\DendreoSdk\Model\CentresDeFormation[]',
+        'lmsuniversel_user_id' => 'string',
+        'tslearning_user_id' => 'string',
+        'riseup_user_id' => 'int',
+        'moodle_user_id' => 'int',
+        'thinkific_user_id' => 'int',
+        'dokeos_user_id' => 'int',
+        'extranet_url' => 'string',
+        'extranet_code' => 'string',
+        'extranet_autologin_url' => 'string',
+        'message_extranet' => 'string',
+        'ogdpc_adeli' => 'string',
+        'ogdpc_rpps' => 'string',
+        'ogdpc_id_specialite' => 'int',
+        'mode_dexercice_dominant' => 'string'
     ];
 
     /**
@@ -140,7 +160,26 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => 'date-time',
         'id_edit' => null,
         'deleted_at' => 'date-time',
-        'id_delete' => null
+        'id_delete' => null,
+        'photo_url' => null,
+        'entreprise' => null,
+        'contact' => null,
+        'formateur_lie' => null,
+        'centres' => null,
+        'lmsuniversel_user_id' => null,
+        'tslearning_user_id' => null,
+        'riseup_user_id' => null,
+        'moodle_user_id' => null,
+        'thinkific_user_id' => null,
+        'dokeos_user_id' => null,
+        'extranet_url' => null,
+        'extranet_code' => null,
+        'extranet_autologin_url' => null,
+        'message_extranet' => null,
+        'ogdpc_adeli' => null,
+        'ogdpc_rpps' => null,
+        'ogdpc_id_specialite' => null,
+        'mode_dexercice_dominant' => null
     ];
 
     /**
@@ -194,7 +233,26 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => true,
         'id_edit' => true,
         'deleted_at' => true,
-        'id_delete' => true
+        'id_delete' => true,
+        'photo_url' => true,
+        'entreprise' => true,
+        'contact' => true,
+        'formateur_lie' => true,
+        'centres' => false,
+        'lmsuniversel_user_id' => true,
+        'tslearning_user_id' => true,
+        'riseup_user_id' => true,
+        'moodle_user_id' => true,
+        'thinkific_user_id' => true,
+        'dokeos_user_id' => true,
+        'extranet_url' => true,
+        'extranet_code' => true,
+        'extranet_autologin_url' => true,
+        'message_extranet' => true,
+        'ogdpc_adeli' => true,
+        'ogdpc_rpps' => true,
+        'ogdpc_id_specialite' => true,
+        'mode_dexercice_dominant' => true
     ];
 
     /**
@@ -328,7 +386,26 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => 'updated_at',
         'id_edit' => 'id_edit',
         'deleted_at' => 'deleted_at',
-        'id_delete' => 'id_delete'
+        'id_delete' => 'id_delete',
+        'photo_url' => 'photo_url',
+        'entreprise' => 'entreprise',
+        'contact' => 'contact',
+        'formateur_lie' => 'formateur_lie',
+        'centres' => 'centres',
+        'lmsuniversel_user_id' => 'lmsuniversel_user_id',
+        'tslearning_user_id' => 'tslearning_user_id',
+        'riseup_user_id' => 'riseup_user_id',
+        'moodle_user_id' => 'moodle_user_id',
+        'thinkific_user_id' => 'thinkific_user_id',
+        'dokeos_user_id' => 'dokeos_user_id',
+        'extranet_url' => 'extranet_url',
+        'extranet_code' => 'extranet_code',
+        'extranet_autologin_url' => 'extranet_autologin_url',
+        'message_extranet' => 'message_extranet',
+        'ogdpc_adeli' => 'ogdpc_adeli',
+        'ogdpc_rpps' => 'ogdpc_rpps',
+        'ogdpc_id_specialite' => 'ogdpc_id_specialite',
+        'mode_dexercice_dominant' => 'mode_dexercice_dominant'
     ];
 
     /**
@@ -382,7 +459,26 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => 'setUpdatedAt',
         'id_edit' => 'setIdEdit',
         'deleted_at' => 'setDeletedAt',
-        'id_delete' => 'setIdDelete'
+        'id_delete' => 'setIdDelete',
+        'photo_url' => 'setPhotoUrl',
+        'entreprise' => 'setEntreprise',
+        'contact' => 'setContact',
+        'formateur_lie' => 'setFormateurLie',
+        'centres' => 'setCentres',
+        'lmsuniversel_user_id' => 'setLmsuniverselUserId',
+        'tslearning_user_id' => 'setTslearningUserId',
+        'riseup_user_id' => 'setRiseupUserId',
+        'moodle_user_id' => 'setMoodleUserId',
+        'thinkific_user_id' => 'setThinkificUserId',
+        'dokeos_user_id' => 'setDokeosUserId',
+        'extranet_url' => 'setExtranetUrl',
+        'extranet_code' => 'setExtranetCode',
+        'extranet_autologin_url' => 'setExtranetAutologinUrl',
+        'message_extranet' => 'setMessageExtranet',
+        'ogdpc_adeli' => 'setOgdpcAdeli',
+        'ogdpc_rpps' => 'setOgdpcRpps',
+        'ogdpc_id_specialite' => 'setOgdpcIdSpecialite',
+        'mode_dexercice_dominant' => 'setModeDexerciceDominant'
     ];
 
     /**
@@ -436,7 +532,26 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => 'getUpdatedAt',
         'id_edit' => 'getIdEdit',
         'deleted_at' => 'getDeletedAt',
-        'id_delete' => 'getIdDelete'
+        'id_delete' => 'getIdDelete',
+        'photo_url' => 'getPhotoUrl',
+        'entreprise' => 'getEntreprise',
+        'contact' => 'getContact',
+        'formateur_lie' => 'getFormateurLie',
+        'centres' => 'getCentres',
+        'lmsuniversel_user_id' => 'getLmsuniverselUserId',
+        'tslearning_user_id' => 'getTslearningUserId',
+        'riseup_user_id' => 'getRiseupUserId',
+        'moodle_user_id' => 'getMoodleUserId',
+        'thinkific_user_id' => 'getThinkificUserId',
+        'dokeos_user_id' => 'getDokeosUserId',
+        'extranet_url' => 'getExtranetUrl',
+        'extranet_code' => 'getExtranetCode',
+        'extranet_autologin_url' => 'getExtranetAutologinUrl',
+        'message_extranet' => 'getMessageExtranet',
+        'ogdpc_adeli' => 'getOgdpcAdeli',
+        'ogdpc_rpps' => 'getOgdpcRpps',
+        'ogdpc_id_specialite' => 'getOgdpcIdSpecialite',
+        'mode_dexercice_dominant' => 'getModeDexerciceDominant'
     ];
 
     /**
@@ -541,6 +656,25 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('id_edit', $data ?? [], null);
         $this->setIfExists('deleted_at', $data ?? [], null);
         $this->setIfExists('id_delete', $data ?? [], null);
+        $this->setIfExists('photo_url', $data ?? [], null);
+        $this->setIfExists('entreprise', $data ?? [], null);
+        $this->setIfExists('contact', $data ?? [], null);
+        $this->setIfExists('formateur_lie', $data ?? [], null);
+        $this->setIfExists('centres', $data ?? [], null);
+        $this->setIfExists('lmsuniversel_user_id', $data ?? [], null);
+        $this->setIfExists('tslearning_user_id', $data ?? [], null);
+        $this->setIfExists('riseup_user_id', $data ?? [], null);
+        $this->setIfExists('moodle_user_id', $data ?? [], null);
+        $this->setIfExists('thinkific_user_id', $data ?? [], null);
+        $this->setIfExists('dokeos_user_id', $data ?? [], null);
+        $this->setIfExists('extranet_url', $data ?? [], null);
+        $this->setIfExists('extranet_code', $data ?? [], null);
+        $this->setIfExists('extranet_autologin_url', $data ?? [], null);
+        $this->setIfExists('message_extranet', $data ?? [], null);
+        $this->setIfExists('ogdpc_adeli', $data ?? [], null);
+        $this->setIfExists('ogdpc_rpps', $data ?? [], null);
+        $this->setIfExists('ogdpc_id_specialite', $data ?? [], null);
+        $this->setIfExists('mode_dexercice_dominant', $data ?? [], null);
     }
 
     /**
@@ -570,6 +704,18 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
+        }
+        if ($this->container['deleted_at'] === null) {
+            $invalidProperties[] = "'deleted_at' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -588,9 +734,9 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets id
      *
-     * @return int|null
+     * @return int
      */
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->container['id'];
     }
@@ -598,11 +744,11 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets id
      *
-     * @param int|null $id id
+     * @param int $id id
      *
      * @return $this
      */
-    public function setId(?int $id): static
+    public function setId(int $id): static
     {
         if (is_null($id)) {
             throw new InvalidArgumentException('non-nullable id cannot be null');
@@ -1571,7 +1717,7 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets langues_secondaires
      *
-     * @return mixed[]|null
+     * @return string[]|null
      */
     public function getLanguesSecondaires(): ?array
     {
@@ -1581,7 +1727,7 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets langues_secondaires
      *
-     * @param mixed[]|null $langues_secondaires langues_secondaires
+     * @param string[]|null $langues_secondaires Codes des langues secondaires du participant.
      *
      * @return $this
      */
@@ -1669,7 +1815,7 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets id_centre_de_formation
      *
-     * @param string|null $id_centre_de_formation id_centre_de_formation
+     * @param string|null $id_centre_de_formation Identifiants des centres de formation du participant, séparés par des virgules (`1,3`), ou `0` quand il est visible de tous les centres. Le détail des centres est renvoyé par `include=centres`.
      *
      * @return $this
      */
@@ -1757,7 +1903,7 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets responsable_type
      *
-     * @param string|null $responsable_type responsable_type
+     * @param string|null $responsable_type Présent uniquement pour un salarié (`particulier` à `false`).
      *
      * @return $this
      */
@@ -1791,7 +1937,7 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets responsable_id
      *
-     * @param int|null $responsable_id responsable_id
+     * @param int|null $responsable_id Présent uniquement pour un salarié (`particulier` à `false`).
      *
      * @return $this
      */
@@ -1815,7 +1961,7 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets created_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -1825,7 +1971,7 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets created_at
      *
-     * @param \DateTime|null $created_at created_at
+     * @param \DateTime $created_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -1883,7 +2029,7 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets updated_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -1893,7 +2039,7 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets updated_at
      *
-     * @param \DateTime|null $updated_at updated_at
+     * @param \DateTime $updated_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -1951,7 +2097,7 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets deleted_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDeletedAt(): ?\DateTime
     {
@@ -1961,7 +2107,7 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets deleted_at
      *
-     * @param \DateTime|null $deleted_at deleted_at
+     * @param \DateTime $deleted_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -2012,6 +2158,645 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['id_delete'] = $id_delete;
+
+        return $this;
+    }
+
+    /**
+     * Gets photo_url
+     *
+     * @return string|null
+     */
+    public function getPhotoUrl(): ?string
+    {
+        return $this->container['photo_url'];
+    }
+
+    /**
+     * Sets photo_url
+     *
+     * @param string|null $photo_url Présent uniquement avec `include=media`. URL de la photo du participant.
+     *
+     * @return $this
+     */
+    public function setPhotoUrl(?string $photo_url): static
+    {
+        if (is_null($photo_url)) {
+            array_push($this->openAPINullablesSetToNull, 'photo_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('photo_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['photo_url'] = $photo_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets entreprise
+     *
+     * @return \Dbout\DendreoSdk\Model\Entreprise|null
+     */
+    public function getEntreprise(): ?\Dbout\DendreoSdk\Model\Entreprise
+    {
+        return $this->container['entreprise'];
+    }
+
+    /**
+     * Sets entreprise
+     *
+     * @param \Dbout\DendreoSdk\Model\Entreprise|null $entreprise Présent uniquement avec `include=entreprise`.
+     *
+     * @return $this
+     */
+    public function setEntreprise(?\Dbout\DendreoSdk\Model\Entreprise $entreprise): static
+    {
+        if (is_null($entreprise)) {
+            array_push($this->openAPINullablesSetToNull, 'entreprise');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('entreprise', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['entreprise'] = $entreprise;
+
+        return $this;
+    }
+
+    /**
+     * Gets contact
+     *
+     * @return \Dbout\DendreoSdk\Model\Contact|null
+     */
+    public function getContact(): ?\Dbout\DendreoSdk\Model\Contact
+    {
+        return $this->container['contact'];
+    }
+
+    /**
+     * Sets contact
+     *
+     * @param \Dbout\DendreoSdk\Model\Contact|null $contact Présent uniquement avec `include=contact`.
+     *
+     * @return $this
+     */
+    public function setContact(?\Dbout\DendreoSdk\Model\Contact $contact): static
+    {
+        if (is_null($contact)) {
+            array_push($this->openAPINullablesSetToNull, 'contact');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('contact', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['contact'] = $contact;
+
+        return $this;
+    }
+
+    /**
+     * Gets formateur_lie
+     *
+     * @return \Dbout\DendreoSdk\Model\Formateur|null
+     */
+    public function getFormateurLie(): ?\Dbout\DendreoSdk\Model\Formateur
+    {
+        return $this->container['formateur_lie'];
+    }
+
+    /**
+     * Sets formateur_lie
+     *
+     * @param \Dbout\DendreoSdk\Model\Formateur|null $formateur_lie Présent uniquement avec `include=formateur_lie`.
+     *
+     * @return $this
+     */
+    public function setFormateurLie(?\Dbout\DendreoSdk\Model\Formateur $formateur_lie): static
+    {
+        if (is_null($formateur_lie)) {
+            array_push($this->openAPINullablesSetToNull, 'formateur_lie');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('formateur_lie', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['formateur_lie'] = $formateur_lie;
+
+        return $this;
+    }
+
+    /**
+     * Gets centres
+     *
+     * @return \Dbout\DendreoSdk\Model\CentresDeFormation[]|null
+     */
+    public function getCentres(): ?array
+    {
+        return $this->container['centres'];
+    }
+
+    /**
+     * Sets centres
+     *
+     * @param \Dbout\DendreoSdk\Model\CentresDeFormation[]|null $centres Présent uniquement avec `include=centres`. Renvoyé seulement si le compte gère plusieurs centres de formation.
+     *
+     * @return $this
+     */
+    public function setCentres(?array $centres): static
+    {
+        if (is_null($centres)) {
+            throw new InvalidArgumentException('non-nullable centres cannot be null');
+        }
+        $this->container['centres'] = $centres;
+
+        return $this;
+    }
+
+    /**
+     * Gets lmsuniversel_user_id
+     *
+     * @return string|null
+     */
+    public function getLmsuniverselUserId(): ?string
+    {
+        return $this->container['lmsuniversel_user_id'];
+    }
+
+    /**
+     * Sets lmsuniversel_user_id
+     *
+     * @param string|null $lmsuniversel_user_id Présent uniquement si l'intégration LMS Universel est activée sur le compte.
+     *
+     * @return $this
+     */
+    public function setLmsuniverselUserId(?string $lmsuniversel_user_id): static
+    {
+        if (is_null($lmsuniversel_user_id)) {
+            array_push($this->openAPINullablesSetToNull, 'lmsuniversel_user_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('lmsuniversel_user_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['lmsuniversel_user_id'] = $lmsuniversel_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets tslearning_user_id
+     *
+     * @return string|null
+     */
+    public function getTslearningUserId(): ?string
+    {
+        return $this->container['tslearning_user_id'];
+    }
+
+    /**
+     * Sets tslearning_user_id
+     *
+     * @param string|null $tslearning_user_id Présent uniquement si l'intégration TSLearning est activée sur le compte.
+     *
+     * @return $this
+     */
+    public function setTslearningUserId(?string $tslearning_user_id): static
+    {
+        if (is_null($tslearning_user_id)) {
+            array_push($this->openAPINullablesSetToNull, 'tslearning_user_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tslearning_user_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['tslearning_user_id'] = $tslearning_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets riseup_user_id
+     *
+     * @return int|null
+     */
+    public function getRiseupUserId(): ?int
+    {
+        return $this->container['riseup_user_id'];
+    }
+
+    /**
+     * Sets riseup_user_id
+     *
+     * @param int|null $riseup_user_id Présent uniquement si l'intégration Rise Up est activée sur le compte.
+     *
+     * @return $this
+     */
+    public function setRiseupUserId(?int $riseup_user_id): static
+    {
+        if (is_null($riseup_user_id)) {
+            array_push($this->openAPINullablesSetToNull, 'riseup_user_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('riseup_user_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['riseup_user_id'] = $riseup_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets moodle_user_id
+     *
+     * @return int|null
+     */
+    public function getMoodleUserId(): ?int
+    {
+        return $this->container['moodle_user_id'];
+    }
+
+    /**
+     * Sets moodle_user_id
+     *
+     * @param int|null $moodle_user_id Présent uniquement si l'intégration Moodle est activée sur le compte.
+     *
+     * @return $this
+     */
+    public function setMoodleUserId(?int $moodle_user_id): static
+    {
+        if (is_null($moodle_user_id)) {
+            array_push($this->openAPINullablesSetToNull, 'moodle_user_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('moodle_user_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['moodle_user_id'] = $moodle_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets thinkific_user_id
+     *
+     * @return int|null
+     */
+    public function getThinkificUserId(): ?int
+    {
+        return $this->container['thinkific_user_id'];
+    }
+
+    /**
+     * Sets thinkific_user_id
+     *
+     * @param int|null $thinkific_user_id Présent uniquement si l'intégration Thinkific est activée sur le compte.
+     *
+     * @return $this
+     */
+    public function setThinkificUserId(?int $thinkific_user_id): static
+    {
+        if (is_null($thinkific_user_id)) {
+            array_push($this->openAPINullablesSetToNull, 'thinkific_user_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('thinkific_user_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['thinkific_user_id'] = $thinkific_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets dokeos_user_id
+     *
+     * @return int|null
+     */
+    public function getDokeosUserId(): ?int
+    {
+        return $this->container['dokeos_user_id'];
+    }
+
+    /**
+     * Sets dokeos_user_id
+     *
+     * @param int|null $dokeos_user_id Présent uniquement si l'intégration Dokeos est activée sur le compte.
+     *
+     * @return $this
+     */
+    public function setDokeosUserId(?int $dokeos_user_id): static
+    {
+        if (is_null($dokeos_user_id)) {
+            array_push($this->openAPINullablesSetToNull, 'dokeos_user_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('dokeos_user_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['dokeos_user_id'] = $dokeos_user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets extranet_url
+     *
+     * @return string|null
+     */
+    public function getExtranetUrl(): ?string
+    {
+        return $this->container['extranet_url'];
+    }
+
+    /**
+     * Sets extranet_url
+     *
+     * @param string|null $extranet_url Présent uniquement si le participant a un accès à l'extranet.
+     *
+     * @return $this
+     */
+    public function setExtranetUrl(?string $extranet_url): static
+    {
+        if (is_null($extranet_url)) {
+            array_push($this->openAPINullablesSetToNull, 'extranet_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('extranet_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['extranet_url'] = $extranet_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets extranet_code
+     *
+     * @return string|null
+     */
+    public function getExtranetCode(): ?string
+    {
+        return $this->container['extranet_code'];
+    }
+
+    /**
+     * Sets extranet_code
+     *
+     * @param string|null $extranet_code Présent uniquement si le participant a un accès à l'extranet.
+     *
+     * @return $this
+     */
+    public function setExtranetCode(?string $extranet_code): static
+    {
+        if (is_null($extranet_code)) {
+            array_push($this->openAPINullablesSetToNull, 'extranet_code');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('extranet_code', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['extranet_code'] = $extranet_code;
+
+        return $this;
+    }
+
+    /**
+     * Gets extranet_autologin_url
+     *
+     * @return string|null
+     */
+    public function getExtranetAutologinUrl(): ?string
+    {
+        return $this->container['extranet_autologin_url'];
+    }
+
+    /**
+     * Sets extranet_autologin_url
+     *
+     * @param string|null $extranet_autologin_url Présent uniquement si le participant a un accès à l'extranet.
+     *
+     * @return $this
+     */
+    public function setExtranetAutologinUrl(?string $extranet_autologin_url): static
+    {
+        if (is_null($extranet_autologin_url)) {
+            array_push($this->openAPINullablesSetToNull, 'extranet_autologin_url');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('extranet_autologin_url', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['extranet_autologin_url'] = $extranet_autologin_url;
+
+        return $this;
+    }
+
+    /**
+     * Gets message_extranet
+     *
+     * @return string|null
+     */
+    public function getMessageExtranet(): ?string
+    {
+        return $this->container['message_extranet'];
+    }
+
+    /**
+     * Sets message_extranet
+     *
+     * @param string|null $message_extranet Présent uniquement si le participant a un accès à l'extranet.
+     *
+     * @return $this
+     */
+    public function setMessageExtranet(?string $message_extranet): static
+    {
+        if (is_null($message_extranet)) {
+            array_push($this->openAPINullablesSetToNull, 'message_extranet');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('message_extranet', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['message_extranet'] = $message_extranet;
+
+        return $this;
+    }
+
+    /**
+     * Gets ogdpc_adeli
+     *
+     * @return string|null
+     */
+    public function getOgdpcAdeli(): ?string
+    {
+        return $this->container['ogdpc_adeli'];
+    }
+
+    /**
+     * Sets ogdpc_adeli
+     *
+     * @param string|null $ogdpc_adeli Présent uniquement si l'option OGDPC est activée sur le compte.
+     *
+     * @return $this
+     */
+    public function setOgdpcAdeli(?string $ogdpc_adeli): static
+    {
+        if (is_null($ogdpc_adeli)) {
+            array_push($this->openAPINullablesSetToNull, 'ogdpc_adeli');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ogdpc_adeli', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['ogdpc_adeli'] = $ogdpc_adeli;
+
+        return $this;
+    }
+
+    /**
+     * Gets ogdpc_rpps
+     *
+     * @return string|null
+     */
+    public function getOgdpcRpps(): ?string
+    {
+        return $this->container['ogdpc_rpps'];
+    }
+
+    /**
+     * Sets ogdpc_rpps
+     *
+     * @param string|null $ogdpc_rpps Présent uniquement si l'option OGDPC est activée sur le compte.
+     *
+     * @return $this
+     */
+    public function setOgdpcRpps(?string $ogdpc_rpps): static
+    {
+        if (is_null($ogdpc_rpps)) {
+            array_push($this->openAPINullablesSetToNull, 'ogdpc_rpps');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ogdpc_rpps', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['ogdpc_rpps'] = $ogdpc_rpps;
+
+        return $this;
+    }
+
+    /**
+     * Gets ogdpc_id_specialite
+     *
+     * @return int|null
+     */
+    public function getOgdpcIdSpecialite(): ?int
+    {
+        return $this->container['ogdpc_id_specialite'];
+    }
+
+    /**
+     * Sets ogdpc_id_specialite
+     *
+     * @param int|null $ogdpc_id_specialite Présent uniquement si l'option OGDPC est activée sur le compte.
+     *
+     * @return $this
+     */
+    public function setOgdpcIdSpecialite(?int $ogdpc_id_specialite): static
+    {
+        if (is_null($ogdpc_id_specialite)) {
+            array_push($this->openAPINullablesSetToNull, 'ogdpc_id_specialite');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('ogdpc_id_specialite', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['ogdpc_id_specialite'] = $ogdpc_id_specialite;
+
+        return $this;
+    }
+
+    /**
+     * Gets mode_dexercice_dominant
+     *
+     * @return string|null
+     */
+    public function getModeDexerciceDominant(): ?string
+    {
+        return $this->container['mode_dexercice_dominant'];
+    }
+
+    /**
+     * Sets mode_dexercice_dominant
+     *
+     * @param string|null $mode_dexercice_dominant Présent uniquement si l'option OGDPC est activée sur le compte.
+     *
+     * @return $this
+     */
+    public function setModeDexerciceDominant(?string $mode_dexercice_dominant): static
+    {
+        if (is_null($mode_dexercice_dominant)) {
+            array_push($this->openAPINullablesSetToNull, 'mode_dexercice_dominant');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('mode_dexercice_dominant', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['mode_dexercice_dominant'] = $mode_dexercice_dominant;
 
         return $this;
     }

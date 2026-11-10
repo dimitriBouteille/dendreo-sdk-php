@@ -24,6 +24,7 @@ class Client
     final public const PACKAGE_NAME = 'dbout/dendreo-sdk-php';
     final public const USER_AGENT = 'dendreo-php-sdk';
     final public const DATE_TIME_FORMAT = 'Y-m-d H:i:s';
+    final public const TIMEZONE = 'Europe/Paris';
 
     private readonly Configuration $configuration;
     private readonly ClientInterface $httpClient;
@@ -38,6 +39,8 @@ class Client
 
         // Dendreo sends and expects date-times as `Y-m-d H:i:s` (no `T`, no timezone).
         ObjectSerializer::setDateTimeFormat(self::DATE_TIME_FORMAT);
+        // Timestamps (`*_at`) are in Paris time, see the "Dates et fuseau horaire" documentation.
+        ObjectSerializer::setTimezone(new \DateTimeZone(self::TIMEZONE));
 
         $this->configuration = (new Configuration())
             ->setHost($config->getHost())

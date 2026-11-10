@@ -19,6 +19,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
+ * @description Les champs additionnels du compte sont ajoutés à la ressource, sous leur nom de champ.
  * @package  Dbout\DendreoSdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -44,7 +45,8 @@ class Source implements ModelInterface, ArrayAccess, JsonSerializable
         'id' => 'int',
         'name' => 'string',
         'status' => 'bool',
-        'order' => 'int'
+        'order' => 'int',
+        'opportunites' => '\Dbout\DendreoSdk\Model\Opportunite[]'
     ];
 
     /**
@@ -56,7 +58,8 @@ class Source implements ModelInterface, ArrayAccess, JsonSerializable
         'id' => null,
         'name' => null,
         'status' => null,
-        'order' => null
+        'order' => null,
+        'opportunites' => null
     ];
 
     /**
@@ -68,7 +71,8 @@ class Source implements ModelInterface, ArrayAccess, JsonSerializable
         'id' => false,
         'name' => false,
         'status' => false,
-        'order' => false
+        'order' => false,
+        'opportunites' => false
     ];
 
     /**
@@ -160,7 +164,8 @@ class Source implements ModelInterface, ArrayAccess, JsonSerializable
         'id' => 'id',
         'name' => 'name',
         'status' => 'status',
-        'order' => 'order'
+        'order' => 'order',
+        'opportunites' => 'opportunites'
     ];
 
     /**
@@ -172,7 +177,8 @@ class Source implements ModelInterface, ArrayAccess, JsonSerializable
         'id' => 'setId',
         'name' => 'setName',
         'status' => 'setStatus',
-        'order' => 'setOrder'
+        'order' => 'setOrder',
+        'opportunites' => 'setOpportunites'
     ];
 
     /**
@@ -184,7 +190,8 @@ class Source implements ModelInterface, ArrayAccess, JsonSerializable
         'id' => 'getId',
         'name' => 'getName',
         'status' => 'getStatus',
-        'order' => 'getOrder'
+        'order' => 'getOrder',
+        'opportunites' => 'getOpportunites'
     ];
 
     /**
@@ -247,6 +254,7 @@ class Source implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('order', $data ?? [], null);
+        $this->setIfExists('opportunites', $data ?? [], null);
     }
 
     /**
@@ -276,6 +284,9 @@ class Source implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -294,9 +305,9 @@ class Source implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets id
      *
-     * @return int|null
+     * @return int
      */
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->container['id'];
     }
@@ -304,11 +315,11 @@ class Source implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets id
      *
-     * @param int|null $id id
+     * @param int $id id
      *
      * @return $this
      */
-    public function setId(?int $id): static
+    public function setId(int $id): static
     {
         if (is_null($id)) {
             throw new InvalidArgumentException('non-nullable id cannot be null');
@@ -395,6 +406,33 @@ class Source implements ModelInterface, ArrayAccess, JsonSerializable
             throw new InvalidArgumentException('non-nullable order cannot be null');
         }
         $this->container['order'] = $order;
+
+        return $this;
+    }
+
+    /**
+     * Gets opportunites
+     *
+     * @return \Dbout\DendreoSdk\Model\Opportunite[]|null
+     */
+    public function getOpportunites(): ?array
+    {
+        return $this->container['opportunites'];
+    }
+
+    /**
+     * Sets opportunites
+     *
+     * @param \Dbout\DendreoSdk\Model\Opportunite[]|null $opportunites Présent uniquement avec `include=opportunites`.
+     *
+     * @return $this
+     */
+    public function setOpportunites(?array $opportunites): static
+    {
+        if (is_null($opportunites)) {
+            throw new InvalidArgumentException('non-nullable opportunites cannot be null');
+        }
+        $this->container['opportunites'] = $opportunites;
 
         return $this;
     }

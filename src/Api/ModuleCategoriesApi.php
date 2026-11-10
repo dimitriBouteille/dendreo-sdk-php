@@ -1492,7 +1492,7 @@ class ModuleCategoriesApi
      *
      * Créer une catégorie de module
      *
-     * @param  \Dbout\DendreoSdk\Model\ModuleCategoriesStoreRequest $module_categories_store_request module_categories_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\ModuleCategorieStoreRequest $module_categorie_store_request module_categorie_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1500,11 +1500,11 @@ class ModuleCategoriesApi
      * @return \Dbout\DendreoSdk\Model\ModuleCategorieResponse
      */
     public function store(
-        \Dbout\DendreoSdk\Model\ModuleCategoriesStoreRequest $module_categories_store_request,
+        \Dbout\DendreoSdk\Model\ModuleCategorieStoreRequest $module_categorie_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): \Dbout\DendreoSdk\Model\ModuleCategorieResponse
     {
-        list($response) = $this->storeWithHttpInfo($module_categories_store_request, $contentType);
+        list($response) = $this->storeWithHttpInfo($module_categorie_store_request, $contentType);
         return $response;
     }
 
@@ -1513,7 +1513,7 @@ class ModuleCategoriesApi
      *
      * Créer une catégorie de module
      *
-     * @param  \Dbout\DendreoSdk\Model\ModuleCategoriesStoreRequest $module_categories_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\ModuleCategorieStoreRequest $module_categorie_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1521,11 +1521,11 @@ class ModuleCategoriesApi
      * @return array of \Dbout\DendreoSdk\Model\ModuleCategorieResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function storeWithHttpInfo(
-        \Dbout\DendreoSdk\Model\ModuleCategoriesStoreRequest $module_categories_store_request,
+        \Dbout\DendreoSdk\Model\ModuleCategorieStoreRequest $module_categorie_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): array
     {
-        $request = $this->storeRequest($module_categories_store_request, $contentType);
+        $request = $this->storeRequest($module_categorie_store_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1640,18 +1640,18 @@ class ModuleCategoriesApi
      *
      * Créer une catégorie de module
      *
-     * @param  \Dbout\DendreoSdk\Model\ModuleCategoriesStoreRequest $module_categories_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\ModuleCategorieStoreRequest $module_categorie_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
     public function storeAsync(
-        \Dbout\DendreoSdk\Model\ModuleCategoriesStoreRequest $module_categories_store_request,
+        \Dbout\DendreoSdk\Model\ModuleCategorieStoreRequest $module_categorie_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): PromiseInterface
     {
-        return $this->storeAsyncWithHttpInfo($module_categories_store_request, $contentType)
+        return $this->storeAsyncWithHttpInfo($module_categorie_store_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1664,19 +1664,19 @@ class ModuleCategoriesApi
      *
      * Créer une catégorie de module
      *
-     * @param  \Dbout\DendreoSdk\Model\ModuleCategoriesStoreRequest $module_categories_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\ModuleCategorieStoreRequest $module_categorie_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
     public function storeAsyncWithHttpInfo(
-        \Dbout\DendreoSdk\Model\ModuleCategoriesStoreRequest $module_categories_store_request,
+        \Dbout\DendreoSdk\Model\ModuleCategorieStoreRequest $module_categorie_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): PromiseInterface
     {
         $returnType = '\Dbout\DendreoSdk\Model\ModuleCategorieResponse';
-        $request = $this->storeRequest($module_categories_store_request, $contentType);
+        $request = $this->storeRequest($module_categorie_store_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1717,28 +1717,28 @@ class ModuleCategoriesApi
     /**
      * Create request for operation 'store'
      *
-     * @param  \Dbout\DendreoSdk\Model\ModuleCategoriesStoreRequest $module_categories_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\ModuleCategorieStoreRequest $module_categorie_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     public function storeRequest(
-        \Dbout\DendreoSdk\Model\ModuleCategoriesStoreRequest $module_categories_store_request,
+        \Dbout\DendreoSdk\Model\ModuleCategorieStoreRequest $module_categorie_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): Request
     {
 
-        // verify the required parameter 'module_categories_store_request' is set
-        if ($module_categories_store_request === null || (is_array($module_categories_store_request) && count($module_categories_store_request) === 0)) {
+        // verify the required parameter 'module_categorie_store_request' is set
+        if ($module_categorie_store_request === null || (is_array($module_categorie_store_request) && count($module_categorie_store_request) === 0)) {
             throw new InvalidArgumentException(
-                'Missing the required parameter $module_categories_store_request when calling store'
+                'Missing the required parameter $module_categorie_store_request when calling store'
             );
         }
-        if ($module_categories_store_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$module_categories_store_request->valid()) {
+        if ($module_categorie_store_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$module_categorie_store_request->valid()) {
             throw new InvalidArgumentException(sprintf(
-                'Invalid parameter $module_categories_store_request when calling store: %s',
-                implode(' ', $module_categories_store_request->listInvalidProperties())
+                'Invalid parameter $module_categorie_store_request when calling store: %s',
+                implode(' ', $module_categorie_store_request->listInvalidProperties())
             ));
         }
 
@@ -1761,12 +1761,12 @@ class ModuleCategoriesApi
         );
 
         // for model (json/xml)
-        if (isset($module_categories_store_request)) {
+        if (isset($module_categorie_store_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($module_categories_store_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($module_categorie_store_request));
             } else {
-                $httpBody = $module_categories_store_request;
+                $httpBody = $module_categorie_store_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1829,7 +1829,7 @@ class ModuleCategoriesApi
      * Mettre à jour une catégorie de module
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\ModuleCategoriesUpdateRequest|null $module_categories_update_request module_categories_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\ModuleCategorieUpdateRequest|null $module_categorie_update_request module_categorie_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1838,11 +1838,11 @@ class ModuleCategoriesApi
      */
     public function update(
         int $id,
-        ?\Dbout\DendreoSdk\Model\ModuleCategoriesUpdateRequest $module_categories_update_request = null,
+        ?\Dbout\DendreoSdk\Model\ModuleCategorieUpdateRequest $module_categorie_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): \Dbout\DendreoSdk\Model\ModuleCategorieResponse
     {
-        list($response) = $this->updateWithHttpInfo($id, $module_categories_update_request, $contentType);
+        list($response) = $this->updateWithHttpInfo($id, $module_categorie_update_request, $contentType);
         return $response;
     }
 
@@ -1852,7 +1852,7 @@ class ModuleCategoriesApi
      * Mettre à jour une catégorie de module
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\ModuleCategoriesUpdateRequest|null $module_categories_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\ModuleCategorieUpdateRequest|null $module_categorie_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1861,11 +1861,11 @@ class ModuleCategoriesApi
      */
     public function updateWithHttpInfo(
         int $id,
-        ?\Dbout\DendreoSdk\Model\ModuleCategoriesUpdateRequest $module_categories_update_request = null,
+        ?\Dbout\DendreoSdk\Model\ModuleCategorieUpdateRequest $module_categorie_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): array
     {
-        $request = $this->updateRequest($id, $module_categories_update_request, $contentType);
+        $request = $this->updateRequest($id, $module_categorie_update_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1995,7 +1995,7 @@ class ModuleCategoriesApi
      * Mettre à jour une catégorie de module
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\ModuleCategoriesUpdateRequest|null $module_categories_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\ModuleCategorieUpdateRequest|null $module_categorie_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -2003,11 +2003,11 @@ class ModuleCategoriesApi
      */
     public function updateAsync(
         int $id,
-        ?\Dbout\DendreoSdk\Model\ModuleCategoriesUpdateRequest $module_categories_update_request = null,
+        ?\Dbout\DendreoSdk\Model\ModuleCategorieUpdateRequest $module_categorie_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): PromiseInterface
     {
-        return $this->updateAsyncWithHttpInfo($id, $module_categories_update_request, $contentType)
+        return $this->updateAsyncWithHttpInfo($id, $module_categorie_update_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2021,7 +2021,7 @@ class ModuleCategoriesApi
      * Mettre à jour une catégorie de module
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\ModuleCategoriesUpdateRequest|null $module_categories_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\ModuleCategorieUpdateRequest|null $module_categorie_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -2029,12 +2029,12 @@ class ModuleCategoriesApi
      */
     public function updateAsyncWithHttpInfo(
         int $id,
-        ?\Dbout\DendreoSdk\Model\ModuleCategoriesUpdateRequest $module_categories_update_request = null,
+        ?\Dbout\DendreoSdk\Model\ModuleCategorieUpdateRequest $module_categorie_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): PromiseInterface
     {
         $returnType = '\Dbout\DendreoSdk\Model\ModuleCategorieResponse';
-        $request = $this->updateRequest($id, $module_categories_update_request, $contentType);
+        $request = $this->updateRequest($id, $module_categorie_update_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2076,7 +2076,7 @@ class ModuleCategoriesApi
      * Create request for operation 'update'
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\ModuleCategoriesUpdateRequest|null $module_categories_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\ModuleCategorieUpdateRequest|null $module_categorie_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -2084,7 +2084,7 @@ class ModuleCategoriesApi
      */
     public function updateRequest(
         int $id,
-        ?\Dbout\DendreoSdk\Model\ModuleCategoriesUpdateRequest $module_categories_update_request = null,
+        ?\Dbout\DendreoSdk\Model\ModuleCategorieUpdateRequest $module_categorie_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): Request
     {
@@ -2096,10 +2096,10 @@ class ModuleCategoriesApi
             );
         }
 
-        if ($module_categories_update_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$module_categories_update_request->valid()) {
+        if ($module_categorie_update_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$module_categorie_update_request->valid()) {
             throw new InvalidArgumentException(sprintf(
-                'Invalid parameter $module_categories_update_request when calling update: %s',
-                implode(' ', $module_categories_update_request->listInvalidProperties())
+                'Invalid parameter $module_categorie_update_request when calling update: %s',
+                implode(' ', $module_categorie_update_request->listInvalidProperties())
             ));
         }
 
@@ -2130,12 +2130,12 @@ class ModuleCategoriesApi
         );
 
         // for model (json/xml)
-        if (isset($module_categories_update_request)) {
+        if (isset($module_categorie_update_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($module_categories_update_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($module_categorie_update_request));
             } else {
-                $httpBody = $module_categories_update_request;
+                $httpBody = $module_categorie_update_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

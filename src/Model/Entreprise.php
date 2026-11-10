@@ -19,6 +19,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
+ * @description Les champs additionnels du compte sont ajoutés à la ressource, sous leur nom de champ.
  * @package  Dbout\DendreoSdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -59,7 +60,7 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
         'appellation' => 'string',
         'sigle' => 'string',
         'statut_juridique' => 'string',
-        'nb_employes' => 'string',
+        'nb_employes' => 'int',
         'telephone' => 'string',
         'fax' => 'string',
         'site_internet' => 'string',
@@ -75,9 +76,9 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
         'peppol_scheme' => 'string',
         'peppol_identifier' => 'string',
         'num_tva_intra_auto' => 'string',
-        'tva_formation' => 'string',
-        'tva_frais' => 'string',
-        'tva_hors_formation' => 'string',
+        'tva_formation' => 'float',
+        'tva_frais' => 'float',
+        'tva_hors_formation' => 'float',
         'has_chorus_pro_invoices' => 'bool',
         'reference_acheteur' => 'string',
         'moyen_paiement_par_defaut' => 'string',
@@ -105,7 +106,30 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => '\DateTime',
         'id_edit' => 'int',
         'deleted_at' => '\DateTime',
-        'id_delete' => 'int'
+        'id_delete' => 'int',
+        'administrateur_add' => '\Dbout\DendreoSdk\Model\Administrateur',
+        'administrateur_edit' => '\Dbout\DendreoSdk\Model\Administrateur',
+        'administrateur_delete' => '\Dbout\DendreoSdk\Model\Administrateur',
+        'centres' => '\Dbout\DendreoSdk\Model\CentresDeFormation[]',
+        'code_naf' => 'object',
+        'stats' => 'object',
+        'client_interne' => 'bool',
+        'id_opca' => 'int',
+        'id_opca_interlocuteur' => 'int',
+        'message_extranet' => 'string',
+        'formateurs_mode_remu' => 'string',
+        'formateurs_remu_horaire_par_defaut' => 'float',
+        'numero_compte_fournisseur' => 'string',
+        'numero_compte_fournisseur_auxiliaire' => 'string',
+        'tslearning_group_id' => 'string',
+        'riseup_group_id' => 'int',
+        'facturation_raison_sociale' => 'string',
+        'facturation_adresse' => 'string',
+        'facturation_code_postal' => 'string',
+        'facturation_ville' => 'string',
+        'facturation_pays' => 'string',
+        'facturation_pays_alpha2' => 'string',
+        'num_tva_intra' => 'string'
     ];
 
     /**
@@ -178,7 +202,30 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => 'date-time',
         'id_edit' => null,
         'deleted_at' => 'date-time',
-        'id_delete' => null
+        'id_delete' => null,
+        'administrateur_add' => null,
+        'administrateur_edit' => null,
+        'administrateur_delete' => null,
+        'centres' => null,
+        'code_naf' => null,
+        'stats' => null,
+        'client_interne' => null,
+        'id_opca' => null,
+        'id_opca_interlocuteur' => null,
+        'message_extranet' => null,
+        'formateurs_mode_remu' => null,
+        'formateurs_remu_horaire_par_defaut' => null,
+        'numero_compte_fournisseur' => null,
+        'numero_compte_fournisseur_auxiliaire' => null,
+        'tslearning_group_id' => null,
+        'riseup_group_id' => null,
+        'facturation_raison_sociale' => null,
+        'facturation_adresse' => null,
+        'facturation_code_postal' => null,
+        'facturation_ville' => null,
+        'facturation_pays' => null,
+        'facturation_pays_alpha2' => null,
+        'num_tva_intra' => null
     ];
 
     /**
@@ -251,7 +298,30 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => true,
         'id_edit' => true,
         'deleted_at' => true,
-        'id_delete' => true
+        'id_delete' => true,
+        'administrateur_add' => true,
+        'administrateur_edit' => true,
+        'administrateur_delete' => true,
+        'centres' => false,
+        'code_naf' => true,
+        'stats' => true,
+        'client_interne' => true,
+        'id_opca' => true,
+        'id_opca_interlocuteur' => true,
+        'message_extranet' => true,
+        'formateurs_mode_remu' => true,
+        'formateurs_remu_horaire_par_defaut' => true,
+        'numero_compte_fournisseur' => true,
+        'numero_compte_fournisseur_auxiliaire' => true,
+        'tslearning_group_id' => true,
+        'riseup_group_id' => true,
+        'facturation_raison_sociale' => true,
+        'facturation_adresse' => true,
+        'facturation_code_postal' => true,
+        'facturation_ville' => true,
+        'facturation_pays' => true,
+        'facturation_pays_alpha2' => true,
+        'num_tva_intra' => true
     ];
 
     /**
@@ -404,7 +474,30 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => 'updated_at',
         'id_edit' => 'id_edit',
         'deleted_at' => 'deleted_at',
-        'id_delete' => 'id_delete'
+        'id_delete' => 'id_delete',
+        'administrateur_add' => 'administrateur_add',
+        'administrateur_edit' => 'administrateur_edit',
+        'administrateur_delete' => 'administrateur_delete',
+        'centres' => 'centres',
+        'code_naf' => 'code_naf',
+        'stats' => 'stats',
+        'client_interne' => 'client_interne',
+        'id_opca' => 'id_opca',
+        'id_opca_interlocuteur' => 'id_opca_interlocuteur',
+        'message_extranet' => 'message_extranet',
+        'formateurs_mode_remu' => 'formateurs_mode_remu',
+        'formateurs_remu_horaire_par_defaut' => 'formateurs_remu_horaire_par_defaut',
+        'numero_compte_fournisseur' => 'numero_compte_fournisseur',
+        'numero_compte_fournisseur_auxiliaire' => 'numero_compte_fournisseur_auxiliaire',
+        'tslearning_group_id' => 'tslearning_group_id',
+        'riseup_group_id' => 'riseup_group_id',
+        'facturation_raison_sociale' => 'facturation_raison_sociale',
+        'facturation_adresse' => 'facturation_adresse',
+        'facturation_code_postal' => 'facturation_code_postal',
+        'facturation_ville' => 'facturation_ville',
+        'facturation_pays' => 'facturation_pays',
+        'facturation_pays_alpha2' => 'facturation_pays_alpha2',
+        'num_tva_intra' => 'num_tva_intra'
     ];
 
     /**
@@ -477,7 +570,30 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => 'setUpdatedAt',
         'id_edit' => 'setIdEdit',
         'deleted_at' => 'setDeletedAt',
-        'id_delete' => 'setIdDelete'
+        'id_delete' => 'setIdDelete',
+        'administrateur_add' => 'setAdministrateurAdd',
+        'administrateur_edit' => 'setAdministrateurEdit',
+        'administrateur_delete' => 'setAdministrateurDelete',
+        'centres' => 'setCentres',
+        'code_naf' => 'setCodeNaf',
+        'stats' => 'setStats',
+        'client_interne' => 'setClientInterne',
+        'id_opca' => 'setIdOpca',
+        'id_opca_interlocuteur' => 'setIdOpcaInterlocuteur',
+        'message_extranet' => 'setMessageExtranet',
+        'formateurs_mode_remu' => 'setFormateursModeRemu',
+        'formateurs_remu_horaire_par_defaut' => 'setFormateursRemuHoraireParDefaut',
+        'numero_compte_fournisseur' => 'setNumeroCompteFournisseur',
+        'numero_compte_fournisseur_auxiliaire' => 'setNumeroCompteFournisseurAuxiliaire',
+        'tslearning_group_id' => 'setTslearningGroupId',
+        'riseup_group_id' => 'setRiseupGroupId',
+        'facturation_raison_sociale' => 'setFacturationRaisonSociale',
+        'facturation_adresse' => 'setFacturationAdresse',
+        'facturation_code_postal' => 'setFacturationCodePostal',
+        'facturation_ville' => 'setFacturationVille',
+        'facturation_pays' => 'setFacturationPays',
+        'facturation_pays_alpha2' => 'setFacturationPaysAlpha2',
+        'num_tva_intra' => 'setNumTvaIntra'
     ];
 
     /**
@@ -550,7 +666,30 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => 'getUpdatedAt',
         'id_edit' => 'getIdEdit',
         'deleted_at' => 'getDeletedAt',
-        'id_delete' => 'getIdDelete'
+        'id_delete' => 'getIdDelete',
+        'administrateur_add' => 'getAdministrateurAdd',
+        'administrateur_edit' => 'getAdministrateurEdit',
+        'administrateur_delete' => 'getAdministrateurDelete',
+        'centres' => 'getCentres',
+        'code_naf' => 'getCodeNaf',
+        'stats' => 'getStats',
+        'client_interne' => 'getClientInterne',
+        'id_opca' => 'getIdOpca',
+        'id_opca_interlocuteur' => 'getIdOpcaInterlocuteur',
+        'message_extranet' => 'getMessageExtranet',
+        'formateurs_mode_remu' => 'getFormateursModeRemu',
+        'formateurs_remu_horaire_par_defaut' => 'getFormateursRemuHoraireParDefaut',
+        'numero_compte_fournisseur' => 'getNumeroCompteFournisseur',
+        'numero_compte_fournisseur_auxiliaire' => 'getNumeroCompteFournisseurAuxiliaire',
+        'tslearning_group_id' => 'getTslearningGroupId',
+        'riseup_group_id' => 'getRiseupGroupId',
+        'facturation_raison_sociale' => 'getFacturationRaisonSociale',
+        'facturation_adresse' => 'getFacturationAdresse',
+        'facturation_code_postal' => 'getFacturationCodePostal',
+        'facturation_ville' => 'getFacturationVille',
+        'facturation_pays' => 'getFacturationPays',
+        'facturation_pays_alpha2' => 'getFacturationPaysAlpha2',
+        'num_tva_intra' => 'getNumTvaIntra'
     ];
 
     /**
@@ -674,6 +813,29 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('id_edit', $data ?? [], null);
         $this->setIfExists('deleted_at', $data ?? [], null);
         $this->setIfExists('id_delete', $data ?? [], null);
+        $this->setIfExists('administrateur_add', $data ?? [], null);
+        $this->setIfExists('administrateur_edit', $data ?? [], null);
+        $this->setIfExists('administrateur_delete', $data ?? [], null);
+        $this->setIfExists('centres', $data ?? [], null);
+        $this->setIfExists('code_naf', $data ?? [], null);
+        $this->setIfExists('stats', $data ?? [], null);
+        $this->setIfExists('client_interne', $data ?? [], null);
+        $this->setIfExists('id_opca', $data ?? [], null);
+        $this->setIfExists('id_opca_interlocuteur', $data ?? [], null);
+        $this->setIfExists('message_extranet', $data ?? [], null);
+        $this->setIfExists('formateurs_mode_remu', $data ?? [], null);
+        $this->setIfExists('formateurs_remu_horaire_par_defaut', $data ?? [], null);
+        $this->setIfExists('numero_compte_fournisseur', $data ?? [], null);
+        $this->setIfExists('numero_compte_fournisseur_auxiliaire', $data ?? [], null);
+        $this->setIfExists('tslearning_group_id', $data ?? [], null);
+        $this->setIfExists('riseup_group_id', $data ?? [], null);
+        $this->setIfExists('facturation_raison_sociale', $data ?? [], null);
+        $this->setIfExists('facturation_adresse', $data ?? [], null);
+        $this->setIfExists('facturation_code_postal', $data ?? [], null);
+        $this->setIfExists('facturation_ville', $data ?? [], null);
+        $this->setIfExists('facturation_pays', $data ?? [], null);
+        $this->setIfExists('facturation_pays_alpha2', $data ?? [], null);
+        $this->setIfExists('num_tva_intra', $data ?? [], null);
     }
 
     /**
@@ -703,6 +865,18 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
+        }
+        if ($this->container['deleted_at'] === null) {
+            $invalidProperties[] = "'deleted_at' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -721,9 +895,9 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets id
      *
-     * @return int|null
+     * @return int
      */
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->container['id'];
     }
@@ -731,11 +905,11 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets id
      *
-     * @param int|null $id id
+     * @param int $id id
      *
      * @return $this
      */
-    public function setId(?int $id): static
+    public function setId(int $id): static
     {
         if (is_null($id)) {
             throw new InvalidArgumentException('non-nullable id cannot be null');
@@ -758,7 +932,7 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets entreprise_parente_id
      *
-     * @param int|null $entreprise_parente_id entreprise_parente_id
+     * @param int|null $entreprise_parente_id Présent uniquement pour une entreprise (`particulier` à `false`).
      *
      * @return $this
      */
@@ -1199,7 +1373,7 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets appellation
      *
-     * @param string|null $appellation appellation
+     * @param string|null $appellation Présent uniquement pour une entreprise (`particulier` à `false`).
      *
      * @return $this
      */
@@ -1291,9 +1465,9 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets nb_employes
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getNbEmployes(): ?string
+    public function getNbEmployes(): ?int
     {
         return $this->container['nb_employes'];
     }
@@ -1301,11 +1475,11 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets nb_employes
      *
-     * @param string|null $nb_employes nb_employes
+     * @param int|null $nb_employes Présent uniquement pour une entreprise (`particulier` à `false`).
      *
      * @return $this
      */
-    public function setNbEmployes(?string $nb_employes): static
+    public function setNbEmployes(?int $nb_employes): static
     {
         if (is_null($nb_employes)) {
             array_push($this->openAPINullablesSetToNull, 'nb_employes');
@@ -1765,9 +1939,9 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets tva_formation
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getTvaFormation(): ?string
+    public function getTvaFormation(): ?float
     {
         return $this->container['tva_formation'];
     }
@@ -1775,11 +1949,11 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets tva_formation
      *
-     * @param string|null $tva_formation tva_formation
+     * @param float|null $tva_formation tva_formation
      *
      * @return $this
      */
-    public function setTvaFormation(?string $tva_formation): static
+    public function setTvaFormation(?float $tva_formation): static
     {
         if (is_null($tva_formation)) {
             throw new InvalidArgumentException('non-nullable tva_formation cannot be null');
@@ -1792,9 +1966,9 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets tva_frais
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getTvaFrais(): ?string
+    public function getTvaFrais(): ?float
     {
         return $this->container['tva_frais'];
     }
@@ -1802,11 +1976,11 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets tva_frais
      *
-     * @param string|null $tva_frais tva_frais
+     * @param float|null $tva_frais tva_frais
      *
      * @return $this
      */
-    public function setTvaFrais(?string $tva_frais): static
+    public function setTvaFrais(?float $tva_frais): static
     {
         if (is_null($tva_frais)) {
             throw new InvalidArgumentException('non-nullable tva_frais cannot be null');
@@ -1819,9 +1993,9 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets tva_hors_formation
      *
-     * @return string|null
+     * @return float|null
      */
-    public function getTvaHorsFormation(): ?string
+    public function getTvaHorsFormation(): ?float
     {
         return $this->container['tva_hors_formation'];
     }
@@ -1829,11 +2003,11 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets tva_hors_formation
      *
-     * @param string|null $tva_hors_formation tva_hors_formation
+     * @param float|null $tva_hors_formation tva_hors_formation
      *
      * @return $this
      */
-    public function setTvaHorsFormation(?string $tva_hors_formation): static
+    public function setTvaHorsFormation(?float $tva_hors_formation): static
     {
         if (is_null($tva_hors_formation)) {
             throw new InvalidArgumentException('non-nullable tva_hors_formation cannot be null');
@@ -1978,7 +2152,7 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets fournisseur
      *
-     * @param bool|null $fournisseur fournisseur
+     * @param bool|null $fournisseur Présent uniquement pour une entreprise (`particulier` à `false`).
      *
      * @return $this
      */
@@ -2059,7 +2233,7 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets financeur_type
      *
-     * @param string|null $financeur_type financeur_type
+     * @param string|null $financeur_type Présent uniquement quand `mode_financement_par_defaut` ne vaut pas `particulier`.
      *
      * @return $this
      */
@@ -2093,7 +2267,7 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets financeur_id
      *
-     * @param int|null $financeur_id financeur_id
+     * @param int|null $financeur_id Présent uniquement quand `mode_financement_par_defaut` ne vaut pas `particulier`.
      *
      * @return $this
      */
@@ -2242,7 +2416,7 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets id_contact
      *
-     * @param int|null $id_contact id_contact
+     * @param int|null $id_contact Présent uniquement pour une entreprise (`particulier` à `false`).
      *
      * @return $this
      */
@@ -2276,7 +2450,7 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets id_contact_secondaire
      *
-     * @param int|null $id_contact_secondaire id_contact_secondaire
+     * @param int|null $id_contact_secondaire Présent uniquement pour une entreprise (`particulier` à `false`).
      *
      * @return $this
      */
@@ -2310,7 +2484,7 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets id_contact_facturation
      *
-     * @param int|null $id_contact_facturation id_contact_facturation
+     * @param int|null $id_contact_facturation Présent uniquement pour une entreprise (`particulier` à `false`).
      *
      * @return $this
      */
@@ -2524,7 +2698,7 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets created_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -2534,7 +2708,7 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets created_at
      *
-     * @param \DateTime|null $created_at created_at
+     * @param \DateTime $created_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -2592,7 +2766,7 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets updated_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -2602,7 +2776,7 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets updated_at
      *
-     * @param \DateTime|null $updated_at updated_at
+     * @param \DateTime $updated_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -2660,7 +2834,7 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets deleted_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDeletedAt(): ?\DateTime
     {
@@ -2670,7 +2844,7 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets deleted_at
      *
-     * @param \DateTime|null $deleted_at deleted_at
+     * @param \DateTime $deleted_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -2721,6 +2895,781 @@ class Entreprise implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['id_delete'] = $id_delete;
+
+        return $this;
+    }
+
+    /**
+     * Gets administrateur_add
+     *
+     * @return \Dbout\DendreoSdk\Model\Administrateur|null
+     */
+    public function getAdministrateurAdd(): ?\Dbout\DendreoSdk\Model\Administrateur
+    {
+        return $this->container['administrateur_add'];
+    }
+
+    /**
+     * Sets administrateur_add
+     *
+     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_add Présent uniquement avec `include=administrateurAdd`.
+     *
+     * @return $this
+     */
+    public function setAdministrateurAdd(?\Dbout\DendreoSdk\Model\Administrateur $administrateur_add): static
+    {
+        if (is_null($administrateur_add)) {
+            array_push($this->openAPINullablesSetToNull, 'administrateur_add');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('administrateur_add', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['administrateur_add'] = $administrateur_add;
+
+        return $this;
+    }
+
+    /**
+     * Gets administrateur_edit
+     *
+     * @return \Dbout\DendreoSdk\Model\Administrateur|null
+     */
+    public function getAdministrateurEdit(): ?\Dbout\DendreoSdk\Model\Administrateur
+    {
+        return $this->container['administrateur_edit'];
+    }
+
+    /**
+     * Sets administrateur_edit
+     *
+     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_edit Présent uniquement avec `include=administrateurEdit`.
+     *
+     * @return $this
+     */
+    public function setAdministrateurEdit(?\Dbout\DendreoSdk\Model\Administrateur $administrateur_edit): static
+    {
+        if (is_null($administrateur_edit)) {
+            array_push($this->openAPINullablesSetToNull, 'administrateur_edit');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('administrateur_edit', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['administrateur_edit'] = $administrateur_edit;
+
+        return $this;
+    }
+
+    /**
+     * Gets administrateur_delete
+     *
+     * @return \Dbout\DendreoSdk\Model\Administrateur|null
+     */
+    public function getAdministrateurDelete(): ?\Dbout\DendreoSdk\Model\Administrateur
+    {
+        return $this->container['administrateur_delete'];
+    }
+
+    /**
+     * Sets administrateur_delete
+     *
+     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_delete Présent uniquement avec `include=administrateurDelete`.
+     *
+     * @return $this
+     */
+    public function setAdministrateurDelete(?\Dbout\DendreoSdk\Model\Administrateur $administrateur_delete): static
+    {
+        if (is_null($administrateur_delete)) {
+            array_push($this->openAPINullablesSetToNull, 'administrateur_delete');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('administrateur_delete', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['administrateur_delete'] = $administrateur_delete;
+
+        return $this;
+    }
+
+    /**
+     * Gets centres
+     *
+     * @return \Dbout\DendreoSdk\Model\CentresDeFormation[]|null
+     */
+    public function getCentres(): ?array
+    {
+        return $this->container['centres'];
+    }
+
+    /**
+     * Sets centres
+     *
+     * @param \Dbout\DendreoSdk\Model\CentresDeFormation[]|null $centres Présent uniquement avec `include=centres`. Renvoyé seulement si le compte gère plusieurs centres de formation.
+     *
+     * @return $this
+     */
+    public function setCentres(?array $centres): static
+    {
+        if (is_null($centres)) {
+            throw new InvalidArgumentException('non-nullable centres cannot be null');
+        }
+        $this->container['centres'] = $centres;
+
+        return $this;
+    }
+
+    /**
+     * Gets code_naf
+     *
+     * @return object|null
+     */
+    public function getCodeNaf(): ?object
+    {
+        return $this->container['code_naf'];
+    }
+
+    /**
+     * Sets code_naf
+     *
+     * @param object|null $code_naf Présent uniquement sur les endpoints Entreprises et avec `include=entreprise` des actions commerciales. Code NAF : `id`, `code` et `intitule`.
+     *
+     * @return $this
+     */
+    public function setCodeNaf(?object $code_naf): static
+    {
+        if (is_null($code_naf)) {
+            array_push($this->openAPINullablesSetToNull, 'code_naf');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('code_naf', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['code_naf'] = $code_naf;
+
+        return $this;
+    }
+
+    /**
+     * Gets stats
+     *
+     * @return object|null
+     */
+    public function getStats(): ?object
+    {
+        return $this->container['stats'];
+    }
+
+    /**
+     * Sets stats
+     *
+     * @param object|null $stats Présent uniquement avec `include=stats`. Chiffre d'affaires facturé (`ca_facture`), généré en formation (`ca_genere_formation`) et recettes prévisionnelles comprises (`recettes_with_previsionnal`), en nombres arrondis à deux décimales, `null` sans montant.
+     *
+     * @return $this
+     */
+    public function setStats(?object $stats): static
+    {
+        if (is_null($stats)) {
+            array_push($this->openAPINullablesSetToNull, 'stats');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('stats', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['stats'] = $stats;
+
+        return $this;
+    }
+
+    /**
+     * Gets client_interne
+     *
+     * @return bool|null
+     */
+    public function getClientInterne(): ?bool
+    {
+        return $this->container['client_interne'];
+    }
+
+    /**
+     * Sets client_interne
+     *
+     * @param bool|null $client_interne Présent uniquement si la facturation différenciée des clients internes est activée sur le compte.
+     *
+     * @return $this
+     */
+    public function setClientInterne(?bool $client_interne): static
+    {
+        if (is_null($client_interne)) {
+            array_push($this->openAPINullablesSetToNull, 'client_interne');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('client_interne', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['client_interne'] = $client_interne;
+
+        return $this;
+    }
+
+    /**
+     * Gets id_opca
+     *
+     * @return int|null
+     */
+    public function getIdOpca(): ?int
+    {
+        return $this->container['id_opca'];
+    }
+
+    /**
+     * Sets id_opca
+     *
+     * @param int|null $id_opca Présent uniquement quand `mode_financement_par_defaut` vaut `opca`.
+     *
+     * @return $this
+     */
+    public function setIdOpca(?int $id_opca): static
+    {
+        if (is_null($id_opca)) {
+            array_push($this->openAPINullablesSetToNull, 'id_opca');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id_opca', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id_opca'] = $id_opca;
+
+        return $this;
+    }
+
+    /**
+     * Gets id_opca_interlocuteur
+     *
+     * @return int|null
+     */
+    public function getIdOpcaInterlocuteur(): ?int
+    {
+        return $this->container['id_opca_interlocuteur'];
+    }
+
+    /**
+     * Sets id_opca_interlocuteur
+     *
+     * @param int|null $id_opca_interlocuteur Présent uniquement quand `mode_financement_par_defaut` vaut `opca`.
+     *
+     * @return $this
+     */
+    public function setIdOpcaInterlocuteur(?int $id_opca_interlocuteur): static
+    {
+        if (is_null($id_opca_interlocuteur)) {
+            array_push($this->openAPINullablesSetToNull, 'id_opca_interlocuteur');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id_opca_interlocuteur', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id_opca_interlocuteur'] = $id_opca_interlocuteur;
+
+        return $this;
+    }
+
+    /**
+     * Gets message_extranet
+     *
+     * @return string|null
+     */
+    public function getMessageExtranet(): ?string
+    {
+        return $this->container['message_extranet'];
+    }
+
+    /**
+     * Sets message_extranet
+     *
+     * @param string|null $message_extranet Présent uniquement si l'extranet client est activé sur le compte.
+     *
+     * @return $this
+     */
+    public function setMessageExtranet(?string $message_extranet): static
+    {
+        if (is_null($message_extranet)) {
+            array_push($this->openAPINullablesSetToNull, 'message_extranet');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('message_extranet', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['message_extranet'] = $message_extranet;
+
+        return $this;
+    }
+
+    /**
+     * Gets formateurs_mode_remu
+     *
+     * @return string|null
+     */
+    public function getFormateursModeRemu(): ?string
+    {
+        return $this->container['formateurs_mode_remu'];
+    }
+
+    /**
+     * Sets formateurs_mode_remu
+     *
+     * @param string|null $formateurs_mode_remu Présent uniquement pour une entreprise fournisseur (`fournisseur` à `true`).
+     *
+     * @return $this
+     */
+    public function setFormateursModeRemu(?string $formateurs_mode_remu): static
+    {
+        if (is_null($formateurs_mode_remu)) {
+            array_push($this->openAPINullablesSetToNull, 'formateurs_mode_remu');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('formateurs_mode_remu', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['formateurs_mode_remu'] = $formateurs_mode_remu;
+
+        return $this;
+    }
+
+    /**
+     * Gets formateurs_remu_horaire_par_defaut
+     *
+     * @return float|null
+     */
+    public function getFormateursRemuHoraireParDefaut(): ?float
+    {
+        return $this->container['formateurs_remu_horaire_par_defaut'];
+    }
+
+    /**
+     * Sets formateurs_remu_horaire_par_defaut
+     *
+     * @param float|null $formateurs_remu_horaire_par_defaut Présent uniquement pour une entreprise fournisseur (`fournisseur` à `true`).
+     *
+     * @return $this
+     */
+    public function setFormateursRemuHoraireParDefaut(?float $formateurs_remu_horaire_par_defaut): static
+    {
+        if (is_null($formateurs_remu_horaire_par_defaut)) {
+            array_push($this->openAPINullablesSetToNull, 'formateurs_remu_horaire_par_defaut');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('formateurs_remu_horaire_par_defaut', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['formateurs_remu_horaire_par_defaut'] = $formateurs_remu_horaire_par_defaut;
+
+        return $this;
+    }
+
+    /**
+     * Gets numero_compte_fournisseur
+     *
+     * @return string|null
+     */
+    public function getNumeroCompteFournisseur(): ?string
+    {
+        return $this->container['numero_compte_fournisseur'];
+    }
+
+    /**
+     * Sets numero_compte_fournisseur
+     *
+     * @param string|null $numero_compte_fournisseur Présent uniquement pour une entreprise fournisseur (`fournisseur` à `true`).
+     *
+     * @return $this
+     */
+    public function setNumeroCompteFournisseur(?string $numero_compte_fournisseur): static
+    {
+        if (is_null($numero_compte_fournisseur)) {
+            array_push($this->openAPINullablesSetToNull, 'numero_compte_fournisseur');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('numero_compte_fournisseur', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['numero_compte_fournisseur'] = $numero_compte_fournisseur;
+
+        return $this;
+    }
+
+    /**
+     * Gets numero_compte_fournisseur_auxiliaire
+     *
+     * @return string|null
+     */
+    public function getNumeroCompteFournisseurAuxiliaire(): ?string
+    {
+        return $this->container['numero_compte_fournisseur_auxiliaire'];
+    }
+
+    /**
+     * Sets numero_compte_fournisseur_auxiliaire
+     *
+     * @param string|null $numero_compte_fournisseur_auxiliaire Présent uniquement pour une entreprise fournisseur (`fournisseur` à `true`).
+     *
+     * @return $this
+     */
+    public function setNumeroCompteFournisseurAuxiliaire(?string $numero_compte_fournisseur_auxiliaire): static
+    {
+        if (is_null($numero_compte_fournisseur_auxiliaire)) {
+            array_push($this->openAPINullablesSetToNull, 'numero_compte_fournisseur_auxiliaire');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('numero_compte_fournisseur_auxiliaire', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['numero_compte_fournisseur_auxiliaire'] = $numero_compte_fournisseur_auxiliaire;
+
+        return $this;
+    }
+
+    /**
+     * Gets tslearning_group_id
+     *
+     * @return string|null
+     */
+    public function getTslearningGroupId(): ?string
+    {
+        return $this->container['tslearning_group_id'];
+    }
+
+    /**
+     * Sets tslearning_group_id
+     *
+     * @param string|null $tslearning_group_id Présent uniquement si l'intégration TSLearning est activée sur le compte.
+     *
+     * @return $this
+     */
+    public function setTslearningGroupId(?string $tslearning_group_id): static
+    {
+        if (is_null($tslearning_group_id)) {
+            array_push($this->openAPINullablesSetToNull, 'tslearning_group_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('tslearning_group_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['tslearning_group_id'] = $tslearning_group_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets riseup_group_id
+     *
+     * @return int|null
+     */
+    public function getRiseupGroupId(): ?int
+    {
+        return $this->container['riseup_group_id'];
+    }
+
+    /**
+     * Sets riseup_group_id
+     *
+     * @param int|null $riseup_group_id Présent uniquement si l'intégration Rise Up est activée sur le compte.
+     *
+     * @return $this
+     */
+    public function setRiseupGroupId(?int $riseup_group_id): static
+    {
+        if (is_null($riseup_group_id)) {
+            array_push($this->openAPINullablesSetToNull, 'riseup_group_id');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('riseup_group_id', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['riseup_group_id'] = $riseup_group_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets facturation_raison_sociale
+     *
+     * @return string|null
+     */
+    public function getFacturationRaisonSociale(): ?string
+    {
+        return $this->container['facturation_raison_sociale'];
+    }
+
+    /**
+     * Sets facturation_raison_sociale
+     *
+     * @param string|null $facturation_raison_sociale Présent uniquement quand une adresse de facturation différente est renseignée.
+     *
+     * @return $this
+     */
+    public function setFacturationRaisonSociale(?string $facturation_raison_sociale): static
+    {
+        if (is_null($facturation_raison_sociale)) {
+            array_push($this->openAPINullablesSetToNull, 'facturation_raison_sociale');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('facturation_raison_sociale', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['facturation_raison_sociale'] = $facturation_raison_sociale;
+
+        return $this;
+    }
+
+    /**
+     * Gets facturation_adresse
+     *
+     * @return string|null
+     */
+    public function getFacturationAdresse(): ?string
+    {
+        return $this->container['facturation_adresse'];
+    }
+
+    /**
+     * Sets facturation_adresse
+     *
+     * @param string|null $facturation_adresse Présent uniquement quand une adresse de facturation différente est renseignée.
+     *
+     * @return $this
+     */
+    public function setFacturationAdresse(?string $facturation_adresse): static
+    {
+        if (is_null($facturation_adresse)) {
+            array_push($this->openAPINullablesSetToNull, 'facturation_adresse');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('facturation_adresse', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['facturation_adresse'] = $facturation_adresse;
+
+        return $this;
+    }
+
+    /**
+     * Gets facturation_code_postal
+     *
+     * @return string|null
+     */
+    public function getFacturationCodePostal(): ?string
+    {
+        return $this->container['facturation_code_postal'];
+    }
+
+    /**
+     * Sets facturation_code_postal
+     *
+     * @param string|null $facturation_code_postal Présent uniquement quand une adresse de facturation différente est renseignée.
+     *
+     * @return $this
+     */
+    public function setFacturationCodePostal(?string $facturation_code_postal): static
+    {
+        if (is_null($facturation_code_postal)) {
+            array_push($this->openAPINullablesSetToNull, 'facturation_code_postal');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('facturation_code_postal', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['facturation_code_postal'] = $facturation_code_postal;
+
+        return $this;
+    }
+
+    /**
+     * Gets facturation_ville
+     *
+     * @return string|null
+     */
+    public function getFacturationVille(): ?string
+    {
+        return $this->container['facturation_ville'];
+    }
+
+    /**
+     * Sets facturation_ville
+     *
+     * @param string|null $facturation_ville Présent uniquement quand une adresse de facturation différente est renseignée.
+     *
+     * @return $this
+     */
+    public function setFacturationVille(?string $facturation_ville): static
+    {
+        if (is_null($facturation_ville)) {
+            array_push($this->openAPINullablesSetToNull, 'facturation_ville');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('facturation_ville', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['facturation_ville'] = $facturation_ville;
+
+        return $this;
+    }
+
+    /**
+     * Gets facturation_pays
+     *
+     * @return string|null
+     */
+    public function getFacturationPays(): ?string
+    {
+        return $this->container['facturation_pays'];
+    }
+
+    /**
+     * Sets facturation_pays
+     *
+     * @param string|null $facturation_pays Présent uniquement quand une adresse de facturation différente est renseignée.
+     *
+     * @return $this
+     */
+    public function setFacturationPays(?string $facturation_pays): static
+    {
+        if (is_null($facturation_pays)) {
+            array_push($this->openAPINullablesSetToNull, 'facturation_pays');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('facturation_pays', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['facturation_pays'] = $facturation_pays;
+
+        return $this;
+    }
+
+    /**
+     * Gets facturation_pays_alpha2
+     *
+     * @return string|null
+     */
+    public function getFacturationPaysAlpha2(): ?string
+    {
+        return $this->container['facturation_pays_alpha2'];
+    }
+
+    /**
+     * Sets facturation_pays_alpha2
+     *
+     * @param string|null $facturation_pays_alpha2 Présent uniquement quand une adresse de facturation différente est renseignée.
+     *
+     * @return $this
+     */
+    public function setFacturationPaysAlpha2(?string $facturation_pays_alpha2): static
+    {
+        if (is_null($facturation_pays_alpha2)) {
+            array_push($this->openAPINullablesSetToNull, 'facturation_pays_alpha2');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('facturation_pays_alpha2', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['facturation_pays_alpha2'] = $facturation_pays_alpha2;
+
+        return $this;
+    }
+
+    /**
+     * Gets num_tva_intra
+     *
+     * @return string|null
+     */
+    public function getNumTvaIntra(): ?string
+    {
+        return $this->container['num_tva_intra'];
+    }
+
+    /**
+     * Sets num_tva_intra
+     *
+     * @param string|null $num_tva_intra Présent uniquement quand `num_tva_intra_auto` est vrai.
+     *
+     * @return $this
+     */
+    public function setNumTvaIntra(?string $num_tva_intra): static
+    {
+        if (is_null($num_tva_intra)) {
+            array_push($this->openAPINullablesSetToNull, 'num_tva_intra');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('num_tva_intra', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['num_tva_intra'] = $num_tva_intra;
 
         return $this;
     }

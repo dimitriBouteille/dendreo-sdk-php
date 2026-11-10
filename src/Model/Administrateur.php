@@ -19,6 +19,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
+ * @description Les champs additionnels du compte sont ajoutés à la ressource, sous leur nom de champ.
  * @package  Dbout\DendreoSdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -60,7 +61,11 @@ class Administrateur implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => '\DateTime',
         'id_edit' => 'int',
         'deleted_at' => '\DateTime',
-        'id_delete' => 'int'
+        'id_delete' => 'int',
+        'niveaux' => 'object[]',
+        'administrateur_add' => '\Dbout\DendreoSdk\Model\Administrateur',
+        'administrateur_edit' => '\Dbout\DendreoSdk\Model\Administrateur',
+        'administrateur_delete' => '\Dbout\DendreoSdk\Model\Administrateur'
     ];
 
     /**
@@ -88,7 +93,11 @@ class Administrateur implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => 'date-time',
         'id_edit' => null,
         'deleted_at' => 'date-time',
-        'id_delete' => null
+        'id_delete' => null,
+        'niveaux' => null,
+        'administrateur_add' => null,
+        'administrateur_edit' => null,
+        'administrateur_delete' => null
     ];
 
     /**
@@ -116,7 +125,11 @@ class Administrateur implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => true,
         'id_edit' => true,
         'deleted_at' => true,
-        'id_delete' => true
+        'id_delete' => true,
+        'niveaux' => false,
+        'administrateur_add' => true,
+        'administrateur_edit' => true,
+        'administrateur_delete' => true
     ];
 
     /**
@@ -224,7 +237,11 @@ class Administrateur implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => 'updated_at',
         'id_edit' => 'id_edit',
         'deleted_at' => 'deleted_at',
-        'id_delete' => 'id_delete'
+        'id_delete' => 'id_delete',
+        'niveaux' => 'niveaux',
+        'administrateur_add' => 'administrateur_add',
+        'administrateur_edit' => 'administrateur_edit',
+        'administrateur_delete' => 'administrateur_delete'
     ];
 
     /**
@@ -252,7 +269,11 @@ class Administrateur implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => 'setUpdatedAt',
         'id_edit' => 'setIdEdit',
         'deleted_at' => 'setDeletedAt',
-        'id_delete' => 'setIdDelete'
+        'id_delete' => 'setIdDelete',
+        'niveaux' => 'setNiveaux',
+        'administrateur_add' => 'setAdministrateurAdd',
+        'administrateur_edit' => 'setAdministrateurEdit',
+        'administrateur_delete' => 'setAdministrateurDelete'
     ];
 
     /**
@@ -280,7 +301,11 @@ class Administrateur implements ModelInterface, ArrayAccess, JsonSerializable
         'updated_at' => 'getUpdatedAt',
         'id_edit' => 'getIdEdit',
         'deleted_at' => 'getDeletedAt',
-        'id_delete' => 'getIdDelete'
+        'id_delete' => 'getIdDelete',
+        'niveaux' => 'getNiveaux',
+        'administrateur_add' => 'getAdministrateurAdd',
+        'administrateur_edit' => 'getAdministrateurEdit',
+        'administrateur_delete' => 'getAdministrateurDelete'
     ];
 
     /**
@@ -359,6 +384,10 @@ class Administrateur implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('id_edit', $data ?? [], null);
         $this->setIfExists('deleted_at', $data ?? [], null);
         $this->setIfExists('id_delete', $data ?? [], null);
+        $this->setIfExists('niveaux', $data ?? [], null);
+        $this->setIfExists('administrateur_add', $data ?? [], null);
+        $this->setIfExists('administrateur_edit', $data ?? [], null);
+        $this->setIfExists('administrateur_delete', $data ?? [], null);
     }
 
     /**
@@ -388,6 +417,18 @@ class Administrateur implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
+        }
+        if ($this->container['deleted_at'] === null) {
+            $invalidProperties[] = "'deleted_at' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -406,9 +447,9 @@ class Administrateur implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets id
      *
-     * @return int|null
+     * @return int
      */
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->container['id'];
     }
@@ -416,11 +457,11 @@ class Administrateur implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets id
      *
-     * @param int|null $id id
+     * @param int $id id
      *
      * @return $this
      */
-    public function setId(?int $id): static
+    public function setId(int $id): static
     {
         if (is_null($id)) {
             throw new InvalidArgumentException('non-nullable id cannot be null');
@@ -791,7 +832,7 @@ class Administrateur implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets created_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -801,7 +842,7 @@ class Administrateur implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets created_at
      *
-     * @param \DateTime|null $created_at created_at
+     * @param \DateTime $created_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -859,7 +900,7 @@ class Administrateur implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets updated_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -869,7 +910,7 @@ class Administrateur implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets updated_at
      *
-     * @param \DateTime|null $updated_at updated_at
+     * @param \DateTime $updated_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -927,7 +968,7 @@ class Administrateur implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets deleted_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getDeletedAt(): ?\DateTime
     {
@@ -937,7 +978,7 @@ class Administrateur implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets deleted_at
      *
-     * @param \DateTime|null $deleted_at deleted_at
+     * @param \DateTime $deleted_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -988,6 +1029,135 @@ class Administrateur implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['id_delete'] = $id_delete;
+
+        return $this;
+    }
+
+    /**
+     * Gets niveaux
+     *
+     * @return object[]|null
+     */
+    public function getNiveaux(): ?array
+    {
+        return $this->container['niveaux'];
+    }
+
+    /**
+     * Sets niveaux
+     *
+     * @param object[]|null $niveaux Niveau d'accès par centre de formation, chaque élément portant `id_centre_de_formation` et `niveau`.
+     *
+     * @return $this
+     */
+    public function setNiveaux(?array $niveaux): static
+    {
+        if (is_null($niveaux)) {
+            throw new InvalidArgumentException('non-nullable niveaux cannot be null');
+        }
+        $this->container['niveaux'] = $niveaux;
+
+        return $this;
+    }
+
+    /**
+     * Gets administrateur_add
+     *
+     * @return \Dbout\DendreoSdk\Model\Administrateur|null
+     */
+    public function getAdministrateurAdd(): ?\Dbout\DendreoSdk\Model\Administrateur
+    {
+        return $this->container['administrateur_add'];
+    }
+
+    /**
+     * Sets administrateur_add
+     *
+     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_add Présent uniquement avec `include=administrateurAdd`.
+     *
+     * @return $this
+     */
+    public function setAdministrateurAdd(?\Dbout\DendreoSdk\Model\Administrateur $administrateur_add): static
+    {
+        if (is_null($administrateur_add)) {
+            array_push($this->openAPINullablesSetToNull, 'administrateur_add');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('administrateur_add', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['administrateur_add'] = $administrateur_add;
+
+        return $this;
+    }
+
+    /**
+     * Gets administrateur_edit
+     *
+     * @return \Dbout\DendreoSdk\Model\Administrateur|null
+     */
+    public function getAdministrateurEdit(): ?\Dbout\DendreoSdk\Model\Administrateur
+    {
+        return $this->container['administrateur_edit'];
+    }
+
+    /**
+     * Sets administrateur_edit
+     *
+     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_edit Présent uniquement avec `include=administrateurEdit`.
+     *
+     * @return $this
+     */
+    public function setAdministrateurEdit(?\Dbout\DendreoSdk\Model\Administrateur $administrateur_edit): static
+    {
+        if (is_null($administrateur_edit)) {
+            array_push($this->openAPINullablesSetToNull, 'administrateur_edit');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('administrateur_edit', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['administrateur_edit'] = $administrateur_edit;
+
+        return $this;
+    }
+
+    /**
+     * Gets administrateur_delete
+     *
+     * @return \Dbout\DendreoSdk\Model\Administrateur|null
+     */
+    public function getAdministrateurDelete(): ?\Dbout\DendreoSdk\Model\Administrateur
+    {
+        return $this->container['administrateur_delete'];
+    }
+
+    /**
+     * Sets administrateur_delete
+     *
+     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_delete Présent uniquement avec `include=administrateurDelete`.
+     *
+     * @return $this
+     */
+    public function setAdministrateurDelete(?\Dbout\DendreoSdk\Model\Administrateur $administrateur_delete): static
+    {
+        if (is_null($administrateur_delete)) {
+            array_push($this->openAPINullablesSetToNull, 'administrateur_delete');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('administrateur_delete', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['administrateur_delete'] = $administrateur_delete;
 
         return $this;
     }

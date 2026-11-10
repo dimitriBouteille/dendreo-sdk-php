@@ -880,7 +880,7 @@ class FinanceursApi
      * Mettre à jour un financeur
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\FinanceursUpdateRequest|null $financeurs_update_request financeurs_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\FinanceurUpdateRequest|null $financeur_update_request financeur_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -889,11 +889,11 @@ class FinanceursApi
      */
     public function update(
         int $id,
-        ?\Dbout\DendreoSdk\Model\FinanceursUpdateRequest $financeurs_update_request = null,
+        ?\Dbout\DendreoSdk\Model\FinanceurUpdateRequest $financeur_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): \Dbout\DendreoSdk\Model\FinanceurResponse
     {
-        list($response) = $this->updateWithHttpInfo($id, $financeurs_update_request, $contentType);
+        list($response) = $this->updateWithHttpInfo($id, $financeur_update_request, $contentType);
         return $response;
     }
 
@@ -903,7 +903,7 @@ class FinanceursApi
      * Mettre à jour un financeur
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\FinanceursUpdateRequest|null $financeurs_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\FinanceurUpdateRequest|null $financeur_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -912,11 +912,11 @@ class FinanceursApi
      */
     public function updateWithHttpInfo(
         int $id,
-        ?\Dbout\DendreoSdk\Model\FinanceursUpdateRequest $financeurs_update_request = null,
+        ?\Dbout\DendreoSdk\Model\FinanceurUpdateRequest $financeur_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): array
     {
-        $request = $this->updateRequest($id, $financeurs_update_request, $contentType);
+        $request = $this->updateRequest($id, $financeur_update_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1046,7 +1046,7 @@ class FinanceursApi
      * Mettre à jour un financeur
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\FinanceursUpdateRequest|null $financeurs_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\FinanceurUpdateRequest|null $financeur_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -1054,11 +1054,11 @@ class FinanceursApi
      */
     public function updateAsync(
         int $id,
-        ?\Dbout\DendreoSdk\Model\FinanceursUpdateRequest $financeurs_update_request = null,
+        ?\Dbout\DendreoSdk\Model\FinanceurUpdateRequest $financeur_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): PromiseInterface
     {
-        return $this->updateAsyncWithHttpInfo($id, $financeurs_update_request, $contentType)
+        return $this->updateAsyncWithHttpInfo($id, $financeur_update_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1072,7 +1072,7 @@ class FinanceursApi
      * Mettre à jour un financeur
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\FinanceursUpdateRequest|null $financeurs_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\FinanceurUpdateRequest|null $financeur_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -1080,12 +1080,12 @@ class FinanceursApi
      */
     public function updateAsyncWithHttpInfo(
         int $id,
-        ?\Dbout\DendreoSdk\Model\FinanceursUpdateRequest $financeurs_update_request = null,
+        ?\Dbout\DendreoSdk\Model\FinanceurUpdateRequest $financeur_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): PromiseInterface
     {
         $returnType = '\Dbout\DendreoSdk\Model\FinanceurResponse';
-        $request = $this->updateRequest($id, $financeurs_update_request, $contentType);
+        $request = $this->updateRequest($id, $financeur_update_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1127,7 +1127,7 @@ class FinanceursApi
      * Create request for operation 'update'
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\FinanceursUpdateRequest|null $financeurs_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\FinanceurUpdateRequest|null $financeur_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -1135,7 +1135,7 @@ class FinanceursApi
      */
     public function updateRequest(
         int $id,
-        ?\Dbout\DendreoSdk\Model\FinanceursUpdateRequest $financeurs_update_request = null,
+        ?\Dbout\DendreoSdk\Model\FinanceurUpdateRequest $financeur_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): Request
     {
@@ -1147,10 +1147,10 @@ class FinanceursApi
             );
         }
 
-        if ($financeurs_update_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$financeurs_update_request->valid()) {
+        if ($financeur_update_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$financeur_update_request->valid()) {
             throw new InvalidArgumentException(sprintf(
-                'Invalid parameter $financeurs_update_request when calling update: %s',
-                implode(' ', $financeurs_update_request->listInvalidProperties())
+                'Invalid parameter $financeur_update_request when calling update: %s',
+                implode(' ', $financeur_update_request->listInvalidProperties())
             ));
         }
 
@@ -1181,12 +1181,12 @@ class FinanceursApi
         );
 
         // for model (json/xml)
-        if (isset($financeurs_update_request)) {
+        if (isset($financeur_update_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($financeurs_update_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($financeur_update_request));
             } else {
-                $httpBody = $financeurs_update_request;
+                $httpBody = $financeur_update_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

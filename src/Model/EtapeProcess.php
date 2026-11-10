@@ -19,6 +19,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
+ * @description Les champs additionnels du compte sont ajoutés à la ressource, sous leur nom de champ.
  * @package  Dbout\DendreoSdk
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
@@ -61,7 +62,9 @@ class EtapeProcess implements ModelInterface, ArrayAccess, JsonSerializable
         'created_at' => '\DateTime',
         'id_add' => 'int',
         'updated_at' => '\DateTime',
-        'id_edit' => 'int'
+        'id_edit' => 'int',
+        'parent' => '\Dbout\DendreoSdk\Model\EtapeProcess',
+        'children' => '\Dbout\DendreoSdk\Model\EtapeProcess[]'
     ];
 
     /**
@@ -90,7 +93,9 @@ class EtapeProcess implements ModelInterface, ArrayAccess, JsonSerializable
         'created_at' => 'date-time',
         'id_add' => null,
         'updated_at' => 'date-time',
-        'id_edit' => null
+        'id_edit' => null,
+        'parent' => null,
+        'children' => null
     ];
 
     /**
@@ -119,7 +124,9 @@ class EtapeProcess implements ModelInterface, ArrayAccess, JsonSerializable
         'created_at' => true,
         'id_add' => true,
         'updated_at' => true,
-        'id_edit' => true
+        'id_edit' => true,
+        'parent' => true,
+        'children' => false
     ];
 
     /**
@@ -228,7 +235,9 @@ class EtapeProcess implements ModelInterface, ArrayAccess, JsonSerializable
         'created_at' => 'created_at',
         'id_add' => 'id_add',
         'updated_at' => 'updated_at',
-        'id_edit' => 'id_edit'
+        'id_edit' => 'id_edit',
+        'parent' => 'parent',
+        'children' => 'children'
     ];
 
     /**
@@ -257,7 +266,9 @@ class EtapeProcess implements ModelInterface, ArrayAccess, JsonSerializable
         'created_at' => 'setCreatedAt',
         'id_add' => 'setIdAdd',
         'updated_at' => 'setUpdatedAt',
-        'id_edit' => 'setIdEdit'
+        'id_edit' => 'setIdEdit',
+        'parent' => 'setParent',
+        'children' => 'setChildren'
     ];
 
     /**
@@ -286,7 +297,9 @@ class EtapeProcess implements ModelInterface, ArrayAccess, JsonSerializable
         'created_at' => 'getCreatedAt',
         'id_add' => 'getIdAdd',
         'updated_at' => 'getUpdatedAt',
-        'id_edit' => 'getIdEdit'
+        'id_edit' => 'getIdEdit',
+        'parent' => 'getParent',
+        'children' => 'getChildren'
     ];
 
     /**
@@ -366,6 +379,8 @@ class EtapeProcess implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('id_add', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
         $this->setIfExists('id_edit', $data ?? [], null);
+        $this->setIfExists('parent', $data ?? [], null);
+        $this->setIfExists('children', $data ?? [], null);
     }
 
     /**
@@ -395,6 +410,15 @@ class EtapeProcess implements ModelInterface, ArrayAccess, JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['id'] === null) {
+            $invalidProperties[] = "'id' can't be null";
+        }
+        if ($this->container['created_at'] === null) {
+            $invalidProperties[] = "'created_at' can't be null";
+        }
+        if ($this->container['updated_at'] === null) {
+            $invalidProperties[] = "'updated_at' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -413,9 +437,9 @@ class EtapeProcess implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets id
      *
-     * @return int|null
+     * @return int
      */
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->container['id'];
     }
@@ -423,11 +447,11 @@ class EtapeProcess implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets id
      *
-     * @param int|null $id id
+     * @param int $id id
      *
      * @return $this
      */
-    public function setId(?int $id): static
+    public function setId(int $id): static
     {
         if (is_null($id)) {
             throw new InvalidArgumentException('non-nullable id cannot be null');
@@ -886,7 +910,7 @@ class EtapeProcess implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets created_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getCreatedAt(): ?\DateTime
     {
@@ -896,7 +920,7 @@ class EtapeProcess implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets created_at
      *
-     * @param \DateTime|null $created_at created_at
+     * @param \DateTime $created_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -954,7 +978,7 @@ class EtapeProcess implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets updated_at
      *
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getUpdatedAt(): ?\DateTime
     {
@@ -964,7 +988,7 @@ class EtapeProcess implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets updated_at
      *
-     * @param \DateTime|null $updated_at updated_at
+     * @param \DateTime $updated_at Heure de Paris (Europe/Paris), heure d'été comprise.
      *
      * @return $this
      */
@@ -1015,6 +1039,67 @@ class EtapeProcess implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['id_edit'] = $id_edit;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent
+     *
+     * @return \Dbout\DendreoSdk\Model\EtapeProcess|null
+     */
+    public function getParent(): ?\Dbout\DendreoSdk\Model\EtapeProcess
+    {
+        return $this->container['parent'];
+    }
+
+    /**
+     * Sets parent
+     *
+     * @param \Dbout\DendreoSdk\Model\EtapeProcess|null $parent Présent uniquement avec `include=parent`.
+     *
+     * @return $this
+     */
+    public function setParent(?\Dbout\DendreoSdk\Model\EtapeProcess $parent): static
+    {
+        if (is_null($parent)) {
+            array_push($this->openAPINullablesSetToNull, 'parent');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('parent', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['parent'] = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Gets children
+     *
+     * @return \Dbout\DendreoSdk\Model\EtapeProcess[]|null
+     */
+    public function getChildren(): ?array
+    {
+        return $this->container['children'];
+    }
+
+    /**
+     * Sets children
+     *
+     * @param \Dbout\DendreoSdk\Model\EtapeProcess[]|null $children Présent uniquement avec `include=children`.
+     *
+     * @return $this
+     */
+    public function setChildren(?array $children): static
+    {
+        if (is_null($children)) {
+            throw new InvalidArgumentException('non-nullable children cannot be null');
+        }
+        $this->container['children'] = $children;
 
         return $this;
     }

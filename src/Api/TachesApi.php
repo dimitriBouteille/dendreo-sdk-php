@@ -107,7 +107,7 @@ class TachesApi
      *
      * Lister les tâches en attente des participants
      *
-     * @param  \Dbout\DendreoSdk\Model\TachesIndexFilter|null $filter Filtres de la liste. (optional)
+     * @param  \Dbout\DendreoSdk\Model\ParticipantTachesFilter|null $filter Filtres de la liste. (optional)
      * @param  int|null $page Numéro de la page, à partir de 1. (optional, default to 1)
      * @param  int|null $per_page Nombre d&#39;éléments par page, 15 par défaut et 100 au plus : une valeur supérieure est ramenée à 100. (optional, default to 15)
      * @param  string|null $types Catégories de tâches à remonter, séparées par des virgules, parmi &#x60;esignature&#x60;, &#x60;esignature-doc&#x60;, &#x60;satisfaction&#x60; et &#x60;auto-positionnement&#x60;. Une valeur inconnue est ignorée ; si aucune catégorie valide ne subsiste, les quatre sont retournées. Max : 255 caractères. (optional)
@@ -116,16 +116,16 @@ class TachesApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return \Dbout\DendreoSdk\Model\TachesIndex200Response
+     * @return \Dbout\DendreoSdk\Model\ParticipantTachesCollection
      */
     public function index(
-        ?\Dbout\DendreoSdk\Model\TachesIndexFilter $filter = null,
+        ?\Dbout\DendreoSdk\Model\ParticipantTachesFilter $filter = null,
         ?int $page = 1,
         ?int $per_page = 15,
         ?string $types = null,
         ?string $autologin = null,
         string $contentType = self::contentTypes['index'][0]
-    ): \Dbout\DendreoSdk\Model\TachesIndex200Response
+    ): \Dbout\DendreoSdk\Model\ParticipantTachesCollection
     {
         list($response) = $this->indexWithHttpInfo($filter, $page, $per_page, $types, $autologin, $contentType);
         return $response;
@@ -136,7 +136,7 @@ class TachesApi
      *
      * Lister les tâches en attente des participants
      *
-     * @param  \Dbout\DendreoSdk\Model\TachesIndexFilter|null $filter Filtres de la liste. (optional)
+     * @param  \Dbout\DendreoSdk\Model\ParticipantTachesFilter|null $filter Filtres de la liste. (optional)
      * @param  int|null $page Numéro de la page, à partir de 1. (optional, default to 1)
      * @param  int|null $per_page Nombre d&#39;éléments par page, 15 par défaut et 100 au plus : une valeur supérieure est ramenée à 100. (optional, default to 15)
      * @param  string|null $types Catégories de tâches à remonter, séparées par des virgules, parmi &#x60;esignature&#x60;, &#x60;esignature-doc&#x60;, &#x60;satisfaction&#x60; et &#x60;auto-positionnement&#x60;. Une valeur inconnue est ignorée ; si aucune catégorie valide ne subsiste, les quatre sont retournées. Max : 255 caractères. (optional)
@@ -145,10 +145,10 @@ class TachesApi
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
      * @throws InvalidArgumentException
-     * @return array of \Dbout\DendreoSdk\Model\TachesIndex200Response, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Dbout\DendreoSdk\Model\ParticipantTachesCollection, HTTP status code, HTTP response headers (array of strings)
      */
     public function indexWithHttpInfo(
-        ?\Dbout\DendreoSdk\Model\TachesIndexFilter $filter = null,
+        ?\Dbout\DendreoSdk\Model\ParticipantTachesFilter $filter = null,
         ?int $page = 1,
         ?int $per_page = 15,
         ?string $types = null,
@@ -183,7 +183,7 @@ class TachesApi
             switch($statusCode) {
                 case 200:
                     return $this->handleResponseWithDataType(
-                        '\Dbout\DendreoSdk\Model\TachesIndex200Response',
+                        '\Dbout\DendreoSdk\Model\ParticipantTachesCollection',
                         $request,
                         $response,
                     );
@@ -222,7 +222,7 @@ class TachesApi
             }
 
             return $this->handleResponseWithDataType(
-                '\Dbout\DendreoSdk\Model\TachesIndex200Response',
+                '\Dbout\DendreoSdk\Model\ParticipantTachesCollection',
                 $request,
                 $response,
             );
@@ -231,7 +231,7 @@ class TachesApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Dbout\DendreoSdk\Model\TachesIndex200Response',
+                        '\Dbout\DendreoSdk\Model\ParticipantTachesCollection',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -271,7 +271,7 @@ class TachesApi
      *
      * Lister les tâches en attente des participants
      *
-     * @param  \Dbout\DendreoSdk\Model\TachesIndexFilter|null $filter Filtres de la liste. (optional)
+     * @param  \Dbout\DendreoSdk\Model\ParticipantTachesFilter|null $filter Filtres de la liste. (optional)
      * @param  int|null $page Numéro de la page, à partir de 1. (optional, default to 1)
      * @param  int|null $per_page Nombre d&#39;éléments par page, 15 par défaut et 100 au plus : une valeur supérieure est ramenée à 100. (optional, default to 15)
      * @param  string|null $types Catégories de tâches à remonter, séparées par des virgules, parmi &#x60;esignature&#x60;, &#x60;esignature-doc&#x60;, &#x60;satisfaction&#x60; et &#x60;auto-positionnement&#x60;. Une valeur inconnue est ignorée ; si aucune catégorie valide ne subsiste, les quatre sont retournées. Max : 255 caractères. (optional)
@@ -282,7 +282,7 @@ class TachesApi
      * @return PromiseInterface
      */
     public function indexAsync(
-        ?\Dbout\DendreoSdk\Model\TachesIndexFilter $filter = null,
+        ?\Dbout\DendreoSdk\Model\ParticipantTachesFilter $filter = null,
         ?int $page = 1,
         ?int $per_page = 15,
         ?string $types = null,
@@ -303,7 +303,7 @@ class TachesApi
      *
      * Lister les tâches en attente des participants
      *
-     * @param  \Dbout\DendreoSdk\Model\TachesIndexFilter|null $filter Filtres de la liste. (optional)
+     * @param  \Dbout\DendreoSdk\Model\ParticipantTachesFilter|null $filter Filtres de la liste. (optional)
      * @param  int|null $page Numéro de la page, à partir de 1. (optional, default to 1)
      * @param  int|null $per_page Nombre d&#39;éléments par page, 15 par défaut et 100 au plus : une valeur supérieure est ramenée à 100. (optional, default to 15)
      * @param  string|null $types Catégories de tâches à remonter, séparées par des virgules, parmi &#x60;esignature&#x60;, &#x60;esignature-doc&#x60;, &#x60;satisfaction&#x60; et &#x60;auto-positionnement&#x60;. Une valeur inconnue est ignorée ; si aucune catégorie valide ne subsiste, les quatre sont retournées. Max : 255 caractères. (optional)
@@ -314,7 +314,7 @@ class TachesApi
      * @return PromiseInterface
      */
     public function indexAsyncWithHttpInfo(
-        ?\Dbout\DendreoSdk\Model\TachesIndexFilter $filter = null,
+        ?\Dbout\DendreoSdk\Model\ParticipantTachesFilter $filter = null,
         ?int $page = 1,
         ?int $per_page = 15,
         ?string $types = null,
@@ -322,7 +322,7 @@ class TachesApi
         string $contentType = self::contentTypes['index'][0]
     ): PromiseInterface
     {
-        $returnType = '\Dbout\DendreoSdk\Model\TachesIndex200Response';
+        $returnType = '\Dbout\DendreoSdk\Model\ParticipantTachesCollection';
         $request = $this->indexRequest($filter, $page, $per_page, $types, $autologin, $contentType);
 
         return $this->client
@@ -364,7 +364,7 @@ class TachesApi
     /**
      * Create request for operation 'index'
      *
-     * @param  \Dbout\DendreoSdk\Model\TachesIndexFilter|null $filter Filtres de la liste. (optional)
+     * @param  \Dbout\DendreoSdk\Model\ParticipantTachesFilter|null $filter Filtres de la liste. (optional)
      * @param  int|null $page Numéro de la page, à partir de 1. (optional, default to 1)
      * @param  int|null $per_page Nombre d&#39;éléments par page, 15 par défaut et 100 au plus : une valeur supérieure est ramenée à 100. (optional, default to 15)
      * @param  string|null $types Catégories de tâches à remonter, séparées par des virgules, parmi &#x60;esignature&#x60;, &#x60;esignature-doc&#x60;, &#x60;satisfaction&#x60; et &#x60;auto-positionnement&#x60;. Une valeur inconnue est ignorée ; si aucune catégorie valide ne subsiste, les quatre sont retournées. Max : 255 caractères. (optional)
@@ -375,7 +375,7 @@ class TachesApi
      * @return \GuzzleHttp\Psr7\Request
      */
     public function indexRequest(
-        ?\Dbout\DendreoSdk\Model\TachesIndexFilter $filter = null,
+        ?\Dbout\DendreoSdk\Model\ParticipantTachesFilter $filter = null,
         ?int $page = 1,
         ?int $per_page = 15,
         ?string $types = null,

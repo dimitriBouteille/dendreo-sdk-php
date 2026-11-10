@@ -171,13 +171,13 @@ $participant = $participants->show(42, include: ['entreprise'])->getData();
 #### Create
 
 ```php
-use Dbout\DendreoSdk\Model\ParticipantsStoreRequest;
+use Dbout\DendreoSdk\Model\StoreParticipantRequest;
 
-$request = (new ParticipantsStoreRequest())
+$request = (new StoreParticipantRequest())
     ->setIdEntreprise('7')
     ->setNom('Dupont')
     ->setPrenom('Marie')
-    ->setStatutBpf(ParticipantsStoreRequest::STATUT_BPF_SALARIE)
+    ->setStatutBpf(StoreParticipantRequest::STATUT_BPF_SALARIE)
     ->setEmail('marie.dupont@example.com');
 
 $participant = $participants->store($request)->getData();
@@ -188,16 +188,27 @@ The request is validated before being sent: a missing required field throws an `
 #### Update, delete, restore
 
 ```php
-use Dbout\DendreoSdk\Model\ParticipantsUpdateRequest;
+use Dbout\DendreoSdk\Model\UpdateParticipantRequest;
 
-$participants->update(42, (new ParticipantsUpdateRequest())->setPortable('0601020304'));
+$participants->update(42, (new UpdateParticipantRequest())->setPortable('0601020304'));
 $participants->destroy(42);
 $participants->restore(42);
 ```
 
 ### Dates
 
-Dates are returned as `\DateTime` objects. The API sends date-times without timezone (`2026-01-31 09:00:00`): they are read in the default timezone of PHP (`date.timezone`).
+Dates are returned as `\DateTime` objects. The API sends date-times without timezone (`2026-01-31 09:00:00`), in Paris time (`Europe/Paris`): the SDK creates them in this timezone, whatever the default timezone of PHP. The `\DateTime` values sent to the API are converted to Paris time.
+
+The dates entered in Dendreo (start and end of a training session...) are the local time of the training centre, as entered: for a centre outside the Paris timezone, use the wall-clock value (`->format('Y-m-d H:i:s')`) and ignore the timezone. See [Dates et fuseau horaire](https://api.dendreo.com/docs-api/v2/) in the API documentation.
+
+### Additional fields
+
+The additional fields of your account are returned under their own name, but they are not part of the models. Read them with the array syntax:
+
+```php
+$participant = $participants->show(42)->getData();
+$value = $participant['my_additional_field'] ?? null;
+```
 
 ### Errors
 

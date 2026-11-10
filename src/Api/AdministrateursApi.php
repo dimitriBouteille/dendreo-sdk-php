@@ -1484,7 +1484,7 @@ class AdministrateursApi
      *
      * Créer un administrateur
      *
-     * @param  \Dbout\DendreoSdk\Model\AdministrateursStoreRequest $administrateurs_store_request administrateurs_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\AdministrateurRequest $administrateur_request administrateur_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1492,11 +1492,11 @@ class AdministrateursApi
      * @return \Dbout\DendreoSdk\Model\AdministrateurResponse
      */
     public function store(
-        \Dbout\DendreoSdk\Model\AdministrateursStoreRequest $administrateurs_store_request,
+        \Dbout\DendreoSdk\Model\AdministrateurRequest $administrateur_request,
         string $contentType = self::contentTypes['store'][0]
     ): \Dbout\DendreoSdk\Model\AdministrateurResponse
     {
-        list($response) = $this->storeWithHttpInfo($administrateurs_store_request, $contentType);
+        list($response) = $this->storeWithHttpInfo($administrateur_request, $contentType);
         return $response;
     }
 
@@ -1505,7 +1505,7 @@ class AdministrateursApi
      *
      * Créer un administrateur
      *
-     * @param  \Dbout\DendreoSdk\Model\AdministrateursStoreRequest $administrateurs_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\AdministrateurRequest $administrateur_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1513,11 +1513,11 @@ class AdministrateursApi
      * @return array of \Dbout\DendreoSdk\Model\AdministrateurResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function storeWithHttpInfo(
-        \Dbout\DendreoSdk\Model\AdministrateursStoreRequest $administrateurs_store_request,
+        \Dbout\DendreoSdk\Model\AdministrateurRequest $administrateur_request,
         string $contentType = self::contentTypes['store'][0]
     ): array
     {
-        $request = $this->storeRequest($administrateurs_store_request, $contentType);
+        $request = $this->storeRequest($administrateur_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1632,18 +1632,18 @@ class AdministrateursApi
      *
      * Créer un administrateur
      *
-     * @param  \Dbout\DendreoSdk\Model\AdministrateursStoreRequest $administrateurs_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\AdministrateurRequest $administrateur_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
     public function storeAsync(
-        \Dbout\DendreoSdk\Model\AdministrateursStoreRequest $administrateurs_store_request,
+        \Dbout\DendreoSdk\Model\AdministrateurRequest $administrateur_request,
         string $contentType = self::contentTypes['store'][0]
     ): PromiseInterface
     {
-        return $this->storeAsyncWithHttpInfo($administrateurs_store_request, $contentType)
+        return $this->storeAsyncWithHttpInfo($administrateur_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1656,19 +1656,19 @@ class AdministrateursApi
      *
      * Créer un administrateur
      *
-     * @param  \Dbout\DendreoSdk\Model\AdministrateursStoreRequest $administrateurs_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\AdministrateurRequest $administrateur_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
     public function storeAsyncWithHttpInfo(
-        \Dbout\DendreoSdk\Model\AdministrateursStoreRequest $administrateurs_store_request,
+        \Dbout\DendreoSdk\Model\AdministrateurRequest $administrateur_request,
         string $contentType = self::contentTypes['store'][0]
     ): PromiseInterface
     {
         $returnType = '\Dbout\DendreoSdk\Model\AdministrateurResponse';
-        $request = $this->storeRequest($administrateurs_store_request, $contentType);
+        $request = $this->storeRequest($administrateur_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1709,28 +1709,28 @@ class AdministrateursApi
     /**
      * Create request for operation 'store'
      *
-     * @param  \Dbout\DendreoSdk\Model\AdministrateursStoreRequest $administrateurs_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\AdministrateurRequest $administrateur_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     public function storeRequest(
-        \Dbout\DendreoSdk\Model\AdministrateursStoreRequest $administrateurs_store_request,
+        \Dbout\DendreoSdk\Model\AdministrateurRequest $administrateur_request,
         string $contentType = self::contentTypes['store'][0]
     ): Request
     {
 
-        // verify the required parameter 'administrateurs_store_request' is set
-        if ($administrateurs_store_request === null || (is_array($administrateurs_store_request) && count($administrateurs_store_request) === 0)) {
+        // verify the required parameter 'administrateur_request' is set
+        if ($administrateur_request === null || (is_array($administrateur_request) && count($administrateur_request) === 0)) {
             throw new InvalidArgumentException(
-                'Missing the required parameter $administrateurs_store_request when calling store'
+                'Missing the required parameter $administrateur_request when calling store'
             );
         }
-        if ($administrateurs_store_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$administrateurs_store_request->valid()) {
+        if ($administrateur_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$administrateur_request->valid()) {
             throw new InvalidArgumentException(sprintf(
-                'Invalid parameter $administrateurs_store_request when calling store: %s',
-                implode(' ', $administrateurs_store_request->listInvalidProperties())
+                'Invalid parameter $administrateur_request when calling store: %s',
+                implode(' ', $administrateur_request->listInvalidProperties())
             ));
         }
 
@@ -1753,12 +1753,12 @@ class AdministrateursApi
         );
 
         // for model (json/xml)
-        if (isset($administrateurs_store_request)) {
+        if (isset($administrateur_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($administrateurs_store_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($administrateur_request));
             } else {
-                $httpBody = $administrateurs_store_request;
+                $httpBody = $administrateur_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1821,7 +1821,7 @@ class AdministrateursApi
      * Mettre à jour un administrateur
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\AdministrateursUpdateRequest|null $administrateurs_update_request administrateurs_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\AdministrateurUpdateRequest|null $administrateur_update_request administrateur_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1830,11 +1830,11 @@ class AdministrateursApi
      */
     public function update(
         int $id,
-        ?\Dbout\DendreoSdk\Model\AdministrateursUpdateRequest $administrateurs_update_request = null,
+        ?\Dbout\DendreoSdk\Model\AdministrateurUpdateRequest $administrateur_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): \Dbout\DendreoSdk\Model\AdministrateurResponse
     {
-        list($response) = $this->updateWithHttpInfo($id, $administrateurs_update_request, $contentType);
+        list($response) = $this->updateWithHttpInfo($id, $administrateur_update_request, $contentType);
         return $response;
     }
 
@@ -1844,7 +1844,7 @@ class AdministrateursApi
      * Mettre à jour un administrateur
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\AdministrateursUpdateRequest|null $administrateurs_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\AdministrateurUpdateRequest|null $administrateur_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1853,11 +1853,11 @@ class AdministrateursApi
      */
     public function updateWithHttpInfo(
         int $id,
-        ?\Dbout\DendreoSdk\Model\AdministrateursUpdateRequest $administrateurs_update_request = null,
+        ?\Dbout\DendreoSdk\Model\AdministrateurUpdateRequest $administrateur_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): array
     {
-        $request = $this->updateRequest($id, $administrateurs_update_request, $contentType);
+        $request = $this->updateRequest($id, $administrateur_update_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1987,7 +1987,7 @@ class AdministrateursApi
      * Mettre à jour un administrateur
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\AdministrateursUpdateRequest|null $administrateurs_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\AdministrateurUpdateRequest|null $administrateur_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -1995,11 +1995,11 @@ class AdministrateursApi
      */
     public function updateAsync(
         int $id,
-        ?\Dbout\DendreoSdk\Model\AdministrateursUpdateRequest $administrateurs_update_request = null,
+        ?\Dbout\DendreoSdk\Model\AdministrateurUpdateRequest $administrateur_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): PromiseInterface
     {
-        return $this->updateAsyncWithHttpInfo($id, $administrateurs_update_request, $contentType)
+        return $this->updateAsyncWithHttpInfo($id, $administrateur_update_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2013,7 +2013,7 @@ class AdministrateursApi
      * Mettre à jour un administrateur
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\AdministrateursUpdateRequest|null $administrateurs_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\AdministrateurUpdateRequest|null $administrateur_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -2021,12 +2021,12 @@ class AdministrateursApi
      */
     public function updateAsyncWithHttpInfo(
         int $id,
-        ?\Dbout\DendreoSdk\Model\AdministrateursUpdateRequest $administrateurs_update_request = null,
+        ?\Dbout\DendreoSdk\Model\AdministrateurUpdateRequest $administrateur_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): PromiseInterface
     {
         $returnType = '\Dbout\DendreoSdk\Model\AdministrateurResponse';
-        $request = $this->updateRequest($id, $administrateurs_update_request, $contentType);
+        $request = $this->updateRequest($id, $administrateur_update_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2068,7 +2068,7 @@ class AdministrateursApi
      * Create request for operation 'update'
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\AdministrateursUpdateRequest|null $administrateurs_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\AdministrateurUpdateRequest|null $administrateur_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -2076,7 +2076,7 @@ class AdministrateursApi
      */
     public function updateRequest(
         int $id,
-        ?\Dbout\DendreoSdk\Model\AdministrateursUpdateRequest $administrateurs_update_request = null,
+        ?\Dbout\DendreoSdk\Model\AdministrateurUpdateRequest $administrateur_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): Request
     {
@@ -2088,10 +2088,10 @@ class AdministrateursApi
             );
         }
 
-        if ($administrateurs_update_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$administrateurs_update_request->valid()) {
+        if ($administrateur_update_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$administrateur_update_request->valid()) {
             throw new InvalidArgumentException(sprintf(
-                'Invalid parameter $administrateurs_update_request when calling update: %s',
-                implode(' ', $administrateurs_update_request->listInvalidProperties())
+                'Invalid parameter $administrateur_update_request when calling update: %s',
+                implode(' ', $administrateur_update_request->listInvalidProperties())
             ));
         }
 
@@ -2122,12 +2122,12 @@ class AdministrateursApi
         );
 
         // for model (json/xml)
-        if (isset($administrateurs_update_request)) {
+        if (isset($administrateur_update_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($administrateurs_update_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($administrateur_update_request));
             } else {
-                $httpBody = $administrateurs_update_request;
+                $httpBody = $administrateur_update_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

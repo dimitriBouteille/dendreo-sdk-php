@@ -1484,7 +1484,7 @@ class SallesDeFormationApi
      *
      * Créer une salle de formation
      *
-     * @param  \Dbout\DendreoSdk\Model\SallesDeFormationStoreRequest $salles_de_formation_store_request salles_de_formation_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\StoreSalleDeFormationRequest $store_salle_de_formation_request store_salle_de_formation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1492,11 +1492,11 @@ class SallesDeFormationApi
      * @return \Dbout\DendreoSdk\Model\SalleDeFormationResponse
      */
     public function store(
-        \Dbout\DendreoSdk\Model\SallesDeFormationStoreRequest $salles_de_formation_store_request,
+        \Dbout\DendreoSdk\Model\StoreSalleDeFormationRequest $store_salle_de_formation_request,
         string $contentType = self::contentTypes['store'][0]
     ): \Dbout\DendreoSdk\Model\SalleDeFormationResponse
     {
-        list($response) = $this->storeWithHttpInfo($salles_de_formation_store_request, $contentType);
+        list($response) = $this->storeWithHttpInfo($store_salle_de_formation_request, $contentType);
         return $response;
     }
 
@@ -1505,7 +1505,7 @@ class SallesDeFormationApi
      *
      * Créer une salle de formation
      *
-     * @param  \Dbout\DendreoSdk\Model\SallesDeFormationStoreRequest $salles_de_formation_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\StoreSalleDeFormationRequest $store_salle_de_formation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1513,11 +1513,11 @@ class SallesDeFormationApi
      * @return array of \Dbout\DendreoSdk\Model\SalleDeFormationResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function storeWithHttpInfo(
-        \Dbout\DendreoSdk\Model\SallesDeFormationStoreRequest $salles_de_formation_store_request,
+        \Dbout\DendreoSdk\Model\StoreSalleDeFormationRequest $store_salle_de_formation_request,
         string $contentType = self::contentTypes['store'][0]
     ): array
     {
-        $request = $this->storeRequest($salles_de_formation_store_request, $contentType);
+        $request = $this->storeRequest($store_salle_de_formation_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1632,18 +1632,18 @@ class SallesDeFormationApi
      *
      * Créer une salle de formation
      *
-     * @param  \Dbout\DendreoSdk\Model\SallesDeFormationStoreRequest $salles_de_formation_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\StoreSalleDeFormationRequest $store_salle_de_formation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
     public function storeAsync(
-        \Dbout\DendreoSdk\Model\SallesDeFormationStoreRequest $salles_de_formation_store_request,
+        \Dbout\DendreoSdk\Model\StoreSalleDeFormationRequest $store_salle_de_formation_request,
         string $contentType = self::contentTypes['store'][0]
     ): PromiseInterface
     {
-        return $this->storeAsyncWithHttpInfo($salles_de_formation_store_request, $contentType)
+        return $this->storeAsyncWithHttpInfo($store_salle_de_formation_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1656,19 +1656,19 @@ class SallesDeFormationApi
      *
      * Créer une salle de formation
      *
-     * @param  \Dbout\DendreoSdk\Model\SallesDeFormationStoreRequest $salles_de_formation_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\StoreSalleDeFormationRequest $store_salle_de_formation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
     public function storeAsyncWithHttpInfo(
-        \Dbout\DendreoSdk\Model\SallesDeFormationStoreRequest $salles_de_formation_store_request,
+        \Dbout\DendreoSdk\Model\StoreSalleDeFormationRequest $store_salle_de_formation_request,
         string $contentType = self::contentTypes['store'][0]
     ): PromiseInterface
     {
         $returnType = '\Dbout\DendreoSdk\Model\SalleDeFormationResponse';
-        $request = $this->storeRequest($salles_de_formation_store_request, $contentType);
+        $request = $this->storeRequest($store_salle_de_formation_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1709,28 +1709,28 @@ class SallesDeFormationApi
     /**
      * Create request for operation 'store'
      *
-     * @param  \Dbout\DendreoSdk\Model\SallesDeFormationStoreRequest $salles_de_formation_store_request (required)
+     * @param  \Dbout\DendreoSdk\Model\StoreSalleDeFormationRequest $store_salle_de_formation_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     public function storeRequest(
-        \Dbout\DendreoSdk\Model\SallesDeFormationStoreRequest $salles_de_formation_store_request,
+        \Dbout\DendreoSdk\Model\StoreSalleDeFormationRequest $store_salle_de_formation_request,
         string $contentType = self::contentTypes['store'][0]
     ): Request
     {
 
-        // verify the required parameter 'salles_de_formation_store_request' is set
-        if ($salles_de_formation_store_request === null || (is_array($salles_de_formation_store_request) && count($salles_de_formation_store_request) === 0)) {
+        // verify the required parameter 'store_salle_de_formation_request' is set
+        if ($store_salle_de_formation_request === null || (is_array($store_salle_de_formation_request) && count($store_salle_de_formation_request) === 0)) {
             throw new InvalidArgumentException(
-                'Missing the required parameter $salles_de_formation_store_request when calling store'
+                'Missing the required parameter $store_salle_de_formation_request when calling store'
             );
         }
-        if ($salles_de_formation_store_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$salles_de_formation_store_request->valid()) {
+        if ($store_salle_de_formation_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$store_salle_de_formation_request->valid()) {
             throw new InvalidArgumentException(sprintf(
-                'Invalid parameter $salles_de_formation_store_request when calling store: %s',
-                implode(' ', $salles_de_formation_store_request->listInvalidProperties())
+                'Invalid parameter $store_salle_de_formation_request when calling store: %s',
+                implode(' ', $store_salle_de_formation_request->listInvalidProperties())
             ));
         }
 
@@ -1753,12 +1753,12 @@ class SallesDeFormationApi
         );
 
         // for model (json/xml)
-        if (isset($salles_de_formation_store_request)) {
+        if (isset($store_salle_de_formation_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($salles_de_formation_store_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($store_salle_de_formation_request));
             } else {
-                $httpBody = $salles_de_formation_store_request;
+                $httpBody = $store_salle_de_formation_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -1821,7 +1821,7 @@ class SallesDeFormationApi
      * Mettre à jour une salle de formation
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\SallesDeFormationUpdateRequest|null $salles_de_formation_update_request salles_de_formation_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\UpdateSalleDeFormationRequest|null $update_salle_de_formation_request update_salle_de_formation_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1830,11 +1830,11 @@ class SallesDeFormationApi
      */
     public function update(
         int $id,
-        ?\Dbout\DendreoSdk\Model\SallesDeFormationUpdateRequest $salles_de_formation_update_request = null,
+        ?\Dbout\DendreoSdk\Model\UpdateSalleDeFormationRequest $update_salle_de_formation_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): \Dbout\DendreoSdk\Model\SalleDeFormationResponse
     {
-        list($response) = $this->updateWithHttpInfo($id, $salles_de_formation_update_request, $contentType);
+        list($response) = $this->updateWithHttpInfo($id, $update_salle_de_formation_request, $contentType);
         return $response;
     }
 
@@ -1844,7 +1844,7 @@ class SallesDeFormationApi
      * Mettre à jour une salle de formation
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\SallesDeFormationUpdateRequest|null $salles_de_formation_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\UpdateSalleDeFormationRequest|null $update_salle_de_formation_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1853,11 +1853,11 @@ class SallesDeFormationApi
      */
     public function updateWithHttpInfo(
         int $id,
-        ?\Dbout\DendreoSdk\Model\SallesDeFormationUpdateRequest $salles_de_formation_update_request = null,
+        ?\Dbout\DendreoSdk\Model\UpdateSalleDeFormationRequest $update_salle_de_formation_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): array
     {
-        $request = $this->updateRequest($id, $salles_de_formation_update_request, $contentType);
+        $request = $this->updateRequest($id, $update_salle_de_formation_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1987,7 +1987,7 @@ class SallesDeFormationApi
      * Mettre à jour une salle de formation
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\SallesDeFormationUpdateRequest|null $salles_de_formation_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\UpdateSalleDeFormationRequest|null $update_salle_de_formation_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -1995,11 +1995,11 @@ class SallesDeFormationApi
      */
     public function updateAsync(
         int $id,
-        ?\Dbout\DendreoSdk\Model\SallesDeFormationUpdateRequest $salles_de_formation_update_request = null,
+        ?\Dbout\DendreoSdk\Model\UpdateSalleDeFormationRequest $update_salle_de_formation_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): PromiseInterface
     {
-        return $this->updateAsyncWithHttpInfo($id, $salles_de_formation_update_request, $contentType)
+        return $this->updateAsyncWithHttpInfo($id, $update_salle_de_formation_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2013,7 +2013,7 @@ class SallesDeFormationApi
      * Mettre à jour une salle de formation
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\SallesDeFormationUpdateRequest|null $salles_de_formation_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\UpdateSalleDeFormationRequest|null $update_salle_de_formation_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -2021,12 +2021,12 @@ class SallesDeFormationApi
      */
     public function updateAsyncWithHttpInfo(
         int $id,
-        ?\Dbout\DendreoSdk\Model\SallesDeFormationUpdateRequest $salles_de_formation_update_request = null,
+        ?\Dbout\DendreoSdk\Model\UpdateSalleDeFormationRequest $update_salle_de_formation_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): PromiseInterface
     {
         $returnType = '\Dbout\DendreoSdk\Model\SalleDeFormationResponse';
-        $request = $this->updateRequest($id, $salles_de_formation_update_request, $contentType);
+        $request = $this->updateRequest($id, $update_salle_de_formation_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2068,7 +2068,7 @@ class SallesDeFormationApi
      * Create request for operation 'update'
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\SallesDeFormationUpdateRequest|null $salles_de_formation_update_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\UpdateSalleDeFormationRequest|null $update_salle_de_formation_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -2076,7 +2076,7 @@ class SallesDeFormationApi
      */
     public function updateRequest(
         int $id,
-        ?\Dbout\DendreoSdk\Model\SallesDeFormationUpdateRequest $salles_de_formation_update_request = null,
+        ?\Dbout\DendreoSdk\Model\UpdateSalleDeFormationRequest $update_salle_de_formation_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): Request
     {
@@ -2088,10 +2088,10 @@ class SallesDeFormationApi
             );
         }
 
-        if ($salles_de_formation_update_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$salles_de_formation_update_request->valid()) {
+        if ($update_salle_de_formation_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$update_salle_de_formation_request->valid()) {
             throw new InvalidArgumentException(sprintf(
-                'Invalid parameter $salles_de_formation_update_request when calling update: %s',
-                implode(' ', $salles_de_formation_update_request->listInvalidProperties())
+                'Invalid parameter $update_salle_de_formation_request when calling update: %s',
+                implode(' ', $update_salle_de_formation_request->listInvalidProperties())
             ));
         }
 
@@ -2122,12 +2122,12 @@ class SallesDeFormationApi
         );
 
         // for model (json/xml)
-        if (isset($salles_de_formation_update_request)) {
+        if (isset($update_salle_de_formation_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($salles_de_formation_update_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_salle_de_formation_request));
             } else {
-                $httpBody = $salles_de_formation_update_request;
+                $httpBody = $update_salle_de_formation_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
