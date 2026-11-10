@@ -15,7 +15,7 @@ use ReturnTypeWillChange;
 use Dbout\DendreoSdk\ObjectSerializer;
 
 /**
- * StoreSalleDeFormationRequest Class Doc Comment
+ * SallesDeFormationUpdateRequest Class Doc Comment
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
@@ -24,7 +24,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class StoreSalleDeFormationRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class SallesDeFormationUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -33,7 +33,7 @@ class StoreSalleDeFormationRequest implements ModelInterface, ArrayAccess, JsonS
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'StoreSalleDeFormationRequest';
+    protected static string $openAPIModelName = 'SallesDeFormationUpdateRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -64,8 +64,7 @@ class StoreSalleDeFormationRequest implements ModelInterface, ArrayAccess, JsonS
         'acces_handicapes' => 'bool',
         'acces_handicapes_desc' => 'string',
         'acces' => 'string',
-        'accueil' => 'string',
-        'champs_additionnels' => 'object'
+        'accueil' => 'string'
     ];
 
     /**
@@ -97,8 +96,7 @@ class StoreSalleDeFormationRequest implements ModelInterface, ArrayAccess, JsonS
         'acces_handicapes' => null,
         'acces_handicapes_desc' => null,
         'acces' => null,
-        'accueil' => null,
-        'champs_additionnels' => null
+        'accueil' => null
     ];
 
     /**
@@ -130,8 +128,7 @@ class StoreSalleDeFormationRequest implements ModelInterface, ArrayAccess, JsonS
         'acces_handicapes' => true,
         'acces_handicapes_desc' => true,
         'acces' => true,
-        'accueil' => true,
-        'champs_additionnels' => false
+        'accueil' => true
     ];
 
     /**
@@ -243,8 +240,7 @@ class StoreSalleDeFormationRequest implements ModelInterface, ArrayAccess, JsonS
         'acces_handicapes' => 'acces_handicapes',
         'acces_handicapes_desc' => 'acces_handicapes_desc',
         'acces' => 'acces',
-        'accueil' => 'accueil',
-        'champs_additionnels' => 'champs_additionnels'
+        'accueil' => 'accueil'
     ];
 
     /**
@@ -276,8 +272,7 @@ class StoreSalleDeFormationRequest implements ModelInterface, ArrayAccess, JsonS
         'acces_handicapes' => 'setAccesHandicapes',
         'acces_handicapes_desc' => 'setAccesHandicapesDesc',
         'acces' => 'setAcces',
-        'accueil' => 'setAccueil',
-        'champs_additionnels' => 'setChampsAdditionnels'
+        'accueil' => 'setAccueil'
     ];
 
     /**
@@ -309,8 +304,7 @@ class StoreSalleDeFormationRequest implements ModelInterface, ArrayAccess, JsonS
         'acces_handicapes' => 'getAccesHandicapes',
         'acces_handicapes_desc' => 'getAccesHandicapesDesc',
         'acces' => 'getAcces',
-        'accueil' => 'getAccueil',
-        'champs_additionnels' => 'getChampsAdditionnels'
+        'accueil' => 'getAccueil'
     ];
 
     /**
@@ -414,7 +408,6 @@ class StoreSalleDeFormationRequest implements ModelInterface, ArrayAccess, JsonS
         $this->setIfExists('acces_handicapes_desc', $data ?? [], null);
         $this->setIfExists('acces', $data ?? [], null);
         $this->setIfExists('accueil', $data ?? [], null);
-        $this->setIfExists('champs_additionnels', $data ?? [], null);
     }
 
     /**
@@ -444,9 +437,6 @@ class StoreSalleDeFormationRequest implements ModelInterface, ArrayAccess, JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['emplacement_cible'] === null) {
-            $invalidProperties[] = "'emplacement_cible' can't be null";
-        }
         $allowedValues = self::getEmplacementCibleAllowableValues();
         if (!is_null($this->container['emplacement_cible']) && !in_array($this->container['emplacement_cible'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -474,9 +464,9 @@ class StoreSalleDeFormationRequest implements ModelInterface, ArrayAccess, JsonS
     /**
      * Gets emplacement_cible
      *
-     * @return string
+     * @return string|null
      */
-    public function getEmplacementCible(): string
+    public function getEmplacementCible(): ?string
     {
         return $this->container['emplacement_cible'];
     }
@@ -484,11 +474,11 @@ class StoreSalleDeFormationRequest implements ModelInterface, ArrayAccess, JsonS
     /**
      * Sets emplacement_cible
      *
-     * @param string $emplacement_cible Type d'emplacement de la salle : `interne` (dans un centre de formation), `cdf_outside` (externe, adresse libre), `elearning` (salle virtuelle), `client` (dans l'entreprise) ou `client_outside` (externe, rattachée à une entreprise).
+     * @param string|null $emplacement_cible Type d'emplacement de la salle, mêmes valeurs qu'à la création. `cdf_outside` et `elearning` s'envoient seuls ; les autres valeurs reprennent la référence actuelle de la salle si elle convient au nouveau type, sinon `emplacement_id` est obligatoire.
      *
      * @return $this
      */
-    public function setEmplacementCible(string $emplacement_cible): static
+    public function setEmplacementCible(?string $emplacement_cible): static
     {
         if (is_null($emplacement_cible)) {
             throw new InvalidArgumentException('non-nullable emplacement_cible cannot be null');
@@ -521,7 +511,7 @@ class StoreSalleDeFormationRequest implements ModelInterface, ArrayAccess, JsonS
     /**
      * Sets emplacement_id
      *
-     * @param int|null $emplacement_id L'identifiant du centre de formation pour `interne`, celui d'une entreprise active pour `client` et `client_outside`, où il est obligatoire. Pour `interne`, facultatif en mono-centre (centre principal) et obligatoire en multi-centres, où il désigne le sous-centre de la salle. Refusé pour `cdf_outside` et `elearning`, sauf à `0`. Min : 0. Max : 2147483647.
+     * @param int|null $emplacement_id Référence de l'emplacement, mêmes règles qu'à la création. Envoyé seul, il s'applique au type d'emplacement actuel de la salle. Min : 0. Max : 2147483647.
      *
      * @return $this
      */
@@ -555,7 +545,7 @@ class StoreSalleDeFormationRequest implements ModelInterface, ArrayAccess, JsonS
     /**
      * Sets intitule
      *
-     * @param string|null $intitule Intitulé de la salle. Obligatoire, sauf quand `emplacement_cible` vaut `client` : la salle prend alors le nom de l'entreprise. Max : 200 caractères.
+     * @param string|null $intitule Intitulé de la salle. Ne peut pas être vidé, sauf pour une salle dans l'entreprise (`client`). Obligatoire quand la salle quitte l'emplacement `client` sans intitulé. Max : 200 caractères.
      *
      * @return $this
      */
@@ -1286,33 +1276,6 @@ class StoreSalleDeFormationRequest implements ModelInterface, ArrayAccess, JsonS
             }
         }
         $this->container['accueil'] = $accueil;
-
-        return $this;
-    }
-
-    /**
-     * Gets champs_additionnels
-     *
-     * @return object|null
-     */
-    public function getChampsAdditionnels(): ?object
-    {
-        return $this->container['champs_additionnels'];
-    }
-
-    /**
-     * Sets champs_additionnels
-     *
-     * @param object|null $champs_additionnels Champs additionnels de la salle, selon la configuration OF.
-     *
-     * @return $this
-     */
-    public function setChampsAdditionnels(?object $champs_additionnels): static
-    {
-        if (is_null($champs_additionnels)) {
-            throw new InvalidArgumentException('non-nullable champs_additionnels cannot be null');
-        }
-        $this->container['champs_additionnels'] = $champs_additionnels;
 
         return $this;
     }

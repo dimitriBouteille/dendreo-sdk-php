@@ -13,8 +13,9 @@ declare(strict_types=1);
  *
  * 1. Filters: groups every `filter[xxx]` query parameter of an operation into a single `filter`
  *    parameter (object, `style: deepObject`) backed by a schema such as `ParticipantFilter`.
- * 2. Inline schemas: extracts inline request bodies and responses into `components/schemas`
- *    with stable names (`AuthenticationError`, `BudgetsDestroy422Response`...).
+ * 2. Schema names: extracts inline responses into `components/schemas` with stable names
+ *    (`AuthenticationError`, `BudgetsDestroy422Response`...), and names every request body after
+ *    the operationId (`ParticipantsStoreRequest`), whatever its name in the spec.
  *    Must run before step 4: the generator names inline schemas after the operationId.
  * 3. Dates: date-time strings (`Y-m-d H:i:s`, described by a pattern) get `format: date-time`.
  * 4. Services: one service per resource, derived from the operationId prefix
@@ -135,14 +136,27 @@ $sharedResponseNames = [
     '401' => 'AuthenticationError',
 ];
 
-$eachOperation($spec, static function (array $operation) use (&$spec, &$report, $studly, $addSchema, $sharedResponseNames): array {
+$renamedSchemas = [];
+$eachOperation($spec, static function (array $operation) use (&$spec, &$report, &$renamedSchemas, $studly, $addSchema, $sharedResponseNames): array {
     $prefix = $studly($operation['operationId']);
 
+    // Request bodies are always named after the operationId (`participants.store` ->
+    // `ParticipantsStoreRequest`): the names chosen by Dendreo are not consistent
+    // (`StoreParticipantRequest`, `SourceStoreRequest`, `BudgetRequest`...) and follow their
+    // internal classes, so they could change at any time.
     $body = $operation['requestBody']['content']['application/json']['schema'] ?? null;
-    if (is_array($body) && !isset($body['$ref'])) {
+    if (is_array($body)) {
         $name = $prefix . 'Request';
+        $source = 'inline';
+        if (isset($body['$ref'])) {
+            $source = substr($body['$ref'], strlen('#/components/schemas/'));
+            $body = $spec['components']['schemas'][$source] ?? throw new \RuntimeException(sprintf('Unknown schema "%s".', $body['$ref']));
+            $renamedSchemas[$source] = true;
+        }
         $operation['requestBody']['content']['application/json']['schema'] = ['$ref' => $addSchema($spec, $name, $body)];
-        $report[] = sprintf('[inline] %s request body -> %s', $operation['operationId'], $name);
+        if ($source !== $name) {
+            $report[] = sprintf('[request] %s body %s -> %s', $operation['operationId'], $source, $name);
+        }
     }
 
     foreach ($operation['responses'] ?? [] as $code => $response) {
@@ -167,6 +181,14 @@ $eachOperation($spec, static function (array $operation) use (&$spec, &$report, 
 
     return $operation;
 });
+
+// The request bodies named by Dendreo are removed once renamed, unless still referenced.
+$encodedSpec = json_encode($spec, JSON_UNESCAPED_SLASHES | JSON_THROW_ON_ERROR);
+foreach (array_keys($renamedSchemas) as $schemaName) {
+    if (!str_contains($encodedSpec, '"#/components/schemas/' . $schemaName . '"')) {
+        unset($spec['components']['schemas'][$schemaName]);
+    }
+}
 
 // 3. Dates ----------------------------------------------------------------------------------------
 

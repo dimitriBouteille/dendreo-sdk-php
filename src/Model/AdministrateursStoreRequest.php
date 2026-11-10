@@ -15,7 +15,7 @@ use ReturnTypeWillChange;
 use Dbout\DendreoSdk\ObjectSerializer;
 
 /**
- * AdministrateurRequest Class Doc Comment
+ * AdministrateursStoreRequest Class Doc Comment
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
@@ -24,7 +24,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class AdministrateurRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class AdministrateursStoreRequest implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -33,7 +33,7 @@ class AdministrateurRequest implements ModelInterface, ArrayAccess, JsonSerializ
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'AdministrateurRequest';
+    protected static string $openAPIModelName = 'AdministrateursStoreRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -48,7 +48,7 @@ class AdministrateurRequest implements ModelInterface, ArrayAccess, JsonSerializ
         'fonction' => 'string',
         'civilite' => 'string',
         'niveau' => 'int',
-        'niveaux' => '\Dbout\DendreoSdk\Model\AdministrateurRequestNiveauxInner[]'
+        'niveaux' => '\Dbout\DendreoSdk\Model\AdministrateursStoreRequestNiveauxInner[]'
     ];
 
     /**
@@ -631,7 +631,7 @@ class AdministrateurRequest implements ModelInterface, ArrayAccess, JsonSerializ
     /**
      * Gets niveaux
      *
-     * @return \Dbout\DendreoSdk\Model\AdministrateurRequestNiveauxInner[]|null
+     * @return \Dbout\DendreoSdk\Model\AdministrateursStoreRequestNiveauxInner[]|null
      */
     public function getNiveaux(): ?array
     {
@@ -641,7 +641,7 @@ class AdministrateurRequest implements ModelInterface, ArrayAccess, JsonSerializ
     /**
      * Sets niveaux
      *
-     * @param \Dbout\DendreoSdk\Model\AdministrateurRequestNiveauxInner[]|null $niveaux Les niveaux d'accès par centre de formation, en multi-centres. Seuls les centres envoyés sont modifiés.
+     * @param \Dbout\DendreoSdk\Model\AdministrateursStoreRequestNiveauxInner[]|null $niveaux Les niveaux d'accès par centre de formation, en multi-centres. Seuls les centres envoyés sont modifiés.
      *
      * @return $this
      */

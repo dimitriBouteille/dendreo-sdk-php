@@ -60,7 +60,8 @@ Then review and commit the changes of `openapi/openapi.yaml` and `src/`.
 
 1. `openapi/preprocess.php`: adapts the specification before the generation, into `var/openapi/openapi.yaml`:
     * groups the `filter[xxx]` parameters of each list into one filter object (`ParticipantFilter`...);
-    * extracts the inline schemas with stable names (`AuthenticationError`, `BudgetsDestroy422Response`...);
+    * extracts the inline responses with stable names (`AuthenticationError`, `BudgetsDestroy422Response`...);
+    * names every request body after the operationId (`ParticipantsStoreRequest`), whatever its name in the specification;
     * declares the `Y-m-d H:i:s` date-times as `date-time`;
     * creates one service per resource (`ParticipantsApi`...).
 2. OpenAPI Generator, through Docker Compose (`openapi/compose.yaml`), with the configuration `openapi/config.yaml` and the templates of `openapi/templates/`, into `var/openapi/out/`.

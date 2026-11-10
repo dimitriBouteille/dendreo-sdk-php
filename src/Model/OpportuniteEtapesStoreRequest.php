@@ -15,7 +15,7 @@ use ReturnTypeWillChange;
 use Dbout\DendreoSdk\ObjectSerializer;
 
 /**
- * SourceStoreRequest Class Doc Comment
+ * OpportuniteEtapesStoreRequest Class Doc Comment
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
@@ -24,7 +24,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class SourceStoreRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class OpportuniteEtapesStoreRequest implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -33,7 +33,7 @@ class SourceStoreRequest implements ModelInterface, ArrayAccess, JsonSerializabl
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'SourceStoreRequest';
+    protected static string $openAPIModelName = 'OpportuniteEtapesStoreRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -42,8 +42,8 @@ class SourceStoreRequest implements ModelInterface, ArrayAccess, JsonSerializabl
       */
     protected static array $openAPITypes = [
         'name' => 'string',
-        'status' => 'bool',
-        'order' => 'int'
+        'success_chance' => 'int',
+        'color' => 'string'
     ];
 
     /**
@@ -53,8 +53,8 @@ class SourceStoreRequest implements ModelInterface, ArrayAccess, JsonSerializabl
       */
     protected static array $openAPIFormats = [
         'name' => null,
-        'status' => null,
-        'order' => null
+        'success_chance' => null,
+        'color' => null
     ];
 
     /**
@@ -64,8 +64,8 @@ class SourceStoreRequest implements ModelInterface, ArrayAccess, JsonSerializabl
       */
     protected static array $openAPINullables = [
         'name' => false,
-        'status' => false,
-        'order' => false
+        'success_chance' => true,
+        'color' => true
     ];
 
     /**
@@ -155,8 +155,8 @@ class SourceStoreRequest implements ModelInterface, ArrayAccess, JsonSerializabl
      */
     protected static array $attributeMap = [
         'name' => 'name',
-        'status' => 'status',
-        'order' => 'order'
+        'success_chance' => 'success_chance',
+        'color' => 'color'
     ];
 
     /**
@@ -166,8 +166,8 @@ class SourceStoreRequest implements ModelInterface, ArrayAccess, JsonSerializabl
      */
     protected static array $setters = [
         'name' => 'setName',
-        'status' => 'setStatus',
-        'order' => 'setOrder'
+        'success_chance' => 'setSuccessChance',
+        'color' => 'setColor'
     ];
 
     /**
@@ -177,8 +177,8 @@ class SourceStoreRequest implements ModelInterface, ArrayAccess, JsonSerializabl
      */
     protected static array $getters = [
         'name' => 'getName',
-        'status' => 'getStatus',
-        'order' => 'getOrder'
+        'success_chance' => 'getSuccessChance',
+        'color' => 'getColor'
     ];
 
     /**
@@ -238,8 +238,8 @@ class SourceStoreRequest implements ModelInterface, ArrayAccess, JsonSerializabl
     public function __construct(?array $data = null)
     {
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('order', $data ?? [], null);
+        $this->setIfExists('success_chance', $data ?? [], null);
+        $this->setIfExists('color', $data ?? [], null);
     }
 
     /**
@@ -300,7 +300,7 @@ class SourceStoreRequest implements ModelInterface, ArrayAccess, JsonSerializabl
     /**
      * Sets name
      *
-     * @param string $name Le nom de la source. Max : 191 caractères.
+     * @param string $name Le nom de l'étape du pipeline commercial. Max : 191 caractères.
      *
      * @return $this
      */
@@ -315,55 +315,69 @@ class SourceStoreRequest implements ModelInterface, ArrayAccess, JsonSerializabl
     }
 
     /**
-     * Gets status
+     * Gets success_chance
      *
-     * @return bool|null
+     * @return int|null
      */
-    public function getStatus(): ?bool
+    public function getSuccessChance(): ?int
     {
-        return $this->container['status'];
+        return $this->container['success_chance'];
     }
 
     /**
-     * Sets status
+     * Sets success_chance
      *
-     * @param bool|null $status Source active (`true`) ou inactive (`false`), `1` et `0` sont aussi acceptés. Défaut : `true`.
+     * @param int|null $success_chance Probabilité de succès en pourcentage (0 à 100). 0 = \"Perdu\", 100 = \"Gagné\" (chacune unique). Entre 0 et 100.
      *
      * @return $this
      */
-    public function setStatus(?bool $status): static
+    public function setSuccessChance(?int $success_chance): static
     {
-        if (is_null($status)) {
-            throw new InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($success_chance)) {
+            array_push($this->openAPINullablesSetToNull, 'success_chance');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('success_chance', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['status'] = $status;
+        $this->container['success_chance'] = $success_chance;
 
         return $this;
     }
 
     /**
-     * Gets order
+     * Gets color
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getOrder(): ?int
+    public function getColor(): ?string
     {
-        return $this->container['order'];
+        return $this->container['color'];
     }
 
     /**
-     * Sets order
+     * Sets color
      *
-     * @param int|null $order Ordre d'affichage. Min : 0.
+     * @param string|null $color Couleur hexadécimale (format `#RRGGBB` ou `#RGB`).
      *
      * @return $this
      */
-    public function setOrder(?int $order): static
+    public function setColor(?string $color): static
     {
-        if (is_null($order)) {
-            throw new InvalidArgumentException('non-nullable order cannot be null');
+        if (is_null($color)) {
+            array_push($this->openAPINullablesSetToNull, 'color');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('color', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['order'] = $order;
+        $this->container['color'] = $color;
 
         return $this;
     }

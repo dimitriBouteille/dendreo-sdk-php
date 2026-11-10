@@ -15,7 +15,7 @@ use ReturnTypeWillChange;
 use Dbout\DendreoSdk\ObjectSerializer;
 
 /**
- * UpdateParticipantRequest Class Doc Comment
+ * ParticipantsStoreRequest Class Doc Comment
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
@@ -24,7 +24,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class UpdateParticipantRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class ParticipantsStoreRequest implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -33,7 +33,7 @@ class UpdateParticipantRequest implements ModelInterface, ArrayAccess, JsonSeria
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'UpdateParticipantRequest';
+    protected static string $openAPIModelName = 'ParticipantsStoreRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -76,9 +76,7 @@ class UpdateParticipantRequest implements ModelInterface, ArrayAccess, JsonSeria
         'message_extranet' => 'string',
         'entreprise_raison_sociale' => 'string',
         'entreprise_id_externe' => 'string',
-        'entreprise_siret' => 'string',
-        'date_changement_entreprise' => 'string',
-        'date_changement_entreprise_id' => 'int'
+        'entreprise_siret' => 'string'
     ];
 
     /**
@@ -122,9 +120,7 @@ class UpdateParticipantRequest implements ModelInterface, ArrayAccess, JsonSeria
         'message_extranet' => null,
         'entreprise_raison_sociale' => null,
         'entreprise_id_externe' => null,
-        'entreprise_siret' => null,
-        'date_changement_entreprise' => null,
-        'date_changement_entreprise_id' => null
+        'entreprise_siret' => null
     ];
 
     /**
@@ -168,9 +164,7 @@ class UpdateParticipantRequest implements ModelInterface, ArrayAccess, JsonSeria
         'message_extranet' => true,
         'entreprise_raison_sociale' => true,
         'entreprise_id_externe' => true,
-        'entreprise_siret' => true,
-        'date_changement_entreprise' => true,
-        'date_changement_entreprise_id' => true
+        'entreprise_siret' => true
     ];
 
     /**
@@ -294,9 +288,7 @@ class UpdateParticipantRequest implements ModelInterface, ArrayAccess, JsonSeria
         'message_extranet' => 'message_extranet',
         'entreprise_raison_sociale' => 'entreprise_raison_sociale',
         'entreprise_id_externe' => 'entreprise_id_externe',
-        'entreprise_siret' => 'entreprise_siret',
-        'date_changement_entreprise' => 'date_changement_entreprise',
-        'date_changement_entreprise_id' => 'date_changement_entreprise_id'
+        'entreprise_siret' => 'entreprise_siret'
     ];
 
     /**
@@ -340,9 +332,7 @@ class UpdateParticipantRequest implements ModelInterface, ArrayAccess, JsonSeria
         'message_extranet' => 'setMessageExtranet',
         'entreprise_raison_sociale' => 'setEntrepriseRaisonSociale',
         'entreprise_id_externe' => 'setEntrepriseIdExterne',
-        'entreprise_siret' => 'setEntrepriseSiret',
-        'date_changement_entreprise' => 'setDateChangementEntreprise',
-        'date_changement_entreprise_id' => 'setDateChangementEntrepriseId'
+        'entreprise_siret' => 'setEntrepriseSiret'
     ];
 
     /**
@@ -386,9 +376,7 @@ class UpdateParticipantRequest implements ModelInterface, ArrayAccess, JsonSeria
         'message_extranet' => 'getMessageExtranet',
         'entreprise_raison_sociale' => 'getEntrepriseRaisonSociale',
         'entreprise_id_externe' => 'getEntrepriseIdExterne',
-        'entreprise_siret' => 'getEntrepriseSiret',
-        'date_changement_entreprise' => 'getDateChangementEntreprise',
-        'date_changement_entreprise_id' => 'getDateChangementEntrepriseId'
+        'entreprise_siret' => 'getEntrepriseSiret'
     ];
 
     /**
@@ -560,8 +548,6 @@ class UpdateParticipantRequest implements ModelInterface, ArrayAccess, JsonSeria
         $this->setIfExists('entreprise_raison_sociale', $data ?? [], null);
         $this->setIfExists('entreprise_id_externe', $data ?? [], null);
         $this->setIfExists('entreprise_siret', $data ?? [], null);
-        $this->setIfExists('date_changement_entreprise', $data ?? [], null);
-        $this->setIfExists('date_changement_entreprise_id', $data ?? [], null);
     }
 
     /**
@@ -591,6 +577,18 @@ class UpdateParticipantRequest implements ModelInterface, ArrayAccess, JsonSeria
     {
         $invalidProperties = [];
 
+        if ($this->container['id_entreprise'] === null) {
+            $invalidProperties[] = "'id_entreprise' can't be null";
+        }
+        if ($this->container['nom'] === null) {
+            $invalidProperties[] = "'nom' can't be null";
+        }
+        if ($this->container['prenom'] === null) {
+            $invalidProperties[] = "'prenom' can't be null";
+        }
+        if ($this->container['statut_bpf'] === null) {
+            $invalidProperties[] = "'statut_bpf' can't be null";
+        }
         $allowedValues = self::getStatutBpfAllowableValues();
         if (!is_null($this->container['statut_bpf']) && !in_array($this->container['statut_bpf'], $allowedValues, true)) {
             $invalidProperties[] = sprintf(
@@ -636,9 +634,9 @@ class UpdateParticipantRequest implements ModelInterface, ArrayAccess, JsonSeria
     /**
      * Gets id_entreprise
      *
-     * @return string|null
+     * @return string
      */
-    public function getIdEntreprise(): ?string
+    public function getIdEntreprise(): string
     {
         return $this->container['id_entreprise'];
     }
@@ -646,11 +644,11 @@ class UpdateParticipantRequest implements ModelInterface, ArrayAccess, JsonSeria
     /**
      * Sets id_entreprise
      *
-     * @param string|null $id_entreprise L'identifiant de l'entreprise du participant. Non obligatoire si `entreprise_raison_sociale`, `entreprise_id_externe` ou `entreprise_siret` est fourni.
+     * @param string $id_entreprise L'identifiant de l'entreprise du participant. Non obligatoire si `entreprise_raison_sociale`, `entreprise_id_externe` ou `entreprise_siret` est fourni.
      *
      * @return $this
      */
-    public function setIdEntreprise(?string $id_entreprise): static
+    public function setIdEntreprise(string $id_entreprise): static
     {
         if (is_null($id_entreprise)) {
             throw new InvalidArgumentException('non-nullable id_entreprise cannot be null');
@@ -663,9 +661,9 @@ class UpdateParticipantRequest implements ModelInterface, ArrayAccess, JsonSeria
     /**
      * Gets nom
      *
-     * @return string|null
+     * @return string
      */
-    public function getNom(): ?string
+    public function getNom(): string
     {
         return $this->container['nom'];
     }
@@ -673,11 +671,11 @@ class UpdateParticipantRequest implements ModelInterface, ArrayAccess, JsonSeria
     /**
      * Sets nom
      *
-     * @param string|null $nom Le nom du participant. Max : 200 caractères.
+     * @param string $nom Le nom du participant. Max : 200 caractères.
      *
      * @return $this
      */
-    public function setNom(?string $nom): static
+    public function setNom(string $nom): static
     {
         if (is_null($nom)) {
             throw new InvalidArgumentException('non-nullable nom cannot be null');
@@ -690,9 +688,9 @@ class UpdateParticipantRequest implements ModelInterface, ArrayAccess, JsonSeria
     /**
      * Gets prenom
      *
-     * @return string|null
+     * @return string
      */
-    public function getPrenom(): ?string
+    public function getPrenom(): string
     {
         return $this->container['prenom'];
     }
@@ -700,11 +698,11 @@ class UpdateParticipantRequest implements ModelInterface, ArrayAccess, JsonSeria
     /**
      * Sets prenom
      *
-     * @param string|null $prenom Le prénom du participant. Max : 200 caractères.
+     * @param string $prenom Le prénom du participant. Max : 200 caractères.
      *
      * @return $this
      */
-    public function setPrenom(?string $prenom): static
+    public function setPrenom(string $prenom): static
     {
         if (is_null($prenom)) {
             throw new InvalidArgumentException('non-nullable prenom cannot be null');
@@ -751,9 +749,9 @@ class UpdateParticipantRequest implements ModelInterface, ArrayAccess, JsonSeria
     /**
      * Gets statut_bpf
      *
-     * @return string|null
+     * @return string
      */
-    public function getStatutBpf(): ?string
+    public function getStatutBpf(): string
     {
         return $this->container['statut_bpf'];
     }
@@ -761,11 +759,11 @@ class UpdateParticipantRequest implements ModelInterface, ArrayAccess, JsonSeria
     /**
      * Sets statut_bpf
      *
-     * @param string|null $statut_bpf Le statut BPF du participant.
+     * @param string $statut_bpf Le statut BPF du participant.
      *
      * @return $this
      */
-    public function setStatutBpf(?string $statut_bpf): static
+    public function setStatutBpf(string $statut_bpf): static
     {
         if (is_null($statut_bpf)) {
             throw new InvalidArgumentException('non-nullable statut_bpf cannot be null');
@@ -1834,74 +1832,6 @@ class UpdateParticipantRequest implements ModelInterface, ArrayAccess, JsonSeria
             }
         }
         $this->container['entreprise_siret'] = $entreprise_siret;
-
-        return $this;
-    }
-
-    /**
-     * Gets date_changement_entreprise
-     *
-     * @return string|null
-     */
-    public function getDateChangementEntreprise(): ?string
-    {
-        return $this->container['date_changement_entreprise'];
-    }
-
-    /**
-     * Sets date_changement_entreprise
-     *
-     * @param string|null $date_changement_entreprise Date de changement d'Entreprise (format YYYY-MM-DD). Ce champ est requis lorsque <code>date_changement_entreprise_id</code> est présent. Doit être une date valide au format <code>YYYY-MM-DD</code>.
-     *
-     * @return $this
-     */
-    public function setDateChangementEntreprise(?string $date_changement_entreprise): static
-    {
-        if (is_null($date_changement_entreprise)) {
-            array_push($this->openAPINullablesSetToNull, 'date_changement_entreprise');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('date_changement_entreprise', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['date_changement_entreprise'] = $date_changement_entreprise;
-
-        return $this;
-    }
-
-    /**
-     * Gets date_changement_entreprise_id
-     *
-     * @return int|null
-     */
-    public function getDateChangementEntrepriseId(): ?int
-    {
-        return $this->container['date_changement_entreprise_id'];
-    }
-
-    /**
-     * Sets date_changement_entreprise_id
-     *
-     * @param int|null $date_changement_entreprise_id Id de l'Entreprise concerné par la date de changement d'Entreprise. Ce champ est requis lorsque <code>date_changement_entreprise</code> est présent.
-     *
-     * @return $this
-     */
-    public function setDateChangementEntrepriseId(?int $date_changement_entreprise_id): static
-    {
-        if (is_null($date_changement_entreprise_id)) {
-            array_push($this->openAPINullablesSetToNull, 'date_changement_entreprise_id');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('date_changement_entreprise_id', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['date_changement_entreprise_id'] = $date_changement_entreprise_id;
 
         return $this;
     }

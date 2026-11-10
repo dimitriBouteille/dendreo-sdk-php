@@ -15,7 +15,7 @@ use ReturnTypeWillChange;
 use Dbout\DendreoSdk\ObjectSerializer;
 
 /**
- * OpportuniteEtapeStoreRequest Class Doc Comment
+ * OpportuniteEtapesUpdateRequest Class Doc Comment
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
@@ -24,7 +24,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class OpportuniteEtapeStoreRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class OpportuniteEtapesUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -33,7 +33,7 @@ class OpportuniteEtapeStoreRequest implements ModelInterface, ArrayAccess, JsonS
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'OpportuniteEtapeStoreRequest';
+    protected static string $openAPIModelName = 'OpportuniteEtapesUpdateRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -64,7 +64,7 @@ class OpportuniteEtapeStoreRequest implements ModelInterface, ArrayAccess, JsonS
       */
     protected static array $openAPINullables = [
         'name' => false,
-        'success_chance' => true,
+        'success_chance' => false,
         'color' => true
     ];
 
@@ -269,9 +269,6 @@ class OpportuniteEtapeStoreRequest implements ModelInterface, ArrayAccess, JsonS
     {
         $invalidProperties = [];
 
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -290,9 +287,9 @@ class OpportuniteEtapeStoreRequest implements ModelInterface, ArrayAccess, JsonS
     /**
      * Gets name
      *
-     * @return string
+     * @return string|null
      */
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->container['name'];
     }
@@ -300,11 +297,11 @@ class OpportuniteEtapeStoreRequest implements ModelInterface, ArrayAccess, JsonS
     /**
      * Sets name
      *
-     * @param string $name Le nom de l'étape du pipeline commercial. Max : 191 caractères.
+     * @param string|null $name Le nom de l'étape du pipeline commercial. Max : 191 caractères.
      *
      * @return $this
      */
-    public function setName(string $name): static
+    public function setName(?string $name): static
     {
         if (is_null($name)) {
             throw new InvalidArgumentException('non-nullable name cannot be null');
@@ -327,21 +324,14 @@ class OpportuniteEtapeStoreRequest implements ModelInterface, ArrayAccess, JsonS
     /**
      * Sets success_chance
      *
-     * @param int|null $success_chance Probabilité de succès en pourcentage (0 à 100). 0 = \"Perdu\", 100 = \"Gagné\" (chacune unique). Entre 0 et 100.
+     * @param int|null $success_chance Probabilité de succès en pourcentage. 0 (\"Perdu\") et 100 (\"Gagné\") sont réservés aux étapes protégées, dont la probabilité n'est pas modifiable. Entre 1 et 99.
      *
      * @return $this
      */
     public function setSuccessChance(?int $success_chance): static
     {
         if (is_null($success_chance)) {
-            array_push($this->openAPINullablesSetToNull, 'success_chance');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('success_chance', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new InvalidArgumentException('non-nullable success_chance cannot be null');
         }
         $this->container['success_chance'] = $success_chance;
 

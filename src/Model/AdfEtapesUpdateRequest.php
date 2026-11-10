@@ -15,7 +15,7 @@ use ReturnTypeWillChange;
 use Dbout\DendreoSdk\ObjectSerializer;
 
 /**
- * EtapeProcessUpdateRequest Class Doc Comment
+ * AdfEtapesUpdateRequest Class Doc Comment
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
@@ -24,7 +24,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class EtapeProcessUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class AdfEtapesUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -33,7 +33,7 @@ class EtapeProcessUpdateRequest implements ModelInterface, ArrayAccess, JsonSeri
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'EtapeProcessUpdateRequest';
+    protected static string $openAPIModelName = 'AdfEtapesUpdateRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

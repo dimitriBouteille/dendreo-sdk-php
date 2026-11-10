@@ -15,7 +15,7 @@ use ReturnTypeWillChange;
 use Dbout\DendreoSdk\ObjectSerializer;
 
 /**
- * ActionDeFormationStoreRequest Class Doc Comment
+ * ActionsDeFormationStoreRequest Class Doc Comment
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
@@ -24,7 +24,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class ActionDeFormationStoreRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class ActionsDeFormationStoreRequest implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -33,7 +33,7 @@ class ActionDeFormationStoreRequest implements ModelInterface, ArrayAccess, Json
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ActionDeFormationStoreRequest';
+    protected static string $openAPIModelName = 'ActionsDeFormationStoreRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

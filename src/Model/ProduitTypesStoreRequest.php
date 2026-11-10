@@ -15,7 +15,7 @@ use ReturnTypeWillChange;
 use Dbout\DendreoSdk\ObjectSerializer;
 
 /**
- * FinanceurUpdateRequest Class Doc Comment
+ * ProduitTypesStoreRequest Class Doc Comment
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
@@ -24,7 +24,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class FinanceurUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class ProduitTypesStoreRequest implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -33,7 +33,7 @@ class FinanceurUpdateRequest implements ModelInterface, ArrayAccess, JsonSeriali
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'FinanceurUpdateRequest';
+    protected static string $openAPIModelName = 'ProduitTypesStoreRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -41,9 +41,9 @@ class FinanceurUpdateRequest implements ModelInterface, ArrayAccess, JsonSeriali
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'compte_client' => 'string',
-        'compte_client_auxiliaire' => 'string',
-        'numero_comptable_adf' => 'string'
+        'intitule' => 'string',
+        'color' => 'string',
+        'categorie_operation' => 'string'
     ];
 
     /**
@@ -52,9 +52,9 @@ class FinanceurUpdateRequest implements ModelInterface, ArrayAccess, JsonSeriali
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'compte_client' => null,
-        'compte_client_auxiliaire' => null,
-        'numero_comptable_adf' => null
+        'intitule' => null,
+        'color' => null,
+        'categorie_operation' => null
     ];
 
     /**
@@ -63,9 +63,9 @@ class FinanceurUpdateRequest implements ModelInterface, ArrayAccess, JsonSeriali
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
-        'compte_client' => false,
-        'compte_client_auxiliaire' => false,
-        'numero_comptable_adf' => false
+        'intitule' => false,
+        'color' => true,
+        'categorie_operation' => true
     ];
 
     /**
@@ -154,9 +154,9 @@ class FinanceurUpdateRequest implements ModelInterface, ArrayAccess, JsonSeriali
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'compte_client' => 'compte_client',
-        'compte_client_auxiliaire' => 'compte_client_auxiliaire',
-        'numero_comptable_adf' => 'numero_comptable_adf'
+        'intitule' => 'intitule',
+        'color' => 'color',
+        'categorie_operation' => 'categorie_operation'
     ];
 
     /**
@@ -165,9 +165,9 @@ class FinanceurUpdateRequest implements ModelInterface, ArrayAccess, JsonSeriali
      * @var array<string, string>
      */
     protected static array $setters = [
-        'compte_client' => 'setCompteClient',
-        'compte_client_auxiliaire' => 'setCompteClientAuxiliaire',
-        'numero_comptable_adf' => 'setNumeroComptableAdf'
+        'intitule' => 'setIntitule',
+        'color' => 'setColor',
+        'categorie_operation' => 'setCategorieOperation'
     ];
 
     /**
@@ -176,9 +176,9 @@ class FinanceurUpdateRequest implements ModelInterface, ArrayAccess, JsonSeriali
      * @var array<string, string>
      */
     protected static array $getters = [
-        'compte_client' => 'getCompteClient',
-        'compte_client_auxiliaire' => 'getCompteClientAuxiliaire',
-        'numero_comptable_adf' => 'getNumeroComptableAdf'
+        'intitule' => 'getIntitule',
+        'color' => 'getColor',
+        'categorie_operation' => 'getCategorieOperation'
     ];
 
     /**
@@ -222,6 +222,21 @@ class FinanceurUpdateRequest implements ModelInterface, ArrayAccess, JsonSeriali
         return self::$openAPIModelName;
     }
 
+    public const CATEGORIE_OPERATION_SERVICES = 'services';
+    public const CATEGORIE_OPERATION_BIENS = 'biens';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public static function getCategorieOperationAllowableValues()
+    {
+        return [
+            self::CATEGORIE_OPERATION_SERVICES,
+            self::CATEGORIE_OPERATION_BIENS,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -237,9 +252,9 @@ class FinanceurUpdateRequest implements ModelInterface, ArrayAccess, JsonSeriali
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('compte_client', $data ?? [], null);
-        $this->setIfExists('compte_client_auxiliaire', $data ?? [], null);
-        $this->setIfExists('numero_comptable_adf', $data ?? [], null);
+        $this->setIfExists('intitule', $data ?? [], null);
+        $this->setIfExists('color', $data ?? [], null);
+        $this->setIfExists('categorie_operation', $data ?? [], null);
     }
 
     /**
@@ -269,6 +284,18 @@ class FinanceurUpdateRequest implements ModelInterface, ArrayAccess, JsonSeriali
     {
         $invalidProperties = [];
 
+        if ($this->container['intitule'] === null) {
+            $invalidProperties[] = "'intitule' can't be null";
+        }
+        $allowedValues = self::getCategorieOperationAllowableValues();
+        if (!is_null($this->container['categorie_operation']) && !in_array($this->container['categorie_operation'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'categorie_operation', must be one of '%s'",
+                $this->container['categorie_operation'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -285,82 +312,106 @@ class FinanceurUpdateRequest implements ModelInterface, ArrayAccess, JsonSeriali
 
 
     /**
-     * Gets compte_client
+     * Gets intitule
      *
-     * @return string|null
+     * @return string
      */
-    public function getCompteClient(): ?string
+    public function getIntitule(): string
     {
-        return $this->container['compte_client'];
+        return $this->container['intitule'];
     }
 
     /**
-     * Sets compte_client
+     * Sets intitule
      *
-     * @param string|null $compte_client N° de compte client (compte général). null ou \"\" vide le champ (renvoyé ensuite comme chaîne vide).
+     * @param string $intitule L'intitulé du type de produit. Max : 200 caractères.
      *
      * @return $this
      */
-    public function setCompteClient(?string $compte_client): static
+    public function setIntitule(string $intitule): static
     {
-        if (is_null($compte_client)) {
-            throw new InvalidArgumentException('non-nullable compte_client cannot be null');
+        if (is_null($intitule)) {
+            throw new InvalidArgumentException('non-nullable intitule cannot be null');
         }
-        $this->container['compte_client'] = $compte_client;
+        $this->container['intitule'] = $intitule;
 
         return $this;
     }
 
     /**
-     * Gets compte_client_auxiliaire
+     * Gets color
      *
      * @return string|null
      */
-    public function getCompteClientAuxiliaire(): ?string
+    public function getColor(): ?string
     {
-        return $this->container['compte_client_auxiliaire'];
+        return $this->container['color'];
     }
 
     /**
-     * Sets compte_client_auxiliaire
+     * Sets color
      *
-     * @param string|null $compte_client_auxiliaire N° de compte client auxiliaire (tiers). null ou \"\" réinitialise.
+     * @param string|null $color Couleur hexadécimale sur 3 ou 6 caractères, avec ou sans `#`. Doit respecter l'expression régulière <code>/^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/</code>.
      *
      * @return $this
      */
-    public function setCompteClientAuxiliaire(?string $compte_client_auxiliaire): static
+    public function setColor(?string $color): static
     {
-        if (is_null($compte_client_auxiliaire)) {
-            throw new InvalidArgumentException('non-nullable compte_client_auxiliaire cannot be null');
+        if (is_null($color)) {
+            array_push($this->openAPINullablesSetToNull, 'color');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('color', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['compte_client_auxiliaire'] = $compte_client_auxiliaire;
+        $this->container['color'] = $color;
 
         return $this;
     }
 
     /**
-     * Gets numero_comptable_adf
+     * Gets categorie_operation
      *
      * @return string|null
      */
-    public function getNumeroComptableAdf(): ?string
+    public function getCategorieOperation(): ?string
     {
-        return $this->container['numero_comptable_adf'];
+        return $this->container['categorie_operation'];
     }
 
     /**
-     * Sets numero_comptable_adf
+     * Sets categorie_operation
      *
-     * @param string|null $numero_comptable_adf N° de compte produit forcé pour les ADF. null ou \"\" réinitialise.
+     * @param string|null $categorie_operation Catégorie d'opération : `services` ou `biens`. Défaut : `services`.
      *
      * @return $this
      */
-    public function setNumeroComptableAdf(?string $numero_comptable_adf): static
+    public function setCategorieOperation(?string $categorie_operation): static
     {
-        if (is_null($numero_comptable_adf)) {
-            throw new InvalidArgumentException('non-nullable numero_comptable_adf cannot be null');
+        if (is_null($categorie_operation)) {
+            array_push($this->openAPINullablesSetToNull, 'categorie_operation');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('categorie_operation', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['numero_comptable_adf'] = $numero_comptable_adf;
+        $allowedValues = self::getCategorieOperationAllowableValues();
+        if (!is_null($categorie_operation) && !in_array($categorie_operation, $allowedValues, true)) {
+            throw new InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'categorie_operation', must be one of '%s'",
+                    $categorie_operation,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['categorie_operation'] = $categorie_operation;
 
         return $this;
     }

@@ -15,7 +15,7 @@ use ReturnTypeWillChange;
 use Dbout\DendreoSdk\ObjectSerializer;
 
 /**
- * SourceUpdateRequest Class Doc Comment
+ * AdministrateursStoreRequestNiveauxInner Class Doc Comment
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
@@ -24,7 +24,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class SourceUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class AdministrateursStoreRequestNiveauxInner implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -33,7 +33,7 @@ class SourceUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializab
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'SourceUpdateRequest';
+    protected static string $openAPIModelName = 'AdministrateursStoreRequest_niveaux_inner';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -41,9 +41,8 @@ class SourceUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializab
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'name' => 'string',
-        'status' => 'bool',
-        'order' => 'int'
+        'id_centre_de_formation' => 'int',
+        'niveau' => 'int'
     ];
 
     /**
@@ -52,9 +51,8 @@ class SourceUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializab
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'name' => null,
-        'status' => null,
-        'order' => null
+        'id_centre_de_formation' => null,
+        'niveau' => null
     ];
 
     /**
@@ -63,9 +61,8 @@ class SourceUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializab
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
-        'name' => false,
-        'status' => false,
-        'order' => false
+        'id_centre_de_formation' => false,
+        'niveau' => false
     ];
 
     /**
@@ -154,9 +151,8 @@ class SourceUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializab
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'name' => 'name',
-        'status' => 'status',
-        'order' => 'order'
+        'id_centre_de_formation' => 'id_centre_de_formation',
+        'niveau' => 'niveau'
     ];
 
     /**
@@ -165,9 +161,8 @@ class SourceUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializab
      * @var array<string, string>
      */
     protected static array $setters = [
-        'name' => 'setName',
-        'status' => 'setStatus',
-        'order' => 'setOrder'
+        'id_centre_de_formation' => 'setIdCentreDeFormation',
+        'niveau' => 'setNiveau'
     ];
 
     /**
@@ -176,9 +171,8 @@ class SourceUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializab
      * @var array<string, string>
      */
     protected static array $getters = [
-        'name' => 'getName',
-        'status' => 'getStatus',
-        'order' => 'getOrder'
+        'id_centre_de_formation' => 'getIdCentreDeFormation',
+        'niveau' => 'getNiveau'
     ];
 
     /**
@@ -222,6 +216,33 @@ class SourceUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializab
         return self::$openAPIModelName;
     }
 
+    public const NIVEAU_MINUS_1 = -1;
+    public const NIVEAU_NUMBER_0 = 0;
+    public const NIVEAU_NUMBER_3 = 3;
+    public const NIVEAU_NUMBER_10 = 10;
+    public const NIVEAU_NUMBER_13 = 13;
+    public const NIVEAU_NUMBER_20 = 20;
+    public const NIVEAU_NUMBER_30 = 30;
+    public const NIVEAU_NUMBER_40 = 40;
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public static function getNiveauAllowableValues()
+    {
+        return [
+            self::NIVEAU_MINUS_1,
+            self::NIVEAU_NUMBER_0,
+            self::NIVEAU_NUMBER_3,
+            self::NIVEAU_NUMBER_10,
+            self::NIVEAU_NUMBER_13,
+            self::NIVEAU_NUMBER_20,
+            self::NIVEAU_NUMBER_30,
+            self::NIVEAU_NUMBER_40,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -237,9 +258,8 @@ class SourceUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializab
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('status', $data ?? [], null);
-        $this->setIfExists('order', $data ?? [], null);
+        $this->setIfExists('id_centre_de_formation', $data ?? [], null);
+        $this->setIfExists('niveau', $data ?? [], null);
     }
 
     /**
@@ -269,6 +289,21 @@ class SourceUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializab
     {
         $invalidProperties = [];
 
+        if ($this->container['id_centre_de_formation'] === null) {
+            $invalidProperties[] = "'id_centre_de_formation' can't be null";
+        }
+        if ($this->container['niveau'] === null) {
+            $invalidProperties[] = "'niveau' can't be null";
+        }
+        $allowedValues = self::getNiveauAllowableValues();
+        if (!is_null($this->container['niveau']) && !in_array($this->container['niveau'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'niveau', must be one of '%s'",
+                $this->container['niveau'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -285,82 +320,65 @@ class SourceUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializab
 
 
     /**
-     * Gets name
+     * Gets id_centre_de_formation
      *
-     * @return string|null
+     * @return int
      */
-    public function getName(): ?string
+    public function getIdCentreDeFormation(): int
     {
-        return $this->container['name'];
+        return $this->container['id_centre_de_formation'];
     }
 
     /**
-     * Sets name
+     * Sets id_centre_de_formation
      *
-     * @param string|null $name Le nom de la source. Max : 191 caractères.
+     * @param int $id_centre_de_formation L'identifiant du centre de formation.
      *
      * @return $this
      */
-    public function setName(?string $name): static
+    public function setIdCentreDeFormation(int $id_centre_de_formation): static
     {
-        if (is_null($name)) {
-            throw new InvalidArgumentException('non-nullable name cannot be null');
+        if (is_null($id_centre_de_formation)) {
+            throw new InvalidArgumentException('non-nullable id_centre_de_formation cannot be null');
         }
-        $this->container['name'] = $name;
+        $this->container['id_centre_de_formation'] = $id_centre_de_formation;
 
         return $this;
     }
 
     /**
-     * Gets status
+     * Gets niveau
      *
-     * @return bool|null
+     * @return int
      */
-    public function getStatus(): ?bool
+    public function getNiveau(): int
     {
-        return $this->container['status'];
+        return $this->container['niveau'];
     }
 
     /**
-     * Sets status
+     * Sets niveau
      *
-     * @param bool|null $status Source active (`true`) ou inactive (`false`), `1` et `0` sont aussi acceptés. Défaut : `true`.
+     * @param int $niveau Le niveau d'accès sur ce centre, avec les mêmes valeurs que `niveau`, plus -1 (identique à la vue globale). Un niveau inférieur à celui de la vue globale est remplacé par -1.
      *
      * @return $this
      */
-    public function setStatus(?bool $status): static
+    public function setNiveau(int $niveau): static
     {
-        if (is_null($status)) {
-            throw new InvalidArgumentException('non-nullable status cannot be null');
+        if (is_null($niveau)) {
+            throw new InvalidArgumentException('non-nullable niveau cannot be null');
         }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets order
-     *
-     * @return int|null
-     */
-    public function getOrder(): ?int
-    {
-        return $this->container['order'];
-    }
-
-    /**
-     * Sets order
-     *
-     * @param int|null $order Ordre d'affichage. Min : 0.
-     *
-     * @return $this
-     */
-    public function setOrder(?int $order): static
-    {
-        if (is_null($order)) {
-            throw new InvalidArgumentException('non-nullable order cannot be null');
+        $allowedValues = self::getNiveauAllowableValues();
+        if (!in_array($niveau, $allowedValues, true)) {
+            throw new InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'niveau', must be one of '%s'",
+                    $niveau,
+                    implode("', '", $allowedValues)
+                )
+            );
         }
-        $this->container['order'] = $order;
+        $this->container['niveau'] = $niveau;
 
         return $this;
     }

@@ -15,7 +15,7 @@ use ReturnTypeWillChange;
 use Dbout\DendreoSdk\ObjectSerializer;
 
 /**
- * OpportuniteEtapeUpdateRequest Class Doc Comment
+ * SourcesUpdateRequest Class Doc Comment
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
@@ -24,7 +24,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class OpportuniteEtapeUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class SourcesUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -33,7 +33,7 @@ class OpportuniteEtapeUpdateRequest implements ModelInterface, ArrayAccess, Json
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'OpportuniteEtapeUpdateRequest';
+    protected static string $openAPIModelName = 'SourcesUpdateRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -42,8 +42,8 @@ class OpportuniteEtapeUpdateRequest implements ModelInterface, ArrayAccess, Json
       */
     protected static array $openAPITypes = [
         'name' => 'string',
-        'success_chance' => 'int',
-        'color' => 'string'
+        'status' => 'bool',
+        'order' => 'int'
     ];
 
     /**
@@ -53,8 +53,8 @@ class OpportuniteEtapeUpdateRequest implements ModelInterface, ArrayAccess, Json
       */
     protected static array $openAPIFormats = [
         'name' => null,
-        'success_chance' => null,
-        'color' => null
+        'status' => null,
+        'order' => null
     ];
 
     /**
@@ -64,8 +64,8 @@ class OpportuniteEtapeUpdateRequest implements ModelInterface, ArrayAccess, Json
       */
     protected static array $openAPINullables = [
         'name' => false,
-        'success_chance' => false,
-        'color' => true
+        'status' => false,
+        'order' => false
     ];
 
     /**
@@ -155,8 +155,8 @@ class OpportuniteEtapeUpdateRequest implements ModelInterface, ArrayAccess, Json
      */
     protected static array $attributeMap = [
         'name' => 'name',
-        'success_chance' => 'success_chance',
-        'color' => 'color'
+        'status' => 'status',
+        'order' => 'order'
     ];
 
     /**
@@ -166,8 +166,8 @@ class OpportuniteEtapeUpdateRequest implements ModelInterface, ArrayAccess, Json
      */
     protected static array $setters = [
         'name' => 'setName',
-        'success_chance' => 'setSuccessChance',
-        'color' => 'setColor'
+        'status' => 'setStatus',
+        'order' => 'setOrder'
     ];
 
     /**
@@ -177,8 +177,8 @@ class OpportuniteEtapeUpdateRequest implements ModelInterface, ArrayAccess, Json
      */
     protected static array $getters = [
         'name' => 'getName',
-        'success_chance' => 'getSuccessChance',
-        'color' => 'getColor'
+        'status' => 'getStatus',
+        'order' => 'getOrder'
     ];
 
     /**
@@ -238,8 +238,8 @@ class OpportuniteEtapeUpdateRequest implements ModelInterface, ArrayAccess, Json
     public function __construct(?array $data = null)
     {
         $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('success_chance', $data ?? [], null);
-        $this->setIfExists('color', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('order', $data ?? [], null);
     }
 
     /**
@@ -297,7 +297,7 @@ class OpportuniteEtapeUpdateRequest implements ModelInterface, ArrayAccess, Json
     /**
      * Sets name
      *
-     * @param string|null $name Le nom de l'étape du pipeline commercial. Max : 191 caractères.
+     * @param string|null $name Le nom de la source. Max : 191 caractères.
      *
      * @return $this
      */
@@ -312,62 +312,55 @@ class OpportuniteEtapeUpdateRequest implements ModelInterface, ArrayAccess, Json
     }
 
     /**
-     * Gets success_chance
+     * Gets status
      *
-     * @return int|null
+     * @return bool|null
      */
-    public function getSuccessChance(): ?int
+    public function getStatus(): ?bool
     {
-        return $this->container['success_chance'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets success_chance
+     * Sets status
      *
-     * @param int|null $success_chance Probabilité de succès en pourcentage. 0 (\"Perdu\") et 100 (\"Gagné\") sont réservés aux étapes protégées, dont la probabilité n'est pas modifiable. Entre 1 et 99.
+     * @param bool|null $status Source active (`true`) ou inactive (`false`), `1` et `0` sont aussi acceptés. Défaut : `true`.
      *
      * @return $this
      */
-    public function setSuccessChance(?int $success_chance): static
+    public function setStatus(?bool $status): static
     {
-        if (is_null($success_chance)) {
-            throw new InvalidArgumentException('non-nullable success_chance cannot be null');
+        if (is_null($status)) {
+            throw new InvalidArgumentException('non-nullable status cannot be null');
         }
-        $this->container['success_chance'] = $success_chance;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets color
+     * Gets order
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getColor(): ?string
+    public function getOrder(): ?int
     {
-        return $this->container['color'];
+        return $this->container['order'];
     }
 
     /**
-     * Sets color
+     * Sets order
      *
-     * @param string|null $color Couleur hexadécimale (format `#RRGGBB` ou `#RGB`).
+     * @param int|null $order Ordre d'affichage. Min : 0.
      *
      * @return $this
      */
-    public function setColor(?string $color): static
+    public function setOrder(?int $order): static
     {
-        if (is_null($color)) {
-            array_push($this->openAPINullablesSetToNull, 'color');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('color', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+        if (is_null($order)) {
+            throw new InvalidArgumentException('non-nullable order cannot be null');
         }
-        $this->container['color'] = $color;
+        $this->container['order'] = $order;
 
         return $this;
     }

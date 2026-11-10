@@ -15,7 +15,7 @@ use ReturnTypeWillChange;
 use Dbout\DendreoSdk\ObjectSerializer;
 
 /**
- * ProduitTypeUpdateRequest Class Doc Comment
+ * ModuleCategoriesUpdateRequest Class Doc Comment
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
@@ -24,7 +24,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class ProduitTypeUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class ModuleCategoriesUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -33,7 +33,7 @@ class ProduitTypeUpdateRequest implements ModelInterface, ArrayAccess, JsonSeria
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ProduitTypeUpdateRequest';
+    protected static string $openAPIModelName = 'ModuleCategoriesUpdateRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -42,9 +42,12 @@ class ProduitTypeUpdateRequest implements ModelInterface, ArrayAccess, JsonSeria
       */
     protected static array $openAPITypes = [
         'intitule' => 'string',
+        'description' => 'string',
+        'description_meta' => 'string',
         'color' => 'string',
-        'categorie_operation' => 'string',
-        'status' => 'bool'
+        'status' => 'bool',
+        'order' => 'int',
+        'id_parent' => 'int'
     ];
 
     /**
@@ -54,9 +57,12 @@ class ProduitTypeUpdateRequest implements ModelInterface, ArrayAccess, JsonSeria
       */
     protected static array $openAPIFormats = [
         'intitule' => null,
+        'description' => null,
+        'description_meta' => null,
         'color' => null,
-        'categorie_operation' => null,
-        'status' => null
+        'status' => null,
+        'order' => null,
+        'id_parent' => null
     ];
 
     /**
@@ -66,9 +72,12 @@ class ProduitTypeUpdateRequest implements ModelInterface, ArrayAccess, JsonSeria
       */
     protected static array $openAPINullables = [
         'intitule' => false,
+        'description' => true,
+        'description_meta' => true,
         'color' => true,
-        'categorie_operation' => false,
-        'status' => false
+        'status' => true,
+        'order' => true,
+        'id_parent' => true
     ];
 
     /**
@@ -158,9 +167,12 @@ class ProduitTypeUpdateRequest implements ModelInterface, ArrayAccess, JsonSeria
      */
     protected static array $attributeMap = [
         'intitule' => 'intitule',
+        'description' => 'description',
+        'description_meta' => 'description_meta',
         'color' => 'color',
-        'categorie_operation' => 'categorie_operation',
-        'status' => 'status'
+        'status' => 'status',
+        'order' => 'order',
+        'id_parent' => 'id_parent'
     ];
 
     /**
@@ -170,9 +182,12 @@ class ProduitTypeUpdateRequest implements ModelInterface, ArrayAccess, JsonSeria
      */
     protected static array $setters = [
         'intitule' => 'setIntitule',
+        'description' => 'setDescription',
+        'description_meta' => 'setDescriptionMeta',
         'color' => 'setColor',
-        'categorie_operation' => 'setCategorieOperation',
-        'status' => 'setStatus'
+        'status' => 'setStatus',
+        'order' => 'setOrder',
+        'id_parent' => 'setIdParent'
     ];
 
     /**
@@ -182,9 +197,12 @@ class ProduitTypeUpdateRequest implements ModelInterface, ArrayAccess, JsonSeria
      */
     protected static array $getters = [
         'intitule' => 'getIntitule',
+        'description' => 'getDescription',
+        'description_meta' => 'getDescriptionMeta',
         'color' => 'getColor',
-        'categorie_operation' => 'getCategorieOperation',
-        'status' => 'getStatus'
+        'status' => 'getStatus',
+        'order' => 'getOrder',
+        'id_parent' => 'getIdParent'
     ];
 
     /**
@@ -228,21 +246,6 @@ class ProduitTypeUpdateRequest implements ModelInterface, ArrayAccess, JsonSeria
         return self::$openAPIModelName;
     }
 
-    public const CATEGORIE_OPERATION_SERVICES = 'services';
-    public const CATEGORIE_OPERATION_BIENS = 'biens';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public static function getCategorieOperationAllowableValues()
-    {
-        return [
-            self::CATEGORIE_OPERATION_SERVICES,
-            self::CATEGORIE_OPERATION_BIENS,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -259,9 +262,12 @@ class ProduitTypeUpdateRequest implements ModelInterface, ArrayAccess, JsonSeria
     public function __construct(?array $data = null)
     {
         $this->setIfExists('intitule', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('description_meta', $data ?? [], null);
         $this->setIfExists('color', $data ?? [], null);
-        $this->setIfExists('categorie_operation', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('order', $data ?? [], null);
+        $this->setIfExists('id_parent', $data ?? [], null);
     }
 
     /**
@@ -291,15 +297,6 @@ class ProduitTypeUpdateRequest implements ModelInterface, ArrayAccess, JsonSeria
     {
         $invalidProperties = [];
 
-        $allowedValues = self::getCategorieOperationAllowableValues();
-        if (!is_null($this->container['categorie_operation']) && !in_array($this->container['categorie_operation'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'categorie_operation', must be one of '%s'",
-                $this->container['categorie_operation'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -328,7 +325,7 @@ class ProduitTypeUpdateRequest implements ModelInterface, ArrayAccess, JsonSeria
     /**
      * Sets intitule
      *
-     * @param string|null $intitule L'intitulé du type de produit. Max : 200 caractères.
+     * @param string|null $intitule L'intitulé de la catégorie (max 280 caractères). Max : 280 caractères.
      *
      * @return $this
      */
@@ -338,6 +335,74 @@ class ProduitTypeUpdateRequest implements ModelInterface, ArrayAccess, JsonSeria
             throw new InvalidArgumentException('non-nullable intitule cannot be null');
         }
         $this->container['intitule'] = $intitule;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description La description affichée dans le catalogue. HTML accepté ; un texte brut est converti en HTML (retours à la ligne préservés).
+     *
+     * @return $this
+     */
+    public function setDescription(?string $description): static
+    {
+        if (is_null($description)) {
+            array_push($this->openAPINullablesSetToNull, 'description');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets description_meta
+     *
+     * @return string|null
+     */
+    public function getDescriptionMeta(): ?string
+    {
+        return $this->container['description_meta'];
+    }
+
+    /**
+     * Sets description_meta
+     *
+     * @param string|null $description_meta La méta-description SEO du catalogue (texte brut).
+     *
+     * @return $this
+     */
+    public function setDescriptionMeta(?string $description_meta): static
+    {
+        if (is_null($description_meta)) {
+            array_push($this->openAPINullablesSetToNull, 'description_meta');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('description_meta', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['description_meta'] = $description_meta;
 
         return $this;
     }
@@ -355,7 +420,7 @@ class ProduitTypeUpdateRequest implements ModelInterface, ArrayAccess, JsonSeria
     /**
      * Sets color
      *
-     * @param string|null $color Couleur hexadécimale sur 3 ou 6 caractères, avec ou sans `#`. Doit respecter l'expression régulière <code>/^#?([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/</code>.
+     * @param string|null $color Couleur hexadécimale sur 6 caractères, avec ou sans `#`. Retournée préfixée `#`. Doit respecter l'expression régulière <code>/^#?[0-9a-fA-F]{6}$/</code>.
      *
      * @return $this
      */
@@ -377,43 +442,6 @@ class ProduitTypeUpdateRequest implements ModelInterface, ArrayAccess, JsonSeria
     }
 
     /**
-     * Gets categorie_operation
-     *
-     * @return string|null
-     */
-    public function getCategorieOperation(): ?string
-    {
-        return $this->container['categorie_operation'];
-    }
-
-    /**
-     * Sets categorie_operation
-     *
-     * @param string|null $categorie_operation Catégorie d'opération : `services` ou `biens`. Ne peut pas être vide.
-     *
-     * @return $this
-     */
-    public function setCategorieOperation(?string $categorie_operation): static
-    {
-        if (is_null($categorie_operation)) {
-            throw new InvalidArgumentException('non-nullable categorie_operation cannot be null');
-        }
-        $allowedValues = self::getCategorieOperationAllowableValues();
-        if (!in_array($categorie_operation, $allowedValues, true)) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'categorie_operation', must be one of '%s'",
-                    $categorie_operation,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['categorie_operation'] = $categorie_operation;
-
-        return $this;
-    }
-
-    /**
      * Gets status
      *
      * @return bool|null
@@ -426,16 +454,91 @@ class ProduitTypeUpdateRequest implements ModelInterface, ArrayAccess, JsonSeria
     /**
      * Sets status
      *
-     * @param bool|null $status Statut : `1` (ou `true`) pour un type actif, `0` (ou `false`) pour un type désactivé.
+     * @param bool|null $status Catégorie active (`true`) ou désactivée (`false`), `1` et `0` sont aussi acceptés. Défaut : `true`.
      *
      * @return $this
      */
     public function setStatus(?bool $status): static
     {
         if (is_null($status)) {
-            throw new InvalidArgumentException('non-nullable status cannot be null');
+            array_push($this->openAPINullablesSetToNull, 'status');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('status', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
         $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets order
+     *
+     * @return int|null
+     */
+    public function getOrder(): ?int
+    {
+        return $this->container['order'];
+    }
+
+    /**
+     * Sets order
+     *
+     * @param int|null $order Ordre d'affichage. Si non fourni, la catégorie est placée en dernier. Min : 1. Max : 2147483647.
+     *
+     * @return $this
+     */
+    public function setOrder(?int $order): static
+    {
+        if (is_null($order)) {
+            array_push($this->openAPINullablesSetToNull, 'order');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('order', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['order'] = $order;
+
+        return $this;
+    }
+
+    /**
+     * Gets id_parent
+     *
+     * @return int|null
+     */
+    public function getIdParent(): ?int
+    {
+        return $this->container['id_parent'];
+    }
+
+    /**
+     * Sets id_parent
+     *
+     * @param int|null $id_parent ID de la catégorie parente (`null` ou `0` pour une catégorie racine). La catégorie parente doit elle-même être racine (2 niveaux max). Min : 1. Max : 2147483647.
+     *
+     * @return $this
+     */
+    public function setIdParent(?int $id_parent): static
+    {
+        if (is_null($id_parent)) {
+            array_push($this->openAPINullablesSetToNull, 'id_parent');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id_parent', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['id_parent'] = $id_parent;
 
         return $this;
     }

@@ -171,13 +171,13 @@ $participant = $participants->show(42, include: ['entreprise'])->getData();
 #### Create
 
 ```php
-use Dbout\DendreoSdk\Model\StoreParticipantRequest;
+use Dbout\DendreoSdk\Model\ParticipantsStoreRequest;
 
-$request = (new StoreParticipantRequest())
+$request = (new ParticipantsStoreRequest())
     ->setIdEntreprise('7')
     ->setNom('Dupont')
     ->setPrenom('Marie')
-    ->setStatutBpf(StoreParticipantRequest::STATUT_BPF_SALARIE)
+    ->setStatutBpf(ParticipantsStoreRequest::STATUT_BPF_SALARIE)
     ->setEmail('marie.dupont@example.com');
 
 $participant = $participants->store($request)->getData();
@@ -188,9 +188,9 @@ The request is validated before being sent: a missing required field throws an `
 #### Update, delete, restore
 
 ```php
-use Dbout\DendreoSdk\Model\UpdateParticipantRequest;
+use Dbout\DendreoSdk\Model\ParticipantsUpdateRequest;
 
-$participants->update(42, (new UpdateParticipantRequest())->setPortable('0601020304'));
+$participants->update(42, (new ParticipantsUpdateRequest())->setPortable('0601020304'));
 $participants->destroy(42);
 $participants->restore(42);
 ```

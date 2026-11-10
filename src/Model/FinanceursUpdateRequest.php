@@ -15,7 +15,7 @@ use ReturnTypeWillChange;
 use Dbout\DendreoSdk\ObjectSerializer;
 
 /**
- * AdministrateurRequestNiveauxInner Class Doc Comment
+ * FinanceursUpdateRequest Class Doc Comment
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
@@ -24,7 +24,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class AdministrateurRequestNiveauxInner implements ModelInterface, ArrayAccess, JsonSerializable
+class FinanceursUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -33,7 +33,7 @@ class AdministrateurRequestNiveauxInner implements ModelInterface, ArrayAccess, 
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'AdministrateurRequest_niveaux_inner';
+    protected static string $openAPIModelName = 'FinanceursUpdateRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -41,8 +41,9 @@ class AdministrateurRequestNiveauxInner implements ModelInterface, ArrayAccess, 
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'id_centre_de_formation' => 'int',
-        'niveau' => 'int'
+        'compte_client' => 'string',
+        'compte_client_auxiliaire' => 'string',
+        'numero_comptable_adf' => 'string'
     ];
 
     /**
@@ -51,8 +52,9 @@ class AdministrateurRequestNiveauxInner implements ModelInterface, ArrayAccess, 
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'id_centre_de_formation' => null,
-        'niveau' => null
+        'compte_client' => null,
+        'compte_client_auxiliaire' => null,
+        'numero_comptable_adf' => null
     ];
 
     /**
@@ -61,8 +63,9 @@ class AdministrateurRequestNiveauxInner implements ModelInterface, ArrayAccess, 
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
-        'id_centre_de_formation' => false,
-        'niveau' => false
+        'compte_client' => false,
+        'compte_client_auxiliaire' => false,
+        'numero_comptable_adf' => false
     ];
 
     /**
@@ -151,8 +154,9 @@ class AdministrateurRequestNiveauxInner implements ModelInterface, ArrayAccess, 
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'id_centre_de_formation' => 'id_centre_de_formation',
-        'niveau' => 'niveau'
+        'compte_client' => 'compte_client',
+        'compte_client_auxiliaire' => 'compte_client_auxiliaire',
+        'numero_comptable_adf' => 'numero_comptable_adf'
     ];
 
     /**
@@ -161,8 +165,9 @@ class AdministrateurRequestNiveauxInner implements ModelInterface, ArrayAccess, 
      * @var array<string, string>
      */
     protected static array $setters = [
-        'id_centre_de_formation' => 'setIdCentreDeFormation',
-        'niveau' => 'setNiveau'
+        'compte_client' => 'setCompteClient',
+        'compte_client_auxiliaire' => 'setCompteClientAuxiliaire',
+        'numero_comptable_adf' => 'setNumeroComptableAdf'
     ];
 
     /**
@@ -171,8 +176,9 @@ class AdministrateurRequestNiveauxInner implements ModelInterface, ArrayAccess, 
      * @var array<string, string>
      */
     protected static array $getters = [
-        'id_centre_de_formation' => 'getIdCentreDeFormation',
-        'niveau' => 'getNiveau'
+        'compte_client' => 'getCompteClient',
+        'compte_client_auxiliaire' => 'getCompteClientAuxiliaire',
+        'numero_comptable_adf' => 'getNumeroComptableAdf'
     ];
 
     /**
@@ -216,33 +222,6 @@ class AdministrateurRequestNiveauxInner implements ModelInterface, ArrayAccess, 
         return self::$openAPIModelName;
     }
 
-    public const NIVEAU_MINUS_1 = -1;
-    public const NIVEAU_NUMBER_0 = 0;
-    public const NIVEAU_NUMBER_3 = 3;
-    public const NIVEAU_NUMBER_10 = 10;
-    public const NIVEAU_NUMBER_13 = 13;
-    public const NIVEAU_NUMBER_20 = 20;
-    public const NIVEAU_NUMBER_30 = 30;
-    public const NIVEAU_NUMBER_40 = 40;
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public static function getNiveauAllowableValues()
-    {
-        return [
-            self::NIVEAU_MINUS_1,
-            self::NIVEAU_NUMBER_0,
-            self::NIVEAU_NUMBER_3,
-            self::NIVEAU_NUMBER_10,
-            self::NIVEAU_NUMBER_13,
-            self::NIVEAU_NUMBER_20,
-            self::NIVEAU_NUMBER_30,
-            self::NIVEAU_NUMBER_40,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -258,8 +237,9 @@ class AdministrateurRequestNiveauxInner implements ModelInterface, ArrayAccess, 
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id_centre_de_formation', $data ?? [], null);
-        $this->setIfExists('niveau', $data ?? [], null);
+        $this->setIfExists('compte_client', $data ?? [], null);
+        $this->setIfExists('compte_client_auxiliaire', $data ?? [], null);
+        $this->setIfExists('numero_comptable_adf', $data ?? [], null);
     }
 
     /**
@@ -289,21 +269,6 @@ class AdministrateurRequestNiveauxInner implements ModelInterface, ArrayAccess, 
     {
         $invalidProperties = [];
 
-        if ($this->container['id_centre_de_formation'] === null) {
-            $invalidProperties[] = "'id_centre_de_formation' can't be null";
-        }
-        if ($this->container['niveau'] === null) {
-            $invalidProperties[] = "'niveau' can't be null";
-        }
-        $allowedValues = self::getNiveauAllowableValues();
-        if (!is_null($this->container['niveau']) && !in_array($this->container['niveau'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'niveau', must be one of '%s'",
-                $this->container['niveau'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -320,65 +285,82 @@ class AdministrateurRequestNiveauxInner implements ModelInterface, ArrayAccess, 
 
 
     /**
-     * Gets id_centre_de_formation
+     * Gets compte_client
      *
-     * @return int
+     * @return string|null
      */
-    public function getIdCentreDeFormation(): int
+    public function getCompteClient(): ?string
     {
-        return $this->container['id_centre_de_formation'];
+        return $this->container['compte_client'];
     }
 
     /**
-     * Sets id_centre_de_formation
+     * Sets compte_client
      *
-     * @param int $id_centre_de_formation L'identifiant du centre de formation.
+     * @param string|null $compte_client N° de compte client (compte général). null ou \"\" vide le champ (renvoyé ensuite comme chaîne vide).
      *
      * @return $this
      */
-    public function setIdCentreDeFormation(int $id_centre_de_formation): static
+    public function setCompteClient(?string $compte_client): static
     {
-        if (is_null($id_centre_de_formation)) {
-            throw new InvalidArgumentException('non-nullable id_centre_de_formation cannot be null');
+        if (is_null($compte_client)) {
+            throw new InvalidArgumentException('non-nullable compte_client cannot be null');
         }
-        $this->container['id_centre_de_formation'] = $id_centre_de_formation;
+        $this->container['compte_client'] = $compte_client;
 
         return $this;
     }
 
     /**
-     * Gets niveau
+     * Gets compte_client_auxiliaire
      *
-     * @return int
+     * @return string|null
      */
-    public function getNiveau(): int
+    public function getCompteClientAuxiliaire(): ?string
     {
-        return $this->container['niveau'];
+        return $this->container['compte_client_auxiliaire'];
     }
 
     /**
-     * Sets niveau
+     * Sets compte_client_auxiliaire
      *
-     * @param int $niveau Le niveau d'accès sur ce centre, avec les mêmes valeurs que `niveau`, plus -1 (identique à la vue globale). Un niveau inférieur à celui de la vue globale est remplacé par -1.
+     * @param string|null $compte_client_auxiliaire N° de compte client auxiliaire (tiers). null ou \"\" réinitialise.
      *
      * @return $this
      */
-    public function setNiveau(int $niveau): static
+    public function setCompteClientAuxiliaire(?string $compte_client_auxiliaire): static
     {
-        if (is_null($niveau)) {
-            throw new InvalidArgumentException('non-nullable niveau cannot be null');
+        if (is_null($compte_client_auxiliaire)) {
+            throw new InvalidArgumentException('non-nullable compte_client_auxiliaire cannot be null');
         }
-        $allowedValues = self::getNiveauAllowableValues();
-        if (!in_array($niveau, $allowedValues, true)) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'niveau', must be one of '%s'",
-                    $niveau,
-                    implode("', '", $allowedValues)
-                )
-            );
+        $this->container['compte_client_auxiliaire'] = $compte_client_auxiliaire;
+
+        return $this;
+    }
+
+    /**
+     * Gets numero_comptable_adf
+     *
+     * @return string|null
+     */
+    public function getNumeroComptableAdf(): ?string
+    {
+        return $this->container['numero_comptable_adf'];
+    }
+
+    /**
+     * Sets numero_comptable_adf
+     *
+     * @param string|null $numero_comptable_adf N° de compte produit forcé pour les ADF. null ou \"\" réinitialise.
+     *
+     * @return $this
+     */
+    public function setNumeroComptableAdf(?string $numero_comptable_adf): static
+    {
+        if (is_null($numero_comptable_adf)) {
+            throw new InvalidArgumentException('non-nullable numero_comptable_adf cannot be null');
         }
-        $this->container['niveau'] = $niveau;
+        $this->container['numero_comptable_adf'] = $numero_comptable_adf;
 
         return $this;
     }

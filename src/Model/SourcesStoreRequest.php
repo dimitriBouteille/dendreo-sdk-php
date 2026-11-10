@@ -15,7 +15,7 @@ use ReturnTypeWillChange;
 use Dbout\DendreoSdk\ObjectSerializer;
 
 /**
- * ModuleCategorieUpdateRequest Class Doc Comment
+ * SourcesStoreRequest Class Doc Comment
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
@@ -24,7 +24,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class ModuleCategorieUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class SourcesStoreRequest implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -33,7 +33,7 @@ class ModuleCategorieUpdateRequest implements ModelInterface, ArrayAccess, JsonS
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'ModuleCategorieUpdateRequest';
+    protected static string $openAPIModelName = 'SourcesStoreRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -41,13 +41,9 @@ class ModuleCategorieUpdateRequest implements ModelInterface, ArrayAccess, JsonS
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'intitule' => 'string',
-        'description' => 'string',
-        'description_meta' => 'string',
-        'color' => 'string',
+        'name' => 'string',
         'status' => 'bool',
-        'order' => 'int',
-        'id_parent' => 'int'
+        'order' => 'int'
     ];
 
     /**
@@ -56,13 +52,9 @@ class ModuleCategorieUpdateRequest implements ModelInterface, ArrayAccess, JsonS
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'intitule' => null,
-        'description' => null,
-        'description_meta' => null,
-        'color' => null,
+        'name' => null,
         'status' => null,
-        'order' => null,
-        'id_parent' => null
+        'order' => null
     ];
 
     /**
@@ -71,13 +63,9 @@ class ModuleCategorieUpdateRequest implements ModelInterface, ArrayAccess, JsonS
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
-        'intitule' => false,
-        'description' => true,
-        'description_meta' => true,
-        'color' => true,
-        'status' => true,
-        'order' => true,
-        'id_parent' => true
+        'name' => false,
+        'status' => false,
+        'order' => false
     ];
 
     /**
@@ -166,13 +154,9 @@ class ModuleCategorieUpdateRequest implements ModelInterface, ArrayAccess, JsonS
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'intitule' => 'intitule',
-        'description' => 'description',
-        'description_meta' => 'description_meta',
-        'color' => 'color',
+        'name' => 'name',
         'status' => 'status',
-        'order' => 'order',
-        'id_parent' => 'id_parent'
+        'order' => 'order'
     ];
 
     /**
@@ -181,13 +165,9 @@ class ModuleCategorieUpdateRequest implements ModelInterface, ArrayAccess, JsonS
      * @var array<string, string>
      */
     protected static array $setters = [
-        'intitule' => 'setIntitule',
-        'description' => 'setDescription',
-        'description_meta' => 'setDescriptionMeta',
-        'color' => 'setColor',
+        'name' => 'setName',
         'status' => 'setStatus',
-        'order' => 'setOrder',
-        'id_parent' => 'setIdParent'
+        'order' => 'setOrder'
     ];
 
     /**
@@ -196,13 +176,9 @@ class ModuleCategorieUpdateRequest implements ModelInterface, ArrayAccess, JsonS
      * @var array<string, string>
      */
     protected static array $getters = [
-        'intitule' => 'getIntitule',
-        'description' => 'getDescription',
-        'description_meta' => 'getDescriptionMeta',
-        'color' => 'getColor',
+        'name' => 'getName',
         'status' => 'getStatus',
-        'order' => 'getOrder',
-        'id_parent' => 'getIdParent'
+        'order' => 'getOrder'
     ];
 
     /**
@@ -261,13 +237,9 @@ class ModuleCategorieUpdateRequest implements ModelInterface, ArrayAccess, JsonS
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('intitule', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('description_meta', $data ?? [], null);
-        $this->setIfExists('color', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('status', $data ?? [], null);
         $this->setIfExists('order', $data ?? [], null);
-        $this->setIfExists('id_parent', $data ?? [], null);
     }
 
     /**
@@ -297,6 +269,9 @@ class ModuleCategorieUpdateRequest implements ModelInterface, ArrayAccess, JsonS
     {
         $invalidProperties = [];
 
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -313,130 +288,28 @@ class ModuleCategorieUpdateRequest implements ModelInterface, ArrayAccess, JsonS
 
 
     /**
-     * Gets intitule
+     * Gets name
      *
-     * @return string|null
+     * @return string
      */
-    public function getIntitule(): ?string
+    public function getName(): string
     {
-        return $this->container['intitule'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets intitule
+     * Sets name
      *
-     * @param string|null $intitule L'intitulé de la catégorie (max 280 caractères). Max : 280 caractères.
+     * @param string $name Le nom de la source. Max : 191 caractères.
      *
      * @return $this
      */
-    public function setIntitule(?string $intitule): static
+    public function setName(string $name): static
     {
-        if (is_null($intitule)) {
-            throw new InvalidArgumentException('non-nullable intitule cannot be null');
+        if (is_null($name)) {
+            throw new InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['intitule'] = $intitule;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription(): ?string
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description La description affichée dans le catalogue. HTML accepté ; un texte brut est converti en HTML (retours à la ligne préservés).
-     *
-     * @return $this
-     */
-    public function setDescription(?string $description): static
-    {
-        if (is_null($description)) {
-            array_push($this->openAPINullablesSetToNull, 'description');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('description', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets description_meta
-     *
-     * @return string|null
-     */
-    public function getDescriptionMeta(): ?string
-    {
-        return $this->container['description_meta'];
-    }
-
-    /**
-     * Sets description_meta
-     *
-     * @param string|null $description_meta La méta-description SEO du catalogue (texte brut).
-     *
-     * @return $this
-     */
-    public function setDescriptionMeta(?string $description_meta): static
-    {
-        if (is_null($description_meta)) {
-            array_push($this->openAPINullablesSetToNull, 'description_meta');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('description_meta', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['description_meta'] = $description_meta;
-
-        return $this;
-    }
-
-    /**
-     * Gets color
-     *
-     * @return string|null
-     */
-    public function getColor(): ?string
-    {
-        return $this->container['color'];
-    }
-
-    /**
-     * Sets color
-     *
-     * @param string|null $color Couleur hexadécimale sur 6 caractères, avec ou sans `#`. Retournée préfixée `#`. Doit respecter l'expression régulière <code>/^#?[0-9a-fA-F]{6}$/</code>.
-     *
-     * @return $this
-     */
-    public function setColor(?string $color): static
-    {
-        if (is_null($color)) {
-            array_push($this->openAPINullablesSetToNull, 'color');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('color', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['color'] = $color;
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -454,21 +327,14 @@ class ModuleCategorieUpdateRequest implements ModelInterface, ArrayAccess, JsonS
     /**
      * Sets status
      *
-     * @param bool|null $status Catégorie active (`true`) ou désactivée (`false`), `1` et `0` sont aussi acceptés. Défaut : `true`.
+     * @param bool|null $status Source active (`true`) ou inactive (`false`), `1` et `0` sont aussi acceptés. Défaut : `true`.
      *
      * @return $this
      */
     public function setStatus(?bool $status): static
     {
         if (is_null($status)) {
-            array_push($this->openAPINullablesSetToNull, 'status');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('status', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new InvalidArgumentException('non-nullable status cannot be null');
         }
         $this->container['status'] = $status;
 
@@ -488,57 +354,16 @@ class ModuleCategorieUpdateRequest implements ModelInterface, ArrayAccess, JsonS
     /**
      * Sets order
      *
-     * @param int|null $order Ordre d'affichage. Si non fourni, la catégorie est placée en dernier. Min : 1. Max : 2147483647.
+     * @param int|null $order Ordre d'affichage. Min : 0.
      *
      * @return $this
      */
     public function setOrder(?int $order): static
     {
         if (is_null($order)) {
-            array_push($this->openAPINullablesSetToNull, 'order');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('order', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
+            throw new InvalidArgumentException('non-nullable order cannot be null');
         }
         $this->container['order'] = $order;
-
-        return $this;
-    }
-
-    /**
-     * Gets id_parent
-     *
-     * @return int|null
-     */
-    public function getIdParent(): ?int
-    {
-        return $this->container['id_parent'];
-    }
-
-    /**
-     * Sets id_parent
-     *
-     * @param int|null $id_parent ID de la catégorie parente (`null` ou `0` pour une catégorie racine). La catégorie parente doit elle-même être racine (2 niveaux max). Min : 1. Max : 2147483647.
-     *
-     * @return $this
-     */
-    public function setIdParent(?int $id_parent): static
-    {
-        if (is_null($id_parent)) {
-            array_push($this->openAPINullablesSetToNull, 'id_parent');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('id_parent', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['id_parent'] = $id_parent;
 
         return $this;
     }

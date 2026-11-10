@@ -15,7 +15,7 @@ use ReturnTypeWillChange;
 use Dbout\DendreoSdk\ObjectSerializer;
 
 /**
- * AdministrateurUpdateRequest Class Doc Comment
+ * ModuleCategoriesStoreRequest Class Doc Comment
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
@@ -24,7 +24,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class AdministrateurUpdateRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class ModuleCategoriesStoreRequest implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -33,7 +33,7 @@ class AdministrateurUpdateRequest implements ModelInterface, ArrayAccess, JsonSe
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'AdministrateurUpdateRequest';
+    protected static string $openAPIModelName = 'ModuleCategoriesStoreRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -41,14 +41,13 @@ class AdministrateurUpdateRequest implements ModelInterface, ArrayAccess, JsonSe
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'email' => 'string',
-        'nom' => 'string',
-        'prenom' => 'string',
-        'telephone' => 'string',
-        'fonction' => 'string',
-        'civilite' => 'string',
-        'niveau' => 'int',
-        'niveaux' => '\Dbout\DendreoSdk\Model\AdministrateurRequestNiveauxInner[]'
+        'intitule' => 'string',
+        'description' => 'string',
+        'description_meta' => 'string',
+        'color' => 'string',
+        'status' => 'bool',
+        'order' => 'int',
+        'id_parent' => 'int'
     ];
 
     /**
@@ -57,14 +56,13 @@ class AdministrateurUpdateRequest implements ModelInterface, ArrayAccess, JsonSe
       * @var array<string, string|null>
       */
     protected static array $openAPIFormats = [
-        'email' => null,
-        'nom' => null,
-        'prenom' => null,
-        'telephone' => null,
-        'fonction' => null,
-        'civilite' => null,
-        'niveau' => null,
-        'niveaux' => null
+        'intitule' => null,
+        'description' => null,
+        'description_meta' => null,
+        'color' => null,
+        'status' => null,
+        'order' => null,
+        'id_parent' => null
     ];
 
     /**
@@ -73,14 +71,13 @@ class AdministrateurUpdateRequest implements ModelInterface, ArrayAccess, JsonSe
       * @var array<string, bool>
       */
     protected static array $openAPINullables = [
-        'email' => true,
-        'nom' => false,
-        'prenom' => false,
-        'telephone' => true,
-        'fonction' => true,
-        'civilite' => true,
-        'niveau' => false,
-        'niveaux' => false
+        'intitule' => false,
+        'description' => true,
+        'description_meta' => true,
+        'color' => true,
+        'status' => true,
+        'order' => true,
+        'id_parent' => true
     ];
 
     /**
@@ -169,14 +166,13 @@ class AdministrateurUpdateRequest implements ModelInterface, ArrayAccess, JsonSe
      * @var array<string, string>
      */
     protected static array $attributeMap = [
-        'email' => 'email',
-        'nom' => 'nom',
-        'prenom' => 'prenom',
-        'telephone' => 'telephone',
-        'fonction' => 'fonction',
-        'civilite' => 'civilite',
-        'niveau' => 'niveau',
-        'niveaux' => 'niveaux'
+        'intitule' => 'intitule',
+        'description' => 'description',
+        'description_meta' => 'description_meta',
+        'color' => 'color',
+        'status' => 'status',
+        'order' => 'order',
+        'id_parent' => 'id_parent'
     ];
 
     /**
@@ -185,14 +181,13 @@ class AdministrateurUpdateRequest implements ModelInterface, ArrayAccess, JsonSe
      * @var array<string, string>
      */
     protected static array $setters = [
-        'email' => 'setEmail',
-        'nom' => 'setNom',
-        'prenom' => 'setPrenom',
-        'telephone' => 'setTelephone',
-        'fonction' => 'setFonction',
-        'civilite' => 'setCivilite',
-        'niveau' => 'setNiveau',
-        'niveaux' => 'setNiveaux'
+        'intitule' => 'setIntitule',
+        'description' => 'setDescription',
+        'description_meta' => 'setDescriptionMeta',
+        'color' => 'setColor',
+        'status' => 'setStatus',
+        'order' => 'setOrder',
+        'id_parent' => 'setIdParent'
     ];
 
     /**
@@ -201,14 +196,13 @@ class AdministrateurUpdateRequest implements ModelInterface, ArrayAccess, JsonSe
      * @var array<string, string>
      */
     protected static array $getters = [
-        'email' => 'getEmail',
-        'nom' => 'getNom',
-        'prenom' => 'getPrenom',
-        'telephone' => 'getTelephone',
-        'fonction' => 'getFonction',
-        'civilite' => 'getCivilite',
-        'niveau' => 'getNiveau',
-        'niveaux' => 'getNiveaux'
+        'intitule' => 'getIntitule',
+        'description' => 'getDescription',
+        'description_meta' => 'getDescriptionMeta',
+        'color' => 'getColor',
+        'status' => 'getStatus',
+        'order' => 'getOrder',
+        'id_parent' => 'getIdParent'
     ];
 
     /**
@@ -252,54 +246,6 @@ class AdministrateurUpdateRequest implements ModelInterface, ArrayAccess, JsonSe
         return self::$openAPIModelName;
     }
 
-    public const CIVILITE_M = 'M.';
-    public const CIVILITE_MME = 'Mme';
-    public const CIVILITE_DR = 'Dr';
-    public const CIVILITE_PR = 'Pr';
-    public const CIVILITE_ME = 'Me';
-    public const CIVILITE_NS = 'Ns';
-    public const NIVEAU_NUMBER_0 = 0;
-    public const NIVEAU_NUMBER_3 = 3;
-    public const NIVEAU_NUMBER_10 = 10;
-    public const NIVEAU_NUMBER_13 = 13;
-    public const NIVEAU_NUMBER_20 = 20;
-    public const NIVEAU_NUMBER_30 = 30;
-    public const NIVEAU_NUMBER_40 = 40;
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public static function getCiviliteAllowableValues()
-    {
-        return [
-            self::CIVILITE_M,
-            self::CIVILITE_MME,
-            self::CIVILITE_DR,
-            self::CIVILITE_PR,
-            self::CIVILITE_ME,
-            self::CIVILITE_NS,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public static function getNiveauAllowableValues()
-    {
-        return [
-            self::NIVEAU_NUMBER_0,
-            self::NIVEAU_NUMBER_3,
-            self::NIVEAU_NUMBER_10,
-            self::NIVEAU_NUMBER_13,
-            self::NIVEAU_NUMBER_20,
-            self::NIVEAU_NUMBER_30,
-            self::NIVEAU_NUMBER_40,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -315,14 +261,13 @@ class AdministrateurUpdateRequest implements ModelInterface, ArrayAccess, JsonSe
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('email', $data ?? [], null);
-        $this->setIfExists('nom', $data ?? [], null);
-        $this->setIfExists('prenom', $data ?? [], null);
-        $this->setIfExists('telephone', $data ?? [], null);
-        $this->setIfExists('fonction', $data ?? [], null);
-        $this->setIfExists('civilite', $data ?? [], null);
-        $this->setIfExists('niveau', $data ?? [], null);
-        $this->setIfExists('niveaux', $data ?? [], null);
+        $this->setIfExists('intitule', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('description_meta', $data ?? [], null);
+        $this->setIfExists('color', $data ?? [], null);
+        $this->setIfExists('status', $data ?? [], null);
+        $this->setIfExists('order', $data ?? [], null);
+        $this->setIfExists('id_parent', $data ?? [], null);
     }
 
     /**
@@ -352,24 +297,9 @@ class AdministrateurUpdateRequest implements ModelInterface, ArrayAccess, JsonSe
     {
         $invalidProperties = [];
 
-        $allowedValues = self::getCiviliteAllowableValues();
-        if (!is_null($this->container['civilite']) && !in_array($this->container['civilite'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'civilite', must be one of '%s'",
-                $this->container['civilite'],
-                implode("', '", $allowedValues)
-            );
+        if ($this->container['intitule'] === null) {
+            $invalidProperties[] = "'intitule' can't be null";
         }
-
-        $allowedValues = self::getNiveauAllowableValues();
-        if (!is_null($this->container['niveau']) && !in_array($this->container['niveau'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'niveau', must be one of '%s'",
-                $this->container['niveau'],
-                implode("', '", $allowedValues)
-            );
-        }
-
         return $invalidProperties;
     }
 
@@ -386,265 +316,232 @@ class AdministrateurUpdateRequest implements ModelInterface, ArrayAccess, JsonSe
 
 
     /**
-     * Gets email
+     * Gets intitule
      *
-     * @return string|null
+     * @return string
      */
-    public function getEmail(): ?string
+    public function getIntitule(): string
     {
-        return $this->container['email'];
+        return $this->container['intitule'];
     }
 
     /**
-     * Sets email
+     * Sets intitule
      *
-     * @param string|null $email L'adresse email de l'administrateur. Doit être une adresse e-mail valide. Max : 255 caractères.
+     * @param string $intitule L'intitulé de la catégorie (max 280 caractères). Max : 280 caractères.
      *
      * @return $this
      */
-    public function setEmail(?string $email): static
+    public function setIntitule(string $intitule): static
     {
-        if (is_null($email)) {
-            array_push($this->openAPINullablesSetToNull, 'email');
+        if (is_null($intitule)) {
+            throw new InvalidArgumentException('non-nullable intitule cannot be null');
+        }
+        $this->container['intitule'] = $intitule;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription(): ?string
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description La description affichée dans le catalogue. HTML accepté ; un texte brut est converti en HTML (retours à la ligne préservés).
+     *
+     * @return $this
+     */
+    public function setDescription(?string $description): static
+    {
+        if (is_null($description)) {
+            array_push($this->openAPINullablesSetToNull, 'description');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('email', $nullablesSetToNull);
+            $index = array_search('description', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['email'] = $email;
+        $this->container['description'] = $description;
 
         return $this;
     }
 
     /**
-     * Gets nom
+     * Gets description_meta
      *
      * @return string|null
      */
-    public function getNom(): ?string
+    public function getDescriptionMeta(): ?string
     {
-        return $this->container['nom'];
+        return $this->container['description_meta'];
     }
 
     /**
-     * Sets nom
+     * Sets description_meta
      *
-     * @param string|null $nom Le nom de l'administrateur. Min : 2 caractères.
+     * @param string|null $description_meta La méta-description SEO du catalogue (texte brut).
      *
      * @return $this
      */
-    public function setNom(?string $nom): static
+    public function setDescriptionMeta(?string $description_meta): static
     {
-        if (is_null($nom)) {
-            throw new InvalidArgumentException('non-nullable nom cannot be null');
-        }
-        $this->container['nom'] = $nom;
-
-        return $this;
-    }
-
-    /**
-     * Gets prenom
-     *
-     * @return string|null
-     */
-    public function getPrenom(): ?string
-    {
-        return $this->container['prenom'];
-    }
-
-    /**
-     * Sets prenom
-     *
-     * @param string|null $prenom Le prénom de l'administrateur. Min : 2 caractères.
-     *
-     * @return $this
-     */
-    public function setPrenom(?string $prenom): static
-    {
-        if (is_null($prenom)) {
-            throw new InvalidArgumentException('non-nullable prenom cannot be null');
-        }
-        $this->container['prenom'] = $prenom;
-
-        return $this;
-    }
-
-    /**
-     * Gets telephone
-     *
-     * @return string|null
-     */
-    public function getTelephone(): ?string
-    {
-        return $this->container['telephone'];
-    }
-
-    /**
-     * Sets telephone
-     *
-     * @param string|null $telephone Le numéro de téléphone de l'administrateur.
-     *
-     * @return $this
-     */
-    public function setTelephone(?string $telephone): static
-    {
-        if (is_null($telephone)) {
-            array_push($this->openAPINullablesSetToNull, 'telephone');
+        if (is_null($description_meta)) {
+            array_push($this->openAPINullablesSetToNull, 'description_meta');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('telephone', $nullablesSetToNull);
+            $index = array_search('description_meta', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['telephone'] = $telephone;
+        $this->container['description_meta'] = $description_meta;
 
         return $this;
     }
 
     /**
-     * Gets fonction
+     * Gets color
      *
      * @return string|null
      */
-    public function getFonction(): ?string
+    public function getColor(): ?string
     {
-        return $this->container['fonction'];
+        return $this->container['color'];
     }
 
     /**
-     * Sets fonction
+     * Sets color
      *
-     * @param string|null $fonction La fonction de l'administrateur. Max : 255 caractères.
+     * @param string|null $color Couleur hexadécimale sur 6 caractères, avec ou sans `#`. Retournée préfixée `#`. Doit respecter l'expression régulière <code>/^#?[0-9a-fA-F]{6}$/</code>.
      *
      * @return $this
      */
-    public function setFonction(?string $fonction): static
+    public function setColor(?string $color): static
     {
-        if (is_null($fonction)) {
-            array_push($this->openAPINullablesSetToNull, 'fonction');
+        if (is_null($color)) {
+            array_push($this->openAPINullablesSetToNull, 'color');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('fonction', $nullablesSetToNull);
+            $index = array_search('color', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $this->container['fonction'] = $fonction;
+        $this->container['color'] = $color;
 
         return $this;
     }
 
     /**
-     * Gets civilite
+     * Gets status
      *
-     * @return string|null
+     * @return bool|null
      */
-    public function getCivilite(): ?string
+    public function getStatus(): ?bool
     {
-        return $this->container['civilite'];
+        return $this->container['status'];
     }
 
     /**
-     * Sets civilite
+     * Sets status
      *
-     * @param string|null $civilite La civilité de l'administrateur. Max : 255 caractères.
+     * @param bool|null $status Catégorie active (`true`) ou désactivée (`false`), `1` et `0` sont aussi acceptés. Défaut : `true`.
      *
      * @return $this
      */
-    public function setCivilite(?string $civilite): static
+    public function setStatus(?bool $status): static
     {
-        if (is_null($civilite)) {
-            array_push($this->openAPINullablesSetToNull, 'civilite');
+        if (is_null($status)) {
+            array_push($this->openAPINullablesSetToNull, 'status');
         } else {
             $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('civilite', $nullablesSetToNull);
+            $index = array_search('status', $nullablesSetToNull);
             if ($index !== FALSE) {
                 unset($nullablesSetToNull[$index]);
                 $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
             }
         }
-        $allowedValues = self::getCiviliteAllowableValues();
-        if (!is_null($civilite) && !in_array($civilite, $allowedValues, true)) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'civilite', must be one of '%s'",
-                    $civilite,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['civilite'] = $civilite;
+        $this->container['status'] = $status;
 
         return $this;
     }
 
     /**
-     * Gets niveau
+     * Gets order
      *
      * @return int|null
      */
-    public function getNiveau(): ?int
+    public function getOrder(): ?int
     {
-        return $this->container['niveau'];
+        return $this->container['order'];
     }
 
     /**
-     * Sets niveau
+     * Sets order
      *
-     * @param int|null $niveau Le niveau d'accès sur la vue globale : 0 (aucun accès), 3 (collaborateur, aucun accès), 10 (commercial), 13 (commercial avec configuration des catégories et du catalogue public), 20 (standard), 30 (gérant), 40 (administrateur). Un administrateur sans compte qui obtient un accès (niveau 10 ou plus, ici ou sur un centre) reçoit une invitation par email.
+     * @param int|null $order Ordre d'affichage. Si non fourni, la catégorie est placée en dernier. Min : 1. Max : 2147483647.
      *
      * @return $this
      */
-    public function setNiveau(?int $niveau): static
+    public function setOrder(?int $order): static
     {
-        if (is_null($niveau)) {
-            throw new InvalidArgumentException('non-nullable niveau cannot be null');
+        if (is_null($order)) {
+            array_push($this->openAPINullablesSetToNull, 'order');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('order', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $allowedValues = self::getNiveauAllowableValues();
-        if (!in_array($niveau, $allowedValues, true)) {
-            throw new InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'niveau', must be one of '%s'",
-                    $niveau,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['niveau'] = $niveau;
+        $this->container['order'] = $order;
 
         return $this;
     }
 
     /**
-     * Gets niveaux
+     * Gets id_parent
      *
-     * @return \Dbout\DendreoSdk\Model\AdministrateurRequestNiveauxInner[]|null
+     * @return int|null
      */
-    public function getNiveaux(): ?array
+    public function getIdParent(): ?int
     {
-        return $this->container['niveaux'];
+        return $this->container['id_parent'];
     }
 
     /**
-     * Sets niveaux
+     * Sets id_parent
      *
-     * @param \Dbout\DendreoSdk\Model\AdministrateurRequestNiveauxInner[]|null $niveaux Les niveaux d'accès par centre de formation, en multi-centres. Seuls les centres envoyés sont modifiés.
+     * @param int|null $id_parent ID de la catégorie parente (`null` ou `0` pour une catégorie racine). La catégorie parente doit elle-même être racine (2 niveaux max). Min : 1. Max : 2147483647.
      *
      * @return $this
      */
-    public function setNiveaux(?array $niveaux): static
+    public function setIdParent(?int $id_parent): static
     {
-        if (is_null($niveaux)) {
-            throw new InvalidArgumentException('non-nullable niveaux cannot be null');
+        if (is_null($id_parent)) {
+            array_push($this->openAPINullablesSetToNull, 'id_parent');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('id_parent', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['niveaux'] = $niveaux;
+        $this->container['id_parent'] = $id_parent;
 
         return $this;
     }

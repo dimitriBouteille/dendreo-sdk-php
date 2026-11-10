@@ -1487,7 +1487,7 @@ class ParticipantsApi
      *
      * Créer un participant
      *
-     * @param  \Dbout\DendreoSdk\Model\StoreParticipantRequest $store_participant_request store_participant_request (required)
+     * @param  \Dbout\DendreoSdk\Model\ParticipantsStoreRequest $participants_store_request participants_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1495,11 +1495,11 @@ class ParticipantsApi
      * @return \Dbout\DendreoSdk\Model\ParticipantResponse
      */
     public function store(
-        \Dbout\DendreoSdk\Model\StoreParticipantRequest $store_participant_request,
+        \Dbout\DendreoSdk\Model\ParticipantsStoreRequest $participants_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): \Dbout\DendreoSdk\Model\ParticipantResponse
     {
-        list($response) = $this->storeWithHttpInfo($store_participant_request, $contentType);
+        list($response) = $this->storeWithHttpInfo($participants_store_request, $contentType);
         return $response;
     }
 
@@ -1508,7 +1508,7 @@ class ParticipantsApi
      *
      * Créer un participant
      *
-     * @param  \Dbout\DendreoSdk\Model\StoreParticipantRequest $store_participant_request (required)
+     * @param  \Dbout\DendreoSdk\Model\ParticipantsStoreRequest $participants_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -1516,11 +1516,11 @@ class ParticipantsApi
      * @return array of \Dbout\DendreoSdk\Model\ParticipantResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function storeWithHttpInfo(
-        \Dbout\DendreoSdk\Model\StoreParticipantRequest $store_participant_request,
+        \Dbout\DendreoSdk\Model\ParticipantsStoreRequest $participants_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): array
     {
-        $request = $this->storeRequest($store_participant_request, $contentType);
+        $request = $this->storeRequest($participants_store_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1635,18 +1635,18 @@ class ParticipantsApi
      *
      * Créer un participant
      *
-     * @param  \Dbout\DendreoSdk\Model\StoreParticipantRequest $store_participant_request (required)
+     * @param  \Dbout\DendreoSdk\Model\ParticipantsStoreRequest $participants_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
     public function storeAsync(
-        \Dbout\DendreoSdk\Model\StoreParticipantRequest $store_participant_request,
+        \Dbout\DendreoSdk\Model\ParticipantsStoreRequest $participants_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): PromiseInterface
     {
-        return $this->storeAsyncWithHttpInfo($store_participant_request, $contentType)
+        return $this->storeAsyncWithHttpInfo($participants_store_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1659,19 +1659,19 @@ class ParticipantsApi
      *
      * Créer un participant
      *
-     * @param  \Dbout\DendreoSdk\Model\StoreParticipantRequest $store_participant_request (required)
+     * @param  \Dbout\DendreoSdk\Model\ParticipantsStoreRequest $participants_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return PromiseInterface
      */
     public function storeAsyncWithHttpInfo(
-        \Dbout\DendreoSdk\Model\StoreParticipantRequest $store_participant_request,
+        \Dbout\DendreoSdk\Model\ParticipantsStoreRequest $participants_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): PromiseInterface
     {
         $returnType = '\Dbout\DendreoSdk\Model\ParticipantResponse';
-        $request = $this->storeRequest($store_participant_request, $contentType);
+        $request = $this->storeRequest($participants_store_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1712,28 +1712,28 @@ class ParticipantsApi
     /**
      * Create request for operation 'store'
      *
-     * @param  \Dbout\DendreoSdk\Model\StoreParticipantRequest $store_participant_request (required)
+     * @param  \Dbout\DendreoSdk\Model\ParticipantsStoreRequest $participants_store_request (required)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['store'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
     public function storeRequest(
-        \Dbout\DendreoSdk\Model\StoreParticipantRequest $store_participant_request,
+        \Dbout\DendreoSdk\Model\ParticipantsStoreRequest $participants_store_request,
         string $contentType = self::contentTypes['store'][0]
     ): Request
     {
 
-        // verify the required parameter 'store_participant_request' is set
-        if ($store_participant_request === null || (is_array($store_participant_request) && count($store_participant_request) === 0)) {
+        // verify the required parameter 'participants_store_request' is set
+        if ($participants_store_request === null || (is_array($participants_store_request) && count($participants_store_request) === 0)) {
             throw new InvalidArgumentException(
-                'Missing the required parameter $store_participant_request when calling store'
+                'Missing the required parameter $participants_store_request when calling store'
             );
         }
-        if ($store_participant_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$store_participant_request->valid()) {
+        if ($participants_store_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$participants_store_request->valid()) {
             throw new InvalidArgumentException(sprintf(
-                'Invalid parameter $store_participant_request when calling store: %s',
-                implode(' ', $store_participant_request->listInvalidProperties())
+                'Invalid parameter $participants_store_request when calling store: %s',
+                implode(' ', $participants_store_request->listInvalidProperties())
             ));
         }
 
@@ -1756,12 +1756,12 @@ class ParticipantsApi
         );
 
         // for model (json/xml)
-        if (isset($store_participant_request)) {
+        if (isset($participants_store_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($store_participant_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($participants_store_request));
             } else {
-                $httpBody = $store_participant_request;
+                $httpBody = $participants_store_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -2195,7 +2195,7 @@ class ParticipantsApi
      * Mettre à jour un participant
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\UpdateParticipantRequest|null $update_participant_request update_participant_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\ParticipantsUpdateRequest|null $participants_update_request participants_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -2204,11 +2204,11 @@ class ParticipantsApi
      */
     public function update(
         int $id,
-        ?\Dbout\DendreoSdk\Model\UpdateParticipantRequest $update_participant_request = null,
+        ?\Dbout\DendreoSdk\Model\ParticipantsUpdateRequest $participants_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): \Dbout\DendreoSdk\Model\ParticipantResponse
     {
-        list($response) = $this->updateWithHttpInfo($id, $update_participant_request, $contentType);
+        list($response) = $this->updateWithHttpInfo($id, $participants_update_request, $contentType);
         return $response;
     }
 
@@ -2218,7 +2218,7 @@ class ParticipantsApi
      * Mettre à jour un participant
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\UpdateParticipantRequest|null $update_participant_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\ParticipantsUpdateRequest|null $participants_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws ApiException on non-2xx response or if the response body is not in the expected format
@@ -2227,11 +2227,11 @@ class ParticipantsApi
      */
     public function updateWithHttpInfo(
         int $id,
-        ?\Dbout\DendreoSdk\Model\UpdateParticipantRequest $update_participant_request = null,
+        ?\Dbout\DendreoSdk\Model\ParticipantsUpdateRequest $participants_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): array
     {
-        $request = $this->updateRequest($id, $update_participant_request, $contentType);
+        $request = $this->updateRequest($id, $participants_update_request, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2361,7 +2361,7 @@ class ParticipantsApi
      * Mettre à jour un participant
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\UpdateParticipantRequest|null $update_participant_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\ParticipantsUpdateRequest|null $participants_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -2369,11 +2369,11 @@ class ParticipantsApi
      */
     public function updateAsync(
         int $id,
-        ?\Dbout\DendreoSdk\Model\UpdateParticipantRequest $update_participant_request = null,
+        ?\Dbout\DendreoSdk\Model\ParticipantsUpdateRequest $participants_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): PromiseInterface
     {
-        return $this->updateAsyncWithHttpInfo($id, $update_participant_request, $contentType)
+        return $this->updateAsyncWithHttpInfo($id, $participants_update_request, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2387,7 +2387,7 @@ class ParticipantsApi
      * Mettre à jour un participant
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\UpdateParticipantRequest|null $update_participant_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\ParticipantsUpdateRequest|null $participants_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -2395,12 +2395,12 @@ class ParticipantsApi
      */
     public function updateAsyncWithHttpInfo(
         int $id,
-        ?\Dbout\DendreoSdk\Model\UpdateParticipantRequest $update_participant_request = null,
+        ?\Dbout\DendreoSdk\Model\ParticipantsUpdateRequest $participants_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): PromiseInterface
     {
         $returnType = '\Dbout\DendreoSdk\Model\ParticipantResponse';
-        $request = $this->updateRequest($id, $update_participant_request, $contentType);
+        $request = $this->updateRequest($id, $participants_update_request, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2442,7 +2442,7 @@ class ParticipantsApi
      * Create request for operation 'update'
      *
      * @param  int $id  (required)
-     * @param  \Dbout\DendreoSdk\Model\UpdateParticipantRequest|null $update_participant_request (optional)
+     * @param  \Dbout\DendreoSdk\Model\ParticipantsUpdateRequest|null $participants_update_request (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['update'] to see the possible values for this operation
      *
      * @throws InvalidArgumentException
@@ -2450,7 +2450,7 @@ class ParticipantsApi
      */
     public function updateRequest(
         int $id,
-        ?\Dbout\DendreoSdk\Model\UpdateParticipantRequest $update_participant_request = null,
+        ?\Dbout\DendreoSdk\Model\ParticipantsUpdateRequest $participants_update_request = null,
         string $contentType = self::contentTypes['update'][0]
     ): Request
     {
@@ -2462,10 +2462,10 @@ class ParticipantsApi
             );
         }
 
-        if ($update_participant_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$update_participant_request->valid()) {
+        if ($participants_update_request instanceof \Dbout\DendreoSdk\Model\ModelInterface && !$participants_update_request->valid()) {
             throw new InvalidArgumentException(sprintf(
-                'Invalid parameter $update_participant_request when calling update: %s',
-                implode(' ', $update_participant_request->listInvalidProperties())
+                'Invalid parameter $participants_update_request when calling update: %s',
+                implode(' ', $participants_update_request->listInvalidProperties())
             ));
         }
 
@@ -2496,12 +2496,12 @@ class ParticipantsApi
         );
 
         // for model (json/xml)
-        if (isset($update_participant_request)) {
+        if (isset($participants_update_request)) {
             if (stripos($headers['Content-Type'], 'application/json') !== false) {
                 # if Content-Type contains "application/json", json_encode the body
-                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($update_participant_request));
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($participants_update_request));
             } else {
-                $httpBody = $update_participant_request;
+                $httpBody = $participants_update_request;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

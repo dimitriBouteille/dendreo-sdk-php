@@ -15,7 +15,7 @@ use ReturnTypeWillChange;
 use Dbout\DendreoSdk\ObjectSerializer;
 
 /**
- * PermanentSessionStoreRequest Class Doc Comment
+ * SessionsPermanentesStoreRequest Class Doc Comment
  *
  * Generated from the Dendreo OpenAPI specification, do not edit manually.
  *
@@ -24,7 +24,7 @@ use Dbout\DendreoSdk\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements ArrayAccess<string, mixed>
  */
-class PermanentSessionStoreRequest implements ModelInterface, ArrayAccess, JsonSerializable
+class SessionsPermanentesStoreRequest implements ModelInterface, ArrayAccess, JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -33,7 +33,7 @@ class PermanentSessionStoreRequest implements ModelInterface, ArrayAccess, JsonS
       *
       * @var string
       */
-    protected static string $openAPIModelName = 'PermanentSessionStoreRequest';
+    protected static string $openAPIModelName = 'SessionsPermanentesStoreRequest';
 
     /**
       * Array of property to type mappings. Used for (de)serialization

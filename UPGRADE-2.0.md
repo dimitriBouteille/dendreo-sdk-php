@@ -76,8 +76,8 @@ The other services of 2.0 are new, see the [list of supported resources](README.
 |-----------------------------------------|-----------------------------------------------------------------|
 | `find(XxxFindRequest $request)`         | `index(?XxxFilter $filter, ?array $include, ?array $sort, ?int $page, ?int $per_page)` |
 | `findById(int $id)`                     | `show(int $id, ?array $include)`                                |
-| `create(XxxCreateRequest $request)`     | `store($request)`, e.g. `store(StoreParticipantRequest $request)` |
-| `update(...)`                           | `update(int $id, $request)`, e.g. `UpdateParticipantRequest`    |
+| `create(XxxCreateRequest $request)`     | `store(XxxStoreRequest $request)`                               |
+| `update(...)`                           | `update(int $id, XxxUpdateRequest $request)`                    |
 | `delete(int $id)`                       | `destroy(int $id)`                                              |
 | -                                       | `restore(int $id)`: restores a deleted resource                 |
 
@@ -105,8 +105,8 @@ The models are generated from the specification, their properties follow the API
 | 1.x                                                  | 2.0                                                          |
 |------------------------------------------------------|--------------------------------------------------------------|
 | `Model\XxxFindRequest`                               | `Model\XxxFilter` (e.g. `ParticipantFilter`), given to `index()` |
-| `Model\XxxCreateRequest`                             | Store request named by Dendreo (e.g. `StoreParticipantRequest`)|
-| `Model\XxxUpdateRequest`                             | Update request named by Dendreo (e.g. `UpdateParticipantRequest`)|
+| `Model\XxxCreateRequest`                             | `Model\XxxStoreRequest` (e.g. `ParticipantsStoreRequest`)    |
+| `Model\XxxUpdateRequest`                             | `Model\XxxUpdateRequest` (e.g. `ParticipantsUpdateRequest`)  |
 | `Model\AbstractModel`, `Helper\*`, `Response`        | Removed                                                      |
 
 Filters are sent as `filter[xxx]` (see the [API documentation](https://api.dendreo.com/docs-api/v2/)):
