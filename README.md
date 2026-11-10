@@ -18,9 +18,14 @@
 ---
 
 > [!IMPORTANT]
-> Version 2 targets the **Dendreo API v2** and is not compatible with version 1.x.
-> Some resources of the API v1 (inscriptions, créneaux, modules, contacts...) are not available in the API v2 yet: if you need them, stay on 1.x.
-> See the [upgrade guide](UPGRADE-2.0.md).
+> Version 2 targets the **Dendreo API v2** and is not compatible with version 1.x, see the [upgrade guide](UPGRADE-2.0.md).
+>
+> Version 2 is a **pre-release** (`2.0.0-alpha`): the Dendreo API v2 is still being published, and class names may change until the stable release.
+
+> [!WARNING]
+> Some resources of the API v1 are **not available in the API v2 yet**: inscriptions (laps), modules, contacts, créneaux, formateurs... Dendreo publishes them progressively, starting with the modules.
+>
+> If you need them, stay on [version 1.x](https://github.com/dimitriBouteille/dendreo-sdk-php/tree/v1.x), which targets the API v1: Dendreo keeps maintaining it, with no end-of-life date yet. Both API versions read and write the same data with the same identifiers, but both versions of this SDK cannot be installed in the same project.
 
 The Dendreo SDK for PHP makes it easy for developers to access the Dendreo API in their PHP code.
 
@@ -45,6 +50,7 @@ Every resource of the API v2 is supported. Each resource has its own service, in
 | Actions de formation  | `/v2/actions-de-formation`  | `ActionsDeFormationApi`  | `index`, `show`, `store`, `update`, `destroy`, `restore`        |
 | Administrateurs       | `/v2/administrateurs`       | `AdministrateursApi`     | `index`, `show`, `store`, `update`, `destroy`, `restore`        |
 | Budgets               | `/v2/budgets`               | `BudgetsApi`             | `index`, `show`, `store`, `update`, `destroy`                   |
+| Catalogue public      | `/v2/catalogue-prochaines-sessions` | `CatalogueProchainesSessionsApi` | `index`                                 |
 | Catégories de module  | `/v2/module-categories`     | `ModuleCategoriesApi`    | `index`, `show`, `store`, `update`, `destroy`, `restore`        |
 | Centres de formation  | `/v2/centres-de-formation`  | `CentresDeFormationApi`  | `index`, `show`                                                 |
 | Entreprises           | `/v2/entreprises`           | `EntreprisesApi`         | `index`, `show`                                                 |
@@ -73,8 +79,10 @@ If a resource you need is missing, it is probably not available in the API v2 ye
 You can use [Composer](https://getcomposer.org/). Follow the [installation instructions](https://getcomposer.org/doc/00-intro.md) if you do not already have composer installed.
 
 ~~~bash
-composer require dbout/dendreo-sdk-php
+composer require dbout/dendreo-sdk-php:^2.0@alpha
 ~~~
+
+For the API v1, install version 1.x: `composer require dbout/dendreo-sdk-php:^1.0`.
 
 In your PHP script, make sure you include the autoloader:
 
@@ -148,7 +156,9 @@ foreach ($result->getData() as $participant) {
 }
 ```
 
-The available filters, `include` and `sort` values of each resource are listed in the [API documentation](https://api.dendreo.com/docs-api/v2/).
+The available filters, `include` and `sort` values of each resource are listed in the [API documentation](https://api.dendreo.com/docs-api/v2/). A value that is not allowed throws a `BadRequestException`: this is the case of most `include` values of the API v1 (`modules`, `participants`, `formateurs`...), the error message gives the endpoint that replaces them.
+
+The relations loaded with `include` are typed in the models, for example `$participant->getEntreprise()` with `include: ['entreprise']`. Without the `include`, they are `null`.
 
 To go through every page, follow `links.next` until it is `null`:
 
@@ -199,7 +209,7 @@ $participants->restore(42);
 
 Dates are returned as `\DateTime` objects. The API sends date-times without timezone (`2026-01-31 09:00:00`), in Paris time (`Europe/Paris`): the SDK creates them in this timezone, whatever the default timezone of PHP. The `\DateTime` values sent to the API are converted to Paris time.
 
-The dates entered in Dendreo (start and end of a training session...) are the local time of the training centre, as entered: for a centre outside the Paris timezone, use the wall-clock value (`->format('Y-m-d H:i:s')`) and ignore the timezone. See [Dates et fuseau horaire](https://api.dendreo.com/docs-api/v2/) in the API documentation.
+The dates entered in Dendreo (start and end of a training session...) are the local time of the training centre, as entered: for a centre outside the Paris timezone, use the wall-clock value (`->format('Y-m-d H:i:s')`) and ignore the timezone. Date filters expect their values in the timezone of the filtered field. See [Dates et fuseau horaire](https://api.dendreo.com/docs-api/v2/) in the API documentation.
 
 ### Additional fields
 
@@ -246,7 +256,7 @@ try {
 }
 ```
 
-The API allows 100 requests per 10 seconds, see the [rate limits](https://api.dendreo.com/docs-api/v2/).
+The API allows 100 requests per 10 seconds and 100,000 requests per day (the monthly limit depends on your subscription), see the [rate limits](https://api.dendreo.com/docs-api/v2/).
 
 ### Extending a service
 

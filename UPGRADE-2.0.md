@@ -14,7 +14,7 @@ The API v2 does not cover every resource of the API v1 yet. The following v1 ser
 | `Service\Contacts`             | `/api/contacts.php`         | ❌ Not available in the API v2                                              |
 | `Service\Particuliers`         | `/api/particuliers.php`     | ⚠️ Read-only: `EntreprisesApi` with the `particulier` filter               |
 
-**If your project uses one of them, stay on 1.x** (`composer require dbout/dendreo-sdk-php:^1.0`): it remains available. These resources will be added to the SDK as soon as Dendreo publishes them in the API v2.
+**If your project uses one of them, stay on [1.x](https://github.com/dimitriBouteille/dendreo-sdk-php/tree/v1.x)** (`composer require dbout/dendreo-sdk-php:^1.0`): it remains available. These resources will be added to the SDK as soon as Dendreo publishes them in the API v2.
 
 ## Requirements
 
