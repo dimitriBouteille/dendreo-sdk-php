@@ -1,0 +1,107 @@
+name: OpenAPI specification update
+
+# Checks twice a week (Monday and Thursday) whether Dendreo published a new version of the OpenAPI specification.
+# When it changed, regenerates the SDK and opens (or updates) a pull request to `develop`.
+#
+# Scheduled workflows only run from the default branch: this file must be on `main`.
+#
+# Optional secret `OPENAPI_UPDATE_TOKEN`: a fine-grained token limited to this repository, with
+# "Contents" and "Pull requests" in read and write. Without it, the pull request is opened with
+# GITHUB_TOKEN, and GitHub does not run the other workflows (tests, coding style...) on it: close
+# and reopen the pull request to run them.
+
+on:
+  schedule:
+    - cron: "0 6 * * 1,4"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: openapi-update
+  cancel-in-progress: false
+
+env:
+  BASE_BRANCH: develop
+
+jobs:
+  update:
+    name: "Check the OpenAPI specification"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout repo"
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ env.BASE_BRANCH }}
+
+      - name: "Install PHP"
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+          tools: composer:v2
+          coverage: none
+
+      - name: "Install composer dependencies"
+        run: composer install --prefer-dist --no-progress
+
+      - name: "Download the specification"
+        id: fetch
+        run: |
+          mkdir -p var
+          cp openapi/openapi.yaml var/openapi-previous.yaml
+          composer openapi:fetch
+          if git diff --quiet -- openapi/openapi.yaml; then
+            echo "No change in the OpenAPI specification."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git diff --stat -- openapi/openapi.yaml
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: "Generate the SDK"
+        if: steps.fetch.outputs.changed == 'true'
+        run: composer generate
+
+      - name: "Summarize the changes"
+        if: steps.fetch.outputs.changed == 'true'
+        run: |
+          {
+            echo "The [Dendreo OpenAPI specification](https://api.dendreo.com/docs-api/v2/openapi.yaml) changed. This pull request updates \`openapi/openapi.yaml\` and regenerates \`src/\`."
+            echo
+            echo "## Specification"
+            echo
+            php openapi/changes.php var/openapi-previous.yaml openapi/openapi.yaml
+            echo "## Generated classes"
+            echo
+            status=$(git status --porcelain --untracked-files=all -- src)
+            # `grep` exits with 1 when nothing matches: `|| true` keeps the step running.
+            added=$(echo "$status" | grep '^??' | cut -c4- || true)
+            removed=$(echo "$status" | grep '^ D' | cut -c4- || true)
+            modified=$(echo "$status" | grep -c '^ M' || true)
+            if [ -n "$added" ]; then echo "$added" | sed 's/.*/- ➕ `&`/'; fi
+            if [ -n "$removed" ]; then echo "$removed" | sed 's/.*/- ➖ `&`/'; fi
+            echo "- ✏️ ${modified} file(s) modified"
+            echo
+            echo "---"
+            echo
+            echo "Before merging: check the changes above (a removed class or property is a breaking change), update the documentation if needed, and check that the tests pass."
+          } > var/pull-request.md
+          cat var/pull-request.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: "Open the pull request"
+        if: steps.fetch.outputs.changed == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.OPENAPI_UPDATE_TOKEN || secrets.GITHUB_TOKEN }}
+          base: ${{ env.BASE_BRANCH }}
+          branch: openapi/update-spec
+          delete-branch: true
+          add-paths: |
+            openapi/openapi.yaml
+            src
+          commit-message: "🔧 Update OpenAPI specification"
+          title: "🔧 Update OpenAPI specification"
+          body-path: var/pull-request.md

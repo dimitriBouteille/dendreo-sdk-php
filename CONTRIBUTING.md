@@ -67,6 +67,12 @@ Then review and commit the changes of `openapi/openapi.yaml` and `src/`.
 2. OpenAPI Generator, through Docker Compose (`openapi/compose.yaml`), with the configuration `openapi/config.yaml` and the templates of `openapi/templates/`, into `var/openapi/out/`.
 3. `openapi/postprocess.php`: installs the generated files into `src/`, with the package header and the "do not edit" notice. The files of the previous generation (recognized by the notice) are removed first, so a resource removed from the specification also disappears from the SDK. A hand-written file is never overwritten: the script fails before changing anything if a generated file has the same name.
 
+### Specification updates
+
+The `OpenAPI specification update` workflow (`.github/workflows/openapi-update.yml`) downloads the specification twice a week (Monday and Thursday). When it changed, it regenerates the SDK and opens a pull request to `develop` (branch `openapi/update-spec`), described by `openapi/changes.php`: operations, schemas, properties and generated classes added or removed. It can also be run manually from the *Actions* tab.
+
+A removed class or property is a breaking change: check the description of the pull request before merging it.
+
 ### Templates and generator version
 
 Two templates of the generator are overridden in `openapi/templates/` (`api.mustache` and `ObjectSerializer.mustache`). Their changes, and the procedure to upgrade OpenAPI Generator, are described in [openapi/templates/README.md](openapi/templates/README.md).
