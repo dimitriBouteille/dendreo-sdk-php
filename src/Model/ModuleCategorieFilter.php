@@ -571,7 +571,7 @@ class ModuleCategorieFilter implements ModelInterface, ArrayAccess, JsonSerializ
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
+     * @param string $offset Offset
      *
      * @return boolean
      */
@@ -583,7 +583,7 @@ class ModuleCategorieFilter implements ModelInterface, ArrayAccess, JsonSerializ
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param string $offset Offset
      *
      * @return mixed|null
      */
@@ -596,7 +596,7 @@ class ModuleCategorieFilter implements ModelInterface, ArrayAccess, JsonSerializ
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param string|null $offset Offset
      * @param mixed    $value  Value to be set
      *
      * @return void
@@ -613,7 +613,7 @@ class ModuleCategorieFilter implements ModelInterface, ArrayAccess, JsonSerializ
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
+     * @param string $offset Offset
      *
      * @return void
      */

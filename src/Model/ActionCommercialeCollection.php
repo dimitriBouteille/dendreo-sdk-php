@@ -376,7 +376,7 @@ class ActionCommercialeCollection implements ModelInterface, ArrayAccess, JsonSe
     /**
      * Returns true if offset exists. False otherwise.
      *
-     * @param integer $offset Offset
+     * @param string $offset Offset
      *
      * @return boolean
      */
@@ -388,7 +388,7 @@ class ActionCommercialeCollection implements ModelInterface, ArrayAccess, JsonSe
     /**
      * Gets offset.
      *
-     * @param integer $offset Offset
+     * @param string $offset Offset
      *
      * @return mixed|null
      */
@@ -401,7 +401,7 @@ class ActionCommercialeCollection implements ModelInterface, ArrayAccess, JsonSe
     /**
      * Sets value based on offset.
      *
-     * @param int|null $offset Offset
+     * @param string|null $offset Offset
      * @param mixed    $value  Value to be set
      *
      * @return void
@@ -418,7 +418,7 @@ class ActionCommercialeCollection implements ModelInterface, ArrayAccess, JsonSe
     /**
      * Unsets offset.
      *
-     * @param integer $offset Offset
+     * @param string $offset Offset
      *
      * @return void
      */
