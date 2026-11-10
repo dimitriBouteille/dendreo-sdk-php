@@ -6,118 +6,86 @@
  * Author: Dimitri BOUTEILLE <bonjour@dimitri-bouteille.fr>
  */
 
+declare(strict_types=1);
+
 namespace Dbout\DendreoSdk;
 
-class Config
+/**
+ * Configuration of the SDK: credentials and HTTP options.
+ *
+ * @see https://api.dendreo.com/docs-api/v2/#authentification
+ */
+final class Config
 {
-    /**
-     * @param array<string, mixed> $params
-     */
-    public function __construct(
-        protected array $params = []
-    ) {
-    }
+    public const DEFAULT_HOST = 'https://api.dendreo.com';
+
+    private ?string $apiKey = null;
+    private ?string $username = null;
+    private string $host = self::DEFAULT_HOST;
+    private float $timeout = 30.0;
+    private ?string $proxy = null;
 
     /**
-     * Get the username from the Dendreo customer area.
-     *
-     * @return string|null
-     */
-    public function getUsername(): ?string
-    {
-        return $this->get('username');
-    }
-
-    /**
-     * Set the username from the Dendreo customer area.
-     *
-     * - [How to find your username](https://developers.dendreo.com/#fonctionnement-general)
-     *
-     * @param string $username
-     * @return $this
-     */
-    public function setUsername(string $username): self
-    {
-        return $this->set('username', $username);
-    }
-
-    /**
-     * Get the API key from the Dendreo customer area.
-     *
-     * @return string|null
-     */
-    public function getApiKey(): ?string
-    {
-        return $this->get('api-key');
-    }
-
-    /**
-     * Set the API key defined in your customer area.
-     *
-     * - [Find your api KEY](https://pro.dendreo.com/redirect/api)
-     *
-     * @param string $apiKey
-     * @return $this
+     * API key, sent as `Authorization: Bearer {apiKey}`.
      */
     public function setApiKey(string $apiKey): self
     {
-        return $this->set('api-key', $apiKey);
-    }
-
-    /**
-     * Get the http timeout configuration
-     *
-     * @return int
-     */
-    public function getTimeout(): int
-    {
-        $value = $this->get('timeout');
-        return is_numeric($value) ? (int) $value : 0;
-    }
-
-    /**
-     * Get the http proxy configuration
-     *
-     * @return string|null
-     */
-    public function getHttpProxy(): ?string
-    {
-        return $this->get('http-proxy');
-    }
-
-    /**
-     * Set the http proxy configuration
-     *
-     * @param string|null $proxy
-     * @return $this
-     */
-    public function setProxy(?string $proxy): self
-    {
-        return $this->set('http-proxy', $proxy);
-    }
-
-    /**
-     * Set a key value pair
-     *
-     * @param string $key
-     * @param mixed $value
-     * @return $this
-     */
-    public function set(string $key, mixed $value): self
-    {
-        $this->params[$key] = $value;
+        $this->apiKey = $apiKey;
         return $this;
     }
 
-    /**
-     * Get a specific key value.
-     *
-     * @param string $key
-     * @param mixed $default
-     * @return mixed
-     */
-    public function get(string $key, mixed $default = null): mixed
+    public function getApiKey(): ?string
     {
-        return $this->params[$key] ?? $default;
+        return $this->apiKey;
+    }
+
+    /**
+     * Account identifier (what follows `pro.dendreo.com/` in your account URL), sent as the `of` header.
+     */
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+        return $this;
+    }
+
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    public function setHost(string $host): self
+    {
+        $this->host = rtrim($host, '/');
+        return $this;
+    }
+
+    public function getHost(): string
+    {
+        return $this->host;
+    }
+
+    /**
+     * Request timeout, in seconds.
+     */
+    public function setTimeout(float $timeout): self
+    {
+        $this->timeout = $timeout;
+        return $this;
+    }
+
+    public function getTimeout(): float
+    {
+        return $this->timeout;
+    }
+
+    public function setProxy(?string $proxy): self
+    {
+        $this->proxy = $proxy;
+        return $this;
+    }
+
+    public function getProxy(): ?string
+    {
+        return $this->proxy;
     }
 }

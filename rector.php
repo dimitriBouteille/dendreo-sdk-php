@@ -7,20 +7,20 @@
  */
 
 use Rector\Config\RectorConfig;
-use Rector\Set\ValueObject\SetList;
 use Rector\TypeDeclaration\Rector\Property\TypedPropertyFromStrictConstructorRector;
 
 return RectorConfig::configure()
     ->withPaths([
         __DIR__ . '/src',
         __DIR__ . '/tests',
+        __DIR__ . '/openapi',
     ])
+    // Generated code (see openapi/generated-files.php): never modified.
+    ->withSkip((require __DIR__ . '/openapi/generated-files.php')())
     ->withRules([
         TypedPropertyFromStrictConstructorRector::class,
     ])
     ->withPreparedSets(
         codeQuality: true,
     )
-    ->withSets([
-        SetList::PHP_82,
-    ]);
+    ->withPhpSets(php82: true);

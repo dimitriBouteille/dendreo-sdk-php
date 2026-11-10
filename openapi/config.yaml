@@ -1,0 +1,8 @@
+invokerPackage: 'Dbout\DendreoSdk'
+packageName: DendreoSdk
+srcBasePath: src
+variableNamingConvention: snake_case
+# `participants.index` -> method `index()` (the service is already `ParticipantsApi`).
+removeOperationIdPrefix: true
+removeOperationIdPrefixDelimiter: '.'
+removeOperationIdPrefixCount: 1

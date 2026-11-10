@@ -28,5 +28,15 @@
     <include>
       <directory suffix=".php">./src</directory>
     </include>
+    <!-- Generated code (see openapi/postprocess.php): not part of the coverage -->
+    <exclude>
+      <directory>./src/Api</directory>
+      <directory>./src/Model</directory>
+      <file>./src/ApiException.php</file>
+      <file>./src/Configuration.php</file>
+      <file>./src/FormDataProcessor.php</file>
+      <file>./src/HeaderSelector.php</file>
+      <file>./src/ObjectSerializer.php</file>
+    </exclude>
   </source>
 </phpunit>

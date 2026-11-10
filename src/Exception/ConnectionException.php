@@ -6,8 +6,15 @@
  * Author: Dimitri BOUTEILLE <bonjour@dimitri-bouteille.fr>
  */
 
+declare(strict_types=1);
+
 namespace Dbout\DendreoSdk\Exception;
 
-class ConnectionException extends \Exception
+use Dbout\DendreoSdk\ApiException;
+
+/**
+ * The API could not be reached (DNS, timeout, TLS...): no HTTP response was received.
+ */
+class ConnectionException extends ApiException
 {
 }

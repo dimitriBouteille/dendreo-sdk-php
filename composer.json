@@ -1,7 +1,7 @@
 {
   "name": "dbout/dendreo-sdk-php",
-  "description": "Dendreo SDK for interacting with the REST APIs.",
-  "type": "package",
+  "description": "PHP SDK for the Dendreo API v2 (training management software), generated from the official OpenAPI specification.",
+  "type": "library",
   "license": "MIT",
   "authors": [
     {
@@ -11,21 +11,29 @@
       "role": "Developer"
     }
   ],
-  "keywords": ["api", "dendreo", "sdk", "rest"],
+  "keywords": [
+    "dendreo",
+    "sdk",
+    "api",
+    "api-client",
+    "rest",
+    "openapi",
+    "training",
+    "training-management",
+    "formation",
+    "organisme-de-formation"
+  ],
   "homepage": "https://github.com/dimitriBouteille/dendreo-sdk-php",
   "support": {
     "issues": "https://github.com/dimitriBouteille/dendreo-sdk-php/issues",
-    "source": "https://github.com/dimitriBouteille/dendreo-sdk-php"
+    "source": "https://github.com/dimitriBouteille/dendreo-sdk-php",
+    "docs": "https://github.com/dimitriBouteille/dendreo-sdk-php#readme"
   },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
   "require": {
-    "php": ">=8.2",
-    "ext-ctype": "*",
-    "ext-curl": "*",
+    "php": "^8.2",
     "ext-json": "*",
-    "ext-mbstring": "*",
-    "ext-openssl": "*"
+    "guzzlehttp/guzzle": "^7.4.5",
+    "guzzlehttp/psr7": "^2.0"
   },
   "autoload": {
     "psr-4": {
@@ -41,21 +49,25 @@
     "rector/rector": "^2.0",
     "friendsofphp/php-cs-fixer": "^3.0",
     "phpstan/phpstan": "^2.0",
-    "phpunit/phpunit": "^11.0"
-  },
-  "extra": {
-    "phpstan": {
-      "includes": [
-        "extension.neon"
-      ]
-    }
+    "phpunit/phpunit": "^11.0",
+    "symfony/yaml": "^7.0"
   },
   "scripts": {
-    "rector": "vendor/bin/rector process src --dry-run",
+    "rector": "vendor/bin/rector process --dry-run",
     "phpstan": "vendor/bin/phpstan analyse -c phpstan.neon",
     "test:unit": "vendor/bin/phpunit --no-coverage",
     "test:unit:coverage": "vendor/bin/phpunit",
     "csFixer": "vendor/bin/php-cs-fixer fix --verbose --diff --dry-run",
-    "fix:csFixer": "vendor/bin/php-cs-fixer fix"
+    "fix:csFixer": "vendor/bin/php-cs-fixer fix",
+    "openapi:fetch": "curl -fsSL https://api.dendreo.com/docs-api/v2/openapi.yaml -o openapi/openapi.yaml",
+    "generate": [
+      "@php openapi/preprocess.php openapi/openapi.yaml var/openapi",
+      "docker compose -f openapi/compose.yaml run --rm --user \"$(id -u):$(id -g)\" openapi-generator",
+      "@php openapi/postprocess.php var/openapi/out/src src"
+    ]
+  },
+  "scripts-descriptions": {
+    "openapi:fetch": "Download the latest Dendreo OpenAPI specification into openapi/openapi.yaml",
+    "generate": "Generate the SDK (src/) from openapi/openapi.yaml, requires Docker"
   }
 }

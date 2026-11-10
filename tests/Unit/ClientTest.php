@@ -6,81 +6,84 @@
  * Author: Dimitri BOUTEILLE <bonjour@dimitri-bouteille.fr>
  */
 
+declare(strict_types=1);
+
 namespace Dbout\DendreoSdk\Tests\Unit;
 
+use Dbout\DendreoSdk\Api\SourcesApi;
 use Dbout\DendreoSdk\Client;
 use Dbout\DendreoSdk\Config;
-use Dbout\DendreoSdk\Exception\DendreoException;
-use PHPUnit\Framework\Attributes\CoversMethod;
-use PHPUnit\Framework\Attributes\UsesClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\TestCase;
 
-#[CoversMethod(Client::class, 'getBaseEndpoint')]
-#[CoversMethod(Client::class, 'setUsername')]
-#[CoversMethod(Client::class, 'setApiKey')]
-#[UsesClass(DendreoException::class)]
-class ClientTest extends TestCase
+final class ClientTest extends TestCase
 {
+    use MockHttpTrait;
+
     /**
-     * @throws \PHPUnit\Framework\MockObject\Exception
-     * @return void
+     * @return iterable<string, array{Config}>
      */
-    public function testGetBaseEndpointThrowExceptionBecauseUsernameIsEmpty(): void
+    public static function missingCredentialsProvider(): iterable
     {
-        $mockConfig = $this->createConfiguredMock(Config::class, [
-            'getUsername' => '',
-        ]);
-
-        $mockConfig->expects($this->once())->method('getUsername');
-        $client = new Client($mockConfig);
-
-        $this->expectException(DendreoException::class);
-        $this->expectExceptionMessage('Username not set');
-
-        $client->getBaseEndpoint();
+        yield 'no api key' => [(new Config())->setUsername('my-account')];
+        yield 'empty api key' => [(new Config())->setApiKey('')->setUsername('my-account')];
+        yield 'no username' => [(new Config())->setApiKey('the-api-key')];
+        yield 'empty username' => [(new Config())->setApiKey('the-api-key')->setUsername('')];
     }
 
-    /**
-     * @throws DendreoException
-     * @throws \PHPUnit\Framework\MockObject\Exception
-     * @return void
-     */
-    public function testGetBaseEndpoint(): void
+    #[DataProvider('missingCredentialsProvider')]
+    public function testCredentialsAreRequired(Config $config): void
     {
-        $configMock = $this->createConfiguredMock(Config::class, [
-            'getUsername' => 'account_demo',
-        ]);
+        $this->expectException(\InvalidArgumentException::class);
 
-        $configMock->expects($this->once())->method('getUsername');
-        $client = new Client($configMock);
-        $this->assertEquals('https://pro.dendreo.com/account_demo/api/', $client->getBaseEndpoint());
+        new Client($config);
     }
 
-    /**
-     * @throws \PHPUnit\Framework\MockObject\Exception
-     * @return void
-     */
-    public function testSetUsername(): void
+    public function testConfiguration(): void
     {
-        $username = 'account_demo';
+        $client = new Client(
+            (new Config())
+                ->setApiKey('the-api-key')
+                ->setUsername('my-account')
+                ->setHost('https://sandbox.example.com/')
+        );
 
-        $configMock = $this->createMock(Config::class);
-        $configMock->expects($this->once())->method('setUsername')->with($username);
-        $client = new Client($configMock);
-        $client->setUsername($username);
+        $configuration = $client->getConfiguration();
+        self::assertSame('https://sandbox.example.com', $configuration->getHost());
+        self::assertSame('the-api-key', $configuration->getAccessToken());
+        self::assertSame('my-account', $configuration->getApiKey('of'));
+        self::assertSame(Client::getUserAgent(), $configuration->getUserAgent());
     }
 
-    /**
-     * @throws \PHPUnit\Framework\MockObject\Exception
-     * @return void
-     */
-    public function testSetApiKey(): void
+    public function testUserAgent(): void
     {
-        $apiKey = 'my-123456';
+        self::assertNotSame('', Client::getSdkVersion());
+        self::assertSame(
+            sprintf('dendreo-php-sdk/%s PHP/%s', Client::getSdkVersion(), PHP_VERSION),
+            Client::getUserAgent(),
+        );
+    }
 
-        $configMock = $this->createMock(Config::class);
-        $configMock->expects($this->once())->method('setApiKey')->with($apiKey);
-        $client = new Client($configMock);
-        $client->setApiKey($apiKey);
+    public function testCustomHttpClientIsUsed(): void
+    {
+        $client = $this->mockClient([self::jsonResponse(200, ['data' => ['id' => 3, 'name' => 'Salon']])]);
+
+        (new SourcesApi($client))->show(3);
+
+        self::assertCount(1, $this->requests);
+    }
+
+    public function testCredentialsAreSentInHeaders(): void
+    {
+        $client = $this->mockClient([self::jsonResponse(200, ['data' => ['id' => 3]])]);
+
+        (new SourcesApi($client))->show(3);
+
+        $request = $this->lastRequest();
+        self::assertSame('GET', $request->getMethod());
+        self::assertSame('https://api.dendreo.com/v2/sources/3', (string) $request->getUri()->withQuery(''));
+        self::assertSame('Bearer the-api-key', $request->getHeaderLine('Authorization'));
+        self::assertSame('my-account', $request->getHeaderLine('of'));
+        self::assertSame(Client::getUserAgent(), $request->getHeaderLine('User-Agent'));
     }
 }

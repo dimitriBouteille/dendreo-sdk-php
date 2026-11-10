@@ -6,103 +6,44 @@
  * Author: Dimitri BOUTEILLE <bonjour@dimitri-bouteille.fr>
  */
 
+declare(strict_types=1);
+
 namespace Dbout\DendreoSdk\Tests\Unit;
 
 use Dbout\DendreoSdk\Config;
-use PHPUnit\Framework\Attributes\CoversMethod;
 use PHPUnit\Framework\TestCase;
 
-#[CoversMethod(Config::class, 'getUsername')]
-#[CoversMethod(Config::class, 'setUsername')]
-#[CoversMethod(Config::class, 'setApiKey')]
-#[CoversMethod(Config::class, 'getApiKey')]
-#[CoversMethod(Config::class, 'getTimeout')]
-#[CoversMethod(Config::class, 'getHttpProxy')]
-#[CoversMethod(Config::class, 'set')]
-#[CoversMethod(Config::class, 'get')]
-class ConfigTest extends TestCase
+final class ConfigTest extends TestCase
 {
-    /**
-     * @return void
-     */
-    public function testSetGet(): void
+    public function testDefaults(): void
     {
         $config = new Config();
-        $config->set('my-account', 'yes');
-        $this->assertEquals('yes', $config->get('my-account'));
+
+        self::assertNull($config->getApiKey());
+        self::assertNull($config->getUsername());
+        self::assertSame('https://api.dendreo.com', $config->getHost());
+        self::assertSame(30.0, $config->getTimeout());
+        self::assertNull($config->getProxy());
     }
 
-    /**
-     * @return void
-     */
-    public function testGetWithDefaultValue(): void
+    public function testSetters(): void
     {
-        $config = new Config();
-        $this->assertEquals(123456, $config->get('my-account', 123456));
+        $config = (new Config())
+            ->setApiKey('the-api-key')
+            ->setUsername('my-account')
+            ->setHost('https://sandbox.example.com')
+            ->setTimeout(5.5)
+            ->setProxy('http://my-proxy:3128');
+
+        self::assertSame('the-api-key', $config->getApiKey());
+        self::assertSame('my-account', $config->getUsername());
+        self::assertSame('https://sandbox.example.com', $config->getHost());
+        self::assertSame(5.5, $config->getTimeout());
+        self::assertSame('http://my-proxy:3128', $config->getProxy());
     }
 
-    /**
-     * @return void
-     */
-    public function testSetUsername(): void
+    public function testHostTrailingSlashIsRemoved(): void
     {
-        $config = new Config();
-        $config->setUsername('my-account');
-        $this->assertEquals('my-account', $config->getUsername());
-    }
-
-    /**
-     * @return void
-     */
-    public function testSetUsernameByPath(): void
-    {
-        $config = new Config(['username' => 'my-account']);
-        $this->assertEquals('my-account', $config->getUsername());
-    }
-
-    /**
-     * @return void
-     */
-    public function testSetApiKey(): void
-    {
-        $config = new Config();
-        $config->setApiKey('my-api-key');
-        $this->assertEquals('my-api-key', $config->getApiKey());
-    }
-
-    /**
-     * @return void
-     */
-    public function testSetApiKeyByPath(): void
-    {
-        $config = new Config(['api-key' => 'my-api-key']);
-        $this->assertEquals('my-api-key', $config->getApiKey());
-    }
-
-    /**
-     * @return void
-     */
-    public function testGetTimeout(): void
-    {
-        $config = new Config(['timeout' => 1500]);
-        $this->assertEquals(1500, $config->getTimeout());
-    }
-
-    /**
-     * @return void
-     */
-    public function testGetDefaultTimeoutIfTimeoutIfInvalid(): void
-    {
-        $config = new Config(['timeout' => 'A1500']);
-        $this->assertEquals(0, $config->getTimeout());
-    }
-
-    /**
-     * @return void
-     */
-    public function testGetHttpProxy(): void
-    {
-        $config = new Config(['http-proxy' => 'user:pwd']);
-        $this->assertEquals('user:pwd', $config->getHttpProxy());
+        self::assertSame('https://api.dendreo.com', (new Config())->setHost('https://api.dendreo.com/')->getHost());
     }
 }
