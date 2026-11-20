@@ -49,8 +49,8 @@ class ProchaineSessionFilter implements ModelInterface, ArrayAccess, JsonSeriali
         'type_module' => 'string[]',
         'type' => 'string[]',
         'mode_organisation' => 'string[]',
-        'date_debut' => 'string',
-        'date_fin' => 'string'
+        'date_debut' => 'string[]',
+        'date_fin' => 'string[]'
     ];
 
     /**
@@ -628,9 +628,9 @@ class ProchaineSessionFilter implements ModelInterface, ArrayAccess, JsonSeriali
     /**
      * Gets date_debut
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getDateDebut(): ?string
+    public function getDateDebut(): ?array
     {
         return $this->container['date_debut'];
     }
@@ -638,11 +638,11 @@ class ProchaineSessionFilter implements ModelInterface, ArrayAccess, JsonSeriali
     /**
      * Sets date_debut
      *
-     * @param string|null $date_debut Date (`2026-01-31`) ou date et heure (`2026-01-31 09:00:00`), précédée d'un opérateur `>=`, `<=`, `>`, `<`, `=` ou `<>`. Sans opérateur, recherche par préfixe (`2026`, `2026-01`). Une valeur qui n'est pas une date ne renvoie rien. Pour encadrer une période, passer le filtre en tableau : `filter[date_debut][]=>=2026-01-01&filter[date_debut][]=<=2026-12-31`. Les sessions passées restent exclues.
+     * @param string[]|null $date_debut Date (`2026-01-31`) ou date et heure (`2026-01-31 09:00:00`), précédée d'un opérateur `>=`, `<=`, `>`, `<`, `=` ou `<>`. Sans opérateur, recherche par préfixe (`2026`, `2026-01`). Une valeur qui n'est pas une date ne renvoie rien. Pour encadrer une période, séparer les conditions par une virgule : `filter[date_debut]=>=2026-01-01,<=2026-12-31`. Les sessions passées restent exclues.
      *
      * @return $this
      */
-    public function setDateDebut(?string $date_debut): static
+    public function setDateDebut(?array $date_debut): static
     {
         if (is_null($date_debut)) {
             throw new InvalidArgumentException('non-nullable date_debut cannot be null');
@@ -655,9 +655,9 @@ class ProchaineSessionFilter implements ModelInterface, ArrayAccess, JsonSeriali
     /**
      * Gets date_fin
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getDateFin(): ?string
+    public function getDateFin(): ?array
     {
         return $this->container['date_fin'];
     }
@@ -665,11 +665,11 @@ class ProchaineSessionFilter implements ModelInterface, ArrayAccess, JsonSeriali
     /**
      * Sets date_fin
      *
-     * @param string|null $date_fin Date (`2026-01-31`) ou date et heure (`2026-01-31 09:00:00`), précédée d'un opérateur `>=`, `<=`, `>`, `<`, `=` ou `<>`. Sans opérateur, recherche par préfixe (`2026`, `2026-01`). Une valeur qui n'est pas une date ne renvoie rien. Pour encadrer une période, passer le filtre en tableau : `filter[date_fin][]=>=2026-01-01&filter[date_fin][]=<=2026-12-31`.
+     * @param string[]|null $date_fin Date (`2026-01-31`) ou date et heure (`2026-01-31 09:00:00`), précédée d'un opérateur `>=`, `<=`, `>`, `<`, `=` ou `<>`. Sans opérateur, recherche par préfixe (`2026`, `2026-01`). Une valeur qui n'est pas une date ne renvoie rien. Pour encadrer une période, séparer les conditions par une virgule : `filter[date_fin]=>=2026-01-01,<=2026-12-31`.
      *
      * @return $this
      */
-    public function setDateFin(?string $date_fin): static
+    public function setDateFin(?array $date_fin): static
     {
         if (is_null($date_fin)) {
             throw new InvalidArgumentException('non-nullable date_fin cannot be null');

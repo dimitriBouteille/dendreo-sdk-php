@@ -56,7 +56,7 @@ class Budget implements ModelInterface, ArrayAccess, JsonSerializable
         'prix_unitaire' => 'float',
         'nb' => 'int',
         'total' => 'int',
-        'tva' => 'float',
+        'tva' => 'int',
         'refacturable' => 'bool',
         'categorie_operation' => 'string',
         'parent_id' => 'int',
@@ -906,9 +906,9 @@ class Budget implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Gets tva
      *
-     * @return float|null
+     * @return int|null
      */
-    public function getTva(): ?float
+    public function getTva(): ?int
     {
         return $this->container['tva'];
     }
@@ -916,11 +916,11 @@ class Budget implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets tva
      *
-     * @param float|null $tva tva
+     * @param int|null $tva tva
      *
      * @return $this
      */
-    public function setTva(?float $tva): static
+    public function setTva(?int $tva): static
     {
         if (is_null($tva)) {
             throw new InvalidArgumentException('non-nullable tva cannot be null');
@@ -1310,7 +1310,7 @@ class Budget implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets administrateur_add
      *
-     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_add Présent uniquement avec `include=administrateurAdd`.
+     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_add Présent uniquement avec `include=administrateur_add`.
      *
      * @return $this
      */
@@ -1344,7 +1344,7 @@ class Budget implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets administrateur_edit
      *
-     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_edit Présent uniquement avec `include=administrateurEdit`.
+     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_edit Présent uniquement avec `include=administrateur_edit`.
      *
      * @return $this
      */

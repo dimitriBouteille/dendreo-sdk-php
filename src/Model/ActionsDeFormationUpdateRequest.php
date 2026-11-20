@@ -582,6 +582,7 @@ class ActionsDeFormationUpdateRequest implements ModelInterface, ArrayAccess, Js
     public const TVA_FORMATION__13_5 = '13.5';
     public const TVA_FORMATION__16_0 = '16.0';
     public const TVA_FORMATION__17_0 = '17.0';
+    public const TVA_FORMATION__19_0 = '19.0';
     public const TVA_FORMATION__20_0 = '20.0';
     public const TVA_FORMATION__21_0 = '21.0';
     public const TVA_FORMATION__23_0 = '23.0';
@@ -603,6 +604,7 @@ class ActionsDeFormationUpdateRequest implements ModelInterface, ArrayAccess, Js
     public const TVA_HORS_FORMATION__13_5 = '13.5';
     public const TVA_HORS_FORMATION__16_0 = '16.0';
     public const TVA_HORS_FORMATION__17_0 = '17.0';
+    public const TVA_HORS_FORMATION__19_0 = '19.0';
     public const TVA_HORS_FORMATION__20_0 = '20.0';
     public const TVA_HORS_FORMATION__21_0 = '21.0';
     public const TVA_HORS_FORMATION__23_0 = '23.0';
@@ -624,6 +626,7 @@ class ActionsDeFormationUpdateRequest implements ModelInterface, ArrayAccess, Js
     public const TVA_FRAIS__13_5 = '13.5';
     public const TVA_FRAIS__16_0 = '16.0';
     public const TVA_FRAIS__17_0 = '17.0';
+    public const TVA_FRAIS__19_0 = '19.0';
     public const TVA_FRAIS__20_0 = '20.0';
     public const TVA_FRAIS__21_0 = '21.0';
     public const TVA_FRAIS__23_0 = '23.0';
@@ -671,6 +674,7 @@ class ActionsDeFormationUpdateRequest implements ModelInterface, ArrayAccess, Js
             self::TVA_FORMATION__13_5,
             self::TVA_FORMATION__16_0,
             self::TVA_FORMATION__17_0,
+            self::TVA_FORMATION__19_0,
             self::TVA_FORMATION__20_0,
             self::TVA_FORMATION__21_0,
             self::TVA_FORMATION__23_0,
@@ -703,6 +707,7 @@ class ActionsDeFormationUpdateRequest implements ModelInterface, ArrayAccess, Js
             self::TVA_HORS_FORMATION__13_5,
             self::TVA_HORS_FORMATION__16_0,
             self::TVA_HORS_FORMATION__17_0,
+            self::TVA_HORS_FORMATION__19_0,
             self::TVA_HORS_FORMATION__20_0,
             self::TVA_HORS_FORMATION__21_0,
             self::TVA_HORS_FORMATION__23_0,
@@ -735,6 +740,7 @@ class ActionsDeFormationUpdateRequest implements ModelInterface, ArrayAccess, Js
             self::TVA_FRAIS__13_5,
             self::TVA_FRAIS__16_0,
             self::TVA_FRAIS__17_0,
+            self::TVA_FRAIS__19_0,
             self::TVA_FRAIS__20_0,
             self::TVA_FRAIS__21_0,
             self::TVA_FRAIS__23_0,
@@ -2263,7 +2269,7 @@ class ActionsDeFormationUpdateRequest implements ModelInterface, ArrayAccess, Js
     /**
      * Sets inscription_online
      *
-     * @param bool|null $inscription_online Catalogue Public (+EDOF) : publier en ligne et accepter des inscriptions publiques.
+     * @param bool|null $inscription_online Catalogue Public (+EDOF) : publier en ligne et accepter des inscriptions publiques. Pour une INTRA ou un hors formation, refusé, même vide, si le compte ne publie pas les INTRA sur le Catalogue Public (ou, pour une INTRA sans entreprise, les INTRA sans client).
      *
      * @return $this
      */
@@ -2297,7 +2303,7 @@ class ActionsDeFormationUpdateRequest implements ModelInterface, ArrayAccess, Js
     /**
      * Sets num_session_dpc
      *
-     * @param string|null $num_session_dpc Le numéro de session DPC (exploitable uniquement si la configuration OGDPC est activée). Max : 191 caractères.
+     * @param string|null $num_session_dpc Le numéro de session DPC. Refusé, même vide, si l'option OGDPC n'est pas activée sur le centre de formation de l'action. Max : 191 caractères.
      *
      * @return $this
      */

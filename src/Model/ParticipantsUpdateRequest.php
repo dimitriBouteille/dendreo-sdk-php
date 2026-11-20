@@ -41,7 +41,7 @@ class ParticipantsUpdateRequest implements ModelInterface, ArrayAccess, JsonSeri
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'id_entreprise' => 'string',
+        'id_entreprise' => 'int',
         'nom' => 'string',
         'prenom' => 'string',
         'nom_naissance' => 'string',
@@ -636,9 +636,9 @@ class ParticipantsUpdateRequest implements ModelInterface, ArrayAccess, JsonSeri
     /**
      * Gets id_entreprise
      *
-     * @return string|null
+     * @return int|null
      */
-    public function getIdEntreprise(): ?string
+    public function getIdEntreprise(): ?int
     {
         return $this->container['id_entreprise'];
     }
@@ -646,11 +646,11 @@ class ParticipantsUpdateRequest implements ModelInterface, ArrayAccess, JsonSeri
     /**
      * Sets id_entreprise
      *
-     * @param string|null $id_entreprise L'identifiant de l'entreprise du participant. Non obligatoire si `entreprise_raison_sociale`, `entreprise_id_externe` ou `entreprise_siret` est fourni.
+     * @param int|null $id_entreprise L'identifiant de la nouvelle entreprise du participant. Peut être remplacé par `entreprise_raison_sociale`, `entreprise_id_externe` ou `entreprise_siret`.
      *
      * @return $this
      */
-    public function setIdEntreprise(?string $id_entreprise): static
+    public function setIdEntreprise(?int $id_entreprise): static
     {
         if (is_null($id_entreprise)) {
             throw new InvalidArgumentException('non-nullable id_entreprise cannot be null');
@@ -1545,7 +1545,7 @@ class ParticipantsUpdateRequest implements ModelInterface, ArrayAccess, JsonSeri
     /**
      * Sets num_forprev
      *
-     * @param string|null $num_forprev Numéro Forprev du participant. Max : 200 caractères.
+     * @param string|null $num_forprev Numéro Forprev du participant. Refusé, même vide, si l'option Forprev n'est pas activée sur le compte. Max : 200 caractères.
      *
      * @return $this
      */

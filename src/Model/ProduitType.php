@@ -760,7 +760,7 @@ class ProduitType implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets administrateur_add
      *
-     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_add Présent uniquement avec `include=administrateurAdd`.
+     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_add Présent uniquement avec `include=administrateur_add`.
      *
      * @return $this
      */
@@ -794,7 +794,7 @@ class ProduitType implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets administrateur_edit
      *
-     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_edit Présent uniquement avec `include=administrateurEdit`.
+     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_edit Présent uniquement avec `include=administrateur_edit`.
      *
      * @return $this
      */
@@ -828,7 +828,7 @@ class ProduitType implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets administrateur_delete
      *
-     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_delete Présent uniquement avec `include=administrateurDelete`.
+     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_delete Présent uniquement avec `include=administrateur_delete`.
      *
      * @return $this
      */
