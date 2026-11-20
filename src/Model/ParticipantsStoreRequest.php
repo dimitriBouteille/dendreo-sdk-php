@@ -41,7 +41,7 @@ class ParticipantsStoreRequest implements ModelInterface, ArrayAccess, JsonSeria
       * @var array<string, string>
       */
     protected static array $openAPITypes = [
-        'id_entreprise' => 'string',
+        'id_entreprise' => 'int',
         'nom' => 'string',
         'prenom' => 'string',
         'nom_naissance' => 'string',
@@ -577,9 +577,6 @@ class ParticipantsStoreRequest implements ModelInterface, ArrayAccess, JsonSeria
     {
         $invalidProperties = [];
 
-        if ($this->container['id_entreprise'] === null) {
-            $invalidProperties[] = "'id_entreprise' can't be null";
-        }
         if ($this->container['nom'] === null) {
             $invalidProperties[] = "'nom' can't be null";
         }
@@ -634,9 +631,9 @@ class ParticipantsStoreRequest implements ModelInterface, ArrayAccess, JsonSeria
     /**
      * Gets id_entreprise
      *
-     * @return string
+     * @return int|null
      */
-    public function getIdEntreprise(): string
+    public function getIdEntreprise(): ?int
     {
         return $this->container['id_entreprise'];
     }
@@ -644,11 +641,11 @@ class ParticipantsStoreRequest implements ModelInterface, ArrayAccess, JsonSeria
     /**
      * Sets id_entreprise
      *
-     * @param string $id_entreprise L'identifiant de l'entreprise du participant. Non obligatoire si `entreprise_raison_sociale`, `entreprise_id_externe` ou `entreprise_siret` est fourni.
+     * @param int|null $id_entreprise L'identifiant de l'entreprise du participant. Obligatoire, sauf si `entreprise_raison_sociale`, `entreprise_id_externe` ou `entreprise_siret` est fourni.
      *
      * @return $this
      */
-    public function setIdEntreprise(string $id_entreprise): static
+    public function setIdEntreprise(?int $id_entreprise): static
     {
         if (is_null($id_entreprise)) {
             throw new InvalidArgumentException('non-nullable id_entreprise cannot be null');
@@ -1543,7 +1540,7 @@ class ParticipantsStoreRequest implements ModelInterface, ArrayAccess, JsonSeria
     /**
      * Sets num_forprev
      *
-     * @param string|null $num_forprev Numéro Forprev du participant. Max : 200 caractères.
+     * @param string|null $num_forprev Numéro Forprev du participant. Refusé, même vide, si l'option Forprev n'est pas activée sur le compte. Max : 200 caractères.
      *
      * @return $this
      */

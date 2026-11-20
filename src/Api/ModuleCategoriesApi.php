@@ -209,7 +209,7 @@ class ModuleCategoriesApi
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Dbout\DendreoSdk\Model\ModuleCategoriesDestroy409Response',
+                        '\Dbout\DendreoSdk\Model\ErrorMessage',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

@@ -206,7 +206,7 @@ class AdfEtapesApi
                 case 409:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Dbout\DendreoSdk\Model\AdfEtapesDestroy409Response',
+                        '\Dbout\DendreoSdk\Model\ErrorMessage',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

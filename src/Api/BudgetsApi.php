@@ -206,7 +206,7 @@ class BudgetsApi
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Dbout\DendreoSdk\Model\BudgetsDestroy422Response',
+                        '\Dbout\DendreoSdk\Model\ValidationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

@@ -53,11 +53,11 @@ class ActionDeFormationFilter implements ModelInterface, ArrayAccess, JsonSerial
         'id_salle_de_formation' => 'int[]',
         'id_formateur' => 'int[]',
         'id_centre_de_formation' => 'int[]',
-        'date_debut' => 'string',
-        'date_fin' => 'string',
+        'date_debut' => 'string[]',
+        'date_fin' => 'string[]',
         'trashed' => 'string',
-        'created_at' => 'string',
-        'updated_at' => 'string'
+        'created_at' => 'string[]',
+        'updated_at' => 'string[]'
     ];
 
     /**
@@ -769,9 +769,9 @@ class ActionDeFormationFilter implements ModelInterface, ArrayAccess, JsonSerial
     /**
      * Gets date_debut
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getDateDebut(): ?string
+    public function getDateDebut(): ?array
     {
         return $this->container['date_debut'];
     }
@@ -779,11 +779,11 @@ class ActionDeFormationFilter implements ModelInterface, ArrayAccess, JsonSerial
     /**
      * Sets date_debut
      *
-     * @param string|null $date_debut Date (`2026-01-31`) ou date et heure (`2026-01-31 09:00:00`), précédée d'un opérateur `>=`, `<=`, `>`, `<`, `=` ou `<>`. Sans opérateur, recherche par préfixe (`2026`, `2026-01`). Une valeur qui n'est pas une date ne renvoie rien. Pour encadrer une période, passer le filtre en tableau : `filter[date_debut][]=>=2026-01-01&filter[date_debut][]=<=2026-12-31`.
+     * @param string[]|null $date_debut Date (`2026-01-31`) ou date et heure (`2026-01-31 09:00:00`), précédée d'un opérateur `>=`, `<=`, `>`, `<`, `=` ou `<>`. Sans opérateur, recherche par préfixe (`2026`, `2026-01`). Une valeur qui n'est pas une date ne renvoie rien. Pour encadrer une période, séparer les conditions par une virgule : `filter[date_debut]=>=2026-01-01,<=2026-12-31`.
      *
      * @return $this
      */
-    public function setDateDebut(?string $date_debut): static
+    public function setDateDebut(?array $date_debut): static
     {
         if (is_null($date_debut)) {
             throw new InvalidArgumentException('non-nullable date_debut cannot be null');
@@ -796,9 +796,9 @@ class ActionDeFormationFilter implements ModelInterface, ArrayAccess, JsonSerial
     /**
      * Gets date_fin
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getDateFin(): ?string
+    public function getDateFin(): ?array
     {
         return $this->container['date_fin'];
     }
@@ -806,11 +806,11 @@ class ActionDeFormationFilter implements ModelInterface, ArrayAccess, JsonSerial
     /**
      * Sets date_fin
      *
-     * @param string|null $date_fin Date (`2026-01-31`) ou date et heure (`2026-01-31 09:00:00`), précédée d'un opérateur `>=`, `<=`, `>`, `<`, `=` ou `<>`. Sans opérateur, recherche par préfixe (`2026`, `2026-01`). Une valeur qui n'est pas une date ne renvoie rien. Pour encadrer une période, passer le filtre en tableau : `filter[date_fin][]=>=2026-01-01&filter[date_fin][]=<=2026-12-31`.
+     * @param string[]|null $date_fin Date (`2026-01-31`) ou date et heure (`2026-01-31 09:00:00`), précédée d'un opérateur `>=`, `<=`, `>`, `<`, `=` ou `<>`. Sans opérateur, recherche par préfixe (`2026`, `2026-01`). Une valeur qui n'est pas une date ne renvoie rien. Pour encadrer une période, séparer les conditions par une virgule : `filter[date_fin]=>=2026-01-01,<=2026-12-31`.
      *
      * @return $this
      */
-    public function setDateFin(?string $date_fin): static
+    public function setDateFin(?array $date_fin): static
     {
         if (is_null($date_fin)) {
             throw new InvalidArgumentException('non-nullable date_fin cannot be null');
@@ -860,9 +860,9 @@ class ActionDeFormationFilter implements ModelInterface, ArrayAccess, JsonSerial
     /**
      * Gets created_at
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getCreatedAt(): ?string
+    public function getCreatedAt(): ?array
     {
         return $this->container['created_at'];
     }
@@ -870,11 +870,11 @@ class ActionDeFormationFilter implements ModelInterface, ArrayAccess, JsonSerial
     /**
      * Sets created_at
      *
-     * @param string|null $created_at Date (`2026-01-31`) ou date et heure (`2026-01-31 09:00:00`), précédée d'un opérateur `>=`, `<=`, `>`, `<`, `=` ou `<>`. Sans opérateur, recherche par préfixe (`2026`, `2026-01`). Une valeur qui n'est pas une date ne renvoie rien. Pour encadrer une période, passer le filtre en tableau : `filter[created_at][]=>=2026-01-01&filter[created_at][]=<=2026-12-31`.
+     * @param string[]|null $created_at Date (`2026-01-31`) ou date et heure (`2026-01-31 09:00:00`), précédée d'un opérateur `>=`, `<=`, `>`, `<`, `=` ou `<>`. Sans opérateur, recherche par préfixe (`2026`, `2026-01`). Une valeur qui n'est pas une date ne renvoie rien. Pour encadrer une période, séparer les conditions par une virgule : `filter[created_at]=>=2026-01-01,<=2026-12-31`.
      *
      * @return $this
      */
-    public function setCreatedAt(?string $created_at): static
+    public function setCreatedAt(?array $created_at): static
     {
         if (is_null($created_at)) {
             throw new InvalidArgumentException('non-nullable created_at cannot be null');
@@ -887,9 +887,9 @@ class ActionDeFormationFilter implements ModelInterface, ArrayAccess, JsonSerial
     /**
      * Gets updated_at
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getUpdatedAt(): ?string
+    public function getUpdatedAt(): ?array
     {
         return $this->container['updated_at'];
     }
@@ -897,11 +897,11 @@ class ActionDeFormationFilter implements ModelInterface, ArrayAccess, JsonSerial
     /**
      * Sets updated_at
      *
-     * @param string|null $updated_at Date (`2026-01-31`) ou date et heure (`2026-01-31 09:00:00`), précédée d'un opérateur `>=`, `<=`, `>`, `<`, `=` ou `<>`. Sans opérateur, recherche par préfixe (`2026`, `2026-01`). Une valeur qui n'est pas une date ne renvoie rien. Pour encadrer une période, passer le filtre en tableau : `filter[updated_at][]=>=2026-01-01&filter[updated_at][]=<=2026-12-31`.
+     * @param string[]|null $updated_at Date (`2026-01-31`) ou date et heure (`2026-01-31 09:00:00`), précédée d'un opérateur `>=`, `<=`, `>`, `<`, `=` ou `<>`. Sans opérateur, recherche par préfixe (`2026`, `2026-01`). Une valeur qui n'est pas une date ne renvoie rien. Pour encadrer une période, séparer les conditions par une virgule : `filter[updated_at]=>=2026-01-01,<=2026-12-31`.
      *
      * @return $this
      */
-    public function setUpdatedAt(?string $updated_at): static
+    public function setUpdatedAt(?array $updated_at): static
     {
         if (is_null($updated_at)) {
             throw new InvalidArgumentException('non-nullable updated_at cannot be null');
