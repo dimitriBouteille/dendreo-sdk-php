@@ -146,7 +146,6 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
         'newsletter_optin' => 'bool',
         'nom_naissance' => 'string',
         'pays_naissance_alpha2' => 'string',
-        'num_forprev' => 'string',
         'numero_secu' => 'string',
         'langue_principale' => 'string',
         'langues_secondaires' => 'string[]',
@@ -170,6 +169,7 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
         'ogdpc_rpps' => 'string',
         'ogdpc_id_specialite' => 'int',
         'mode_dexercice_dominant' => 'string',
+        'num_forprev' => 'string',
         'user_id' => 'int',
         'anonyme' => 'string',
         'n_secu' => 'string',
@@ -188,8 +188,8 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
         'statut' => 'string',
         'mode_remu' => 'string',
         'remu_horaire_par_defaut' => 'float',
-        'adeli_rpps' => 'string',
-        'key_uniq' => 'string'
+        'key_uniq' => 'string',
+        'adeli_rpps' => 'string'
     ];
 
     /**
@@ -302,7 +302,6 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
         'newsletter_optin' => null,
         'nom_naissance' => null,
         'pays_naissance_alpha2' => null,
-        'num_forprev' => null,
         'numero_secu' => null,
         'langue_principale' => null,
         'langues_secondaires' => null,
@@ -326,6 +325,7 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
         'ogdpc_rpps' => null,
         'ogdpc_id_specialite' => null,
         'mode_dexercice_dominant' => null,
+        'num_forprev' => null,
         'user_id' => null,
         'anonyme' => null,
         'n_secu' => null,
@@ -344,8 +344,8 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
         'statut' => null,
         'mode_remu' => null,
         'remu_horaire_par_defaut' => null,
-        'adeli_rpps' => null,
-        'key_uniq' => null
+        'key_uniq' => null,
+        'adeli_rpps' => null
     ];
 
     /**
@@ -458,7 +458,6 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
         'newsletter_optin' => false,
         'nom_naissance' => true,
         'pays_naissance_alpha2' => true,
-        'num_forprev' => true,
         'numero_secu' => true,
         'langue_principale' => true,
         'langues_secondaires' => false,
@@ -482,6 +481,7 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
         'ogdpc_rpps' => true,
         'ogdpc_id_specialite' => true,
         'mode_dexercice_dominant' => true,
+        'num_forprev' => true,
         'user_id' => true,
         'anonyme' => false,
         'n_secu' => false,
@@ -500,8 +500,8 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
         'statut' => false,
         'mode_remu' => false,
         'remu_horaire_par_defaut' => true,
-        'adeli_rpps' => false,
-        'key_uniq' => false
+        'key_uniq' => false,
+        'adeli_rpps' => true
     ];
 
     /**
@@ -694,7 +694,6 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
         'newsletter_optin' => 'newsletter_optin',
         'nom_naissance' => 'nom_naissance',
         'pays_naissance_alpha2' => 'pays_naissance_alpha2',
-        'num_forprev' => 'num_forprev',
         'numero_secu' => 'numero_secu',
         'langue_principale' => 'langue_principale',
         'langues_secondaires' => 'langues_secondaires',
@@ -718,6 +717,7 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
         'ogdpc_rpps' => 'ogdpc_rpps',
         'ogdpc_id_specialite' => 'ogdpc_id_specialite',
         'mode_dexercice_dominant' => 'mode_dexercice_dominant',
+        'num_forprev' => 'num_forprev',
         'user_id' => 'user_id',
         'anonyme' => 'anonyme',
         'n_secu' => 'n_secu',
@@ -736,8 +736,8 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
         'statut' => 'statut',
         'mode_remu' => 'mode_remu',
         'remu_horaire_par_defaut' => 'remu_horaire_par_defaut',
-        'adeli_rpps' => 'adeli_rpps',
-        'key_uniq' => 'key_uniq'
+        'key_uniq' => 'key_uniq',
+        'adeli_rpps' => 'adeli_rpps'
     ];
 
     /**
@@ -850,7 +850,6 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
         'newsletter_optin' => 'setNewsletterOptin',
         'nom_naissance' => 'setNomNaissance',
         'pays_naissance_alpha2' => 'setPaysNaissanceAlpha2',
-        'num_forprev' => 'setNumForprev',
         'numero_secu' => 'setNumeroSecu',
         'langue_principale' => 'setLanguePrincipale',
         'langues_secondaires' => 'setLanguesSecondaires',
@@ -874,6 +873,7 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
         'ogdpc_rpps' => 'setOgdpcRpps',
         'ogdpc_id_specialite' => 'setOgdpcIdSpecialite',
         'mode_dexercice_dominant' => 'setModeDexerciceDominant',
+        'num_forprev' => 'setNumForprev',
         'user_id' => 'setUserId',
         'anonyme' => 'setAnonyme',
         'n_secu' => 'setNSecu',
@@ -892,8 +892,8 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
         'statut' => 'setStatut',
         'mode_remu' => 'setModeRemu',
         'remu_horaire_par_defaut' => 'setRemuHoraireParDefaut',
-        'adeli_rpps' => 'setAdeliRpps',
-        'key_uniq' => 'setKeyUniq'
+        'key_uniq' => 'setKeyUniq',
+        'adeli_rpps' => 'setAdeliRpps'
     ];
 
     /**
@@ -1006,7 +1006,6 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
         'newsletter_optin' => 'getNewsletterOptin',
         'nom_naissance' => 'getNomNaissance',
         'pays_naissance_alpha2' => 'getPaysNaissanceAlpha2',
-        'num_forprev' => 'getNumForprev',
         'numero_secu' => 'getNumeroSecu',
         'langue_principale' => 'getLanguePrincipale',
         'langues_secondaires' => 'getLanguesSecondaires',
@@ -1030,6 +1029,7 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
         'ogdpc_rpps' => 'getOgdpcRpps',
         'ogdpc_id_specialite' => 'getOgdpcIdSpecialite',
         'mode_dexercice_dominant' => 'getModeDexerciceDominant',
+        'num_forprev' => 'getNumForprev',
         'user_id' => 'getUserId',
         'anonyme' => 'getAnonyme',
         'n_secu' => 'getNSecu',
@@ -1048,8 +1048,8 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
         'statut' => 'getStatut',
         'mode_remu' => 'getModeRemu',
         'remu_horaire_par_defaut' => 'getRemuHoraireParDefaut',
-        'adeli_rpps' => 'getAdeliRpps',
-        'key_uniq' => 'getKeyUniq'
+        'key_uniq' => 'getKeyUniq',
+        'adeli_rpps' => 'getAdeliRpps'
     ];
 
     /**
@@ -1212,7 +1212,6 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
         $this->setIfExists('newsletter_optin', $data ?? [], null);
         $this->setIfExists('nom_naissance', $data ?? [], null);
         $this->setIfExists('pays_naissance_alpha2', $data ?? [], null);
-        $this->setIfExists('num_forprev', $data ?? [], null);
         $this->setIfExists('numero_secu', $data ?? [], null);
         $this->setIfExists('langue_principale', $data ?? [], null);
         $this->setIfExists('langues_secondaires', $data ?? [], null);
@@ -1236,6 +1235,7 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
         $this->setIfExists('ogdpc_rpps', $data ?? [], null);
         $this->setIfExists('ogdpc_id_specialite', $data ?? [], null);
         $this->setIfExists('mode_dexercice_dominant', $data ?? [], null);
+        $this->setIfExists('num_forprev', $data ?? [], null);
         $this->setIfExists('user_id', $data ?? [], null);
         $this->setIfExists('anonyme', $data ?? [], null);
         $this->setIfExists('n_secu', $data ?? [], null);
@@ -1254,8 +1254,8 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
         $this->setIfExists('statut', $data ?? [], null);
         $this->setIfExists('mode_remu', $data ?? [], null);
         $this->setIfExists('remu_horaire_par_defaut', $data ?? [], null);
-        $this->setIfExists('adeli_rpps', $data ?? [], null);
         $this->setIfExists('key_uniq', $data ?? [], null);
+        $this->setIfExists('adeli_rpps', $data ?? [], null);
     }
 
     /**
@@ -3513,7 +3513,7 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
     /**
      * Sets administrateur_add
      *
-     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_add Présent uniquement avec `include=administrateurAdd`.
+     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_add Présent uniquement avec `include=administrateur_add`.
      *
      * @return $this
      */
@@ -3547,7 +3547,7 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
     /**
      * Sets administrateur_edit
      *
-     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_edit Présent uniquement avec `include=administrateurEdit`.
+     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_edit Présent uniquement avec `include=administrateur_edit`.
      *
      * @return $this
      */
@@ -3581,7 +3581,7 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
     /**
      * Sets administrateur_delete
      *
-     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_delete Présent uniquement avec `include=administrateurDelete`.
+     * @param \Dbout\DendreoSdk\Model\Administrateur|null $administrateur_delete Présent uniquement avec `include=administrateur_delete`.
      *
      * @return $this
      */
@@ -4527,40 +4527,6 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
     }
 
     /**
-     * Gets num_forprev
-     *
-     * @return string|null
-     */
-    public function getNumForprev(): ?string
-    {
-        return $this->container['num_forprev'];
-    }
-
-    /**
-     * Sets num_forprev
-     *
-     * @param string|null $num_forprev num_forprev
-     *
-     * @return $this
-     */
-    public function setNumForprev(?string $num_forprev): static
-    {
-        if (is_null($num_forprev)) {
-            array_push($this->openAPINullablesSetToNull, 'num_forprev');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('num_forprev', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['num_forprev'] = $num_forprev;
-
-        return $this;
-    }
-
-    /**
      * Gets numero_secu
      *
      * @return string|null
@@ -5336,6 +5302,40 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
     }
 
     /**
+     * Gets num_forprev
+     *
+     * @return string|null
+     */
+    public function getNumForprev(): ?string
+    {
+        return $this->container['num_forprev'];
+    }
+
+    /**
+     * Sets num_forprev
+     *
+     * @param string|null $num_forprev Présent uniquement si l'option Forprev est activée sur le compte.
+     *
+     * @return $this
+     */
+    public function setNumForprev(?string $num_forprev): static
+    {
+        if (is_null($num_forprev)) {
+            array_push($this->openAPINullablesSetToNull, 'num_forprev');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('num_forprev', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['num_forprev'] = $num_forprev;
+
+        return $this;
+    }
+
+    /**
      * Gets user_id
      *
      * @return int|null
@@ -5836,33 +5836,6 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
     }
 
     /**
-     * Gets adeli_rpps
-     *
-     * @return string|null
-     */
-    public function getAdeliRpps(): ?string
-    {
-        return $this->container['adeli_rpps'];
-    }
-
-    /**
-     * Sets adeli_rpps
-     *
-     * @param string|null $adeli_rpps adeli_rpps
-     *
-     * @return $this
-     */
-    public function setAdeliRpps(?string $adeli_rpps): static
-    {
-        if (is_null($adeli_rpps)) {
-            throw new InvalidArgumentException('non-nullable adeli_rpps cannot be null');
-        }
-        $this->container['adeli_rpps'] = $adeli_rpps;
-
-        return $this;
-    }
-
-    /**
      * Gets key_uniq
      *
      * @return string|null
@@ -5885,6 +5858,40 @@ class ActionCommercialeInterlocuteurInterlocuteur implements ModelInterface, Arr
             throw new InvalidArgumentException('non-nullable key_uniq cannot be null');
         }
         $this->container['key_uniq'] = $key_uniq;
+
+        return $this;
+    }
+
+    /**
+     * Gets adeli_rpps
+     *
+     * @return string|null
+     */
+    public function getAdeliRpps(): ?string
+    {
+        return $this->container['adeli_rpps'];
+    }
+
+    /**
+     * Sets adeli_rpps
+     *
+     * @param string|null $adeli_rpps Présent uniquement si l'option OGDPC est activée sur le compte.
+     *
+     * @return $this
+     */
+    public function setAdeliRpps(?string $adeli_rpps): static
+    {
+        if (is_null($adeli_rpps)) {
+            array_push($this->openAPINullablesSetToNull, 'adeli_rpps');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('adeli_rpps', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['adeli_rpps'] = $adeli_rpps;
 
         return $this;
     }

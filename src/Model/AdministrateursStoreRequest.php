@@ -641,7 +641,7 @@ class AdministrateursStoreRequest implements ModelInterface, ArrayAccess, JsonSe
     /**
      * Sets niveaux
      *
-     * @param \Dbout\DendreoSdk\Model\AdministrateursStoreRequestNiveauxInner[]|null $niveaux Les niveaux d'accès par centre de formation, en multi-centres. Seuls les centres envoyés sont modifiés.
+     * @param \Dbout\DendreoSdk\Model\AdministrateursStoreRequestNiveauxInner[]|null $niveaux Les niveaux d'accès par centre de formation. Seuls les centres envoyés sont modifiés. Refusé, même vide, si le compte n'est pas multi-centres.
      *
      * @return $this
      */

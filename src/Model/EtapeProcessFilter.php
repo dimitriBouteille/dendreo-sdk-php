@@ -48,8 +48,8 @@ class EtapeProcessFilter implements ModelInterface, ArrayAccess, JsonSerializabl
         'type' => 'string[]',
         'favorite' => 'int[]',
         'default_adf' => 'int[]',
-        'created_at' => 'string',
-        'updated_at' => 'string'
+        'created_at' => 'string[]',
+        'updated_at' => 'string[]'
     ];
 
     /**
@@ -544,9 +544,9 @@ class EtapeProcessFilter implements ModelInterface, ArrayAccess, JsonSerializabl
     /**
      * Gets created_at
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getCreatedAt(): ?string
+    public function getCreatedAt(): ?array
     {
         return $this->container['created_at'];
     }
@@ -554,11 +554,11 @@ class EtapeProcessFilter implements ModelInterface, ArrayAccess, JsonSerializabl
     /**
      * Sets created_at
      *
-     * @param string|null $created_at Date (`2026-01-31`) ou date et heure (`2026-01-31 09:00:00`), précédée d'un opérateur `>=`, `<=`, `>`, `<`, `=` ou `<>`. Sans opérateur, recherche par préfixe (`2026`, `2026-01`). Une valeur qui n'est pas une date ne renvoie rien. Pour encadrer une période, passer le filtre en tableau : `filter[created_at][]=>=2026-01-01&filter[created_at][]=<=2026-12-31`.
+     * @param string[]|null $created_at Date (`2026-01-31`) ou date et heure (`2026-01-31 09:00:00`), précédée d'un opérateur `>=`, `<=`, `>`, `<`, `=` ou `<>`. Sans opérateur, recherche par préfixe (`2026`, `2026-01`). Une valeur qui n'est pas une date ne renvoie rien. Pour encadrer une période, séparer les conditions par une virgule : `filter[created_at]=>=2026-01-01,<=2026-12-31`.
      *
      * @return $this
      */
-    public function setCreatedAt(?string $created_at): static
+    public function setCreatedAt(?array $created_at): static
     {
         if (is_null($created_at)) {
             throw new InvalidArgumentException('non-nullable created_at cannot be null');
@@ -571,9 +571,9 @@ class EtapeProcessFilter implements ModelInterface, ArrayAccess, JsonSerializabl
     /**
      * Gets updated_at
      *
-     * @return string|null
+     * @return string[]|null
      */
-    public function getUpdatedAt(): ?string
+    public function getUpdatedAt(): ?array
     {
         return $this->container['updated_at'];
     }
@@ -581,11 +581,11 @@ class EtapeProcessFilter implements ModelInterface, ArrayAccess, JsonSerializabl
     /**
      * Sets updated_at
      *
-     * @param string|null $updated_at Date (`2026-01-31`) ou date et heure (`2026-01-31 09:00:00`), précédée d'un opérateur `>=`, `<=`, `>`, `<`, `=` ou `<>`. Sans opérateur, recherche par préfixe (`2026`, `2026-01`). Une valeur qui n'est pas une date ne renvoie rien. Pour encadrer une période, passer le filtre en tableau : `filter[updated_at][]=>=2026-01-01&filter[updated_at][]=<=2026-12-31`.
+     * @param string[]|null $updated_at Date (`2026-01-31`) ou date et heure (`2026-01-31 09:00:00`), précédée d'un opérateur `>=`, `<=`, `>`, `<`, `=` ou `<>`. Sans opérateur, recherche par préfixe (`2026`, `2026-01`). Une valeur qui n'est pas une date ne renvoie rien. Pour encadrer une période, séparer les conditions par une virgule : `filter[updated_at]=>=2026-01-01,<=2026-12-31`.
      *
      * @return $this
      */
-    public function setUpdatedAt(?string $updated_at): static
+    public function setUpdatedAt(?array $updated_at): static
     {
         if (is_null($updated_at)) {
             throw new InvalidArgumentException('non-nullable updated_at cannot be null');

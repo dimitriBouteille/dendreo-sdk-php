@@ -1773,7 +1773,7 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets inscription_online
      *
-     * @param bool|null $inscription_online inscription_online
+     * @param bool|null $inscription_online Présent uniquement pour une action INTER, ou pour une INTRA si le compte publie les INTRA sur le Catalogue Public.
      *
      * @return $this
      */
@@ -3016,7 +3016,7 @@ class ActionDeFormation implements ModelInterface, ArrayAccess, JsonSerializable
     /**
      * Sets etape_process
      *
-     * @param \Dbout\DendreoSdk\Model\EtapeProcess|null $etape_process Présent uniquement avec `include=etapeProcess`.
+     * @param \Dbout\DendreoSdk\Model\EtapeProcess|null $etape_process Présent uniquement avec `include=etape_process`.
      *
      * @return $this
      */

@@ -291,6 +291,7 @@ class BudgetsStoreRequest implements ModelInterface, ArrayAccess, JsonSerializab
     public const TVA__13_5 = '13.5';
     public const TVA__16_0 = '16.0';
     public const TVA__17_0 = '17.0';
+    public const TVA__19_0 = '19.0';
     public const TVA__20_0 = '20.0';
     public const TVA__21_0 = '21.0';
     public const TVA__23_0 = '23.0';
@@ -337,6 +338,7 @@ class BudgetsStoreRequest implements ModelInterface, ArrayAccess, JsonSerializab
             self::TVA__13_5,
             self::TVA__16_0,
             self::TVA__17_0,
+            self::TVA__19_0,
             self::TVA__20_0,
             self::TVA__21_0,
             self::TVA__23_0,
