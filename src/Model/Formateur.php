@@ -76,7 +76,6 @@ class Formateur implements ModelInterface, ArrayAccess, JsonSerializable
         'statut_bpf' => 'string',
         'mode_remu' => 'string',
         'remu_horaire_par_defaut' => 'float',
-        'adeli_rpps' => 'string',
         'key_uniq' => 'string',
         'id_externe' => 'string',
         'global_visible' => 'string',
@@ -87,6 +86,7 @@ class Formateur implements ModelInterface, ArrayAccess, JsonSerializable
         'id_edit' => 'int',
         'deleted_at' => '\DateTime',
         'id_delete' => 'int',
+        'adeli_rpps' => 'string',
         'centres' => '\Dbout\DendreoSdk\Model\CentresDeFormation[]'
     ];
 
@@ -130,7 +130,6 @@ class Formateur implements ModelInterface, ArrayAccess, JsonSerializable
         'statut_bpf' => null,
         'mode_remu' => null,
         'remu_horaire_par_defaut' => null,
-        'adeli_rpps' => null,
         'key_uniq' => null,
         'id_externe' => null,
         'global_visible' => null,
@@ -141,6 +140,7 @@ class Formateur implements ModelInterface, ArrayAccess, JsonSerializable
         'id_edit' => null,
         'deleted_at' => 'date-time',
         'id_delete' => null,
+        'adeli_rpps' => null,
         'centres' => null
     ];
 
@@ -184,7 +184,6 @@ class Formateur implements ModelInterface, ArrayAccess, JsonSerializable
         'statut_bpf' => false,
         'mode_remu' => false,
         'remu_horaire_par_defaut' => true,
-        'adeli_rpps' => false,
         'key_uniq' => false,
         'id_externe' => false,
         'global_visible' => false,
@@ -195,6 +194,7 @@ class Formateur implements ModelInterface, ArrayAccess, JsonSerializable
         'id_edit' => true,
         'deleted_at' => true,
         'id_delete' => true,
+        'adeli_rpps' => true,
         'centres' => false
     ];
 
@@ -318,7 +318,6 @@ class Formateur implements ModelInterface, ArrayAccess, JsonSerializable
         'statut_bpf' => 'statut_bpf',
         'mode_remu' => 'mode_remu',
         'remu_horaire_par_defaut' => 'remu_horaire_par_defaut',
-        'adeli_rpps' => 'adeli_rpps',
         'key_uniq' => 'key_uniq',
         'id_externe' => 'id_externe',
         'global_visible' => 'global_visible',
@@ -329,6 +328,7 @@ class Formateur implements ModelInterface, ArrayAccess, JsonSerializable
         'id_edit' => 'id_edit',
         'deleted_at' => 'deleted_at',
         'id_delete' => 'id_delete',
+        'adeli_rpps' => 'adeli_rpps',
         'centres' => 'centres'
     ];
 
@@ -372,7 +372,6 @@ class Formateur implements ModelInterface, ArrayAccess, JsonSerializable
         'statut_bpf' => 'setStatutBpf',
         'mode_remu' => 'setModeRemu',
         'remu_horaire_par_defaut' => 'setRemuHoraireParDefaut',
-        'adeli_rpps' => 'setAdeliRpps',
         'key_uniq' => 'setKeyUniq',
         'id_externe' => 'setIdExterne',
         'global_visible' => 'setGlobalVisible',
@@ -383,6 +382,7 @@ class Formateur implements ModelInterface, ArrayAccess, JsonSerializable
         'id_edit' => 'setIdEdit',
         'deleted_at' => 'setDeletedAt',
         'id_delete' => 'setIdDelete',
+        'adeli_rpps' => 'setAdeliRpps',
         'centres' => 'setCentres'
     ];
 
@@ -426,7 +426,6 @@ class Formateur implements ModelInterface, ArrayAccess, JsonSerializable
         'statut_bpf' => 'getStatutBpf',
         'mode_remu' => 'getModeRemu',
         'remu_horaire_par_defaut' => 'getRemuHoraireParDefaut',
-        'adeli_rpps' => 'getAdeliRpps',
         'key_uniq' => 'getKeyUniq',
         'id_externe' => 'getIdExterne',
         'global_visible' => 'getGlobalVisible',
@@ -437,6 +436,7 @@ class Formateur implements ModelInterface, ArrayAccess, JsonSerializable
         'id_edit' => 'getIdEdit',
         'deleted_at' => 'getDeletedAt',
         'id_delete' => 'getIdDelete',
+        'adeli_rpps' => 'getAdeliRpps',
         'centres' => 'getCentres'
     ];
 
@@ -530,7 +530,6 @@ class Formateur implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('statut_bpf', $data ?? [], null);
         $this->setIfExists('mode_remu', $data ?? [], null);
         $this->setIfExists('remu_horaire_par_defaut', $data ?? [], null);
-        $this->setIfExists('adeli_rpps', $data ?? [], null);
         $this->setIfExists('key_uniq', $data ?? [], null);
         $this->setIfExists('id_externe', $data ?? [], null);
         $this->setIfExists('global_visible', $data ?? [], null);
@@ -541,6 +540,7 @@ class Formateur implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('id_edit', $data ?? [], null);
         $this->setIfExists('deleted_at', $data ?? [], null);
         $this->setIfExists('id_delete', $data ?? [], null);
+        $this->setIfExists('adeli_rpps', $data ?? [], null);
         $this->setIfExists('centres', $data ?? [], null);
     }
 
@@ -1538,33 +1538,6 @@ class Formateur implements ModelInterface, ArrayAccess, JsonSerializable
     }
 
     /**
-     * Gets adeli_rpps
-     *
-     * @return string|null
-     */
-    public function getAdeliRpps(): ?string
-    {
-        return $this->container['adeli_rpps'];
-    }
-
-    /**
-     * Sets adeli_rpps
-     *
-     * @param string|null $adeli_rpps adeli_rpps
-     *
-     * @return $this
-     */
-    public function setAdeliRpps(?string $adeli_rpps): static
-    {
-        if (is_null($adeli_rpps)) {
-            throw new InvalidArgumentException('non-nullable adeli_rpps cannot be null');
-        }
-        $this->container['adeli_rpps'] = $adeli_rpps;
-
-        return $this;
-    }
-
-    /**
      * Gets key_uniq
      *
      * @return string|null
@@ -1872,6 +1845,40 @@ class Formateur implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['id_delete'] = $id_delete;
+
+        return $this;
+    }
+
+    /**
+     * Gets adeli_rpps
+     *
+     * @return string|null
+     */
+    public function getAdeliRpps(): ?string
+    {
+        return $this->container['adeli_rpps'];
+    }
+
+    /**
+     * Sets adeli_rpps
+     *
+     * @param string|null $adeli_rpps Présent uniquement si l'option OGDPC est activée sur le compte.
+     *
+     * @return $this
+     */
+    public function setAdeliRpps(?string $adeli_rpps): static
+    {
+        if (is_null($adeli_rpps)) {
+            array_push($this->openAPINullablesSetToNull, 'adeli_rpps');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('adeli_rpps', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['adeli_rpps'] = $adeli_rpps;
 
         return $this;
     }

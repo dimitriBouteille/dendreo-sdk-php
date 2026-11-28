@@ -71,7 +71,6 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
         'newsletter_optin' => 'bool',
         'nom_naissance' => 'string',
         'pays_naissance_alpha2' => 'string',
-        'num_forprev' => 'string',
         'numero_secu' => 'string',
         'langue_principale' => 'string',
         'langues_secondaires' => 'string[]',
@@ -106,7 +105,8 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
         'ogdpc_adeli' => 'string',
         'ogdpc_rpps' => 'string',
         'ogdpc_id_specialite' => 'int',
-        'mode_dexercice_dominant' => 'string'
+        'mode_dexercice_dominant' => 'string',
+        'num_forprev' => 'string'
     ];
 
     /**
@@ -144,7 +144,6 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
         'newsletter_optin' => null,
         'nom_naissance' => null,
         'pays_naissance_alpha2' => null,
-        'num_forprev' => null,
         'numero_secu' => null,
         'langue_principale' => null,
         'langues_secondaires' => null,
@@ -179,7 +178,8 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
         'ogdpc_adeli' => null,
         'ogdpc_rpps' => null,
         'ogdpc_id_specialite' => null,
-        'mode_dexercice_dominant' => null
+        'mode_dexercice_dominant' => null,
+        'num_forprev' => null
     ];
 
     /**
@@ -217,7 +217,6 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
         'newsletter_optin' => false,
         'nom_naissance' => true,
         'pays_naissance_alpha2' => true,
-        'num_forprev' => true,
         'numero_secu' => true,
         'langue_principale' => true,
         'langues_secondaires' => false,
@@ -252,7 +251,8 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
         'ogdpc_adeli' => true,
         'ogdpc_rpps' => true,
         'ogdpc_id_specialite' => true,
-        'mode_dexercice_dominant' => true
+        'mode_dexercice_dominant' => true,
+        'num_forprev' => true
     ];
 
     /**
@@ -370,7 +370,6 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
         'newsletter_optin' => 'newsletter_optin',
         'nom_naissance' => 'nom_naissance',
         'pays_naissance_alpha2' => 'pays_naissance_alpha2',
-        'num_forprev' => 'num_forprev',
         'numero_secu' => 'numero_secu',
         'langue_principale' => 'langue_principale',
         'langues_secondaires' => 'langues_secondaires',
@@ -405,7 +404,8 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
         'ogdpc_adeli' => 'ogdpc_adeli',
         'ogdpc_rpps' => 'ogdpc_rpps',
         'ogdpc_id_specialite' => 'ogdpc_id_specialite',
-        'mode_dexercice_dominant' => 'mode_dexercice_dominant'
+        'mode_dexercice_dominant' => 'mode_dexercice_dominant',
+        'num_forprev' => 'num_forprev'
     ];
 
     /**
@@ -443,7 +443,6 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
         'newsletter_optin' => 'setNewsletterOptin',
         'nom_naissance' => 'setNomNaissance',
         'pays_naissance_alpha2' => 'setPaysNaissanceAlpha2',
-        'num_forprev' => 'setNumForprev',
         'numero_secu' => 'setNumeroSecu',
         'langue_principale' => 'setLanguePrincipale',
         'langues_secondaires' => 'setLanguesSecondaires',
@@ -478,7 +477,8 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
         'ogdpc_adeli' => 'setOgdpcAdeli',
         'ogdpc_rpps' => 'setOgdpcRpps',
         'ogdpc_id_specialite' => 'setOgdpcIdSpecialite',
-        'mode_dexercice_dominant' => 'setModeDexerciceDominant'
+        'mode_dexercice_dominant' => 'setModeDexerciceDominant',
+        'num_forprev' => 'setNumForprev'
     ];
 
     /**
@@ -516,7 +516,6 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
         'newsletter_optin' => 'getNewsletterOptin',
         'nom_naissance' => 'getNomNaissance',
         'pays_naissance_alpha2' => 'getPaysNaissanceAlpha2',
-        'num_forprev' => 'getNumForprev',
         'numero_secu' => 'getNumeroSecu',
         'langue_principale' => 'getLanguePrincipale',
         'langues_secondaires' => 'getLanguesSecondaires',
@@ -551,7 +550,8 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
         'ogdpc_adeli' => 'getOgdpcAdeli',
         'ogdpc_rpps' => 'getOgdpcRpps',
         'ogdpc_id_specialite' => 'getOgdpcIdSpecialite',
-        'mode_dexercice_dominant' => 'getModeDexerciceDominant'
+        'mode_dexercice_dominant' => 'getModeDexerciceDominant',
+        'num_forprev' => 'getNumForprev'
     ];
 
     /**
@@ -639,7 +639,6 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('newsletter_optin', $data ?? [], null);
         $this->setIfExists('nom_naissance', $data ?? [], null);
         $this->setIfExists('pays_naissance_alpha2', $data ?? [], null);
-        $this->setIfExists('num_forprev', $data ?? [], null);
         $this->setIfExists('numero_secu', $data ?? [], null);
         $this->setIfExists('langue_principale', $data ?? [], null);
         $this->setIfExists('langues_secondaires', $data ?? [], null);
@@ -675,6 +674,7 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
         $this->setIfExists('ogdpc_rpps', $data ?? [], null);
         $this->setIfExists('ogdpc_id_specialite', $data ?? [], null);
         $this->setIfExists('mode_dexercice_dominant', $data ?? [], null);
+        $this->setIfExists('num_forprev', $data ?? [], null);
     }
 
     /**
@@ -1608,40 +1608,6 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['pays_naissance_alpha2'] = $pays_naissance_alpha2;
-
-        return $this;
-    }
-
-    /**
-     * Gets num_forprev
-     *
-     * @return string|null
-     */
-    public function getNumForprev(): ?string
-    {
-        return $this->container['num_forprev'];
-    }
-
-    /**
-     * Sets num_forprev
-     *
-     * @param string|null $num_forprev num_forprev
-     *
-     * @return $this
-     */
-    public function setNumForprev(?string $num_forprev): static
-    {
-        if (is_null($num_forprev)) {
-            array_push($this->openAPINullablesSetToNull, 'num_forprev');
-        } else {
-            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
-            $index = array_search('num_forprev', $nullablesSetToNull);
-            if ($index !== FALSE) {
-                unset($nullablesSetToNull[$index]);
-                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
-            }
-        }
-        $this->container['num_forprev'] = $num_forprev;
 
         return $this;
     }
@@ -2797,6 +2763,40 @@ class Participant implements ModelInterface, ArrayAccess, JsonSerializable
             }
         }
         $this->container['mode_dexercice_dominant'] = $mode_dexercice_dominant;
+
+        return $this;
+    }
+
+    /**
+     * Gets num_forprev
+     *
+     * @return string|null
+     */
+    public function getNumForprev(): ?string
+    {
+        return $this->container['num_forprev'];
+    }
+
+    /**
+     * Sets num_forprev
+     *
+     * @param string|null $num_forprev Présent uniquement si l'option Forprev est activée sur le compte.
+     *
+     * @return $this
+     */
+    public function setNumForprev(?string $num_forprev): static
+    {
+        if (is_null($num_forprev)) {
+            array_push($this->openAPINullablesSetToNull, 'num_forprev');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('num_forprev', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
+        }
+        $this->container['num_forprev'] = $num_forprev;
 
         return $this;
     }

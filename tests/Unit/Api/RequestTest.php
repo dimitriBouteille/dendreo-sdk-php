@@ -34,7 +34,7 @@ final class RequestTest extends TestCase
             filter: (new ParticipantFilter())
                 ->setNom('Dupont')
                 ->setId([12, 15])
-                ->setCreatedAt('>=2026-01-01'),
+                ->setCreatedAt(['>=2026-01-01', '<=2026-12-31']),
             include: ['entreprise', 'centres'],
             sort: ['-created_at'],
             page: 2,
@@ -46,7 +46,7 @@ final class RequestTest extends TestCase
         self::assertSame([
             'filter[id]' => '12,15',
             'filter[nom]' => 'Dupont',
-            'filter[created_at]' => '>=2026-01-01',
+            'filter[created_at]' => '>=2026-01-01,<=2026-12-31',
             'include' => 'entreprise,centres',
             'sort' => '-created_at',
             'page' => '2',
