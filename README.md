@@ -141,7 +141,7 @@ use Dbout\DendreoSdk\Model\ParticipantFilter;
 $filter = (new ParticipantFilter())
     ->setNom('Dupont')
     ->setId([12, 15])                       // several values
-    ->setCreatedAt('>=2026-01-01');         // date filters accept an operator: >=, <=, >, <, =, <>
+    ->setCreatedAt(['>=2026-01-01', '<=2026-12-31']); // date filters accept an operator: >=, <=, >, <, =, <>
 
 $result = $participants->index(
     filter: $filter,
